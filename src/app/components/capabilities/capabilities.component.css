@@ -1,52 +1,352 @@
+/* Adobe-inspired capabilities section */
 .capabilities-section {
   padding: 5rem 0;
-  background-color: #ffffff;
+  background-color: #fafafa;
+  overflow: hidden;
 }
 
 .section-title {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   font-weight: 700;
+  position: relative;
 }
 
+/* Horizontal scrolling slider */
+.capabilities-slider {
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+.slider-container {
+  overflow-x: auto;
+  padding: 1.5rem 0;
+  margin: 0 -1rem;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.slider-track {
+  display: flex;
+  padding: 0 1rem;
+}
+
+/* Capability cards styling */
 .capability-card {
-  padding: 1.5rem 1rem;
-  transition: transform 0.3s ease;
+  flex: 0 0 280px;
+  padding: 1.5rem;
+  margin-right: 1.5rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: center bottom;
+  position: relative;
+}
+
+.capability-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--blue-accent));
+  transition: width 0.3s ease;
 }
 
 .capability-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.capability-card:hover::before {
+  width: 60%;
+}
+
+.capability-card.active {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.capability-card.active::before {
+  width: 80%;
+}
+
+.card-content {
+  text-align: center;
 }
 
 .icon-container {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
-  background-color: #f8f9fa;
+  margin: 0 auto 1.25rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.capability-card:hover .icon-container {
+  transform: rotateY(10deg);
+}
+
+.capability-card.active .icon-container {
+  transform: rotateY(20deg);
 }
 
 .icon-container i {
   font-size: 1.5rem;
-  color: #333;
+  color: rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.capability-card.active .icon-container i {
+  transform: scale(1.1);
 }
 
 h5 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.capability-card.active h5 {
+  color: var(--primary-color);
 }
 
 p.small {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+  color: #505050;
+  transition: opacity 0.3s ease;
+}
+
+/* Capability details section */
+.capability-details {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  position: relative;
+  padding: 3rem 0;
+}
+
+.capability-details.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.detail-content {
+  padding-right: 2rem;
+}
+
+.badge-primary {
+  background-color: var(--blue-accent);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.7rem;
+  padding: 0.4em 0.8em;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.detail-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.features-list {
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  margin-bottom: 1.25rem;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  flex: 0 0 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 180, 120, 0.1);
+  color: rgb(0, 180, 120);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  margin-top: 0.25rem;
+}
+
+.feature-icon i {
+  font-size: 0.7rem;
+}
+
+.feature-text {
+  flex: 1;
+}
+
+.feature-text h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.feature-text p {
+  font-size: 0.9rem;
+  color: #505050;
   margin-bottom: 0;
 }
 
+/* Visual detail area */
+.detail-visual {
+  height: 400px;
+  border-radius: 8px;
+  background-color: #f5f5f7;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background styles for each capability */
+.mobile-bg {
+  background: linear-gradient(135deg, #ffeaeb 0%, #ffcfd0 100%);
+}
+
+.desktop-bg {
+  background: linear-gradient(135deg, #e7f2ff 0%, #c2e0ff 100%);
+}
+
+.chaos-bg {
+  background: linear-gradient(135deg, #f5eeff 0%, #e4d4ff 100%);
+}
+
+.functional-bg {
+  background: linear-gradient(135deg, #e4fff1 0%, #baf5d8 100%);
+}
+
+.performance-bg {
+  background: linear-gradient(135deg, #fff8e6 0%, #ffe7bc 100%);
+}
+
+.visual-content {
+  position: relative;
+  z-index: 2;
+}
+
+.visual-icon {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.visual-icon i {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.glow-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0.7;
+  z-index: 1;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive styling */
 @media (max-width: 992px) {
-  .capability-card {
+  .capability-details {
+    padding: 2rem 0;
+  }
+  
+  .detail-content {
+    padding-right: 0;
     margin-bottom: 2rem;
+  }
+  
+  .detail-visual {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .capabilities-section {
+    padding: 4rem 0;
+  }
+  
+  .section-title {
+    margin-bottom: 3rem;
+  }
+  
+  .capabilities-slider {
+    margin-bottom: 3rem;
+  }
+  
+  .capability-card {
+    flex: 0 0 220px;
+    padding: 1.25rem;
   }
 }

@@ -2,14 +2,59 @@
   <div class="container">
     <h2 class="section-title">Our Capabilities</h2>
     
-    <div class="row">
-      <div class="col-md-4 col-lg-2 offset-lg-1" *ngFor="let capability of capabilities">
-        <div class="capability-card text-center">
-          <div class="icon-container mx-auto">
-            <i class="fas {{capability.icon}}"></i>
+    <!-- Horizontal scrolling banner -->
+    <div class="capabilities-slider">
+      <div class="slider-container">
+        <div class="slider-track">
+          <div 
+            *ngFor="let capability of capabilities" 
+            class="capability-card" 
+            [ngClass]="{'active': isActive(capability)}"
+            (click)="selectCapability(capability)">
+            <div class="card-content">
+              <div class="icon-container" [style.background-color]="capability.iconBgColor">
+                <i class="fas {{capability.icon}}"></i>
+              </div>
+              <h5>{{capability.title}}</h5>
+              <p class="small">{{capability.description}}</p>
+            </div>
           </div>
-          <h5 class="mt-3">{{capability.title}}</h5>
-          <p class="small text-muted">{{capability.description}}</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Capability details section -->
+    <div class="capability-details" [ngClass]="{'visible': isDetailVisible}" *ngIf="activeCapability">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5">
+            <div class="detail-content">
+              <span class="badge badge-primary mb-3">{{activeCapability.title}}</span>
+              <h3 class="detail-title">{{activeCapability.detailedDescription}}</h3>
+              
+              <div class="features-list mt-4">
+                <div class="feature-item" *ngFor="let feature of activeCapability.features">
+                  <div class="feature-icon">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="feature-text">
+                    <h6>{{feature.title}}</h6>
+                    <p>{{feature.description}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="detail-visual" [ngClass]="activeCapability.bgClass">
+              <div class="visual-content">
+                <div class="visual-icon">
+                  <i class="fas {{activeCapability.icon}} fa-3x"></i>
+                </div>
+                <div class="glow-effect"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
