@@ -133,10 +133,6 @@
   border-bottom: 3px solid #1473e6;
 }
 
-.dropdown-wrapper.active .nav-icon {
-  transform: rotate(180deg);
-}
-
 .nav-link {
   color: rgba(255, 255, 255, 0.9) !important;
   padding: 0.65rem 0.85rem !important;
@@ -147,23 +143,23 @@
   display: flex;
   align-items: center;
   border-bottom: 3px solid transparent;
+  position: relative;
 }
 
 .nav-link span {
   display: inline-block;
-  margin-right: 5px;
 }
 
 .nav-icon {
   font-size: 0.65rem;
   opacity: 0.7;
   margin-left: 4px;
-  transition: transform 0.2s ease;
 }
 
 .nav-link:hover, .nav-link:focus {
   color: white !important;
   background-color: rgba(255, 255, 255, 0.08);
+  border-bottom: 3px solid #1473e6;
 }
 
 .dropdown-toggle::after {
@@ -328,6 +324,11 @@
   .nav-link {
     padding: 0.75rem 1rem !important;
     border-left: 3px solid transparent;
+    border-bottom: none;
+  }
+  
+  .nav-link:hover, .nav-link:focus {
+    border-left: 3px solid #1473e6;
     border-bottom: none;
   }
   
