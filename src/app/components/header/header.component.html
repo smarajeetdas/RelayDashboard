@@ -1,7 +1,10 @@
 <header class="header" [ngClass]="{'scrolled': isScrolled}">
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Relay</a>
+      <a class="navbar-brand" href="#">
+        Relay
+        <span class="text-monospace small d-none d-md-inline ml-1 text-muted">by Adobe</span>
+      </a>
       <button class="navbar-toggler" type="button" (click)="toggleMenu()">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,7 +30,7 @@
             <a class="nav-link" href="#">AI Features</a>
           </li>
         </ul>
-        <a href="#" class="btn btn-primary ml-lg-4">Get Started</a>
+        <a href="#" class="btn btn-blue btn-header">Get Started</a>
       </div>
     </div>
   </nav>
