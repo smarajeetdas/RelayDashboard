@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9100;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#ff9100;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
+  <rect width="400" height="300" fill="url(#grad5)" rx="8" ry="8"/>
+  
+  <!-- Chart representation -->
+  <line x1="80" y1="230" x2="320" y2="230" stroke="#333" stroke-width="2" />
+  <line x1="80" y1="80" x2="80" y2="230" stroke="#333" stroke-width="2" />
+  
+  <!-- Vertical axis labels -->
+  <text x="55" y="90" font-family="Arial" font-size="10" fill="#333">100%</text>
+  <text x="55" y="140" font-family="Arial" font-size="10" fill="#333">60%</text>
+  <text x="55" y="190" font-family="Arial" font-size="10" fill="#333">20%</text>
+  <text x="65" y="230" font-family="Arial" font-size="10" fill="#333">0</text>
+  
+  <!-- Horizontal axis labels -->
+  <text x="80" y="245" font-family="Arial" font-size="10" fill="#333">0s</text>
+  <text x="140" y="245" font-family="Arial" font-size="10" fill="#333">5s</text>
+  <text x="200" y="245" font-family="Arial" font-size="10" fill="#333">10s</text>
+  <text x="260" y="245" font-family="Arial" font-size="10" fill="#333">15s</text>
+  <text x="320" y="245" font-family="Arial" font-size="10" fill="#333">20s</text>
+  
+  <!-- Performance chart lines -->
+  <polyline points="80,180 100,150 120,170 140,130 160,110 180,120 200,90 220,100 240,80 260,105 280,120 300,90 320,95" 
+      fill="none" stroke="#ff9100" stroke-width="3" />
+  
+  <polyline points="80,200 100,190 120,210 140,180 160,190 180,170 200,190 220,180 240,160 260,170 280,160 300,170 320,150" 
+      fill="none" stroke="#1473e6" stroke-width="3" stroke-dasharray="5,3" />
+  
+  <!-- Chart indicators -->
+  <circle cx="130" cy="130" r="6" fill="#ff9100" opacity="0.8" />
+  <line x1="130" y1="130" x2="150" y2="110" stroke="#ff9100" stroke-width="1" />
+  <rect x="150" y="95" width="80" height="30" rx="4" ry="4" fill="white" stroke="#ff9100" stroke-width="1" />
+  <text x="155" y="115" font-family="Arial" font-size="10" fill="#333">Response spike</text>
+  
+  <!-- Legend -->
+  <rect x="220" y="40" width="120" height="50" rx="4" ry="4" fill="white" stroke="#ddd" stroke-width="1" />
+  <line x1="230" y1="55" x2="250" y2="55" stroke="#ff9100" stroke-width="3" />
+  <text x="255" y="58" font-family="Arial" font-size="10" fill="#333">Response Time</text>
+  <line x1="230" y1="75" x2="250" y2="75" stroke="#1473e6" stroke-width="3" stroke-dasharray="5,3" />
+  <text x="255" y="78" font-family="Arial" font-size="10" fill="#333">Server Load</text>
+  
+  <!-- Global locations -->
+  <circle cx="50" cy="50" r="15" fill="#ff9100" opacity="0.2" />
+  <text x="44" y="53" font-family="Arial" font-size="8" fill="#333">US</text>
+  
+  <circle cx="40" cy="30" r="10" fill="#ff9100" opacity="0.2" />
+  <text x="35" y="33" font-family="Arial" font-size="7" fill="#333">EU</text>
+  
+  <circle cx="60" cy="30" r="8" fill="#ff9100" opacity="0.2" />
+  <text x="56" y="33" font-family="Arial" font-size="6" fill="#333">AP</text>
+  
+  <!-- Decorative elements -->
+  <path d="M350,150 C370,130 370,170 350,150" fill="none" stroke="#ff9100" stroke-width="2" />
+  <path d="M350,180 C370,160 370,200 350,180" fill="none" stroke="#ff9100" stroke-width="2" />
+  <path d="M350,210 C370,190 370,230 350,210" fill="none" stroke="#ff9100" stroke-width="2" />
+</svg>

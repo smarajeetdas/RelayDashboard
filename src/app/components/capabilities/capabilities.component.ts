@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 
 interface CapabilityFeature {
   title: string;
@@ -12,6 +12,7 @@ interface Capability {
   description: string;
   iconBgColor: string;
   bgClass: string;
+  imageUrl: string;
   detailedDescription: string;
   features: CapabilityFeature[];
 }
@@ -21,9 +22,12 @@ interface Capability {
   templateUrl: './capabilities.component.html',
   styleUrls: ['./capabilities.component.css']
 })
-export class CapabilitiesComponent implements OnInit {
+export class CapabilitiesComponent implements OnInit, AfterViewInit {
+  @ViewChild('sliderTrack') sliderTrack: ElementRef;
+  
   activeCapability: Capability | null = null;
   isDetailVisible: boolean = false;
+  scrollPosition: number = 0;
   
   capabilities: Capability[] = [
     {
@@ -33,6 +37,7 @@ export class CapabilitiesComponent implements OnInit {
       description: 'Comprehensive Mobile Testing',
       iconBgColor: 'rgba(250, 15, 0, 0.1)',
       bgClass: 'mobile-bg',
+      imageUrl: 'assets/images/capabilities/mobile-automation.svg',
       detailedDescription: 'Conduct seamless mobile application tests on physical and cloud-based devices',
       features: [
         { title: 'Multi-Device Testing', description: 'Executions on SauceLab & Physical Device' },
@@ -49,6 +54,7 @@ export class CapabilitiesComponent implements OnInit {
       description: 'Cross-Platform Desktop Testing',
       iconBgColor: 'rgba(20, 115, 230, 0.1)',
       bgClass: 'desktop-bg',
+      imageUrl: 'assets/images/capabilities/desktop-automation.svg',
       detailedDescription: 'Unified testing across Windows and macOS platforms',
       features: [
         { title: 'Script-Free Testing', description: 'Robust, script-free test creation' },
@@ -65,6 +71,7 @@ export class CapabilitiesComponent implements OnInit {
       description: 'Controlled Chaos Engineering',
       iconBgColor: 'rgba(113, 44, 249, 0.1)',
       bgClass: 'chaos-bg',
+      imageUrl: 'assets/images/capabilities/chaos-simulator.svg',
       detailedDescription: 'Introduce failure. Build confidence. Empower your teams with controlled chaos engineering to uncover weaknesses before your service teams do.',
       features: [
         { title: 'Precision Fault Injection', description: 'Precision Fault Injection for infrastructure issues' },
@@ -81,6 +88,7 @@ export class CapabilitiesComponent implements OnInit {
       description: 'End-to-End Automation Framework',
       iconBgColor: 'rgba(0, 180, 120, 0.1)',
       bgClass: 'functional-bg',
+      imageUrl: 'assets/images/capabilities/functional-automation.svg',
       detailedDescription: 'Orchestrate test flows effortlessly with a few clicks – no code needed',
       features: [
         { title: 'Framework Support', description: 'Automate execution using Selenium and Playwright frameworks' },
@@ -97,6 +105,7 @@ export class CapabilitiesComponent implements OnInit {
       description: 'Real-World Performance',
       iconBgColor: 'rgba(255, 145, 0, 0.1)',
       bgClass: 'performance-bg',
+      imageUrl: 'assets/images/capabilities/performance-lab.svg',
       detailedDescription: 'Reuse functional test cases to execute multi-region, scalable scenarios',
       features: [
         { title: 'Traffic Simulation', description: 'Design load configuration based on user traffic' },
@@ -116,6 +125,57 @@ export class CapabilitiesComponent implements OnInit {
     setTimeout(() => {
       this.isDetailVisible = true;
     }, 500);
+  }
+  
+  ngAfterViewInit(): void {
+    // Set up auto scroll for mobile
+    this.startAutoScroll();
+  }
+  
+  // Function to scroll left within the carousel
+  scrollLeft(): void {
+    if (this.sliderTrack && this.sliderTrack.nativeElement) {
+      const scrollElement = this.sliderTrack.nativeElement.parentElement;
+      const currentScroll = scrollElement.scrollLeft;
+      scrollElement.scrollTo({
+        left: currentScroll - 300,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Function to scroll right within the carousel
+  scrollRight(): void {
+    if (this.sliderTrack && this.sliderTrack.nativeElement) {
+      const scrollElement = this.sliderTrack.nativeElement.parentElement;
+      const currentScroll = scrollElement.scrollLeft;
+      scrollElement.scrollTo({
+        left: currentScroll + 300,
+        behavior: 'smooth'
+      });
+    }
+  }
+  
+  startAutoScroll(): void {
+    // Auto scroll on smaller screens
+    if (window.innerWidth < 992) {
+      let direction = 1; // 1 is right, -1 is left
+      let scrollAmount = 0;
+      
+      setInterval(() => {
+        if (this.sliderTrack && this.sliderTrack.nativeElement) {
+          const scrollElement = this.sliderTrack.nativeElement.parentElement;
+          const maxScroll = this.sliderTrack.nativeElement.scrollWidth - scrollElement.clientWidth;
+          
+          // Change direction when reaching the beginning or end
+          if (scrollAmount >= maxScroll) direction = -1;
+          if (scrollAmount <= 0) direction = 1;
+          
+          scrollAmount += 1 * direction;
+          scrollElement.scrollLeft = scrollAmount;
+        }
+      }, 20);
+    }
   }
 
   selectCapability(capability: Capability): void {

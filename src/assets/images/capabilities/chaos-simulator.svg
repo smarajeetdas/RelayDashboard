@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#712cf9;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#712cf9;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
+  <rect width="400" height="300" fill="url(#grad3)" rx="8" ry="8"/>
+  
+  <!-- Server representation -->
+  <rect x="140" y="50" width="120" height="200" rx="8" ry="8" fill="#333" />
+  <rect x="150" y="60" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  <rect x="150" y="85" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  <rect x="150" y="110" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  <rect x="150" y="135" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  <rect x="150" y="160" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  <rect x="150" y="185" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  <rect x="150" y="210" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  <rect x="150" y="235" width="100" height="6" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
+  
+  <!-- Lightning effects -->
+  <path d="M120,70 L130,90 L115,100 L130,130 L110,120" fill="none" stroke="#712cf9" stroke-width="3" />
+  <path d="M280,90 L270,110 L290,120 L270,150 L290,160" fill="none" stroke="#712cf9" stroke-width="3" />
+  <path d="M100,170 L120,190 L105,210 L125,230" fill="none" stroke="#712cf9" stroke-width="3" />
+  <path d="M300,180 L280,200 L295,220 L275,240" fill="none" stroke="#712cf9" stroke-width="3" />
+  
+  <!-- Error symbols -->
+  <text x="45" y="50" font-family="monospace" font-size="12" fill="#ff3333">ERROR!</text>
+  <text x="320" y="70" font-family="monospace" font-size="12" fill="#ff3333">TIMEOUT</text>
+  <text x="50" y="250" font-family="monospace" font-size="12" fill="#ff3333">FAILURE</text>
+  <text x="300" y="250" font-family="monospace" font-size="12" fill="#ff3333">DOWN</text>
+  
+  <!-- Chaotic elements -->
+  <circle cx="80" cy="100" r="15" fill="#712cf9" opacity="0.2" />
+  <circle cx="320" cy="130" r="20" fill="#712cf9" opacity="0.2" />
+  <circle cx="60" cy="210" r="12" fill="#712cf9" opacity="0.2" />
+  <circle cx="330" cy="190" r="18" fill="#712cf9" opacity="0.2" />
+  
+  <!-- Connection lines -->
+  <line x1="40" y1="70" x2="70" y2="70" stroke="#712cf9" stroke-width="2" opacity="0.5" />
+  <line x1="330" y1="90" x2="360" y2="90" stroke="#712cf9" stroke-width="2" opacity="0.5" />
+  <line x1="40" y1="230" x2="70" y2="230" stroke="#712cf9" stroke-width="2" opacity="0.5" />
+  <line x1="330" y1="230" x2="360" y2="230" stroke="#712cf9" stroke-width="2" opacity="0.5" />
+</svg>

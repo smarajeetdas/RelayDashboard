@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1473e6;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#1473e6;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
+  <rect width="400" height="300" fill="url(#grad2)" rx="8" ry="8"/>
+  
+  <!-- Desktop monitor -->
+  <rect x="100" y="60" width="200" height="130" rx="5" ry="5" fill="#333" />
+  <rect x="110" y="70" width="180" height="110" rx="2" ry="2" fill="#f8f8f8" />
+  
+  <!-- Monitor stand -->
+  <rect x="180" y="190" width="40" height="10" rx="2" ry="2" fill="#333" />
+  <rect x="190" y="200" width="20" height="40" rx="2" ry="2" fill="#333" />
+  
+  <!-- Screen content -->
+  <rect x="120" y="80" width="160" height="12" rx="2" ry="2" fill="#1473e6" opacity="0.8" />
+  <rect x="120" y="100" width="120" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  <rect x="120" y="115" width="140" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  <rect x="120" y="130" width="130" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  <rect x="120" y="145" width="150" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  <rect x="120" y="160" width="100" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  
+  <!-- Keyboard -->
+  <rect x="140" y="240" width="120" height="30" rx="4" ry="4" fill="#ddd" />
+  <rect x="145" y="245" width="110" height="20" rx="2" ry="2" fill="#eee" />
+  
+  <!-- Code symbols -->
+  <text x="310" y="70" font-family="monospace" font-size="10" fill="#1473e6">.init()</text>
+  <text x="310" y="88" font-family="monospace" font-size="10" fill="#333" opacity="0.7">.click()</text>
+  <text x="310" y="106" font-family="monospace" font-size="10" fill="#333" opacity="0.7">.type()</text>
+  <text x="310" y="124" font-family="monospace" font-size="10" fill="#333" opacity="0.7">.validate()</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="80" r="15" fill="#1473e6" opacity="0.2"/>
+  <circle cx="50" cy="115" r="10" fill="#1473e6" opacity="0.2"/>
+  <circle cx="50" cy="140" r="6" fill="#1473e6" opacity="0.2"/>
+  
+  <line x1="40" y1="190" x2="80" y2="190" stroke="#1473e6" stroke-width="2" opacity="0.5" />
+  <line x1="30" y1="205" x2="70" y2="205" stroke="#1473e6" stroke-width="2" opacity="0.5" />
+  <line x1="45" y1="220" x2="85" y2="220" stroke="#1473e6" stroke-width="2" opacity="0.5" />
+</svg>

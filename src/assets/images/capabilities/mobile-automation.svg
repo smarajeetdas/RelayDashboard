@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa0f00;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#fa0f00;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
+  <rect width="400" height="300" fill="url(#grad1)" rx="8" ry="8"/>
+  
+  <!-- Phone outline -->
+  <rect x="150" y="50" width="100" height="200" rx="10" ry="10" fill="#333" />
+  <rect x="160" y="70" width="80" height="140" rx="2" ry="2" fill="#f8f8f8" />
+  
+  <!-- Screen content -->
+  <rect x="170" y="85" width="60" height="10" rx="2" ry="2" fill="#fa0f00" opacity="0.8" />
+  <rect x="170" y="105" width="40" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  <rect x="170" y="118" width="50" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  <rect x="170" y="131" width="45" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  <rect x="170" y="144" width="55" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
+  
+  <!-- Button -->
+  <circle cx="200" cy="230" r="12" fill="#eee" />
+  
+  <!-- Code symbols -->
+  <text x="50" y="70" font-family="monospace" font-size="14" fill="#fa0f00">test.mobile()</text>
+  <text x="40" y="100" font-family="monospace" font-size="14" fill="#333" opacity="0.7">{</text>
+  <text x="55" y="120" font-family="monospace" font-size="12" fill="#333" opacity="0.7">device: 'physical',</text>
+  <text x="55" y="140" font-family="monospace" font-size="12" fill="#333" opacity="0.7">platform: 'iOS',</text>
+  <text x="55" y="160" font-family="monospace" font-size="12" fill="#333" opacity="0.7">locale: 'en_US',</text>
+  <text x="55" y="180" font-family="monospace" font-size="12" fill="#333" opacity="0.7">parallel: true</text>
+  <text x="40" y="200" font-family="monospace" font-size="14" fill="#333" opacity="0.7">}</text>
+  
+  <!-- Decorative lines -->
+  <line x1="280" y1="30" x2="340" y2="30" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
+  <line x1="290" y1="45" x2="330" y2="45" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
+  <line x1="40" y1="230" x2="100" y2="230" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
+  <line x1="50" y1="245" x2="90" y2="245" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
+</svg>

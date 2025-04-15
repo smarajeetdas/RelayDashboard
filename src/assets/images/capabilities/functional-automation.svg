@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00b478;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#00b478;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
+  <rect width="400" height="300" fill="url(#grad4)" rx="8" ry="8"/>
+  
+  <!-- Flow chart representation -->
+  <rect x="145" y="50" width="110" height="40" rx="5" ry="5" fill="#00b478" opacity="0.3" />
+  <text x="167" y="75" font-family="Arial" font-size="14" fill="#333">Start Test</text>
+  
+  <line x1="200" y1="90" x2="200" y2="110" stroke="#333" stroke-width="2" />
+  <polygon points="195,110 200,120 205,110" fill="#333" />
+  
+  <rect x="145" y="120" width="110" height="40" rx="5" ry="5" fill="#00b478" opacity="0.3" />
+  <text x="157" y="145" font-family="Arial" font-size="14" fill="#333">API Request</text>
+  
+  <line x1="200" y1="160" x2="200" y2="180" stroke="#333" stroke-width="2" />
+  <polygon points="195,180 200,190 205,180" fill="#333" />
+  
+  <rect x="145" y="190" width="110" height="40" rx="5" ry="5" fill="#00b478" opacity="0.3" />
+  <text x="155" y="215" font-family="Arial" font-size="14" fill="#333">Validate Data</text>
+  
+  <line x1="200" y1="230" x2="200" y2="250" stroke="#333" stroke-width="2" />
+  <polygon points="195,250 200,260 205,250" fill="#333" />
+  
+  <!-- End state -->
+  <circle cx="200" cy="270" r="15" fill="#00b478" opacity="0.5" />
+  <circle cx="200" cy="270" r="10" fill="#fff" />
+  <circle cx="200" cy="270" r="5" fill="#00b478" opacity="0.7" />
+  
+  <!-- Code elements -->
+  <text x="50" y="60" font-family="monospace" font-size="11" fill="#00b478">test('API Response', async () => {</text>
+  <text x="65" y="80" font-family="monospace" font-size="11" fill="#333" opacity="0.8">const response = await request();</text>
+  <text x="65" y="100" font-family="monospace" font-size="11" fill="#333" opacity="0.8">expect(response.status).toBe(200);</text>
+  <text x="65" y="120" font-family="monospace" font-size="11" fill="#333" opacity="0.8">expect(response.data).toHaveProperty('id');</text>
+  <text x="50" y="140" font-family="monospace" font-size="11" fill="#00b478">});</text>
+  
+  <text x="290" y="170" font-family="monospace" font-size="11" fill="#00b478">test('UI Flow', async () => {</text>
+  <text x="305" y="190" font-family="monospace" font-size="11" fill="#333" opacity="0.8">await page.click('#submit');</text>
+  <text x="305" y="210" font-family="monospace" font-size="11" fill="#333" opacity="0.8">await expect(page).toHaveText('Success');</text>
+  <text x="290" y="230" font-family="monospace" font-size="11" fill="#00b478">});</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="180" r="15" fill="#00b478" opacity="0.2"/>
+  <circle cx="50" cy="215" r="10" fill="#00b478" opacity="0.2"/>
+  <circle cx="50" cy="240" r="6" fill="#00b478" opacity="0.2"/>
+  
+  <circle cx="350" cy="70" r="15" fill="#00b478" opacity="0.2"/>
+  <circle cx="350" cy="95" r="10" fill="#00b478" opacity="0.2"/>
+  <circle cx="350" cy="115" r="6" fill="#00b478" opacity="0.2"/>
+  
+  <line x1="280" y1="260" x2="330" y2="260" stroke="#00b478" stroke-width="2" opacity="0.5" />
+  <line x1="290" y1="275" x2="320" y2="275" stroke="#00b478" stroke-width="2" opacity="0.5" />
+</svg>
