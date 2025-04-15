@@ -1,0 +1,112 @@
+/* Global styles */
+:root {
+  --primary-color: #dc3545; /* Red color from the design */
+  --dark-bg: #0f1620;
+  --darker-bg: #080d14;
+  --light-text: #ffffff;
+  --light-gray: #f8f9fa;
+  --medium-gray: #6c757d;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Global section spacing */
+section {
+  padding: 4rem 0;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.btn-outline-light {
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+}
+
+/* Dark section styling */
+.dark-section {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+
+.darker-section {
+  background-color: var(--darker-bg);
+  color: var(--light-text);
+}
+
+/* Card styling */
+.feature-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Circle icon container */
+.circle-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Text styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.section-title {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.red-text {
+  color: var(--primary-color);
+}
+
+/* Container overrides for consistent spacing */
+.container-fluid {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Responsive text size adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+}

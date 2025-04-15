@@ -1,0 +1,52 @@
+.capabilities-section {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.capability-card {
+  padding: 1.5rem 1rem;
+  transition: transform 0.3s ease;
+}
+
+.capability-card:hover {
+  transform: translateY(-10px);
+}
+
+.icon-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.icon-container i {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+p.small {
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+  .capability-card {
+    margin-bottom: 2rem;
+  }
+}

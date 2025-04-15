@@ -1,0 +1,22 @@
+<section class="testimonials-section">
+  <div class="container">
+    <h2 class="section-title">What Adobe Engineering Teams Say</h2>
+    
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="avatar {{testimonial.avatarClass}}">
+              {{ testimonial.name.charAt(0) }}
+            </div>
+            <div class="testimonial-author">
+              <h5>{{ testimonial.name }}</h5>
+              <p class="title">{{ testimonial.title }}</p>
+            </div>
+          </div>
+          <p class="testimonial-quote">{{ testimonial.quote }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

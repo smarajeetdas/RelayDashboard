@@ -1,0 +1,60 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background-color: var(--darker-bg);
+}
+
+.header.scrolled {
+  background-color: rgba(8, 13, 20, 0.95);
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--light-text);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: var(--light-text) !important;
+}
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: var(--darker-bg);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+
+  .navbar-nav {
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+}

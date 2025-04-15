@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <text x="20" y="30" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">import { Component } from "@angular/core";</text>
+  <text x="20" y="50" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">@Component({</text>
+  <text x="20" y="70" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">  selector: "app-root",</text>
+  <text x="20" y="90" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">  templateUrl: "./app.component.html",</text>
+  <text x="20" y="110" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">  styleUrls: ["./app.component.css"]</text>
+  <text x="20" y="130" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">})</text>
+  <text x="20" y="150" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">export class AppComponent {</text>
+  <text x="20" y="170" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">  title = "Relay";</text>
+  <text x="20" y="190" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.08)">}</text>
+</svg>

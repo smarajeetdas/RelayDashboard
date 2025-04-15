@@ -1,0 +1,17 @@
+<section id="capabilities" class="capabilities-section">
+  <div class="container">
+    <h2 class="section-title">Our Capabilities</h2>
+    
+    <div class="row">
+      <div class="col-md-4 col-lg-2 offset-lg-1" *ngFor="let capability of capabilities">
+        <div class="capability-card text-center">
+          <div class="icon-container mx-auto">
+            <i class="fas {{capability.icon}}"></i>
+          </div>
+          <h5 class="mt-3">{{capability.title}}</h5>
+          <p class="small text-muted">{{capability.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
