@@ -21,27 +21,34 @@
   display: flex;
   align-items: center;
   color: var(--light-text);
-  letter-spacing: -0.02em;
 }
 
-.brand-container {
+.logo-container {
   display: flex;
   flex-direction: column;
   line-height: 1;
+  margin-right: 0.5rem;
 }
 
-.brand-name {
-  font-size: 1.5rem;
+.logo-text {
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 0;
+  background: linear-gradient(90deg, #e74c3c 0%, #9b59b6 50%, #5d74e5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  letter-spacing: -0.01em;
 }
 
-.brand-subtitle {
-  font-size: 0.6rem;
+.logo-tagline {
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #1473e6;
+  letter-spacing: 0.03em;
+  color: #4285f4;
+  margin-top: -5px;
+  padding-left: 2px;
 }
 
 .nav-link {
@@ -119,11 +126,12 @@
     display: inline-block;
   }
   
-  .brand-name {
-    font-size: 1.3rem;
+  .logo-text {
+    font-size: 2rem;
   }
   
-  .brand-subtitle {
-    font-size: 0.55rem;
+  .logo-tagline {
+    font-size: 0.7rem;
+    margin-top: -3px;
   }
 }
