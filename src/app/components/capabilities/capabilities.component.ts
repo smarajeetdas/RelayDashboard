@@ -134,14 +134,29 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
       return;
     }
     
+    // Hide current details
     this.isDetailVisible = false;
     
+    // Wait for fade out animation to complete, then switch content
     setTimeout(() => {
       this.activeCapability = capability;
+      
+      // Then show the new details with animation
       setTimeout(() => {
         this.isDetailVisible = true;
-      }, 100);
+      }, 150);
     }, 300);
+    
+    // Pause the carousel animation when a card is selected
+    const sliderTrack = document.querySelector('.slider-track') as HTMLElement;
+    if (sliderTrack) {
+      sliderTrack.style.animationPlayState = 'paused';
+      
+      // Resume after 5 seconds
+      setTimeout(() => {
+        sliderTrack.style.animationPlayState = 'running';
+      }, 5000);
+    }
   }
   
   isActive(capability: Capability): boolean {

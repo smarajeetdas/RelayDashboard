@@ -90,8 +90,8 @@
   height: 80px;
   padding: 1rem 1.25rem;
   margin-right: 0; /* No margin needed due to gap */
-  border-radius: 4px;
-  background: white;
+  border-radius: 6px;
+  background: #f5f5f7; /* Gray background */
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: center bottom;
@@ -103,41 +103,63 @@
 
 /* Color variants for cards */
 .mobile-card {
-  background-color: #fef7f7;
-  border-color: #f8d7d7;
+  background-color: #f5f5f7; /* Grey background */
+  border-color: #e8e8ec;
   border-left: 3px solid #e05252;
 }
 
 .desktop-card {
-  background-color: #f7faff;
-  border-color: #d7e6f8;
+  background-color: #f5f5f7; /* Grey background */
+  border-color: #e8e8ec;
   border-left: 3px solid #5284e0;
 }
 
 .chaos-card {
-  background-color: #faf7ff;
-  border-color: #e2d7f8;
+  background-color: #f5f5f7; /* Grey background */
+  border-color: #e8e8ec;
   border-left: 3px solid #7852e0;
 }
 
 .functional-card {
-  background-color: #f7fff9;
-  border-color: #d7f8dd;
+  background-color: #f5f5f7; /* Grey background */
+  border-color: #e8e8ec;
   border-left: 3px solid #52e078;
 }
 
 .performance-card {
-  background-color: #fffdf7;
-  border-color: #f8f0d7;
+  background-color: #f5f5f7; /* Grey background */
+  border-color: #e8e8ec;
   border-left: 3px solid #e0c052;
 }
 
 .capability-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 .capability-card.active {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px) scale(1.02);
+  z-index: 10;
+}
+
+@keyframes popOut {
+  0% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  50% {
+    transform: scale(1.05) translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.capability-card.active {
+  animation: popOut 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .card-content {
@@ -241,7 +263,7 @@ h5 {
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -253,6 +275,18 @@ h5 {
 .capability-details.visible {
   opacity: 1;
   transform: translateY(0);
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .detail-content {
