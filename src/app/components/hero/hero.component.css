@@ -1,11 +1,11 @@
 /* Adobe-inspired hero section styling */
 .hero-section {
   position: relative;
-  background-color: var(--darker-bg);
+  background-color: #06070f;
   color: var(--light-text);
   padding: 11rem 0 7rem;
   overflow: hidden;
-  background-image: linear-gradient(to bottom right, #000000, #141414);
+  background-image: linear-gradient(to bottom right, #06070f, #0a0d1c);
 }
 
 .badge {
@@ -27,9 +27,9 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><text x="20" y="30" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">import { Component } from "@angular/core";</text><text x="20" y="50" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">@Component({</text><text x="20" y="70" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">  selector: "app-root",</text><text x="20" y="90" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">  templateUrl: "./app.component.html",</text><text x="20" y="110" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">  styleUrls: ["./app.component.css"]</text><text x="20" y="130" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">})</text><text x="20" y="150" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">export class AppComponent {</text><text x="20" y="170" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">  title = "Relay";</text><text x="20" y="190" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.04)">}</text></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><text x="20" y="30" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">import routes from "./routes";</text><text x="20" y="50" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">import store from "./store";</text><text x="20" y="70" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">import selenium from "website";</text><text x="20" y="90" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">import sessionFile from "./sessionFile";</text><text x="20" y="110" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">import relay from "./relay";</text><text x="20" y="130" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">function startAutomation() {</text><text x="20" y="150" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">  const runner = new TestRunner();</text><text x="20" y="170" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">  runner.execute(tests);</text><text x="20" y="190" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.07)">}</text></svg>');
   background-repeat: repeat;
-  opacity: 0.1;
+  opacity: 0.15;
   z-index: 0;
 }
 
@@ -195,24 +195,106 @@
 
 .heading-large {
   margin-bottom: 1.5rem;
-  line-height: 1.2;
+  line-height: 1.1;
   position: relative;
   z-index: 1;
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.heading-line {
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.2em;
+}
+
+.text-white {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.red-text {
+  color: #fa0f00;
+  font-weight: 700;
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin-bottom: 2.25rem;
-  line-height: 1.65;
-  max-width: 600px;
+  line-height: 1.6;
+  max-width: 580px;
   position: relative;
   z-index: 1;
-  opacity: 0.85;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
 }
 
 .hero-buttons {
   position: relative;
   z-index: 1;
+}
+
+.btn-gradient-red {
+  background: linear-gradient(135deg, #fa0f00 0%, #d10a00 100%);
+  border: none;
+  color: white;
+  padding: 0.55rem 1.75rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(250, 15, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient-red:hover, .btn-gradient-red:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(250, 15, 0, 0.4);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-gradient-red::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.btn-gradient-red:hover::before {
+  opacity: 1;
+}
+
+.btn-outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: white;
+  padding: 0.55rem 1.75rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-light:hover, .btn-outline-light:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
 }
 
 .created-by {
