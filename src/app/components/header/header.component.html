@@ -16,26 +16,62 @@
 
       <div class="collapse navbar-collapse" [ngClass]="{'show': !isMenuCollapsed}">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Functional Automation</a>
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('functional')}">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('functional')">
+              <span>Functional Automation</span>
+              <i class="fas fa-chevron-down nav-icon"></i>
+            </a>
+            <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('functional')}">
+              <div class="dropdown-menu-inner">
+                <div *ngFor="let option of functionalAutomationOptions" class="dropdown-item-custom">
+                  <i class="fas fa-check-circle option-icon"></i>
+                  <span>{{ option.name }}</span>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Performance Lab</a>
+          <li class="nav-item dropdown-wrapper">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('performance')">
+              <span>Performance Lab</span>
+              <i class="fas fa-chevron-down nav-icon"></i>
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Mobile Automation</a>
+          <li class="nav-item dropdown-wrapper">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('chaos')">
+              <span>Chaos Simulator</span>
+              <i class="fas fa-chevron-down nav-icon"></i>
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Desktop Automation</a>
+          <li class="nav-item dropdown-wrapper">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('mobile')">
+              <span>Mobile Automation</span>
+              <i class="fas fa-chevron-down nav-icon"></i>
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Chaos Simulator</a>
+          <li class="nav-item dropdown-wrapper">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('desktop')">
+              <span>Desktop Automation</span>
+              <i class="fas fa-chevron-down nav-icon"></i>
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">AI Features</a>
+          <li class="nav-item dropdown-wrapper">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('history')">
+              <span>Execution History</span>
+              <i class="fas fa-chevron-down nav-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown-wrapper">
+            <a class="nav-link nav-more" href="#" (click)="$event.preventDefault(); toggleDropdown('more')">
+              <span>More</span>
+              <i class="fas fa-ellipsis-h nav-icon"></i>
+            </a>
           </li>
         </ul>
-        <a href="#" class="btn btn-blue btn-header">Get Started</a>
+        
+        <div class="user-welcome ml-3">
+          <span>Welcome</span>
+          <span class="user-name">{{ userName }} <i class="fas fa-chevron-down"></i></span>
+        </div>
       </div>
     </div>
   </nav>
