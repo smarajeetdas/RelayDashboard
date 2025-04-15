@@ -15,7 +15,10 @@
               <div class="icon-container" [style.background-color]="capability.iconBgColor">
                 <i class="fas {{capability.icon}}"></i>
               </div>
-              <h5>{{capability.title}}</h5>
+              <div class="card-text">
+                <h5>{{capability.title}}</h5>
+                <p class="desc-text">{{capability.description}}</p>
+              </div>
             </div>
           </div>
           <!-- Duplicate items for infinite scrolling effect -->
@@ -28,7 +31,10 @@
               <div class="icon-container" [style.background-color]="capability.iconBgColor">
                 <i class="fas {{capability.icon}}"></i>
               </div>
-              <h5>{{capability.title}}</h5>
+              <div class="card-text">
+                <h5>{{capability.title}}</h5>
+                <p class="desc-text">{{capability.description}}</p>
+              </div>
             </div>
           </div>
         </div>
