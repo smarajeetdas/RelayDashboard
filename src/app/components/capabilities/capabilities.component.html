@@ -2,29 +2,14 @@
   <div class="container">
     <h2 class="section-title">Our Capabilities</h2>
     
-    <!-- Horizontal continuously scrolling banner -->
-    <div class="capabilities-slider">
-      <div class="slider-container">
-        <div class="slider-track" #sliderTrack>
-          <div 
-            *ngFor="let capability of capabilities" 
-            class="capability-card" 
-            [ngClass]="{'active': isActive(capability)}"
-            (click)="selectCapability(capability)">
-            <div class="card-content">
-              <div class="icon-container" [style.background-color]="capability.iconBgColor">
-                <i class="fas {{capability.icon}}"></i>
-              </div>
-              <div class="card-text">
-                <h5>{{capability.title}}</h5>
-                <p class="desc-text">{{capability.description}}</p>
-              </div>
-            </div>
-          </div>
-          <!-- Duplicate items for infinite scrolling effect -->
-          <div 
-            *ngFor="let capability of capabilities" 
-            class="capability-card duplicate-card" 
+    <!-- Side-by-side capabilities grid -->
+    <div class="capabilities-grid">
+      <div class="row">
+        <div 
+          *ngFor="let capability of capabilities" 
+          class="col-lg col-md-6 mb-4"
+          [ngClass]="{'active-col': isActive(capability)}">
+          <div class="capability-card {{capability.bgClass}}-card" 
             [ngClass]="{'active': isActive(capability)}"
             (click)="selectCapability(capability)">
             <div class="card-content">
@@ -41,7 +26,7 @@
       </div>
       
       <!-- Indicator dots for mobile -->
-      <div class="slider-dots">
+      <div class="slider-dots d-md-none">
         <span *ngFor="let capability of capabilities; let i = index" 
               class="dot" 
               [ngClass]="{'active': isActive(capability)}"
@@ -72,7 +57,7 @@
             </div>
           </div>
           <div class="col-lg-7">
-            <div class="detail-visual" [ngClass]="activeCapability.bgClass">
+            <div class="detail-visual {{activeCapability.bgClass}}">
               <!-- Display capability image -->
               <img [src]="activeCapability.imageUrl" alt="{{activeCapability.title}}" class="capability-image" />
               
