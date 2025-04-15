@@ -90,8 +90,8 @@
   height: 80px;
   padding: 1rem 1.25rem;
   margin-right: 0; /* No margin needed due to gap */
-  border-radius: 6px;
-  background: #f5f5f7; /* Gray background */
+  border-radius: 12px;
+  background: #f5f5f7; /* Gray background for inactive */
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: center bottom;
@@ -163,29 +163,37 @@
 }
 
 .capability-card.active {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 12px 24px rgba(255, 59, 48, 0.15);
   transform: translateY(-8px) scale(1.04);
   z-index: 100;
-  border-width: 2px !important;
-  background-color: #f8f8fb !important;
+  border: 2px solid #ff3b30 !important;
+  background-color: #fff2f2 !important; /* Light red background */
 }
 
 @keyframes popOut {
   0% {
     transform: scale(1) translateY(0);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    background-color: #f5f5f7;
+    border: 1px solid rgba(220, 230, 240, 0.7);
   }
   40% {
     transform: scale(1.08) translateY(-12px);
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 16px 30px rgba(255, 59, 48, 0.18);
+    background-color: #fff2f2;
+    border: 2px solid #ff3b30;
   }
   70% {
     transform: scale(1.06) translateY(-10px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 14px 28px rgba(255, 59, 48, 0.15);
+    background-color: #fff2f2;
+    border: 2px solid #ff3b30;
   }
   100% {
     transform: scale(1.04) translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 12px 24px rgba(255, 59, 48, 0.15);
+    background-color: #fff2f2;
+    border: 2px solid #ff3b30;
   }
 }
 
@@ -233,46 +241,46 @@
 }
 
 .desktop-card .icon-container i {
-  color: #007aff; /* Bright blue */
-  text-shadow: 0 1px 3px rgba(0, 122, 255, 0.3);
+  color: #ff3b30; /* Bright red */
+  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
 }
 
 .desktop-card.active .icon-container i {
-  color: #007aff;
-  text-shadow: 0 1px 6px rgba(0, 122, 255, 0.5);
+  color: #ff3b30;
+  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
   transform: scale(1.1);
 }
 
 .chaos-card .icon-container i {
-  color: #af52de; /* Bright purple */
-  text-shadow: 0 1px 3px rgba(175, 82, 222, 0.3);
+  color: #ff3b30; /* Bright red */
+  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
 }
 
 .chaos-card.active .icon-container i {
-  color: #af52de;
-  text-shadow: 0 1px 6px rgba(175, 82, 222, 0.5);
+  color: #ff3b30;
+  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
   transform: scale(1.1);
 }
 
 .functional-card .icon-container i {
-  color: #34c759; /* Bright green */
-  text-shadow: 0 1px 3px rgba(52, 199, 89, 0.3);
+  color: #ff3b30; /* Bright red */
+  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
 }
 
 .functional-card.active .icon-container i {
-  color: #34c759;
-  text-shadow: 0 1px 6px rgba(52, 199, 89, 0.5);
+  color: #ff3b30;
+  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
   transform: scale(1.1);
 }
 
 .performance-card .icon-container i {
-  color: #ff9500; /* Bright orange */
-  text-shadow: 0 1px 3px rgba(255, 149, 0, 0.3);
+  color: #ff3b30; /* Bright red */
+  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
 }
 
 .performance-card.active .icon-container i {
-  color: #ff9500;
-  text-shadow: 0 1px 6px rgba(255, 149, 0, 0.5);
+  color: #ff3b30;
+  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
   transform: scale(1.1);
 }
 
@@ -305,45 +313,45 @@ h5 {
 }
 
 .desktop-card h5 {
-  color: #007aff; /* Bright blue */
+  color: #ff3b30; /* Bright red */
 }
 
 .desktop-card.active h5 {
-  color: #007aff;
-  text-shadow: 0 0 1px rgba(0, 122, 255, 0.3);
+  color: #ff3b30;
+  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
 
 .chaos-card h5 {
-  color: #af52de; /* Bright purple */
+  color: #ff3b30; /* Bright red */
 }
 
 .chaos-card.active h5 {
-  color: #af52de;
-  text-shadow: 0 0 1px rgba(175, 82, 222, 0.3);
+  color: #ff3b30;
+  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
 
 .functional-card h5 {
-  color: #34c759; /* Bright green */
+  color: #ff3b30; /* Bright red */
 }
 
 .functional-card.active h5 {
-  color: #34c759;
-  text-shadow: 0 0 1px rgba(52, 199, 89, 0.3);
+  color: #ff3b30;
+  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
 
 .performance-card h5 {
-  color: #ff9500; /* Bright orange */
+  color: #ff3b30; /* Bright red */
 }
 
 .performance-card.active h5 {
-  color: #ff9500;
-  text-shadow: 0 0 1px rgba(255, 149, 0, 0.3);
+  color: #ff3b30;
+  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
