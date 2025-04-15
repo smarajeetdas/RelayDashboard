@@ -30,41 +30,95 @@
               </div>
             </div>
           </li>
-          <li class="nav-item dropdown-wrapper">
+          
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('performance')}">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('performance')">
               <span>Performance Lab</span>
               <i class="fas fa-chevron-down nav-icon"></i>
             </a>
+            <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('performance')}">
+              <div class="dropdown-menu-inner">
+                <div *ngFor="let option of performanceLabOptions" class="dropdown-item-custom">
+                  <i class="fas fa-check-circle option-icon"></i>
+                  <span>{{ option.name }}</span>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item dropdown-wrapper">
+          
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('chaos')}">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('chaos')">
               <span>Chaos Simulator</span>
               <i class="fas fa-chevron-down nav-icon"></i>
             </a>
+            <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('chaos')}">
+              <div class="dropdown-menu-inner">
+                <div *ngFor="let option of chaosSimulatorOptions" class="dropdown-item-custom">
+                  <i class="fas fa-check-circle option-icon"></i>
+                  <span>{{ option.name }}</span>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item dropdown-wrapper">
+          
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('mobile')}">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('mobile')">
               <span>Mobile Automation</span>
               <i class="fas fa-chevron-down nav-icon"></i>
             </a>
+            <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('mobile')}">
+              <div class="dropdown-menu-inner">
+                <div *ngFor="let option of mobileAutomationOptions" class="dropdown-item-custom">
+                  <i class="fas fa-check-circle option-icon"></i>
+                  <span>{{ option.name }}</span>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item dropdown-wrapper">
+          
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('desktop')}">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('desktop')">
               <span>Desktop Automation</span>
               <i class="fas fa-chevron-down nav-icon"></i>
             </a>
+            <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('desktop')}">
+              <div class="dropdown-menu-inner">
+                <div *ngFor="let option of desktopAutomationOptions" class="dropdown-item-custom">
+                  <i class="fas fa-check-circle option-icon"></i>
+                  <span>{{ option.name }}</span>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item dropdown-wrapper">
+          
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('history')}">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('history')">
               <span>Execution History</span>
               <i class="fas fa-chevron-down nav-icon"></i>
             </a>
+            <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('history')}">
+              <div class="dropdown-menu-inner">
+                <div *ngFor="let option of executionHistoryOptions" class="dropdown-item-custom">
+                  <i class="fas fa-check-circle option-icon"></i>
+                  <span>{{ option.name }}</span>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-item dropdown-wrapper">
+          
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}">
             <a class="nav-link nav-more" href="#" (click)="$event.preventDefault(); toggleDropdown('more')">
               <span>More</span>
               <i class="fas fa-ellipsis-h nav-icon"></i>
             </a>
+            <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownActive('more')}">
+              <div class="dropdown-menu-inner">
+                <div *ngFor="let option of moreOptions" class="dropdown-item-custom">
+                  <i class="fas {{ option.icon }} option-icon"></i>
+                  <span>{{ option.name }}</span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
         
