@@ -120,11 +120,9 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-    // Initialize with the first capability active
-    this.activeCapability = this.capabilities[0];
-    setTimeout(() => {
-      this.isDetailVisible = true;
-    }, 500);
+    // Don't initialize any capability as active
+    this.activeCapability = null;
+    this.isDetailVisible = false;
   }
   
   ngAfterViewInit(): void {

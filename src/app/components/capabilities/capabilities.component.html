@@ -2,34 +2,36 @@
   <div class="container">
     <h2 class="section-title">Our Capabilities</h2>
     
-    <!-- Horizontal scrolling banner with navigation controls -->
+    <!-- Horizontal continuously scrolling banner -->
     <div class="capabilities-slider">
-      <div class="slider-navigation">
-        <button class="nav-arrow nav-prev" (click)="scrollLeft()">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        
-        <div class="slider-container">
-          <div class="slider-track" #sliderTrack>
-            <div 
-              *ngFor="let capability of capabilities" 
-              class="capability-card" 
-              [ngClass]="{'active': isActive(capability)}"
-              (click)="selectCapability(capability)">
-              <div class="card-content">
-                <div class="icon-container" [style.background-color]="capability.iconBgColor">
-                  <i class="fas {{capability.icon}}"></i>
-                </div>
-                <h5>{{capability.title}}</h5>
-                <p class="small">{{capability.description}}</p>
+      <div class="slider-container">
+        <div class="slider-track" #sliderTrack>
+          <div 
+            *ngFor="let capability of capabilities" 
+            class="capability-card" 
+            [ngClass]="{'active': isActive(capability)}"
+            (click)="selectCapability(capability)">
+            <div class="card-content">
+              <div class="icon-container" [style.background-color]="capability.iconBgColor">
+                <i class="fas {{capability.icon}}"></i>
               </div>
+              <h5>{{capability.title}}</h5>
+            </div>
+          </div>
+          <!-- Duplicate items for infinite scrolling effect -->
+          <div 
+            *ngFor="let capability of capabilities" 
+            class="capability-card duplicate-card" 
+            [ngClass]="{'active': isActive(capability)}"
+            (click)="selectCapability(capability)">
+            <div class="card-content">
+              <div class="icon-container" [style.background-color]="capability.iconBgColor">
+                <i class="fas {{capability.icon}}"></i>
+              </div>
+              <h5>{{capability.title}}</h5>
             </div>
           </div>
         </div>
-        
-        <button class="nav-arrow nav-next" (click)="scrollRight()">
-          <i class="fas fa-chevron-right"></i>
-        </button>
       </div>
       
       <!-- Indicator dots for mobile -->
