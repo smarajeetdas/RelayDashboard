@@ -1,3 +1,9 @@
+/* Include Bootstrap 4 styles manually since CDN is having issues */
+/* Basic Bootstrap 4 styling conventions */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Global styles */
 :root {
   --primary-color: #dc3545; /* Red color from the design */
