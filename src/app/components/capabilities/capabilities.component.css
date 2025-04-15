@@ -163,11 +163,11 @@
 }
 
 .capability-card.active {
-  box-shadow: 0 12px 24px rgba(255, 59, 48, 0.15);
+  box-shadow: 0 12px 24px rgba(20, 115, 230, 0.15);
   transform: translateY(-8px) scale(1.04);
   z-index: 100;
-  border: 2px solid #ff3b30 !important;
-  background-color: #fff2f2 !important; /* Light red background */
+  border: 2px solid #1473e6 !important;
+  background-color: #f2f8ff !important; /* Light blue background */
 }
 
 @keyframes popOut {
@@ -179,21 +179,21 @@
   }
   40% {
     transform: scale(1.08) translateY(-12px);
-    box-shadow: 0 16px 30px rgba(255, 59, 48, 0.18);
-    background-color: #fff2f2;
-    border: 2px solid #ff3b30;
+    box-shadow: 0 16px 30px rgba(20, 115, 230, 0.18);
+    background-color: #f2f8ff;
+    border: 2px solid #1473e6;
   }
   70% {
     transform: scale(1.06) translateY(-10px);
-    box-shadow: 0 14px 28px rgba(255, 59, 48, 0.15);
-    background-color: #fff2f2;
-    border: 2px solid #ff3b30;
+    box-shadow: 0 14px 28px rgba(20, 115, 230, 0.15);
+    background-color: #f2f8ff;
+    border: 2px solid #1473e6;
   }
   100% {
     transform: scale(1.04) translateY(-8px);
-    box-shadow: 0 12px 24px rgba(255, 59, 48, 0.15);
-    background-color: #fff2f2;
-    border: 2px solid #ff3b30;
+    box-shadow: 0 12px 24px rgba(20, 115, 230, 0.15);
+    background-color: #f2f8ff;
+    border: 2px solid #1473e6;
   }
 }
 
@@ -230,57 +230,57 @@
 }
 
 .mobile-card .icon-container i {
-  color: #ff3b30; /* Bright red */
-  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
+  color: #1473e6; /* Adobe blue */
+  text-shadow: 0 1px 3px rgba(20, 115, 230, 0.3);
 }
 
 .mobile-card.active .icon-container i {
-  color: #ff3b30;
-  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
+  color: #1473e6;
+  text-shadow: 0 1px 6px rgba(20, 115, 230, 0.5);
   transform: scale(1.1);
 }
 
 .desktop-card .icon-container i {
-  color: #ff3b30; /* Bright red */
-  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
+  color: #1473e6; /* Adobe blue */
+  text-shadow: 0 1px 3px rgba(20, 115, 230, 0.3);
 }
 
 .desktop-card.active .icon-container i {
-  color: #ff3b30;
-  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
+  color: #1473e6;
+  text-shadow: 0 1px 6px rgba(20, 115, 230, 0.5);
   transform: scale(1.1);
 }
 
 .chaos-card .icon-container i {
-  color: #ff3b30; /* Bright red */
-  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
+  color: #1473e6; /* Adobe blue */
+  text-shadow: 0 1px 3px rgba(20, 115, 230, 0.3);
 }
 
 .chaos-card.active .icon-container i {
-  color: #ff3b30;
-  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
+  color: #1473e6;
+  text-shadow: 0 1px 6px rgba(20, 115, 230, 0.5);
   transform: scale(1.1);
 }
 
 .functional-card .icon-container i {
-  color: #ff3b30; /* Bright red */
-  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
+  color: #1473e6; /* Adobe blue */
+  text-shadow: 0 1px 3px rgba(20, 115, 230, 0.3);
 }
 
 .functional-card.active .icon-container i {
-  color: #ff3b30;
-  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
+  color: #1473e6;
+  text-shadow: 0 1px 6px rgba(20, 115, 230, 0.5);
   transform: scale(1.1);
 }
 
 .performance-card .icon-container i {
-  color: #ff3b30; /* Bright red */
-  text-shadow: 0 1px 3px rgba(255, 59, 48, 0.3);
+  color: #1473e6; /* Adobe blue */
+  text-shadow: 0 1px 3px rgba(20, 115, 230, 0.3);
 }
 
 .performance-card.active .icon-container i {
-  color: #ff3b30;
-  text-shadow: 0 1px 6px rgba(255, 59, 48, 0.5);
+  color: #1473e6;
+  text-shadow: 0 1px 6px rgba(20, 115, 230, 0.5);
   transform: scale(1.1);
 }
 
@@ -302,56 +302,56 @@ h5 {
 }
 
 .mobile-card h5 {
-  color: #ff3b30; /* Bright red */
+  color: #1473e6; /* Adobe blue */
 }
 
 .mobile-card.active h5 {
-  color: #ff3b30;
-  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
+  color: #1473e6;
+  text-shadow: 0 0 1px rgba(20, 115, 230, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
 
 .desktop-card h5 {
-  color: #ff3b30; /* Bright red */
+  color: #1473e6; /* Adobe blue */
 }
 
 .desktop-card.active h5 {
-  color: #ff3b30;
-  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
+  color: #1473e6;
+  text-shadow: 0 0 1px rgba(20, 115, 230, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
 
 .chaos-card h5 {
-  color: #ff3b30; /* Bright red */
+  color: #1473e6; /* Adobe blue */
 }
 
 .chaos-card.active h5 {
-  color: #ff3b30;
-  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
+  color: #1473e6;
+  text-shadow: 0 0 1px rgba(20, 115, 230, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
 
 .functional-card h5 {
-  color: #ff3b30; /* Bright red */
+  color: #1473e6; /* Adobe blue */
 }
 
 .functional-card.active h5 {
-  color: #ff3b30;
-  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
+  color: #1473e6;
+  text-shadow: 0 0 1px rgba(20, 115, 230, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
 
 .performance-card h5 {
-  color: #ff3b30; /* Bright red */
+  color: #1473e6; /* Adobe blue */
 }
 
 .performance-card.active h5 {
-  color: #ff3b30;
-  text-shadow: 0 0 1px rgba(255, 59, 48, 0.3);
+  color: #1473e6;
+  text-shadow: 0 0 1px rgba(20, 115, 230, 0.3);
   transform: scale(1.05);
   font-weight: 700;
 }
