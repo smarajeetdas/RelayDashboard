@@ -11,15 +11,14 @@
 /* Gradient divider between hero and capabilities section */
 .gradient-divider {
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 160px; /* Taller for a smoother transition */
-  background: linear-gradient(to bottom, 
-    rgba(20, 20, 20, 1) 0%, 
-    rgba(60, 60, 70, 0.8) 40%, 
-    rgba(240, 240, 245, 0.3) 80%, 
-    rgba(255, 255, 255, 0) 100%);
+  height: 2px; /* Very subtle line as shown in screenshot */
+  background: linear-gradient(to right, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 100%);
   z-index: 1;
   pointer-events: none;
 }
