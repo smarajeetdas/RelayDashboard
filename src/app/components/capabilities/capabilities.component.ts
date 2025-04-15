@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 interface CapabilityFeature {
   title: string;
@@ -117,7 +118,7 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  constructor() { }
+  constructor(private scrollAnimationService: ScrollAnimationService) { }
 
   ngOnInit(): void {
     // Don't initialize any capability as active
@@ -127,6 +128,43 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
   
   ngAfterViewInit(): void {
     // No initialization needed since we're using CSS animation for scrolling
+  }
+
+  /**
+   * Initialize animations for elements in the capability details section
+   * This method removes any existing animation classes and re-adds them
+   * to trigger the animation when a new capability is selected
+   */
+  private initializeDetailAnimations(): void {
+    // Get all elements with data-animation in the capability-details section
+    const detailsSection = document.querySelector('.capability-details');
+    if (!detailsSection) return;
+    
+    const animatedElements = detailsSection.querySelectorAll('[data-animation]');
+    
+    // For each element with an animation attribute
+    animatedElements.forEach(element => {
+      // First, remove existing animation classes
+      element.classList.remove('animate', 'animated', 'fade-in-up', 'fade-in-left', 'fade-in-right', 'scale-in');
+      element.classList.remove('animate-delay-1', 'animate-delay-2', 'animate-delay-3', 'animate-delay-4');
+      
+      // Get the animation type from the data attribute
+      const animationType = element.getAttribute('data-animation') || 'fade-in-up';
+      
+      // Re-add the animation classes after a short delay (forces re-animation)
+      setTimeout(() => {
+        element.classList.add('animate', animationType);
+        
+        // Add delay if specified
+        const delay = element.getAttribute('data-animation-delay');
+        if (delay) {
+          element.classList.add(`animate-delay-${delay}`);
+        }
+        
+        // Mark as animated
+        element.classList.add('animated');
+      }, 10);
+    });
   }
 
   selectCapability(capability: Capability): void {
@@ -143,6 +181,11 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
     // Show the new details with a shorter delay (much faster)
     setTimeout(() => {
       this.isDetailVisible = true;
+      
+      // After the details section becomes visible, trigger animations on its elements
+      setTimeout(() => {
+        this.initializeDetailAnimations();
+      }, 100);
     }, 50);
     
     // Pause the carousel animation when a card is selected
