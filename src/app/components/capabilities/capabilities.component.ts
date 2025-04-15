@@ -126,54 +126,7 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
   }
   
   ngAfterViewInit(): void {
-    // Set up auto scroll for mobile
-    this.startAutoScroll();
-  }
-  
-  // Function to scroll left within the carousel
-  scrollLeft(): void {
-    if (this.sliderTrack && this.sliderTrack.nativeElement) {
-      const scrollElement = this.sliderTrack.nativeElement.parentElement;
-      const currentScroll = scrollElement.scrollLeft;
-      scrollElement.scrollTo({
-        left: currentScroll - 300,
-        behavior: 'smooth'
-      });
-    }
-  }
-
-  // Function to scroll right within the carousel
-  scrollRight(): void {
-    if (this.sliderTrack && this.sliderTrack.nativeElement) {
-      const scrollElement = this.sliderTrack.nativeElement.parentElement;
-      const currentScroll = scrollElement.scrollLeft;
-      scrollElement.scrollTo({
-        left: currentScroll + 300,
-        behavior: 'smooth'
-      });
-    }
-  }
-  
-  startAutoScroll(): void {
-    // Auto scroll on smaller screens
-    if (window.innerWidth < 992) {
-      let direction = 1; // 1 is right, -1 is left
-      let scrollAmount = 0;
-      
-      setInterval(() => {
-        if (this.sliderTrack && this.sliderTrack.nativeElement) {
-          const scrollElement = this.sliderTrack.nativeElement.parentElement;
-          const maxScroll = this.sliderTrack.nativeElement.scrollWidth - scrollElement.clientWidth;
-          
-          // Change direction when reaching the beginning or end
-          if (scrollAmount >= maxScroll) direction = -1;
-          if (scrollAmount <= 0) direction = 1;
-          
-          scrollAmount += 1 * direction;
-          scrollElement.scrollLeft = scrollAmount;
-        }
-      }, 20);
-    }
+    // No initialization needed since we're using CSS animation for scrolling
   }
 
   selectCapability(capability: Capability): void {

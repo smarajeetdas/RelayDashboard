@@ -20,19 +20,46 @@
 
 /* Removed navigation arrows */
 
-.capabilities-grid {
-  padding: 1rem 0 2rem 0;
+.capabilities-slider {
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-.capabilities-grid .row {
+.slider-container {
+  overflow-x: hidden;
+  padding: 1rem 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  position: relative;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.slider-track {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 0 -10px;
+  padding: 0 1rem;
+  width: fit-content; 
+  animation: scroll 30s linear infinite;
+  gap: 20px;
 }
 
-.capabilities-grid .col-lg {
-  padding: 0 10px;
+.slider-container:hover .slider-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5 - 100px)); /* Width of 5 cards + gaps */
+  }
+}
+
+.duplicate-card {
+  opacity: 1;
 }
 
 /* Slider dots for mobile */
@@ -59,9 +86,10 @@
 
 /* Capability cards styling - more rectangular */
 .capability-card {
-  width: 100%;
+  flex: 0 0 250px;
   height: 80px;
   padding: 1rem 1.25rem;
+  margin-right: 0; /* No margin needed due to gap */
   border-radius: 4px;
   background: white;
   cursor: pointer;
@@ -70,7 +98,7 @@
   position: relative;
   border: 1px solid rgba(220, 230, 240, 0.7);
   overflow: hidden;
-  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* Color variants for cards */
