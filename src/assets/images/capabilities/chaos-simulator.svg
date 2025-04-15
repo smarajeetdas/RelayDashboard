@@ -1,45 +1,134 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#712cf9;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#712cf9;stop-opacity:0.1" />
+    <linearGradient id="chaosGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5eeff" />
+      <stop offset="100%" stop-color="#e4d4ff" />
     </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="10" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
-  <rect width="400" height="300" fill="url(#grad3)" rx="8" ry="8"/>
-  
-  <!-- Server representation -->
-  <rect x="140" y="50" width="120" height="200" rx="8" ry="8" fill="#333" />
-  <rect x="150" y="60" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  <rect x="150" y="85" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  <rect x="150" y="110" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  <rect x="150" y="135" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  <rect x="150" y="160" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  <rect x="150" y="185" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  <rect x="150" y="210" width="100" height="15" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  <rect x="150" y="235" width="100" height="6" rx="2" ry="2" fill="#712cf9" opacity="0.2" />
-  
-  <!-- Lightning effects -->
-  <path d="M120,70 L130,90 L115,100 L130,130 L110,120" fill="none" stroke="#712cf9" stroke-width="3" />
-  <path d="M280,90 L270,110 L290,120 L270,150 L290,160" fill="none" stroke="#712cf9" stroke-width="3" />
-  <path d="M100,170 L120,190 L105,210 L125,230" fill="none" stroke="#712cf9" stroke-width="3" />
-  <path d="M300,180 L280,200 L295,220 L275,240" fill="none" stroke="#712cf9" stroke-width="3" />
-  
-  <!-- Error symbols -->
-  <text x="45" y="50" font-family="monospace" font-size="12" fill="#ff3333">ERROR!</text>
-  <text x="320" y="70" font-family="monospace" font-size="12" fill="#ff3333">TIMEOUT</text>
-  <text x="50" y="250" font-family="monospace" font-size="12" fill="#ff3333">FAILURE</text>
-  <text x="300" y="250" font-family="monospace" font-size="12" fill="#ff3333">DOWN</text>
-  
-  <!-- Chaotic elements -->
-  <circle cx="80" cy="100" r="15" fill="#712cf9" opacity="0.2" />
-  <circle cx="320" cy="130" r="20" fill="#712cf9" opacity="0.2" />
-  <circle cx="60" cy="210" r="12" fill="#712cf9" opacity="0.2" />
-  <circle cx="330" cy="190" r="18" fill="#712cf9" opacity="0.2" />
-  
-  <!-- Connection lines -->
-  <line x1="40" y1="70" x2="70" y2="70" stroke="#712cf9" stroke-width="2" opacity="0.5" />
-  <line x1="330" y1="90" x2="360" y2="90" stroke="#712cf9" stroke-width="2" opacity="0.5" />
-  <line x1="40" y1="230" x2="70" y2="230" stroke="#712cf9" stroke-width="2" opacity="0.5" />
-  <line x1="330" y1="230" x2="360" y2="230" stroke="#712cf9" stroke-width="2" opacity="0.5" />
+
+  <!-- Background with subtle pattern -->
+  <rect width="600" height="400" fill="url(#chaosGradient)" />
+  <path d="M0,400 L600,400 L600,250 C550,280 450,220 400,260 C350,300 250,240 200,300 C150,360 50,320 0,350 Z" fill="#e4d4ff" opacity="0.3" />
+
+  <!-- Main Network Diagram -->
+  <g transform="translate(300, 200)">
+    <!-- Cloud Platform -->
+    <path d="M0,-120 C40,-120 60,-90 60,-60 C100,-60 120,-30 120,0 C120,30 100,60 60,60 C60,90 40,120 0,120 C-40,120 -60,90 -60,60 C-100,60 -120,30 -120,0 C-120,-30 -100,-60 -60,-60 C-60,-90 -40,-120 0,-120 Z" 
+        fill="#ffffff" stroke="#1473e6" stroke-width="3" filter="url(#shadow)" />
+
+    <!-- Server Icons -->
+    <g transform="translate(-70, -40)">
+      <rect x="-20" y="-25" width="40" height="50" rx="5" fill="#f2f2f7" stroke="#1473e6" stroke-width="2" />
+      <rect x="-15" y="-20" width="30" height="5" rx="2" fill="#1473e6" opacity="0.5" />
+      <rect x="-15" y="-10" width="30" height="5" rx="2" fill="#1473e6" opacity="0.4" />
+      <rect x="-15" y="0" width="30" height="5" rx="2" fill="#1473e6" opacity="0.6" />
+      <circle cx="0" cy="15" r="5" fill="#ff3b30" opacity="0.8" /> <!-- Server Error -->
+    </g>
+
+    <g transform="translate(70, -40)">
+      <rect x="-20" y="-25" width="40" height="50" rx="5" fill="#f2f2f7" stroke="#1473e6" stroke-width="2" />
+      <rect x="-15" y="-20" width="30" height="5" rx="2" fill="#1473e6" opacity="0.5" />
+      <rect x="-15" y="-10" width="30" height="5" rx="2" fill="#1473e6" opacity="0.4" />
+      <rect x="-15" y="0" width="30" height="5" rx="2" fill="#1473e6" opacity="0.6" />
+      <circle cx="0" cy="15" r="5" fill="#34c759" /> <!-- Server OK -->
+    </g>
+
+    <g transform="translate(-60, 40)">
+      <rect x="-20" y="-25" width="40" height="50" rx="5" fill="#f2f2f7" stroke="#1473e6" stroke-width="2" />
+      <rect x="-15" y="-20" width="30" height="5" rx="2" fill="#1473e6" opacity="0.5" />
+      <rect x="-15" y="-10" width="30" height="5" rx="2" fill="#1473e6" opacity="0.4" />
+      <rect x="-15" y="0" width="30" height="5" rx="2" fill="#1473e6" opacity="0.6" />
+      <circle cx="0" cy="15" r="5" fill="#ffcc00" /> <!-- Server Warning -->
+    </g>
+
+    <g transform="translate(60, 40)">
+      <rect x="-20" y="-25" width="40" height="50" rx="5" fill="#f2f2f7" stroke="#1473e6" stroke-width="2" />
+      <rect x="-15" y="-20" width="30" height="5" rx="2" fill="#1473e6" opacity="0.5" />
+      <rect x="-15" y="-10" width="30" height="5" rx="2" fill="#1473e6" opacity="0.4" />
+      <rect x="-15" y="0" width="30" height="5" rx="2" fill="#1473e6" opacity="0.6" />
+      <circle cx="0" cy="15" r="5" fill="#34c759" /> <!-- Server OK -->
+    </g>
+
+    <!-- Central Node -->
+    <circle cx="0" cy="0" r="30" fill="#1473e6" opacity="0.9" filter="url(#glow)" />
+    <text x="0" y="5" font-family="Arial" font-size="10" font-weight="bold" text-anchor="middle" fill="#ffffff">CHAOS</text>
+    <text x="0" y="18" font-family="Arial" font-size="8" font-weight="bold" text-anchor="middle" fill="#ffffff">ENGINE</text>
+
+    <!-- Network Lines -->
+    <line x1="0" y1="0" x2="-70" y2="-40" stroke="#1473e6" stroke-width="3" stroke-dasharray="5,3" />
+    <line x1="0" y1="0" x2="70" y2="-40" stroke="#1473e6" stroke-width="3" />
+    <line x1="0" y1="0" x2="-60" y2="40" stroke="#1473e6" stroke-width="3" stroke-dasharray="10,5" />
+    <line x1="0" y1="0" x2="60" y2="40" stroke="#1473e6" stroke-width="3" />
+
+    <!-- Fault Icons -->
+    <g transform="translate(-40, -80)">
+      <circle cx="0" cy="0" r="15" fill="#ff3b30" opacity="0.2" stroke="#ff3b30" stroke-width="2" />
+      <text x="0" y="4" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#ff3b30">!</text>
+    </g>
+
+    <g transform="translate(40, -65)">
+      <circle cx="0" cy="0" r="15" fill="#ff9500" opacity="0.2" stroke="#ff9500" stroke-width="2" />
+      <text x="0" y="4" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#ff9500">⚡</text>
+    </g>
+
+    <g transform="translate(-80, 0)">
+      <circle cx="0" cy="0" r="15" fill="#1473e6" opacity="0.2" stroke="#1473e6" stroke-width="2" />
+      <text x="0" y="4" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">⏱️</text>
+    </g>
+
+    <g transform="translate(80, 0)">
+      <circle cx="0" cy="0" r="15" fill="#34c759" opacity="0.2" stroke="#34c759" stroke-width="2" />
+      <text x="0" y="4" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#34c759">✓</text>
+    </g>
+
+    <g transform="translate(0, 80)">
+      <circle cx="0" cy="0" r="15" fill="#5856d6" opacity="0.2" stroke="#5856d6" stroke-width="2" />
+      <text x="0" y="4" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#5856d6">∞</text>
+    </g>
+  </g>
+
+  <!-- Labels -->
+  <g transform="translate(180, 340)">
+    <rect x="-60" y="-15" width="120" height="30" rx="15" fill="#ffffff" filter="url(#shadow)" />
+    <text x="0" y="5" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">FAULT INJECTION</text>
+  </g>
+
+  <g transform="translate(420, 340)">
+    <rect x="-60" y="-15" width="120" height="30" rx="15" fill="#ffffff" filter="url(#shadow)" />
+    <text x="0" y="5" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">RESILIENCE TESTS</text>
+  </g>
+
+  <!-- Particle Effects -->
+  <g opacity="0.6">
+    <circle cx="200" cy="120" r="3" fill="#1473e6" />
+    <circle cx="220" cy="180" r="2" fill="#1473e6" />
+    <circle cx="250" cy="90" r="4" fill="#1473e6" />
+    <circle cx="350" cy="110" r="3" fill="#1473e6" />
+    <circle cx="380" cy="160" r="2" fill="#1473e6" />
+    <circle cx="400" cy="70" r="3" fill="#1473e6" />
+    <circle cx="180" cy="220" r="2" fill="#1473e6" />
+    <circle cx="420" cy="200" r="4" fill="#1473e6" />
+  </g>
 </svg>

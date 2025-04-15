@@ -1,39 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#fa0f00;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#fa0f00;stop-opacity:0.1" />
+    <linearGradient id="mobileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffeaeb" />
+      <stop offset="100%" stop-color="#ffcfd0" />
     </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="10" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
-  <rect width="400" height="300" fill="url(#grad1)" rx="8" ry="8"/>
-  
-  <!-- Phone outline -->
-  <rect x="150" y="50" width="100" height="200" rx="10" ry="10" fill="#333" />
-  <rect x="160" y="70" width="80" height="140" rx="2" ry="2" fill="#f8f8f8" />
-  
-  <!-- Screen content -->
-  <rect x="170" y="85" width="60" height="10" rx="2" ry="2" fill="#fa0f00" opacity="0.8" />
-  <rect x="170" y="105" width="40" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  <rect x="170" y="118" width="50" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  <rect x="170" y="131" width="45" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  <rect x="170" y="144" width="55" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  
-  <!-- Button -->
-  <circle cx="200" cy="230" r="12" fill="#eee" />
-  
-  <!-- Code symbols -->
-  <text x="50" y="70" font-family="monospace" font-size="14" fill="#fa0f00">test.mobile()</text>
-  <text x="40" y="100" font-family="monospace" font-size="14" fill="#333" opacity="0.7">{</text>
-  <text x="55" y="120" font-family="monospace" font-size="12" fill="#333" opacity="0.7">device: 'physical',</text>
-  <text x="55" y="140" font-family="monospace" font-size="12" fill="#333" opacity="0.7">platform: 'iOS',</text>
-  <text x="55" y="160" font-family="monospace" font-size="12" fill="#333" opacity="0.7">locale: 'en_US',</text>
-  <text x="55" y="180" font-family="monospace" font-size="12" fill="#333" opacity="0.7">parallel: true</text>
-  <text x="40" y="200" font-family="monospace" font-size="14" fill="#333" opacity="0.7">}</text>
-  
-  <!-- Decorative lines -->
-  <line x1="280" y1="30" x2="340" y2="30" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
-  <line x1="290" y1="45" x2="330" y2="45" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
-  <line x1="40" y1="230" x2="100" y2="230" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
-  <line x1="50" y1="245" x2="90" y2="245" stroke="#fa0f00" stroke-width="2" opacity="0.5" />
+
+  <!-- Background with subtle pattern -->
+  <rect width="600" height="400" fill="url(#mobileGradient)" />
+  <path d="M0,400 L600,400 L600,250 C550,280 450,220 400,260 C350,300 250,240 200,300 C150,360 50,320 0,350 Z" fill="#ffcfd0" opacity="0.3" />
+
+  <!-- Main Phone Device -->
+  <g transform="translate(300, 200)" filter="url(#shadow)">
+    <!-- Phone Body -->
+    <rect x="-80" y="-150" width="160" height="300" rx="20" fill="#ffffff" stroke="#1473e6" stroke-width="8" />
+    
+    <!-- Screen -->
+    <rect x="-70" y="-140" width="140" height="250" rx="5" fill="#f0f5ff" />
+    
+    <!-- App Interface Elements -->
+    <rect x="-60" y="-130" width="120" height="30" rx="5" fill="#1473e6" opacity="0.8" />
+    <rect x="-60" y="-90" width="50" height="50" rx="5" fill="#1473e6" opacity="0.6" />
+    <rect x="0" y="-90" width="50" height="50" rx="5" fill="#1473e6" opacity="0.4" />
+    <rect x="-60" y="-30" width="120" height="10" rx="5" fill="#1473e6" opacity="0.3" />
+    <rect x="-60" y="-10" width="120" height="10" rx="5" fill="#1473e6" opacity="0.3" />
+    <rect x="-60" y="10" width="120" height="10" rx="5" fill="#1473e6" opacity="0.3" />
+    
+    <!-- Testing Overlay Elements -->
+    <circle cx="-45" cy="-65" r="15" fill="none" stroke="#ff3b30" stroke-width="2" stroke-dasharray="5,3" />
+    <circle cx="25" cy="-65" r="15" fill="none" stroke="#ff3b30" stroke-width="2" stroke-dasharray="5,3" />
+    
+    <!-- Check Marks -->
+    <g transform="translate(-45, 55)">
+      <circle r="15" fill="#1473e6" />
+      <path d="M-5,0 L-2,4 L5,-4" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g transform="translate(0, 55)">
+      <circle r="15" fill="#1473e6" opacity="0.8" />
+      <path d="M-5,0 L-2,4 L5,-4" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g transform="translate(45, 55)">
+      <circle r="15" fill="#1473e6" opacity="0.6" />
+      <path d="M-5,0 L-2,4 L5,-4" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    
+    <!-- Home Button -->
+    <circle cx="0" cy="125" r="15" fill="#f0f0f0" stroke="#dddddd" stroke-width="1" />
+  </g>
+
+  <!-- "Testing in Progress" Label -->
+  <g transform="translate(300, 320)">
+    <rect x="-100" y="-20" width="200" height="40" rx="20" fill="#ffffff" filter="url(#shadow)" />
+    <text x="0" y="5" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#1473e6">MOBILE TESTING COMPLETE</text>
+  </g>
+
+  <!-- Abstract Testing Elements -->
+  <g opacity="0.7">
+    <path d="M150,100 C180,80 220,120 250,100" stroke="#1473e6" stroke-width="3" fill="none" stroke-dasharray="8,4" />
+    <path d="M350,100 C380,80 420,120 450,100" stroke="#1473e6" stroke-width="3" fill="none" stroke-dasharray="8,4" />
+    
+    <circle cx="150" cy="100" r="8" fill="#1473e6" />
+    <circle cx="250" cy="100" r="8" fill="#1473e6" />
+    <circle cx="350" cy="100" r="8" fill="#1473e6" />
+    <circle cx="450" cy="100" r="8" fill="#1473e6" />
+  </g>
 </svg>

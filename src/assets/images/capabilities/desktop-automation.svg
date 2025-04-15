@@ -1,45 +1,102 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1473e6;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#1473e6;stop-opacity:0.1" />
+    <linearGradient id="desktopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e7f2ff" />
+      <stop offset="100%" stop-color="#c2e0ff" />
     </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="10" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
-  <rect width="400" height="300" fill="url(#grad2)" rx="8" ry="8"/>
+
+  <!-- Background with subtle pattern -->
+  <rect width="600" height="400" fill="url(#desktopGradient)" />
+  <path d="M0,400 L600,400 L600,250 C550,280 450,220 400,260 C350,300 250,240 200,300 C150,360 50,320 0,350 Z" fill="#c2e0ff" opacity="0.3" />
+
+  <!-- Monitor -->
+  <g transform="translate(300, 180)" filter="url(#shadow)">
+    <!-- Monitor Body -->
+    <rect x="-150" y="-100" width="300" height="180" rx="8" fill="#ffffff" stroke="#1473e6" stroke-width="8" />
+    
+    <!-- Screen -->
+    <rect x="-140" y="-90" width="280" height="160" rx="2" fill="#f0f8ff" />
+    
+    <!-- Interface Elements -->
+    <rect x="-130" y="-80" width="260" height="30" rx="3" fill="#1473e6" opacity="0.8" />
+    <circle cx="-110" cy="-65" r="5" fill="#ff3b30" />
+    <circle cx="-95" cy="-65" r="5" fill="#ffcc00" />
+    <circle cx="-80" cy="-65" r="5" fill="#34c759" />
+    
+    <!-- Code/Test Window -->
+    <rect x="-130" y="-40" width="120" height="100" rx="3" fill="#f2f2f7" stroke="#e0e0e0" stroke-width="1" />
+    <rect x="0" y="-40" width="120" height="100" rx="3" fill="#f2f2f7" stroke="#e0e0e0" stroke-width="1" />
+    
+    <!-- Code Elements Left -->
+    <rect x="-120" y="-30" width="100" height="6" rx="2" fill="#1473e6" opacity="0.6" />
+    <rect x="-120" y="-20" width="80" height="6" rx="2" fill="#1473e6" opacity="0.4" />
+    <rect x="-120" y="-10" width="90" height="6" rx="2" fill="#1473e6" opacity="0.5" />
+    <rect x="-120" y="0" width="70" height="6" rx="2" fill="#1473e6" opacity="0.4" />
+    <rect x="-120" y="10" width="100" height="6" rx="2" fill="#1473e6" opacity="0.6" />
+    <rect x="-120" y="20" width="80" height="6" rx="2" fill="#1473e6" opacity="0.4" />
+    <rect x="-120" y="30" width="90" height="6" rx="2" fill="#1473e6" opacity="0.5" />
+    <rect x="-120" y="40" width="60" height="6" rx="2" fill="#1473e6" opacity="0.4" />
+    
+    <!-- Test Results Right -->
+    <rect x="10" y="-30" width="100" height="10" rx="2" fill="#34c759" opacity="0.2" />
+    <rect x="90" y="-30" width="20" height="10" rx="2" fill="#34c759" opacity="0.8" />
+    <rect x="10" y="-15" width="100" height="10" rx="2" fill="#34c759" opacity="0.2" />
+    <rect x="90" y="-15" width="20" height="10" rx="2" fill="#34c759" opacity="0.8" />
+    <rect x="10" y="0" width="100" height="10" rx="2" fill="#34c759" opacity="0.2" />
+    <rect x="90" y="0" width="20" height="10" rx="2" fill="#34c759" opacity="0.8" />
+    <rect x="10" y="15" width="100" height="10" rx="2" fill="#feca57" opacity="0.2" />
+    <rect x="90" y="15" width="20" height="10" rx="2" fill="#feca57" opacity="0.8" />
+    <rect x="10" y="30" width="100" height="10" rx="2" fill="#34c759" opacity="0.2" />
+    <rect x="90" y="30" width="20" height="10" rx="2" fill="#34c759" opacity="0.8" />
+    
+    <!-- Monitor Stand -->
+    <rect x="-30" y="80" width="60" height="10" rx="2" fill="#e6e6e6" />
+    <rect x="-20" y="90" width="40" height="30" rx="2" fill="#e6e6e6" />
+  </g>
+
+  <!-- Base -->
+  <g transform="translate(300, 310)">
+    <rect x="-50" y="0" width="100" height="10" rx="5" fill="#d4d4d4" filter="url(#shadow)" />
+  </g>
+
+  <!-- Floating Elements -->
+  <g transform="translate(170, 80)" opacity="0.7">
+    <rect x="-30" y="-15" width="60" height="30" rx="5" fill="#ffffff" stroke="#1473e6" stroke-width="2" />
+    <text x="0" y="5" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">UI TEST</text>
+  </g>
   
-  <!-- Desktop monitor -->
-  <rect x="100" y="60" width="200" height="130" rx="5" ry="5" fill="#333" />
-  <rect x="110" y="70" width="180" height="110" rx="2" ry="2" fill="#f8f8f8" />
+  <g transform="translate(430, 100)" opacity="0.7">
+    <rect x="-40" y="-15" width="80" height="30" rx="5" fill="#ffffff" stroke="#1473e6" stroke-width="2" />
+    <text x="0" y="5" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">API TEST</text>
+  </g>
   
-  <!-- Monitor stand -->
-  <rect x="180" y="190" width="40" height="10" rx="2" ry="2" fill="#333" />
-  <rect x="190" y="200" width="20" height="40" rx="2" ry="2" fill="#333" />
+  <g transform="translate(180, 300)" opacity="0.7">
+    <rect x="-40" y="-15" width="80" height="30" rx="5" fill="#ffffff" stroke="#1473e6" stroke-width="2" />
+    <text x="0" y="5" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">WINDOWS</text>
+  </g>
   
-  <!-- Screen content -->
-  <rect x="120" y="80" width="160" height="12" rx="2" ry="2" fill="#1473e6" opacity="0.8" />
-  <rect x="120" y="100" width="120" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  <rect x="120" y="115" width="140" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  <rect x="120" y="130" width="130" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  <rect x="120" y="145" width="150" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  <rect x="120" y="160" width="100" height="8" rx="2" ry="2" fill="#333" opacity="0.6" />
-  
-  <!-- Keyboard -->
-  <rect x="140" y="240" width="120" height="30" rx="4" ry="4" fill="#ddd" />
-  <rect x="145" y="245" width="110" height="20" rx="2" ry="2" fill="#eee" />
-  
-  <!-- Code symbols -->
-  <text x="310" y="70" font-family="monospace" font-size="10" fill="#1473e6">.init()</text>
-  <text x="310" y="88" font-family="monospace" font-size="10" fill="#333" opacity="0.7">.click()</text>
-  <text x="310" y="106" font-family="monospace" font-size="10" fill="#333" opacity="0.7">.type()</text>
-  <text x="310" y="124" font-family="monospace" font-size="10" fill="#333" opacity="0.7">.validate()</text>
-  
-  <!-- Decorative elements -->
-  <circle cx="50" cy="80" r="15" fill="#1473e6" opacity="0.2"/>
-  <circle cx="50" cy="115" r="10" fill="#1473e6" opacity="0.2"/>
-  <circle cx="50" cy="140" r="6" fill="#1473e6" opacity="0.2"/>
-  
-  <line x1="40" y1="190" x2="80" y2="190" stroke="#1473e6" stroke-width="2" opacity="0.5" />
-  <line x1="30" y1="205" x2="70" y2="205" stroke="#1473e6" stroke-width="2" opacity="0.5" />
-  <line x1="45" y1="220" x2="85" y2="220" stroke="#1473e6" stroke-width="2" opacity="0.5" />
+  <g transform="translate(420, 300)" opacity="0.7">
+    <rect x="-40" y="-15" width="80" height="30" rx="5" fill="#ffffff" stroke="#1473e6" stroke-width="2" />
+    <text x="0" y="5" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">macOS</text>
+  </g>
+
+  <!-- Connecting Lines -->
+  <path d="M300,180 L300,310" stroke="#1473e6" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+  <path d="M170,80 L300,180" stroke="#1473e6" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+  <path d="M430,100 L300,180" stroke="#1473e6" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+  <path d="M180,300 L280,310" stroke="#1473e6" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+  <path d="M420,300 L320,310" stroke="#1473e6" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
 </svg>

@@ -1,62 +1,160 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff9100;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#ff9100;stop-opacity:0.1" />
+    <linearGradient id="performanceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e6" />
+      <stop offset="100%" stop-color="#ffe7bc" />
     </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" />
+      <feOffset dx="0" dy="10" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="400" height="300" fill="#fff" rx="8" ry="8"/>
-  <rect width="400" height="300" fill="url(#grad5)" rx="8" ry="8"/>
+
+  <!-- Background with subtle pattern -->
+  <rect width="600" height="400" fill="url(#performanceGradient)" />
+  <path d="M0,400 L600,400 L600,250 C550,280 450,220 400,260 C350,300 250,240 200,300 C150,360 50,320 0,350 Z" fill="#ffe7bc" opacity="0.3" />
+
+  <!-- Dashboard Frame -->
+  <g transform="translate(300, 200)">
+    <rect x="-200" y="-120" width="400" height="240" rx="12" fill="#ffffff" filter="url(#shadow)" />
+    
+    <!-- Dashboard Header -->
+    <rect x="-200" y="-120" width="400" height="40" rx="12" fill="#1473e6" />
+    <text x="0" y="-95" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">PERFORMANCE MONITORING</text>
+    
+    <!-- Graph Area -->
+    <rect x="-190" y="-70" width="380" height="180" rx="5" fill="#f8f9fa" />
+    
+    <!-- Performance Graph -->
+    <g transform="translate(0, 20)">
+      <!-- Graph Axes -->
+      <line x1="-180" y1="70" x2="180" y2="70" stroke="#d0d0d0" stroke-width="1" />
+      <line x1="-180" y1="-60" x2="-180" y2="70" stroke="#d0d0d0" stroke-width="1" />
+      
+      <!-- X-Axis Labels -->
+      <text x="-180" y="85" font-family="Arial" font-size="8" text-anchor="middle" fill="#666">0s</text>
+      <text x="-120" y="85" font-family="Arial" font-size="8" text-anchor="middle" fill="#666">10s</text>
+      <text x="-60" y="85" font-family="Arial" font-size="8" text-anchor="middle" fill="#666">20s</text>
+      <text x="0" y="85" font-family="Arial" font-size="8" text-anchor="middle" fill="#666">30s</text>
+      <text x="60" y="85" font-family="Arial" font-size="8" text-anchor="middle" fill="#666">40s</text>
+      <text x="120" y="85" font-family="Arial" font-size="8" text-anchor="middle" fill="#666">50s</text>
+      <text x="180" y="85" font-family="Arial" font-size="8" text-anchor="middle" fill="#666">60s</text>
+      
+      <!-- Y-Axis Labels -->
+      <text x="-185" y="70" font-family="Arial" font-size="8" text-anchor="end" fill="#666">0</text>
+      <text x="-185" y="40" font-family="Arial" font-size="8" text-anchor="end" fill="#666">250</text>
+      <text x="-185" y="10" font-family="Arial" font-size="8" text-anchor="end" fill="#666">500</text>
+      <text x="-185" y="-20" font-family="Arial" font-size="8" text-anchor="end" fill="#666">750</text>
+      <text x="-185" y="-50" font-family="Arial" font-size="8" text-anchor="end" fill="#666">1000</text>
+      
+      <!-- Grid Lines -->
+      <line x1="-180" y1="40" x2="180" y2="40" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      <line x1="-180" y1="10" x2="180" y2="10" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      <line x1="-180" y1="-20" x2="180" y2="-20" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      <line x1="-180" y1="-50" x2="180" y2="-50" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      
+      <line x1="-120" y1="-60" x2="-120" y2="70" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      <line x1="-60" y1="-60" x2="-60" y2="70" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      <line x1="0" y1="-60" x2="0" y2="70" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      <line x1="60" y1="-60" x2="60" y2="70" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      <line x1="120" y1="-60" x2="120" y2="70" stroke="#e0e0e0" stroke-width="0.5" stroke-dasharray="3,3" />
+      
+      <!-- Response Time Line Chart -->
+      <path d="M-180,20 C-160,10 -150,15 -140,0 C-130,-15 -120,-10 -110,-5 C-100,0 -90,-20 -80,-25 C-70,-30 -60,-40 -50,-45 C-40,-50 -30,-35 -20,-30 C-10,-25 0,-15 10,-20 C20,-25 30,-30 40,-35 C50,-40 60,-30 70,-25 C80,-20 90,-25 100,-30 C110,-35 120,-20 130,-15 C140,-10 150,-5 160,0 C170,5 180,10 180,10" 
+            fill="none" stroke="#1473e6" stroke-width="3" />
+      
+      <!-- CPU Usage Area Chart -->
+      <path d="M-180,70 L-180,50 C-160,45 -150,40 -140,45 C-130,50 -120,55 -110,50 C-100,45 -90,40 -80,35 C-70,30 -60,25 -50,30 C-40,35 -30,40 -20,35 C-10,30 0,25 10,30 C20,35 30,30 40,25 C50,20 60,25 70,30 C80,35 90,30 100,25 C110,20 120,25 130,30 C140,35 150,40 160,35 C170,30 180,35 180,35 L180,70 Z" 
+            fill="#1473e64d" stroke="#1473e6" stroke-width="1" />
+      
+      <!-- Memory Usage Line -->
+      <path d="M-180,45 C-160,50 -150,48 -140,52 C-130,56 -120,54 -110,58 C-100,62 -90,60 -80,54 C-70,48 -60,46 -50,42 C-40,38 -30,40 -20,44 C-10,48 0,46 10,42 C20,38 30,36 40,40 C50,44 60,48 70,50 C80,52 90,50 100,48 C110,46 120,44 130,46 C140,48 150,50 160,46 C170,42 180,40 180,40" 
+            fill="none" stroke="#34c759" stroke-width="2" stroke-dasharray="5,3" />
+            
+      <!-- Data Points -->
+      <circle cx="-140" cy="0" r="4" fill="#1473e6" />
+      <circle cx="-80" cy="-25" r="4" fill="#1473e6" />
+      <circle cx="-20" cy="-30" r="4" fill="#1473e6" />
+      <circle cx="40" cy="-35" r="4" fill="#1473e6" />
+      <circle cx="100" cy="-30" r="4" fill="#1473e6" />
+      <circle cx="160" cy="0" r="4" fill="#1473e6" />
+    </g>
+    
+    <!-- Dashboard Widgets -->
+    <g transform="translate(-150, -55)">
+      <rect x="-30" y="-10" width="60" height="20" rx="3" fill="#e6f2ff" />
+      <text x="0" y="4" font-family="Arial" font-size="8" font-weight="bold" text-anchor="middle" fill="#1473e6">RESPONSE TIME</text>
+    </g>
+    
+    <g transform="translate(-50, -55)">
+      <rect x="-30" y="-10" width="60" height="20" rx="3" fill="#e4fff1" />
+      <text x="0" y="4" font-family="Arial" font-size="8" font-weight="bold" text-anchor="middle" fill="#34c759">MEMORY USAGE</text>
+    </g>
+    
+    <g transform="translate(50, -55)">
+      <rect x="-30" y="-10" width="60" height="20" rx="3" fill="#fff2e6" />
+      <text x="0" y="4" font-family="Arial" font-size="8" font-weight="bold" text-anchor="middle" fill="#ff9500">CPU LOAD</text>
+    </g>
+    
+    <g transform="translate(150, -55)">
+      <rect x="-30" y="-10" width="60" height="20" rx="3" fill="#f2f2f7" />
+      <text x="0" y="4" font-family="Arial" font-size="8" font-weight="bold" text-anchor="middle" fill="#8e8e93">THROUGHPUT</text>
+    </g>
+  </g>
+
+  <!-- Location Map Elements -->
+  <g transform="translate(125, 80)" opacity="0.9">
+    <circle cx="0" cy="0" r="15" fill="#1473e6" />
+    <text x="0" y="4" font-family="Arial" font-size="8" font-weight="bold" text-anchor="middle" fill="#ffffff">US</text>
+  </g>
   
-  <!-- Chart representation -->
-  <line x1="80" y1="230" x2="320" y2="230" stroke="#333" stroke-width="2" />
-  <line x1="80" y1="80" x2="80" y2="230" stroke="#333" stroke-width="2" />
+  <g transform="translate(200, 120)" opacity="0.9">
+    <circle cx="0" cy="0" r="10" fill="#1473e6" opacity="0.8" />
+    <text x="0" y="3" font-family="Arial" font-size="6" font-weight="bold" text-anchor="middle" fill="#ffffff">EU</text>
+  </g>
   
-  <!-- Vertical axis labels -->
-  <text x="55" y="90" font-family="Arial" font-size="10" fill="#333">100%</text>
-  <text x="55" y="140" font-family="Arial" font-size="10" fill="#333">60%</text>
-  <text x="55" y="190" font-family="Arial" font-size="10" fill="#333">20%</text>
-  <text x="65" y="230" font-family="Arial" font-size="10" fill="#333">0</text>
+  <g transform="translate(250, 90)" opacity="0.9">
+    <circle cx="0" cy="0" r="8" fill="#1473e6" opacity="0.6" />
+    <text x="0" y="3" font-family="Arial" font-size="6" font-weight="bold" text-anchor="middle" fill="#ffffff">AP</text>
+  </g>
   
-  <!-- Horizontal axis labels -->
-  <text x="80" y="245" font-family="Arial" font-size="10" fill="#333">0s</text>
-  <text x="140" y="245" font-family="Arial" font-size="10" fill="#333">5s</text>
-  <text x="200" y="245" font-family="Arial" font-size="10" fill="#333">10s</text>
-  <text x="260" y="245" font-family="Arial" font-size="10" fill="#333">15s</text>
-  <text x="320" y="245" font-family="Arial" font-size="10" fill="#333">20s</text>
+  <!-- Connecting Lines -->
+  <path d="M125,80 L300,200" stroke="#1473e6" stroke-width="1" stroke-dasharray="5,3" opacity="0.5" />
+  <path d="M200,120 L300,200" stroke="#1473e6" stroke-width="1" stroke-dasharray="5,3" opacity="0.5" />
+  <path d="M250,90 L300,200" stroke="#1473e6" stroke-width="1" stroke-dasharray="5,3" opacity="0.5" />
   
-  <!-- Performance chart lines -->
-  <polyline points="80,180 100,150 120,170 140,130 160,110 180,120 200,90 220,100 240,80 260,105 280,120 300,90 320,95" 
-      fill="none" stroke="#ff9100" stroke-width="3" />
+  <!-- Server Icons -->
+  <g transform="translate(420, 100)" opacity="0.8">
+    <rect x="-20" y="-25" width="40" height="50" rx="5" fill="#f2f2f7" stroke="#1473e6" stroke-width="2" />
+    <rect x="-15" y="-20" width="30" height="5" rx="2" fill="#1473e6" opacity="0.5" />
+    <rect x="-15" y="-10" width="30" height="5" rx="2" fill="#1473e6" opacity="0.4" />
+    <rect x="-15" y="0" width="30" height="5" rx="2" fill="#1473e6" opacity="0.6" />
+    <circle cx="0" cy="15" r="5" fill="#34c759" /> <!-- Server OK -->
+  </g>
   
-  <polyline points="80,200 100,190 120,210 140,180 160,190 180,170 200,190 220,180 240,160 260,170 280,160 300,170 320,150" 
-      fill="none" stroke="#1473e6" stroke-width="3" stroke-dasharray="5,3" />
+  <g transform="translate(470, 130)" opacity="0.8">
+    <rect x="-20" y="-25" width="40" height="50" rx="5" fill="#f2f2f7" stroke="#1473e6" stroke-width="2" />
+    <rect x="-15" y="-20" width="30" height="5" rx="2" fill="#1473e6" opacity="0.5" />
+    <rect x="-15" y="-10" width="30" height="5" rx="2" fill="#1473e6" opacity="0.4" />
+    <rect x="-15" y="0" width="30" height="5" rx="2" fill="#1473e6" opacity="0.6" />
+    <circle cx="0" cy="15" r="5" fill="#ff9500" opacity="0.8" /> <!-- Server Warning -->
+  </g>
   
-  <!-- Chart indicators -->
-  <circle cx="130" cy="130" r="6" fill="#ff9100" opacity="0.8" />
-  <line x1="130" y1="130" x2="150" y2="110" stroke="#ff9100" stroke-width="1" />
-  <rect x="150" y="95" width="80" height="30" rx="4" ry="4" fill="white" stroke="#ff9100" stroke-width="1" />
-  <text x="155" y="115" font-family="Arial" font-size="10" fill="#333">Response spike</text>
+  <!-- Connection Lines to Servers -->
+  <path d="M420,100 L300,200" stroke="#1473e6" stroke-width="1" stroke-dasharray="5,3" opacity="0.5" />
+  <path d="M470,130 L300,200" stroke="#1473e6" stroke-width="1" stroke-dasharray="5,3" opacity="0.5" />
   
-  <!-- Legend -->
-  <rect x="220" y="40" width="120" height="50" rx="4" ry="4" fill="white" stroke="#ddd" stroke-width="1" />
-  <line x1="230" y1="55" x2="250" y2="55" stroke="#ff9100" stroke-width="3" />
-  <text x="255" y="58" font-family="Arial" font-size="10" fill="#333">Response Time</text>
-  <line x1="230" y1="75" x2="250" y2="75" stroke="#1473e6" stroke-width="3" stroke-dasharray="5,3" />
-  <text x="255" y="78" font-family="Arial" font-size="10" fill="#333">Server Load</text>
-  
-  <!-- Global locations -->
-  <circle cx="50" cy="50" r="15" fill="#ff9100" opacity="0.2" />
-  <text x="44" y="53" font-family="Arial" font-size="8" fill="#333">US</text>
-  
-  <circle cx="40" cy="30" r="10" fill="#ff9100" opacity="0.2" />
-  <text x="35" y="33" font-family="Arial" font-size="7" fill="#333">EU</text>
-  
-  <circle cx="60" cy="30" r="8" fill="#ff9100" opacity="0.2" />
-  <text x="56" y="33" font-family="Arial" font-size="6" fill="#333">AP</text>
-  
-  <!-- Decorative elements -->
-  <path d="M350,150 C370,130 370,170 350,150" fill="none" stroke="#ff9100" stroke-width="2" />
-  <path d="M350,180 C370,160 370,200 350,180" fill="none" stroke="#ff9100" stroke-width="2" />
-  <path d="M350,210 C370,190 370,230 350,210" fill="none" stroke="#ff9100" stroke-width="2" />
+  <!-- Bottom Label -->
+  <g transform="translate(300, 350)">
+    <rect x="-80" y="-15" width="160" height="30" rx="15" fill="#ffffff" filter="url(#shadow)" />
+    <text x="0" y="5" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#1473e6">PERFORMANCE LAB</text>
+  </g>
 </svg>
