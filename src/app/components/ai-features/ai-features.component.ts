@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 interface AiFeature {
   title: string;
   description: string;
+  isActive?: boolean;
 }
 
 @Component({
@@ -29,5 +30,19 @@ export class AiFeaturesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // Initialize isActive property for all features
+    this.aiFeatures.forEach(feature => feature.isActive = false);
+  }
+
+  toggleFeature(feature: AiFeature): void {
+    // Reset all features to inactive
+    this.aiFeatures.forEach(f => {
+      if (f !== feature) {
+        f.isActive = false;
+      }
+    });
+    
+    // Toggle the clicked feature
+    feature.isActive = !feature.isActive;
   }
 }
