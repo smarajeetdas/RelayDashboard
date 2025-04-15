@@ -69,6 +69,130 @@
   }
 }
 
+/* AI-powered welcome message styles */
+.welcome-message-container {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.ai-greeting {
+  background: linear-gradient(90deg, rgba(20, 115, 230, 0.1), rgba(20, 115, 230, 0.05));
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  border-left: 3px solid #1473e6;
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  transition: all 0.3s ease;
+}
+
+.ai-greeting.loading {
+  background: linear-gradient(90deg, rgba(20, 115, 230, 0.05), rgba(20, 115, 230, 0.02));
+  border-left-color: rgba(20, 115, 230, 0.3);
+}
+
+.greeting-text {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #fff;
+  flex: 1;
+  animation: fadeIn 0.5s ease;
+}
+
+.greeting-loader {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.dot-pulse {
+  position: relative;
+  margin-right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #1473e6;
+  animation: dotPulse 1.5s infinite;
+}
+
+@keyframes dotPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(20, 115, 230, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(20, 115, 230, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(20, 115, 230, 0);
+  }
+}
+
+.btn-personalize {
+  background: none;
+  border: none;
+  color: #1473e6;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.btn-personalize:hover {
+  opacity: 1;
+  background: rgba(20, 115, 230, 0.1);
+}
+
+.name-input-container {
+  display: flex;
+  gap: 8px;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.3s ease;
+}
+
+.name-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.name-input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(20, 115, 230, 0.5);
+  box-shadow: 0 0 0 3px rgba(20, 115, 230, 0.2);
+  color: #fff;
+  outline: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { 
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .heading-large {
   margin-bottom: 1.5rem;
   line-height: 1.2;
@@ -130,5 +254,30 @@
   
   .created-by small {
     justify-content: center;
+  }
+  
+  .ai-greeting {
+    flex-direction: column;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .greeting-text {
+    margin-bottom: 0.5rem;
+  }
+  
+  .btn-personalize {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+  
+  .name-input-container {
+    flex-direction: column;
+    margin-top: -0.5rem;
+  }
+  
+  .name-input {
+    width: 100%;
   }
 }

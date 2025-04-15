@@ -3,6 +3,24 @@
     <div class="row align-items-center">
       <div class="col-lg-7">
         <span class="badge badge-danger mb-3">Adobe Quality Engineering</span>
+        <div class="welcome-message-container">
+          <div class="ai-greeting" [class.loading]="isLoadingMessage">
+            <div class="greeting-text" *ngIf="!isLoadingMessage">{{ welcomeMessage }}</div>
+            <div class="greeting-loader" *ngIf="isLoadingMessage">
+              <span class="dot-pulse"></span>
+              <span>Generating personalized greeting...</span>
+            </div>
+            <button class="btn-personalize" (click)="toggleNameInput()" *ngIf="!isLoadingMessage">
+              <i class="fas fa-magic"></i>
+              <span>{{ userName ? 'Change' : 'Personalize' }}</span>
+            </button>
+          </div>
+          <div class="name-input-container" *ngIf="showNameInput">
+            <input #nameInput type="text" class="form-control name-input" placeholder="Enter your name" 
+                  [value]="userName" (keyup.enter)="updateName(nameInput.value)">
+            <button class="btn btn-sm btn-outline-light" (click)="updateName(nameInput.value)">Apply</button>
+          </div>
+        </div>
         <h1 class="heading-large">
           <span class="text-light">Reliable, Robust &</span><br>
           <span class="text-light">User-Friendly</span> <span class="red-text">Test Automation</span>
