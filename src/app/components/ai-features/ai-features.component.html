@@ -1,13 +1,15 @@
-<section class="ai-features-section">
+<section id="ai-features" class="ai-features-section">
   <div class="container">
-    <p class="coming-soon">Coming Soon</p>
-    <h2 class="section-title">AI-Powered Features</h2>
-    <p class="text-center mb-5">
+    <p class="coming-soon" data-animation="fade-in-up">Coming Soon</p>
+    <h2 class="section-title" data-animation="fade-in-up" data-animation-delay="1">AI-Powered Features</h2>
+    <p class="text-center mb-5" data-animation="fade-in-up" data-animation-delay="2">
       The next generation of Relay brings cutting-edge artificial intelligence to revolutionize your testing workflows.
     </p>
     
     <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let feature of aiFeatures">
+      <div class="col-md-4 mb-4" *ngFor="let feature of aiFeatures; let i = index" 
+          [attr.data-animation]="i % 2 === 0 ? 'fade-in-left' : 'fade-in-right'" 
+          [attr.data-animation-delay]="(i % 3) + 1">
         <div class="ai-feature-card">
           <h4>{{feature.title}}</h4>
           <p>{{feature.description}}</p>

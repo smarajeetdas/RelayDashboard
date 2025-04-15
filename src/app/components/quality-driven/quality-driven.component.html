@@ -1,13 +1,15 @@
-<section class="quality-driven-section">
+<section id="quality" class="quality-driven-section">
   <div class="container">
-    <h2 class="section-title">Quality Driven Next-Gen Automation</h2>
-    <p class="text-center mb-5">
+    <h2 class="section-title" data-animation="fade-in-up">Quality Driven Next-Gen Automation</h2>
+    <p class="text-center mb-5" data-animation="fade-in-up" data-animation-delay="1">
       Our platform streamlines the testing process with no-code automation, allowing teams to focus on building
       great products.
     </p>
     
     <div class="row mt-5">
-      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let feature of features">
+      <div class="col-md-6 col-lg-4 mb-4" *ngFor="let feature of features; let i = index" 
+           [attr.data-animation]="'fade-in-up'" 
+           [attr.data-animation-delay]="(i % 3) + 1">
         <div class="feature-card p-4">
           <div class="circle-icon" [style.backgroundColor]="feature.iconBgColor">
             <i class="fas {{feature.icon}} text-white"></i>
