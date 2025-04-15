@@ -23,10 +23,9 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('functional')}">
               <div class="dropdown-menu-inner">
-                <div *ngFor="let option of functionalAutomationOptions" class="dropdown-item-custom">
-                  <i class="fas fa-check-circle option-icon"></i>
+                <a href="#" *ngFor="let option of functionalAutomationOptions" class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
-                </div>
+                </a>
               </div>
             </div>
           </li>
@@ -38,10 +37,9 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('performance')}">
               <div class="dropdown-menu-inner">
-                <div *ngFor="let option of performanceLabOptions" class="dropdown-item-custom">
-                  <i class="fas fa-check-circle option-icon"></i>
+                <a href="#" *ngFor="let option of performanceLabOptions" class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
-                </div>
+                </a>
               </div>
             </div>
           </li>
@@ -53,10 +51,9 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('chaos')}">
               <div class="dropdown-menu-inner">
-                <div *ngFor="let option of chaosSimulatorOptions" class="dropdown-item-custom">
-                  <i class="fas fa-check-circle option-icon"></i>
+                <a href="#" *ngFor="let option of chaosSimulatorOptions" class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
-                </div>
+                </a>
               </div>
             </div>
           </li>
@@ -68,10 +65,9 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('mobile')}">
               <div class="dropdown-menu-inner">
-                <div *ngFor="let option of mobileAutomationOptions" class="dropdown-item-custom">
-                  <i class="fas fa-check-circle option-icon"></i>
+                <a href="#" *ngFor="let option of mobileAutomationOptions" class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
-                </div>
+                </a>
               </div>
             </div>
           </li>
@@ -83,10 +79,9 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('desktop')}">
               <div class="dropdown-menu-inner">
-                <div *ngFor="let option of desktopAutomationOptions" class="dropdown-item-custom">
-                  <i class="fas fa-check-circle option-icon"></i>
+                <a href="#" *ngFor="let option of desktopAutomationOptions" class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
-                </div>
+                </a>
               </div>
             </div>
           </li>
@@ -98,10 +93,9 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('history')}">
               <div class="dropdown-menu-inner">
-                <div *ngFor="let option of executionHistoryOptions" class="dropdown-item-custom">
-                  <i class="fas fa-check-circle option-icon"></i>
+                <a href="#" *ngFor="let option of executionHistoryOptions" class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
-                </div>
+                </a>
               </div>
             </div>
           </li>
@@ -113,10 +107,10 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownActive('more')}">
               <div class="dropdown-menu-inner">
-                <div *ngFor="let option of moreOptions" class="dropdown-item-custom">
+                <a href="#" *ngFor="let option of moreOptions" class="dropdown-item-custom">
                   <i class="fas {{ option.icon }} option-icon"></i>
                   <span>{{ option.name }}</span>
-                </div>
+                </a>
               </div>
             </div>
           </li>
