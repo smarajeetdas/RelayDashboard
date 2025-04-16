@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   // Functional automation dropdown options
   functionalAutomationOptions = [
-    { id: 'endpoint', name: 'Endpoint', icon: 'fa-circle' },
+    { id: 'endpoint', name: 'Endpoint', icon: 'fa-circle', route: '/endpoints' },
     { id: 'testcase', name: 'Testcase', icon: 'fa-circle' },
     { id: 'testsuite', name: 'Testsuite', icon: 'fa-circle' },
     { id: 'mastersuite', name: 'Mastersuite', icon: 'fa-circle' }
