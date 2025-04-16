@@ -1,7 +1,7 @@
 .endpoint-detail-page {
   min-height: 100vh;
   background-color: #f9f9f9;
-  padding-top: 20px;
+  padding-top: 100px; /* Increased padding to account for fixed header */
 }
 
 .endpoint-title {
