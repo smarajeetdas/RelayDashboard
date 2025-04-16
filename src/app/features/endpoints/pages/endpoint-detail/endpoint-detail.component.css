@@ -1,0 +1,162 @@
+.endpoint-detail-page {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding-top: 20px;
+}
+
+.endpoint-title {
+  color: #333;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.breadcrumb {
+  margin-bottom: 8px;
+  background-color: transparent;
+  padding: 0;
+}
+
+.breadcrumb-item a {
+  color: #1473e6;
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: #666;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #999;
+}
+
+.summary-card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.detail-group {
+  margin-bottom: 15px;
+}
+
+.detail-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #777;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.detail-group p {
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.code-block {
+  background-color: #f5f7fa;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: monospace;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.badge {
+  font-weight: 500;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 4px;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.badge.bg-primary {
+  background-color: #1473e6 !important;
+}
+
+.badge.bg-warning {
+  background-color: #ff9f00 !important;
+  color: #fff;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+}
+
+.badge.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+.badge.bg-secondary {
+  background-color: #6c757d !important;
+}
+
+.detail-tabs {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.detail-tabs .nav-link {
+  color: #555;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 15px;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.detail-tabs .nav-link:hover {
+  color: #1473e6;
+  border-bottom-color: #ddd;
+}
+
+.detail-tabs .nav-link.active {
+  color: #1473e6;
+  border-bottom-color: #1473e6;
+  background-color: transparent;
+}
+
+.tab-content .card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table th {
+  background-color: #f5f7fa;
+  color: #666;
+  font-weight: 600;
+  border-top: none;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.test-case-item {
+  padding: 15px;
+  transition: background-color 0.2s ease;
+}
+
+.test-case-item:hover {
+  background-color: #f8f9fa;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-secondary {
+  color: #6c757d !important;
+}
