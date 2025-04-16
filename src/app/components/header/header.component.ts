@@ -88,4 +88,8 @@ export class HeaderComponent implements OnInit {
   isDropdownActive(dropdown: string): boolean {
     return this.activeDropdown === dropdown;
   }
+
+  closeAllDropdowns(): void {
+    this.activeDropdown = null;
+  }
 }

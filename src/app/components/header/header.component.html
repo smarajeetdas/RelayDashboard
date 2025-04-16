@@ -24,7 +24,7 @@
               <div class="dropdown-menu-inner">
                 <a *ngFor="let option of functionalAutomationOptions" 
                    [routerLink]="option.route ? option.route : '#'" 
-                   (click)="option.route ? null : $event.preventDefault()"
+                   (click)="option.route ? closeAllDropdowns() : $event.preventDefault()"
                    class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
                 </a>
