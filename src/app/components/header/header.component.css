@@ -29,6 +29,8 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .logo-wrapper::before {
@@ -65,6 +67,29 @@
   margin-right: 0.5rem;
   position: relative;
   z-index: 2;
+}
+
+.logo-img {
+  position: relative;
+  z-index: 2;
+  max-height: 40px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(93, 116, 229, 0.3));
+  animation: logoImgPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes logoImgPulse {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(231, 76, 60, 0.3));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(155, 89, 182, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(93, 116, 229, 0.5));
+    transform: scale(1.02);
+  }
 }
 
 .logo-text {
