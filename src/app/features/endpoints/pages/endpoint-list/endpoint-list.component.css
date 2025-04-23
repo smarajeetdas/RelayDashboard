@@ -390,3 +390,28 @@ select.form-control option {
   background: linear-gradient(135deg, #17a2b8 0%, #138496 100%) !important;
   border: 1px solid rgba(19, 132, 150, 0.2);
 }
+
+/* Filter Toggle Styles */
+.filter-section {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.filter-section.d-none {
+  display: none !important;
+}
+
+.btn-filter {
+  width: auto !important;
+  padding: 0 20px !important;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-filter:focus {
+  box-shadow: none;
+  outline: none;
+}

@@ -28,8 +28,46 @@ export class EndpointListComponent implements OnInit {
     private router: Router
   ) { }
 
+  isFilterVisible: boolean = true;
+
   ngOnInit(): void {
     this.loadEndpoints();
+    this.setupFilterToggle();
+  }
+
+  /**
+   * Sets up the filter toggle functionality
+   */
+  private setupFilterToggle(): void {
+    setTimeout(() => {
+      const toggleBtn = document.getElementById('toggleFilters');
+      const filterIcon = toggleBtn?.querySelector('i');
+      const filterSections = document.querySelectorAll('.filter-section');
+      
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          this.isFilterVisible = !this.isFilterVisible;
+          
+          // Update the icon to show current state
+          if (filterIcon) {
+            if (this.isFilterVisible) {
+              filterIcon.className = 'fas fa-filter me-2';
+            } else {
+              filterIcon.className = 'fas fa-plus me-2';
+            }
+          }
+          
+          // Toggle the visibility of filter sections
+          filterSections.forEach(section => {
+            if (this.isFilterVisible) {
+              section.classList.remove('d-none');
+            } else {
+              section.classList.add('d-none');
+            }
+          });
+        });
+      }
+    }, 500);
   }
   
   loadEndpoints(): void {
