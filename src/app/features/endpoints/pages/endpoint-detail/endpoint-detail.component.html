@@ -19,230 +19,291 @@
     <!-- Detail content -->
     <div *ngIf="endpoint && !loading" class="endpoint-content">
       <!-- Header with breadcrumb and actions -->
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="javascript:void(0)" (click)="goBack()">Endpoints</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">{{ endpoint.name }}</li>
-            </ol>
-          </nav>
-          <h1 class="endpoint-title mb-0">
-            {{ endpoint.name }}
-            <span *ngIf="endpoint.certified" class="badge bg-success ms-2" title="Certified">
-              <i class="fas fa-check-circle"></i> Certified
-            </span>
-            <span *ngIf="endpoint.subFlow" class="badge bg-info ms-2" title="Sub Flow">
-              <i class="fas fa-random"></i> Sub Flow
-            </span>
-          </h1>
-        </div>
-        <div class="d-flex">
-          <button class="btn btn-outline-primary me-2" (click)="editEndpoint()">
-            <i class="fas fa-edit me-1"></i> Edit
-          </button>
-          <button class="btn btn-outline-danger" (click)="deleteEndpoint()">
-            <i class="fas fa-trash-alt me-1"></i> Delete
-          </button>
-        </div>
-      </div>
-
-      <!-- Summary card -->
-      <div class="card mb-4 summary-card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-3 mb-3">
-              <div class="detail-group">
-                <label>Project</label>
-                <p>{{ endpoint.project }}</p>
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <div class="detail-group">
-                <label>Category</label>
-                <p>
-                  <span class="badge" [ngClass]="{
-                    'bg-danger': endpoint.category === 'REST',
-                    'bg-primary': endpoint.category === 'WEB',
-                    'bg-warning': endpoint.category === 'MOBILE'
-                  }">{{ endpoint.category }}</span>
-                </p>
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <div class="detail-group">
-                <label>Request Type</label>
-                <p>{{ endpoint.requestType !== 'NA' ? endpoint.requestType : '-' }}</p>
-              </div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <div class="detail-group">
-                <label>Last Updated</label>
-                <p>{{ endpoint.updatedOn }}<br><small>by {{ endpoint.updatedBy }}</small></p>
-              </div>
-            </div>
+      <div class="detail-header mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="javascript:void(0)" (click)="goBack()">Endpoints</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">{{ endpoint.name }}</li>
+              </ol>
+            </nav>
+            <h1 class="endpoint-title mb-0">
+              {{ endpoint.name }}
+              <span *ngIf="endpoint.certified" class="badge bg-success ms-2" title="Certified">
+                <i class="fas fa-check-circle"></i> Certified
+              </span>
+              <span *ngIf="endpoint.subFlow" class="badge bg-info ms-2" title="Sub Flow">
+                <i class="fas fa-random"></i> Sub Flow
+              </span>
+            </h1>
           </div>
-          
-          <div class="row" *ngIf="endpoint.path">
-            <div class="col-12">
-              <div class="detail-group">
-                <label>API Path</label>
-                <p class="code-block">{{ endpoint.path }}</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="row" *ngIf="endpoint.description">
-            <div class="col-12">
-              <div class="detail-group">
-                <label>Description</label>
-                <p>{{ endpoint.description }}</p>
-              </div>
-            </div>
+          <div class="d-flex">
+            <button class="btn btn-outline-primary me-2" (click)="editEndpoint()">
+              <i class="fas fa-edit me-1"></i> Edit
+            </button>
+            <button class="btn btn-outline-danger" (click)="deleteEndpoint()">
+              <i class="fas fa-trash-alt me-1"></i> Delete
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Tabs for detail sections -->
-      <ul class="nav nav-tabs detail-tabs mb-4">
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="activeTab === 'details'"
-             href="javascript:void(0)" (click)="setActiveTab('details')">
-            <i class="fas fa-info-circle me-1"></i> Details
-          </a>
-        </li>
-        <li class="nav-item" *ngIf="endpoint.parameters && endpoint.parameters.length > 0">
-          <a class="nav-link" [class.active]="activeTab === 'parameters'"
-             href="javascript:void(0)" (click)="setActiveTab('parameters')">
-            <i class="fas fa-list me-1"></i> Parameters 
-            <span class="badge bg-secondary ms-1">{{ endpoint.parameters.length }}</span>
-          </a>
-        </li>
-        <li class="nav-item" *ngIf="endpoint.headers && endpoint.headers.length > 0">
-          <a class="nav-link" [class.active]="activeTab === 'headers'"
-             href="javascript:void(0)" (click)="setActiveTab('headers')">
-            <i class="fas fa-code me-1"></i> Headers 
-            <span class="badge bg-secondary ms-1">{{ endpoint.headers.length }}</span>
-          </a>
-        </li>
-        <li class="nav-item" *ngIf="endpoint.testCases && endpoint.testCases.length > 0">
-          <a class="nav-link" [class.active]="activeTab === 'testCases'"
-             href="javascript:void(0)" (click)="setActiveTab('testCases')">
-            <i class="fas fa-vial me-1"></i> Test Cases 
-            <span class="badge bg-secondary ms-1">{{ endpoint.testCases.length }}</span>
-          </a>
-        </li>
-      </ul>
+      <!-- Main content with sidebar and detail panes -->
+      <div class="row">
+        <!-- Left sidebar -->
+        <div class="col-md-3 col-lg-2 mb-4 mb-md-0">
+          <app-detail-sidebar 
+            [items]="sidebarItems" 
+            [activeItemId]="activeSidebarItem"
+            (itemSelect)="onSidebarItemSelect($event)">
+          </app-detail-sidebar>
+        </div>
 
-      <!-- Tab content -->
-      <div class="tab-content">
-        <!-- Details tab -->
-        <div *ngIf="activeTab === 'details'" class="tab-pane fade show active">
-          <div class="card">
+        <!-- Right content area -->
+        <div class="col-md-9 col-lg-10">
+          <!-- Summary card -->
+          <div class="card mb-4 summary-card">
             <div class="card-body">
-              <p class="mb-0" *ngIf="endpoint.description; else noDetailInfo">
-                {{ endpoint.description }}
-              </p>
-              <ng-template #noDetailInfo>
-                <p class="text-muted mb-0">No additional details available for this endpoint.</p>
-              </ng-template>
-            </div>
-          </div>
-        </div>
-
-        <!-- Parameters tab -->
-        <div *ngIf="activeTab === 'parameters'" class="tab-pane fade show active">
-          <div class="card">
-            <div class="table-responsive">
-              <table class="table table-hover mb-0">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Required</th>
-                    <th>Default Value</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let param of endpoint.parameters">
-                    <td><strong>{{ param.name }}</strong></td>
-                    <td><code>{{ param.type }}</code></td>
-                    <td>
-                      <span *ngIf="param.required" class="badge bg-danger">Required</span>
-                      <span *ngIf="!param.required" class="badge bg-secondary">Optional</span>
-                    </td>
-                    <td>{{ param.defaultValue || '-' }}</td>
-                    <td>{{ param.description || '-' }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Headers tab -->
-        <div *ngIf="activeTab === 'headers'" class="tab-pane fade show active">
-          <div class="card">
-            <div class="table-responsive">
-              <table class="table table-hover mb-0">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Value</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let header of endpoint.headers">
-                    <td><strong>{{ header.name }}</strong></td>
-                    <td><code>{{ header.value }}</code></td>
-                    <td>{{ header.description || '-' }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Test Cases tab -->
-        <div *ngIf="activeTab === 'testCases'" class="tab-pane fade show active">
-          <div class="card">
-            <div class="card-body pb-0">
-              <h5 class="card-title">
-                Test Cases
-                <button class="btn btn-sm btn-outline-primary float-end">
-                  <i class="fas fa-plus me-1"></i> Add Test Case
-                </button>
-              </h5>
-            </div>
-            <div class="list-group list-group-flush">
-              <div *ngFor="let testCase of endpoint.testCases" class="list-group-item test-case-item">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="mb-1 d-flex align-items-center">
-                      <i class="fas fa-{{ getStatusIcon(testCase.status) }} text-{{ getStatusClass(testCase.status) }} me-2"></i>
-                      {{ testCase.name }}
-                    </h6>
-                    <p class="mb-0 text-muted small" *ngIf="testCase.lastRun">
-                      Last run: {{ testCase.lastRun }} 
-                      <span *ngIf="testCase.duration" class="ms-2">
-                        <i class="fas fa-clock me-1"></i> {{ testCase.duration }}ms
-                      </span>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <div class="detail-group">
+                    <label>Project</label>
+                    <p>{{ endpoint.project }}</p>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <div class="detail-group">
+                    <label>Category</label>
+                    <p>
+                      <span class="badge" [ngClass]="{
+                        'bg-danger': endpoint.category === 'REST',
+                        'bg-primary': endpoint.category === 'WEB',
+                        'bg-warning': endpoint.category === 'MOBILE'
+                      }">{{ endpoint.category }}</span>
                     </p>
                   </div>
-                  <div>
-                    <button class="btn btn-sm btn-primary me-2" (click)="runTest(testCase)">
-                      <i class="fas fa-play me-1"></i> Run
+                </div>
+                <div class="col-md-3 mb-3">
+                  <div class="detail-group">
+                    <label>Request Type</label>
+                    <p>{{ endpoint.requestType !== 'NA' ? endpoint.requestType : '-' }}</p>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <div class="detail-group">
+                    <label>Last Updated</label>
+                    <p>{{ endpoint.updatedOn }}<br><small>by {{ endpoint.updatedBy }}</small></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row" *ngIf="endpoint.path">
+                <div class="col-12">
+                  <div class="detail-group">
+                    <label>API Path</label>
+                    <p class="code-block">{{ endpoint.path }}</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row" *ngIf="endpoint.description">
+                <div class="col-12">
+                  <div class="detail-group">
+                    <label>Description</label>
+                    <p>{{ endpoint.description }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic content area based on sidebar selection -->
+          <div class="content-area">
+            <!-- Basic Info section -->
+            <div *ngIf="activeSidebarItem === 'basic'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Basic Information</h5>
+                  <p class="mb-0" *ngIf="endpoint.description; else noDetailInfo">
+                    {{ endpoint.description }}
+                  </p>
+                  <ng-template #noDetailInfo>
+                    <p class="text-muted mb-0">No additional details available for this endpoint.</p>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+
+            <!-- Environment section -->
+            <div *ngIf="activeSidebarItem === 'environment'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Environment Settings</h5>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="envSpecific">
+                    <label class="form-check-label" for="envSpecific">Environment specific</label>
+                  </div>
+                  <p class="text-muted mt-3">Configure environment-specific settings for this endpoint.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Test Data section -->
+            <div *ngIf="activeSidebarItem === 'testdata'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Test Data</h5>
+                  <p class="text-muted">Configure test data for this endpoint.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Associated With section -->
+            <div *ngIf="activeSidebarItem === 'associated'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Associated Elements</h5>
+                  <p class="text-muted">View associations with other elements.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- History section -->
+            <div *ngIf="activeSidebarItem === 'history'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">History</h5>
+                  <p class="text-muted">View history of changes for this endpoint.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- API Trends section -->
+            <div *ngIf="activeSidebarItem === 'apitrends'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">API Trends</h5>
+                  <p class="text-muted">View usage trends and performance metrics.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Execution History section -->
+            <div *ngIf="activeSidebarItem === 'execution'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Execution History</h5>
+                  <p class="text-muted">View history of test executions.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Result section -->
+            <div *ngIf="activeSidebarItem === 'result'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Result</h5>
+                  <p class="text-muted">View test results and logs.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parameters section -->
+            <div *ngIf="activeSidebarItem === 'parameters'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Default Value</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let param of endpoint.parameters">
+                        <td><strong>{{ param.name }}</strong></td>
+                        <td><code>{{ param.type }}</code></td>
+                        <td>
+                          <span *ngIf="param.required" class="badge bg-danger">Required</span>
+                          <span *ngIf="!param.required" class="badge bg-secondary">Optional</span>
+                        </td>
+                        <td>{{ param.defaultValue || '-' }}</td>
+                        <td>{{ param.description || '-' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Headers section -->
+            <div *ngIf="activeSidebarItem === 'headers'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let header of endpoint.headers">
+                        <td><strong>{{ header.name }}</strong></td>
+                        <td><code>{{ header.value }}</code></td>
+                        <td>{{ header.description || '-' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Test Cases section -->
+            <div *ngIf="activeSidebarItem === 'testcases'" class="tab-pane fade show active">
+              <div class="card">
+                <div class="card-body pb-0">
+                  <h5 class="card-title">
+                    Test Cases
+                    <button class="btn btn-sm btn-outline-primary float-end">
+                      <i class="fas fa-plus me-1"></i> Add Test Case
                     </button>
-                    <button class="btn btn-sm btn-outline-secondary me-2">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger">
-                      <i class="fas fa-trash-alt"></i>
-                    </button>
+                  </h5>
+                </div>
+                <div class="list-group list-group-flush">
+                  <div *ngFor="let testCase of endpoint.testCases" class="list-group-item test-case-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <h6 class="mb-1 d-flex align-items-center">
+                          <i class="fas fa-{{ getStatusIcon(testCase.status) }} text-{{ getStatusClass(testCase.status) }} me-2"></i>
+                          {{ testCase.name }}
+                        </h6>
+                        <p class="mb-0 text-muted small" *ngIf="testCase.lastRun">
+                          Last run: {{ testCase.lastRun }} 
+                          <span *ngIf="testCase.duration" class="ms-2">
+                            <i class="fas fa-clock me-1"></i> {{ testCase.duration }}ms
+                          </span>
+                        </p>
+                      </div>
+                      <div>
+                        <button class="btn btn-sm btn-primary me-2" (click)="runTest(testCase)">
+                          <i class="fas fa-play me-1"></i> Run
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary me-2">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                          <i class="fas fa-trash-alt"></i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

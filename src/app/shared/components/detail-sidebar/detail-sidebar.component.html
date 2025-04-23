@@ -1,0 +1,12 @@
+<div class="detail-sidebar">
+  <ul class="sidebar-menu">
+    <li *ngFor="let item of items" 
+        [ngClass]="{'active': isActive(item.id)}"
+        (click)="selectItem(item.id)">
+      <div class="sidebar-item">
+        <i class="fas fa-{{ item.icon }}"></i>
+        <span class="item-label">{{ item.label }}</span>
+      </div>
+    </li>
+  </ul>
+</div>

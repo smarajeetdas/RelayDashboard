@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EndpointDetail, TestCase } from '../../models/endpoint.model';
 import { EndpointService } from '../../services/endpoint.service';
+import { SidebarItem } from '../../../../shared/components/detail-sidebar/detail-sidebar.component';
 
 @Component({
   selector: 'app-endpoint-detail',
@@ -13,6 +14,20 @@ export class EndpointDetailComponent implements OnInit {
   loading: boolean = true;
   activeTab: 'details' | 'parameters' | 'headers' | 'testCases' = 'details';
   error: string | null = null;
+  
+  // Sidebar configuration
+  sidebarItems: SidebarItem[] = [
+    { id: 'basic', icon: 'info-circle', label: 'Basic' },
+    { id: 'environment', icon: 'globe', label: 'Environment' },
+    { id: 'testdata', icon: 'database', label: 'Test data' },
+    { id: 'associated', icon: 'link', label: 'Associated with' },
+    { id: 'history', icon: 'history', label: 'History' },
+    { id: 'apitrends', icon: 'chart-line', label: 'API trends' },
+    { id: 'execution', icon: 'tasks', label: 'Execution History' },
+    { id: 'result', icon: 'clipboard-check', label: 'Result' }
+  ];
+  
+  activeSidebarItem: string = 'basic';
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +63,11 @@ export class EndpointDetailComponent implements OnInit {
         console.error('Error loading endpoint details:', error);
       }
     );
+  }
+  
+  onSidebarItemSelect(itemId: string): void {
+    this.activeSidebarItem = itemId;
+    console.log('Selected sidebar item:', itemId);
   }
 
   setActiveTab(tab: 'details' | 'parameters' | 'headers' | 'testCases'): void {

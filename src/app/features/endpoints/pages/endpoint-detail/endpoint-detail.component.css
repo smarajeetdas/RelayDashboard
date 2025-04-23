@@ -10,6 +10,11 @@
   font-weight: 600;
 }
 
+.detail-header {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
 .breadcrumb {
   margin-bottom: 8px;
   background-color: transparent;
@@ -29,7 +34,21 @@
   color: #999;
 }
 
+/* Left sidebar styling */
+app-detail-sidebar {
+  height: 100%;
+  display: block;
+}
+
+/* Right content area */
 .summary-card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.content-area .card {
   border: none;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -95,36 +114,6 @@
   background-color: #6c757d !important;
 }
 
-.detail-tabs {
-  border-bottom: 1px solid #dee2e6;
-}
-
-.detail-tabs .nav-link {
-  color: #555;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: 10px 15px;
-  font-weight: 500;
-  background-color: transparent;
-}
-
-.detail-tabs .nav-link:hover {
-  color: #1473e6;
-  border-bottom-color: #ddd;
-}
-
-.detail-tabs .nav-link.active {
-  color: #1473e6;
-  border-bottom-color: #1473e6;
-  background-color: transparent;
-}
-
-.tab-content .card {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
 .table th {
   background-color: #f5f7fa;
   color: #666;
@@ -159,4 +148,37 @@
 
 .text-secondary {
   color: #6c757d !important;
+}
+
+/* Card title styling */
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Form control styling for the environment section */
+.form-check {
+  margin-bottom: 10px;
+}
+
+.form-check-input {
+  margin-top: 0.25rem;
+}
+
+.form-check-label {
+  font-weight: 500;
+  color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .endpoint-detail-page {
+    padding-top: 80px;
+  }
+  
+  .col-md-3.col-lg-2 {
+    margin-bottom: 20px;
+  }
 }
