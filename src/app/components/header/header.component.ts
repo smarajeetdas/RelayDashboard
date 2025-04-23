@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit {
   // Functional automation dropdown options
   functionalAutomationOptions = [
     { id: 'endpoint', name: 'Endpoint', icon: 'fa-circle', route: '/endpoints' },
-    { id: 'testcase', name: 'Testcase', icon: 'fa-circle' },
-    { id: 'testsuite', name: 'Testsuite', icon: 'fa-circle' },
-    { id: 'mastersuite', name: 'Mastersuite', icon: 'fa-circle' }
+    { id: 'testcase', name: 'Testcase', icon: 'fa-circle', route: '/testcases' },
+    { id: 'testsuite', name: 'Testsuite', icon: 'fa-circle', route: '/testsuites' },
+    { id: 'mastersuite', name: 'Mastersuite', icon: 'fa-circle', route: '/mastersuites' }
   ];
   
   // Performance Lab dropdown options

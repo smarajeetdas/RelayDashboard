@@ -16,6 +16,14 @@ const routes: Routes = [
     loadChildren: () => import('./features/testcases/testcases.module').then(m => m.TestCasesModule)
   },
   {
+    path: 'testsuites',
+    loadChildren: () => import('./features/testsuites/testsuites.module').then(m => m.TestSuitesModule)
+  },
+  {
+    path: 'mastersuites',
+    loadChildren: () => import('./features/mastersuites/mastersuites.module').then(m => m.MasterSuitesModule)
+  },
+  {
     path: '**',
     redirectTo: ''
   }
