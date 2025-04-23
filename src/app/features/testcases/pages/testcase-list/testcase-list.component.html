@@ -16,6 +16,18 @@
       </div>
     </div>
 
+    <!-- Debug section -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <button class="btn btn-primary" (click)="loadTestCases()">
+          Reload Test Cases
+        </button>
+        <button class="btn btn-info ml-2" (click)="logTestCases()">
+          Log Test Cases to Console
+        </button>
+      </div>
+    </div>
+
     <!-- Filter section -->
     <div class="row mb-4 filter-section" [ngClass]="{'d-none': !showFilterSection}">
       <div class="col-md-12">

@@ -255,4 +255,12 @@ export class TestCaseListComponent implements OnInit {
            page === Math.ceil(this.totalItems / this.pageSize) ||
            Math.abs(page - this.currentPage) <= 1;
   }
+  
+  // Debug function to log test cases to console
+  logTestCases(): void {
+    console.log('All Test Cases:', this.testCases);
+    console.log('Filtered Test Cases:', this.filteredTestCases);
+    console.log('Test Case Count:', this.testCases.length);
+    console.log('Filtered Test Case Count:', this.filteredTestCases.length);
+  }
 }
