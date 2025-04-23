@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1 class="endpoint-title">ENDPOINT</h1>
       <div class="endpoint-actions">
-        <button class="btn btn-filter me-2">
+        <button class="btn btn-filter me-3">
           <i class="fas fa-filter"></i>
         </button>
         <button class="btn btn-primary create-btn" (click)="createNewEndpoint()">
@@ -62,16 +62,16 @@
         </div>
       </div>
       <div class="col-md-6 mb-3">
-        <div class="filter-actions-container">
-          <div class="filter-checkboxes">
-            <div class="form-check me-4">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <div class="form-check me-5">
               <input class="form-check-input" type="checkbox" id="certifiedCheck" 
                      [(ngModel)]="showCertifiedOnly" (change)="applyFilters()">
               <label class="form-check-label" for="certifiedCheck">
                 Certified
               </label>
             </div>
-            <div class="form-check me-4">
+            <div class="form-check">
               <input class="form-check-input" type="checkbox" id="subFlowCheck" 
                      [(ngModel)]="showSubFlowOnly" (change)="applyFilters()">
               <label class="form-check-label" for="subFlowCheck">
@@ -79,11 +79,11 @@
               </label>
             </div>
           </div>
-          <div class="filter-buttons">
-            <button class="btn btn-outline-primary" (click)="resetFilters()">
+          <div>
+            <button class="btn btn-outline-primary me-3" (click)="resetFilters()">
               Clear
             </button>
-            <button class="btn btn-primary ms-2" (click)="applyFilters()">
+            <button class="btn btn-primary" (click)="applyFilters()">
               Search
             </button>
           </div>
