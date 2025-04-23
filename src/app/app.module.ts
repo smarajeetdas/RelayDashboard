@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { CapabilitiesComponent } from './components/capabilities/capabilities.component';
 import { QualityDrivenComponent } from './components/quality-driven/quality-driven.component';
@@ -20,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
   declarations: [
     AppComponent,
     HeaderComponent,
+    FooterComponent,
     HeroComponent,
     CapabilitiesComponent,
     QualityDrivenComponent,
