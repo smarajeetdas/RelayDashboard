@@ -124,20 +124,7 @@
 }
 
 .nav-item.ai-features-item .nav-link {
-  border-bottom: none !important;
-}
-
-.nav-item.ai-features-item .nav-link:hover,
-.nav-item.ai-features-item .nav-link:focus {
-  background-color: transparent;
-  border-bottom: none !important;
-}
-
-.nav-item.ai-features-item .nav-link span {
-  font-weight: 400;
-  font-size: 1rem;
-  color: #fff;
-  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .dropdown-wrapper {
