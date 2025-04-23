@@ -17,6 +17,9 @@ export class TestCaseListComponent implements OnInit {
   loading: boolean = true;
   error: string | null = null;
   
+  // Make Math available to template
+  Math = Math;
+  
   // Search and filter variables
   searchQuery: string = '';
   selectedCategory: string = '';
@@ -57,7 +60,10 @@ export class TestCaseListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadTestCases();
+    // Use setTimeout to ensure component is fully initialized
+    setTimeout(() => {
+      this.loadTestCases();
+    }, 0);
   }
 
   loadTestCases(): void {

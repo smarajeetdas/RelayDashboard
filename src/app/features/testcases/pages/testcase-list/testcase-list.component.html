@@ -25,6 +25,9 @@
         <button class="btn btn-info ml-2" (click)="logTestCases()">
           Log Test Cases to Console
         </button>
+        <a class="btn btn-outline-secondary ml-2" routerLink="/testcases/simple">
+          View Simple Test Page
+        </a>
       </div>
     </div>
 
@@ -182,13 +185,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let testCase of filteredTestCases" 
+              <tr *ngFor="let testCase of filteredTestCases; let i = index" 
                   class="testcase-row" 
                   (click)="viewTestCaseDetails(testCase)">
                 <td>
                   <span class="font-weight-bold">{{ testCase.name }}</span>
                 </td>
-                <td>{{ testCase.project }}</td>
+                <td>{{ testCase.project || 'N/A' }}</td>
                 <td>
                   <span class="badge badge-pill" 
                         [ngClass]="{
@@ -219,6 +222,13 @@
               </tr>
             </tbody>
           </table>
+          
+          <!-- Debug information for development -->
+          <div class="mt-4" *ngIf="testCases.length > 0">
+            <div class="alert alert-info">
+              <strong>Debug Info:</strong> Found {{ testCases.length }} testcases, {{ filteredTestCases.length }} after filtering
+            </div>
+          </div>
         </div>
 
         <!-- Pagination -->

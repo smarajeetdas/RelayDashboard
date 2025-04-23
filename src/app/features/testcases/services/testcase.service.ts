@@ -74,6 +74,38 @@ export class TestCaseService {
 
   getTestCases(): Observable<TestCase[]> {
     console.log('Fetching test cases:', this.mockTestCases);
+    
+    // Create hardcoded test cases if none exist yet
+    if (this.mockTestCases.length === 0) {
+      console.log('No test cases found, creating default data');
+      this.mockTestCases = [
+        {
+          id: 'tc001',
+          name: 'Sample Test Case 1',
+          category: 'WEB',
+          thinkTime: '00:00:10',
+          exitOnFailure: true,
+          mobile: false,
+          project: 'Sample Project',
+          lastModified: '2025-04-23',
+          updatedBy: 'Test User',
+          active: true
+        },
+        {
+          id: 'tc002',
+          name: 'Sample Test Case 2',
+          category: 'REST',
+          thinkTime: '00:00:15',
+          exitOnFailure: true,
+          mobile: false,
+          project: 'API Project',
+          lastModified: '2025-04-22',
+          updatedBy: 'API User',
+          active: true
+        }
+      ];
+    }
+    
     return of(this.mockTestCases.slice()).pipe(
       tap(testCases => {
         console.log('Emitting test cases:', testCases);
