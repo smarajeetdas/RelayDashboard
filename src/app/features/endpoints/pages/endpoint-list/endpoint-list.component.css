@@ -132,9 +132,9 @@
 
 .endpoint-table {
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  margin-bottom: 30px;
+  margin-bottom: 0;
   overflow: hidden;
   border: none;
 }
@@ -434,4 +434,88 @@ select.form-control option {
 .btn-filter i {
   font-size: 14px;
   color: white;
+}
+
+/* Pagination Styles */
+.pagination-container {
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 0 !important;
+}
+
+.results-info p {
+  color: #555;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.page-link {
+  border: none;
+  color: #4a5568;
+  background-color: transparent;
+  border-radius: 6px;
+  margin: 0 2px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-link:hover {
+  background-color: #f5f7fa;
+  color: #1473e6;
+}
+
+.page-item.active .page-link {
+  background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(20, 115, 230, 0.2);
+}
+
+.page-item.disabled .page-link {
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.per-page-dropdown .btn {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  font-weight: 500;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.per-page-dropdown .dropdown-toggle::after {
+  margin-left: 8px;
+}
+
+.per-page-dropdown .dropdown-menu {
+  padding: 8px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.per-page-dropdown .dropdown-item {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.per-page-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #1473e6;
 }
