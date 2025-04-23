@@ -16,6 +16,12 @@
       <div class="collapse navbar-collapse" [ngClass]="{'show': !isMenuCollapsed}">
         <ul class="navbar-nav ml-auto">
 
+          <li class="nav-item">
+            <a class="nav-link" href="#ai-features" (click)="toggleMenu()">
+              <span>AI Features</span>
+            </a>
+          </li>
+
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('functional')}">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('functional')">
               <span>Functional Automation</span>
