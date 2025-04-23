@@ -431,9 +431,32 @@ select.form-control option {
   outline: none;
 }
 
-.btn-filter i {
+.btn-filter i, .btn-search i {
   font-size: 14px;
   color: white;
+}
+
+.btn-clear {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #1473e6;
+  border-color: #1473e6;
+}
+
+.btn-search {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(20, 115, 230, 0.2);
 }
 
 /* Pagination Styles */
