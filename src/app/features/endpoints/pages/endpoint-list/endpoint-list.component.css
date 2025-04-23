@@ -402,16 +402,21 @@ select.form-control option {
 }
 
 .btn-filter {
-  width: auto !important;
-  padding: 0 20px !important;
-  text-align: center;
-  font-weight: 500;
-  font-size: 14px;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
   display: flex;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(20, 115, 230, 0.2);
 }
 
 .btn-filter:focus {
   box-shadow: none;
   outline: none;
+}
+
+.btn-filter i {
+  font-size: 14px;
 }
