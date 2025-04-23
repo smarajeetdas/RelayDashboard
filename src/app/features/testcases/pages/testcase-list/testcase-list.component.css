@@ -172,12 +172,13 @@
 }
 
 .testcase-table tbody td {
-  padding: 8px 12px; /* Reduced padding to fit more rows */
+  padding: 10px 15px; /* Adjusted for better spacing */
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
   font-weight: 500;
   color: #333;
   transition: all 0.2s ease;
+  line-height: 1.5; /* Improved line height for better readability */
 }
 
 .testcase-table tbody tr:last-child td {
@@ -204,8 +205,8 @@
 }
 
 .btn-icon {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -215,9 +216,10 @@
   border: 1px solid #e2e8f0;
   color: #4a5568;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  margin: 0 2px;
 }
 
 .btn-icon::after {
@@ -689,15 +691,17 @@ select.form-control:focus {
 
 .badge {
   font-weight: 600;
-  font-size: 11px;
-  padding: 6px 10px;
+  font-size: 12px;
+  padding: 6px 12px;
   border-radius: 20px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  min-width: 80px;
+  text-align: center;
 }
 
 .badge i {

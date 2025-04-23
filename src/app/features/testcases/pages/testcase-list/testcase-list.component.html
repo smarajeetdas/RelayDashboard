@@ -209,13 +209,16 @@
                 <td>
                   <div class="action-buttons">
                     <button class="btn btn-icon text-primary" title="Edit" (click)="$event.stopPropagation()">
-                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button class="btn btn-icon text-info" title="Execute" (click)="$event.stopPropagation()">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="btn btn-icon text-secondary" title="Clone" (click)="$event.stopPropagation()">
+                      <i class="fas fa-copy"></i>
                     </button>
                     <button class="btn btn-icon text-danger" title="Delete" (click)="deleteTestCase($event, testCase.id)">
                       <i class="fas fa-trash-alt"></i>
-                    </button>
-                    <button class="btn btn-icon text-info" title="Clone" (click)="$event.stopPropagation()">
-                      <i class="fas fa-clone"></i>
                     </button>
                   </div>
                 </td>
