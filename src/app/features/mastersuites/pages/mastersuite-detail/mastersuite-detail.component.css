@@ -1,5 +1,6 @@
 .mastersuite-detail-page {
   background-color: #f8f9fa;
+  padding-top: 100px; /* Increased padding to account for fixed header */
 }
 
 .back-button {
