@@ -314,6 +314,69 @@ select.form-control:focus {
   box-shadow: 0 0 0 3px rgba(20, 115, 230, 0.15);
 }
 
+/* Custom project search dropdown styling */
+.project-search-wrapper {
+  position: relative;
+}
+
+.project-search {
+  color: #666;
+  font-weight: 500;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 10px 12px;
+  width: 100%;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231473e6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+  transition: all 0.3s ease;
+}
+
+.project-search:focus {
+  outline: none;
+  border-color: #1473e6;
+  box-shadow: 0 0 0 3px rgba(20, 115, 230, 0.15);
+}
+
+.project-search::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+
+.project-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+  border: 1px solid #eaeaea;
+}
+
+.project-dropdown-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #f2f2f2;
+  transition: all 0.2s ease;
+}
+
+.project-dropdown-item:hover {
+  background-color: #f0f8ff;
+}
+
+.project-dropdown-item.active {
+  background-color: #78aeff;
+  color: white;
+  font-weight: 600;
+}
+
 .font-weight-bold {
   font-weight: 600 !important;
 }
@@ -330,26 +393,36 @@ select.form-control option {
   transition: all 0.2s ease;
 }
 
+/* Make the dropdown popup styling match the screenshot */
+select.form-control option:not(:first-child) {
+  padding: 12px 15px;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+}
+
 select.form-control option:hover,
 select.form-control option:focus,
-select.form-control option:checked,
 select.form-control option.active-option {
-  background: linear-gradient(135deg, rgba(20, 115, 230, 0.1) 0%, rgba(13, 98, 201, 0.1) 100%) !important;
-  color: #1473e6 !important;
+  background: #f0f8ff !important;
+  color: #333333 !important;
+  font-weight: 500;
+}
+
+select.form-control option:checked {
+  background: #78aeff !important;
+  color: white !important;
   font-weight: 600;
 }
 
+/* Style for the first item (Select project/type) */
 select.form-control option:first-child {
   font-weight: 600;
   color: #1473e6 !important;
-  background: linear-gradient(135deg, rgba(20, 115, 230, 0.1) 0%, rgba(13, 98, 201, 0.1) 100%) !important;
+  background: linear-gradient(135deg, #78aeff 0%, #4b91ff 100%) !important;
   border-bottom: 2px solid #1473e6;
-}
-
-/* Highlight selected option */
-select.form-control option:checked {
-  box-shadow: 0 0 10px 100px #1473e6 inset;
   color: white !important;
+  padding: 15px;
 }
 
 .input-group-text {

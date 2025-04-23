@@ -29,7 +29,12 @@ export class EndpointListComponent implements OnInit {
   availablePerPage: number[] = [10, 25, 50, 100];
   
   projects: string[] = [];
+  filteredProjects: string[] = [];
   endpointTypes: string[] = [];
+  
+  // Project search autocomplete properties
+  projectSearchTerm: string = '';
+  showProjectDropdown: boolean = false;
   
   constructor(
     private endpointService: EndpointService,
@@ -81,6 +86,7 @@ export class EndpointListComponent implements OnInit {
       
       // Extract unique projects and endpoint types for filters
       this.projects = Array.from(new Set(endpoints.map(e => e.project)));
+      this.filteredProjects = [...this.projects]; // Initialize filtered projects
       this.endpointTypes = Array.from(new Set(endpoints.map(e => e.category)));
       
       // Initialize pagination
@@ -88,6 +94,40 @@ export class EndpointListComponent implements OnInit {
       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
       this.updatePaginatedData();
     });
+  }
+  
+  /**
+   * Filter projects based on search term
+   */
+  filterProjects(): void {
+    if (!this.projectSearchTerm.trim()) {
+      this.filteredProjects = [...this.projects];
+    } else {
+      const searchTerm = this.projectSearchTerm.toLowerCase();
+      this.filteredProjects = this.projects.filter(project => 
+        project.toLowerCase().includes(searchTerm)
+      );
+    }
+  }
+  
+  /**
+   * Handle project selection from dropdown
+   */
+  selectProject(project: string): void {
+    this.selectedProject = project;
+    this.projectSearchTerm = project;
+    this.showProjectDropdown = false;
+    this.applyFilters();
+  }
+  
+  /**
+   * Handle input blur for project search
+   */
+  onProjectInputBlur(): void {
+    // Small delay to allow click events on dropdown items
+    setTimeout(() => {
+      this.showProjectDropdown = false;
+    }, 200);
   }
   
   applyFilters(): void {
@@ -233,6 +273,7 @@ export class EndpointListComponent implements OnInit {
   resetFilters(): void {
     this.searchKeyword = '';
     this.selectedProject = '';
+    this.projectSearchTerm = '';
     this.selectedEndpointType = '';
     this.selectedSortOption = 'name';
     this.showCertifiedOnly = false;
@@ -240,6 +281,7 @@ export class EndpointListComponent implements OnInit {
     this.searchUpdatedBy = '';
     this.searchCreatedBy = '';
     this.filteredEndpoints = [...this.endpoints];
+    this.filteredProjects = [...this.projects];
     
     // Reset pagination
     this.currentPage = 1;

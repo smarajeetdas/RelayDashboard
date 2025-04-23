@@ -26,15 +26,27 @@
         </div>
         <div class="col-md-3 mb-3">
           <div class="form-group">
-            <select class="form-control font-weight-bold" [(ngModel)]="selectedProject" (change)="applyFilters()">
-              <option value="">Select project</option>
-              <option *ngFor="let project of projects" [value]="project" [class.active-option]="selectedProject === project">{{project}}</option>
-            </select>
+            <div class="project-search-wrapper">
+              <input type="text" class="form-control project-search" 
+                     placeholder="Select project" 
+                     [(ngModel)]="projectSearchTerm"
+                     (input)="filterProjects()"
+                     (focus)="showProjectDropdown = true"
+                     (blur)="onProjectInputBlur()">
+              <div class="project-dropdown" *ngIf="showProjectDropdown">
+                <div class="project-dropdown-item" 
+                     *ngFor="let project of filteredProjects" 
+                     (click)="selectProject(project)"
+                     [class.active]="selectedProject === project">
+                  {{project}}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <div class="form-group">
-            <select class="form-control font-weight-bold" [(ngModel)]="selectedEndpointType" (change)="applyFilters()">
+            <select class="form-control font-weight-bold endpoint-type-select" [(ngModel)]="selectedEndpointType" (change)="applyFilters()">
               <option value="">Select endpoint type</option>
               <option *ngFor="let type of endpointTypes" [value]="type" [class.active-option]="selectedEndpointType === type">{{type}}</option>
             </select>
@@ -42,7 +54,7 @@
         </div>
         <div class="col-md-3 mb-3">
           <div class="form-group">
-            <select class="form-control font-weight-bold" [(ngModel)]="selectedSortOption" (change)="applyFilters()">
+            <select class="form-control font-weight-bold sort-select" [(ngModel)]="selectedSortOption" (change)="applyFilters()">
               <option value="name" [class.active-option]="selectedSortOption === 'name'">Sort by Name</option>
               <option value="updatedOn" [class.active-option]="selectedSortOption === 'updatedOn'">Sort by Updated On</option>
               <option value="createdOn" [class.active-option]="selectedSortOption === 'createdOn'">Sort by Created On</option>
