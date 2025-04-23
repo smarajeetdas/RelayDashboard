@@ -126,6 +126,7 @@
 .mastersuite-table thead {
   background: linear-gradient(135deg, #1473e6, #0954b6);
   color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .mastersuite-table thead th {
