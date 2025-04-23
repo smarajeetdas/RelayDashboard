@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { TestCase, TestCaseDetail, TestCaseStep } from '../models/testcase.model';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -73,7 +74,15 @@ export class TestCaseService {
 
   getTestCases(): Observable<TestCase[]> {
     console.log('Fetching test cases:', this.mockTestCases);
-    return of(this.mockTestCases);
+    return of(this.mockTestCases.slice()).pipe(
+      tap(testCases => {
+        console.log('Emitting test cases:', testCases);
+        console.log('Array length:', testCases.length);
+        if (testCases.length === 0) {
+          console.warn('Warning: Empty test cases array');
+        }
+      })
+    );
   }
 
   getTestCaseById(id: string): Observable<TestCaseDetail | undefined> {

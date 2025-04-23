@@ -190,13 +190,13 @@
                 </td>
                 <td>{{ testCase.project }}</td>
                 <td>
-                  <span class="badge" 
+                  <span class="badge badge-pill" 
                         [ngClass]="{
-                          'bg-primary': testCase.category === 'WEB',
-                          'bg-success': testCase.category === 'REST',
-                          'bg-warning': testCase.category === 'MOBILE',
-                          'bg-info': testCase.category === 'NA',
-                          'bg-secondary': testCase.category !== 'WEB' && testCase.category !== 'REST' && testCase.category !== 'MOBILE' && testCase.category !== 'NA'
+                          'badge-primary': testCase.category === 'WEB',
+                          'badge-success': testCase.category === 'REST',
+                          'badge-warning': testCase.category === 'MOBILE',
+                          'badge-info': testCase.category === 'NA',
+                          'badge-secondary': testCase.category !== 'WEB' && testCase.category !== 'REST' && testCase.category !== 'MOBILE' && testCase.category !== 'NA'
                         }">
                     {{ testCase.category }}
                   </span>

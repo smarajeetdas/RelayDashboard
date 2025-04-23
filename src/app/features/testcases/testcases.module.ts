@@ -7,16 +7,19 @@ import { SharedModule } from '../../shared/shared.module';
 // Import components as they are created
 import { TestCaseListComponent } from './pages/testcase-list/testcase-list.component';
 import { TestCaseDetailComponent } from './pages/testcase-detail/testcase-detail.component';
+import { TestSimpleComponent } from './pages/test-simple/test-simple.component';
 
 const routes: Routes = [
   { path: '', component: TestCaseListComponent },
+  { path: 'simple', component: TestSimpleComponent },
   { path: ':id', component: TestCaseDetailComponent }
 ];
 
 @NgModule({
   declarations: [
     TestCaseListComponent,
-    TestCaseDetailComponent
+    TestCaseDetailComponent,
+    TestSimpleComponent
   ],
   imports: [
     CommonModule,

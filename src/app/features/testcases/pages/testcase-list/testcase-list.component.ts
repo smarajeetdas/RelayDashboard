@@ -66,7 +66,17 @@ export class TestCaseListComponent implements OnInit {
     this.testCaseService.getTestCases().subscribe(
       (testCases) => {
         console.log('Received test cases in component:', testCases);
-        this.testCases = testCases;
+        console.log('Is testCases array? ', Array.isArray(testCases));
+        console.log('Test cases length:', testCases ? testCases.length : 0);
+        
+        // Safety check
+        if (!testCases || !Array.isArray(testCases)) {
+          console.error('TestCases is not a valid array:', testCases);
+          this.testCases = [];
+        } else {
+          this.testCases = testCases;
+        }
+        
         this.applyFilters();
         console.log('Filtered test cases:', this.filteredTestCases);
         this.loading = false;
