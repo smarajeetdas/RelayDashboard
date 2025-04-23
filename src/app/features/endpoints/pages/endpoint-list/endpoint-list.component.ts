@@ -9,6 +9,9 @@ import { EndpointService } from '../../services/endpoint.service';
   styleUrls: ['./endpoint-list.component.css']
 })
 export class EndpointListComponent implements OnInit {
+  // Adding Math property for use in the template
+  Math = Math;
+  
   endpoints: Endpoint[] = [];
   filteredEndpoints: Endpoint[] = [];
   searchKeyword: string = '';
