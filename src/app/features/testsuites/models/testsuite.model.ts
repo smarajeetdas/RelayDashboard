@@ -6,6 +6,8 @@ export interface TestSuite {
   lastModified?: string;
   updatedBy?: string;
   active?: boolean;
+  project?: string;
+  parallel?: boolean;
 }
 
 export interface TestSuiteDetail extends TestSuite {

@@ -162,13 +162,11 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Category</th>
-                <th>Think Time</th>
-                <th>Exit on failure</th>
-                <th>Mobile</th>
-                <th>Last Modified</th>
+                <th>Project</th>
+                <th>Endpoint Type</th>
+                <th>Updated On</th>
                 <th>Updated By</th>
-                <th class="text-center">Actions</th>
+                <th class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -178,35 +176,18 @@
                 <td>
                   <span class="font-weight-bold">{{ testCase.name }}</span>
                 </td>
+                <td>{{ testCase.project }}</td>
                 <td>
                   <span class="badge" 
                         [ngClass]="{
                           'bg-primary': testCase.category === 'WEB',
-                          'bg-success': testCase.category === 'API',
+                          'bg-success': testCase.category === 'REST',
                           'bg-warning': testCase.category === 'MOBILE',
-                          'bg-info': testCase.category === 'DESKTOP'
+                          'bg-info': testCase.category === 'NA',
+                          'bg-secondary': testCase.category !== 'WEB' && testCase.category !== 'REST' && testCase.category !== 'MOBILE' && testCase.category !== 'NA'
                         }">
-                    <i class="fas"
-                       [ngClass]="{
-                         'fa-globe': testCase.category === 'WEB',
-                         'fa-code': testCase.category === 'API',
-                         'fa-mobile-alt': testCase.category === 'MOBILE',
-                         'fa-desktop': testCase.category === 'DESKTOP'
-                       }">
-                    </i>
                     {{ testCase.category }}
                   </span>
-                </td>
-                <td>{{ testCase.thinkTime }}</td>
-                <td class="text-center">
-                  <i class="fas" 
-                     [ngClass]="testCase.exitOnFailure ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'">
-                  </i>
-                </td>
-                <td class="text-center">
-                  <i class="fas" 
-                     [ngClass]="testCase.mobile ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'">
-                  </i>
                 </td>
                 <td>{{ testCase.lastModified }}</td>
                 <td>{{ testCase.updatedBy }}</td>
@@ -217,6 +198,9 @@
                     </button>
                     <button class="btn btn-icon text-danger" title="Delete" (click)="deleteTestCase($event, testCase.id)">
                       <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button class="btn btn-icon text-info" title="Clone" (click)="$event.stopPropagation()">
+                      <i class="fas fa-clone"></i>
                     </button>
                   </div>
                 </td>

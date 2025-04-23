@@ -8,6 +8,7 @@ export interface TestCase {
   lastModified?: string;
   updatedBy?: string;
   active?: boolean;
+  project?: string;
 }
 
 export interface TestCaseDetail extends TestCase {

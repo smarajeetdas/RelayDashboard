@@ -9,43 +9,111 @@ export class MasterSuiteService {
   private mockMasterSuites: MasterSuite[] = [
     {
       id: 'ms001',
-      name: 'Complete User Journey',
-      category: 'WEB',
+      name: 'end point with long nameeeeeeeeeeeeeeeeeeeee...',
+      category: 'REST',
       testSuiteCount: 3,
-      testCaseCount: 12,
-      lastModified: '23-04-2025, 04:30:42 PM',
-      updatedBy: 'Jane',
-      active: true
+      testCaseCount: 25,
+      lastModified: '23-04-2025, 12:53:05 PM',
+      updatedBy: 'Pravanni Panda',
+      active: true,
+      project: 'Prod_Sanity_Prava',
+      parallel: true
     },
     {
       id: 'ms002',
-      name: 'End-to-End eCommerce Flow',
-      category: 'WEB',
-      testSuiteCount: 4,
-      testCaseCount: 15,
-      lastModified: '22-04-2025, 02:15:20 PM',
-      updatedBy: 'John',
-      active: true
+      name: 'sprint_9 MS - Copy',
+      category: 'REST',
+      testSuiteCount: 2,
+      testCaseCount: 18,
+      lastModified: '23-04-2025, 12:09:25 PM',
+      updatedBy: 'Pravanni Panda',
+      active: true,
+      project: 'Prod_Sanity_Prava',
+      parallel: false
     },
     {
       id: 'ms003',
-      name: 'Backend API Integration Tests',
-      category: 'API',
-      testSuiteCount: 5,
-      testCaseCount: 22,
-      lastModified: '21-04-2025, 11:40:10 AM',
-      updatedBy: 'Sarah',
-      active: true
+      name: 'sprint_9 MS',
+      category: 'REST',
+      testSuiteCount: 4,
+      testCaseCount: 32,
+      lastModified: '23-04-2025, 12:06:45 PM',
+      updatedBy: 'Pravanni Panda',
+      active: true,
+      project: 'Prod_Sanity_Prava',
+      parallel: false
     },
     {
       id: 'ms004',
-      name: 'Mobile App Release Validation',
-      category: 'MOBILE',
+      name: 'MS1',
+      category: 'NA',
+      testSuiteCount: 2,
+      testCaseCount: 10,
+      lastModified: '23-04-2025, 11:50:24 AM',
+      updatedBy: 'Kavitha Venkatesan',
+      active: true,
+      project: '16.6ProdSanity',
+      parallel: true
+    },
+    {
+      id: 'ms005',
+      name: 'CreateMasterSuite',
+      category: 'REST',
+      testSuiteCount: 1,
+      testCaseCount: 8,
+      lastModified: '23-04-2025, 07:41:11 AM',
+      updatedBy: 'Relay-AWS-App-Service@AdobeID',
+      active: true,
+      project: 'PRODELAY IQ',
+      parallel: true
+    },
+    {
+      id: 'ms006',
+      name: 'master suite test',
+      category: 'REST',
       testSuiteCount: 3,
-      testCaseCount: 18,
-      lastModified: '20-04-2025, 09:25:35 AM',
-      updatedBy: 'Mike',
-      active: true
+      testCaseCount: 15,
+      lastModified: '16-04-2025, 08:28:35 PM',
+      updatedBy: 'Sameer Samantra',
+      active: true,
+      project: 'Sameer_Playwright_Project',
+      parallel: true
+    },
+    {
+      id: 'ms007',
+      name: 'MS-Email',
+      category: 'REST',
+      testSuiteCount: 1,
+      testCaseCount: 5,
+      lastModified: '09-04-2025, 07:19:03 PM',
+      updatedBy: 'Manish Sharma',
+      active: true,
+      project: 'Test_new_project',
+      parallel: true
+    },
+    {
+      id: 'ms008',
+      name: 'Sprint-7 sanity MS - Copy',
+      category: 'REST',
+      testSuiteCount: 2,
+      testCaseCount: 12,
+      lastModified: '02-04-2025, 03:53:24 PM',
+      updatedBy: 'Pravanni Panda',
+      active: true,
+      project: 'Prod_Sanity_Prava',
+      parallel: false
+    },
+    {
+      id: 'ms009',
+      name: 'Sprint-7 sanity MS',
+      category: 'REST',
+      testSuiteCount: 2,
+      testCaseCount: 12,
+      lastModified: '02-04-2025, 02:50:55 PM',
+      updatedBy: 'Pravanni Panda',
+      active: true,
+      project: 'Prod_Sanity_Prava',
+      parallel: true
     }
   ];
 
@@ -64,52 +132,85 @@ export class MasterSuiteService {
     // Create a detailed master suite with additional information
     const masterSuiteDetail: MasterSuiteDetail = {
       ...masterSuite,
-      description: 'This master suite provides a comprehensive verification of the complete application.',
+      description: 'This master suite contains multiple test suites for comprehensive testing.',
       environment: 'Production',
       domain: 'https://stage-webapp.adobe.com',
       envType: 'stage',
-      score: 97,
-      testSuites: this.generateMockTestSuites(masterSuite.testSuiteCount, masterSuite.testCaseCount)
+      score: 92,
+      testSuites: this.generateMockTestSuites(id)
     };
 
     return of(masterSuiteDetail);
   }
 
-  private generateMockTestSuites(count: number, totalTestCases: number): MasterSuiteTestSuite[] {
-    const testSuites: MasterSuiteTestSuite[] = [];
-    const categories = ['WEB', 'API', 'MOBILE'];
-    
-    // Distribute test cases among test suites
-    let remainingTestCases = totalTestCases;
-    
-    for (let i = 1; i <= count; i++) {
-      // Determine how many test cases to assign to this test suite
-      const isLastSuite = i === count;
-      let testCaseCount: number;
-      
-      if (isLastSuite) {
-        testCaseCount = remainingTestCases;
-      } else {
-        // Distribute testCases fairly among suites
-        testCaseCount = Math.floor(remainingTestCases / (count - i + 1));
-        // Add some randomness
-        testCaseCount += Math.floor(Math.random() * 2) - 1;
-        testCaseCount = Math.max(1, testCaseCount); // Ensure at least 1 test case
-      }
-      
-      remainingTestCases -= testCaseCount;
-      
-      testSuites.push({
-        id: `ts00${i}`,
-        name: `Test Suite ${i}`,
-        category: categories[Math.floor(Math.random() * categories.length)],
-        testCaseCount: testCaseCount,
-        active: Math.random() > 0.2, // 80% chance of being active
-        order: i
-      });
+  private generateMockTestSuites(masterSuiteId: string): MasterSuiteTestSuite[] {
+    // Generate different test suites based on the master suite ID
+    if (masterSuiteId === 'ms001') {
+      return [
+        {
+          id: 'ts001',
+          name: 'TS-parallel',
+          category: 'REST',
+          testCaseCount: 15,
+          active: true,
+          order: 1
+        },
+        {
+          id: 'ts004',
+          name: 'Mobile App Sanity',
+          category: 'NA',
+          testCaseCount: 8,
+          active: true,
+          order: 2
+        }
+      ];
+    } else if (masterSuiteId === 'ms002') {
+      return [
+        {
+          id: 'ts002',
+          name: 'End point with long name',
+          category: 'REST',
+          testCaseCount: 12,
+          active: true,
+          order: 1
+        },
+        {
+          id: 'ts003',
+          name: 'Sanity_sprint_9_Ts',
+          category: 'REST',
+          testCaseCount: 6,
+          active: true,
+          order: 2
+        },
+        {
+          id: 'ts005',
+          name: 'TS1 - Copy',
+          category: 'REST',
+          testCaseCount: 5,
+          active: false,
+          order: 3
+        }
+      ];
+    } else {
+      return [
+        {
+          id: 'ts006',
+          name: 'Test Suite 1',
+          category: 'REST',
+          testCaseCount: 10,
+          active: true,
+          order: 1
+        },
+        {
+          id: 'ts007',
+          name: 'Test Suite 2',
+          category: 'WEB',
+          testCaseCount: 8,
+          active: true,
+          order: 2
+        }
+      ];
     }
-    
-    return testSuites;
   }
 
   searchMasterSuites(query: string, filters: any = {}): Observable<MasterSuite[]> {
@@ -126,6 +227,11 @@ export class MasterSuiteService {
     // Apply category filter if present
     if (filters.category) {
       filteredMasterSuites = filteredMasterSuites.filter(ms => ms.category === filters.category);
+    }
+    
+    // Apply active filter if present
+    if (filters.active !== undefined) {
+      filteredMasterSuites = filteredMasterSuites.filter(ms => ms.active === filters.active);
     }
 
     return of(filteredMasterSuites);

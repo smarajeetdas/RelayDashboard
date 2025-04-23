@@ -7,6 +7,8 @@ export interface MasterSuite {
   lastModified?: string;
   updatedBy?: string;
   active?: boolean;
+  project?: string;
+  parallel?: boolean;
 }
 
 export interface MasterSuiteDetail extends MasterSuite {

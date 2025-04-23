@@ -9,47 +9,63 @@ export class TestCaseService {
   private mockTestCases: TestCase[] = [
     {
       id: 'tc001',
-      name: 'Open web application',
-      category: 'WEB',
+      name: 'tc1',
+      category: 'REST',
       thinkTime: '00:00:00',
       exitOnFailure: true,
       mobile: false,
-      lastModified: '23-04-2025, 04:30:42 PM',
-      updatedBy: 'Jane',
-      active: true
+      lastModified: '23-04-2025, 07:33:04 PM',
+      updatedBy: 'Relay-AWS-App-Service@AdobeID',
+      active: true,
+      project: 'PRODELAY IQ'
     },
     {
       id: 'tc002',
-      name: 'Verify home page',
-      category: 'WEB',
-      thinkTime: '00:00:45',
-      exitOnFailure: false,
-      mobile: false,
-      lastModified: '22-04-2025, 02:15:20 PM',
-      updatedBy: 'John',
-      active: true
-    },
-    {
-      id: 'tc003',
-      name: 'Login functionality',
+      name: 'SC1: Inqaxy web',
       category: 'WEB',
       thinkTime: '00:00:30',
       exitOnFailure: true,
       mobile: false,
-      lastModified: '21-04-2025, 11:40:10 AM',
-      updatedBy: 'Sarah',
-      active: true
+      lastModified: '23-04-2025, 04:36:42 PM',
+      updatedBy: 'Darshan N R',
+      active: true,
+      project: 'InQaxy_web_Selenium'
+    },
+    {
+      id: 'tc003',
+      name: 'Prod Bud V3 Redition Datamerge',
+      category: 'REST',
+      thinkTime: '00:00:15',
+      exitOnFailure: true,
+      mobile: false,
+      lastModified: '23-04-2025, 04:27:56 PM',
+      updatedBy: 'Relay-AWS-App-Service@AdobeID',
+      active: true,
+      project: 'InDesign Cloud Services'
     },
     {
       id: 'tc004',
-      name: 'Mobile TestCase',
-      category: 'MOBILE',
+      name: 'Adobe Scan Test flow',
+      category: 'NA',
       thinkTime: '00:00:20',
       exitOnFailure: true,
       mobile: true,
-      lastModified: '20-04-2025, 09:25:35 AM',
-      updatedBy: 'Mike',
-      active: true
+      lastModified: '23-04-2025, 04:07:03 PM',
+      updatedBy: 'Ganesh Kumar',
+      active: true,
+      project: 'Adobe Scan Mobile Automation'
+    },
+    {
+      id: 'tc005',
+      name: 'Catalog API+ Admin',
+      category: 'REST',
+      thinkTime: '00:00:25',
+      exitOnFailure: true,
+      mobile: false,
+      lastModified: '23-04-2025, 02:58:28 PM',
+      updatedBy: 'Pravanni Panda',
+      active: true,
+      project: 'Pravanni_Project'
     }
   ];
 
