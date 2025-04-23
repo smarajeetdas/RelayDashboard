@@ -15,19 +15,14 @@
     <!-- Header section -->
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h1 class="endpoint-title">ENDPOINT</h1>
-      <div class="d-flex align-items-center">
-        <div class="total-count me-4 mr-4">
-          <span class="font-weight-bold">Total Endpoints: {{ totalItems }}</span>
-        </div>
-        <div class="endpoint-actions">
-          <div class="d-flex" style="gap: 25px;">
-            <button class="btn btn-primary btn-filter" id="toggleFilters">
-              <i class="fas fa-filter"></i>
-            </button>
-            <button class="btn btn-primary create-btn" (click)="createNewEndpoint()">
-              <i class="fas fa-plus"></i>
-            </button>
-          </div>
+      <div class="endpoint-actions">
+        <div class="d-flex" style="gap: 25px;">
+          <button class="btn btn-primary btn-filter" id="toggleFilters">
+            <i class="fas fa-filter"></i>
+          </button>
+          <button class="btn btn-primary create-btn" (click)="createNewEndpoint()">
+            <i class="fas fa-plus"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -225,9 +220,8 @@
       <div class="pagination-container d-flex align-items-center justify-content-between">
         <!-- Total Items Info -->
         <div class="results-info">
-          <p class="mb-0">
-            Showing {{ (currentPage - 1) * itemsPerPage + 1 }} to 
-            {{ Math.min(currentPage * itemsPerPage, totalItems) }} of {{ totalItems }} entries
+          <p class="mb-0 font-weight-bold">
+            Total Endpoints: {{ totalItems }}
           </p>
         </div>
         

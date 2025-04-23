@@ -14,19 +14,14 @@
     <!-- Header section -->
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="testcase-title">Test Cases</h2>
-      <div class="d-flex align-items-center">
-        <div class="total-count me-4 mr-4">
-          <span class="font-weight-bold">Total Test Cases: {{ totalItems }}</span>
-        </div>
-        <div class="testcase-actions">
-          <div class="d-flex" style="gap: 10px;">
-            <button class="btn btn-filter" (click)="toggleFilterSection()">
-              <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
-            </button>
-            <button class="btn create-btn">
-              <i class="fas fa-plus text-white"></i>
-            </button>
-          </div>
+      <div class="testcase-actions">
+        <div class="d-flex" style="gap: 10px;">
+          <button class="btn btn-filter" (click)="toggleFilterSection()">
+            <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
+          </button>
+          <button class="btn create-btn">
+            <i class="fas fa-plus text-white"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -232,9 +227,8 @@
         <!-- Pagination -->
         <div class="pagination-container d-flex align-items-center justify-content-between">
           <div class="results-info">
-            <p class="mb-0">
-              Showing {{ (currentPage - 1) * pageSize + 1 }} to 
-              {{ Math.min(currentPage * pageSize, totalItems) }} of {{ totalItems }} entries
+            <p class="mb-0 font-weight-bold">
+              Total Test Cases: {{ totalItems }}
             </p>
           </div>
           
