@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/endpoints/endpoints.module').then(m => m.EndpointsModule)
   },
   {
+    path: 'testcases',
+    loadChildren: () => import('./features/testcases/testcases.module').then(m => m.TestCasesModule)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

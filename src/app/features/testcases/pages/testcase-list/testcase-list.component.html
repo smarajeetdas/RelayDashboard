@@ -1,0 +1,282 @@
+<div class="testcase-page">
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <h2 class="testcase-title">Test Cases</h2>
+      </div>
+      <div class="col-md-6 text-right">
+        <div class="testcase-actions">
+          <button class="btn btn-filter ml-auto mr-2" (click)="toggleFilterSection()">
+            <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
+          </button>
+          <button class="btn create-btn">
+            <i class="fas fa-plus text-white"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter section -->
+    <div class="row mb-4 filter-section" [ngClass]="{'d-none': !showFilterSection}">
+      <div class="col-md-12">
+        <div class="card shadow-sm border-0 rounded-lg">
+          <div class="card-body bg-light">
+            <div class="row">
+              <!-- Search input -->
+              <div class="col-md-6 mb-3 mb-md-0">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      placeholder="Search test cases" 
+                      [(ngModel)]="searchQuery"
+                      (keyup.enter)="searchTestCases()"
+                    >
+                    <div class="input-group-append ml-2">
+                      <button class="btn btn-clear mr-2" (click)="clearFilters()" title="Clear filters">
+                        <i class="fas fa-times"></i>
+                      </button>
+                      <button class="btn btn-search" (click)="searchTestCases()" title="Search">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Category filter -->
+              <div class="col-md-2 mb-3 mb-md-0">
+                <div class="category-search-wrapper" (mouseleave)="showCategoryDropdown = false">
+                  <div class="category-search" (click)="toggleCategoryDropdown($event)">
+                    {{ selectedCategory || 'Select Category' }}
+                  </div>
+                  <div class="category-dropdown" *ngIf="showCategoryDropdown">
+                    <div 
+                      class="category-dropdown-item" 
+                      [ngClass]="{'active': selectedCategory === ''}" 
+                      (click)="selectCategory('')"
+                    >
+                      All Categories
+                    </div>
+                    <div 
+                      *ngFor="let category of categoryOptions" 
+                      class="category-dropdown-item" 
+                      [ngClass]="{'active': selectedCategory === category}" 
+                      (click)="selectCategory(category)"
+                    >
+                      {{ category }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile filter -->
+              <div class="col-md-2 mb-3 mb-md-0">
+                <div class="mobile-type-wrapper" (mouseleave)="showMobileDropdown = false">
+                  <div class="mobile-type-select" (click)="toggleMobileDropdown($event)">
+                    {{ getMobileLabel(filterMobile) }} Type
+                  </div>
+                  <div class="mobile-type-dropdown" *ngIf="showMobileDropdown">
+                    <div 
+                      *ngFor="let option of mobileOptions" 
+                      class="mobile-type-dropdown-item" 
+                      [ngClass]="{'active': selectedMobile === option.value}" 
+                      (click)="selectMobileFilter(option.value)"
+                    >
+                      {{ option.label }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sort by -->
+              <div class="col-md-2">
+                <div class="sort-wrapper" (mouseleave)="showSortDropdown = false">
+                  <div class="sort-select" (click)="toggleSortDropdown($event)">
+                    Sort by: {{ getSortLabel() }}
+                    <i class="fas fa-chevron-down float-right mt-1" style="font-size: 12px;"></i>
+                  </div>
+                  <div class="sort-dropdown" *ngIf="showSortDropdown">
+                    <div 
+                      *ngFor="let option of sortOptions" 
+                      class="sort-dropdown-item" 
+                      [ngClass]="{'active': sortBy === option.value}" 
+                      (click)="selectSortOption(option.value)"
+                    >
+                      {{ option.label }}
+                      <i class="fas float-right mt-1" 
+                         *ngIf="sortBy === option.value" 
+                         [ngClass]="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"
+                         style="font-size: 12px;">
+                      </i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div class="row" *ngIf="loading">
+      <div class="col-md-12 text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <p class="mt-2 text-muted">Loading test cases...</p>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div class="row" *ngIf="error && !loading">
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+          <i class="fas fa-exclamation-circle mr-2"></i> {{ error }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Table and pagination -->
+    <div class="row" *ngIf="!loading && !error">
+      <!-- Empty state -->
+      <div class="col-md-12" *ngIf="filteredTestCases.length === 0">
+        <div class="card shadow-sm border-0 rounded-lg text-center py-5">
+          <div class="card-body">
+            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+            <h4>No test cases found</h4>
+            <p class="text-muted">Try adjusting your search or filter criteria</p>
+            <button class="btn btn-outline-primary mt-2" (click)="clearFilters()">
+              <i class="fas fa-times mr-2"></i> Clear filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="col-md-12" *ngIf="filteredTestCases.length > 0">
+        <div class="table-responsive">
+          <table class="table testcase-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Think Time</th>
+                <th>Exit on failure</th>
+                <th>Mobile</th>
+                <th>Last Modified</th>
+                <th>Updated By</th>
+                <th class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let testCase of filteredTestCases" 
+                  class="testcase-row" 
+                  (click)="viewTestCaseDetails(testCase)">
+                <td>
+                  <span class="font-weight-bold">{{ testCase.name }}</span>
+                </td>
+                <td>
+                  <span class="badge" 
+                        [ngClass]="{
+                          'bg-primary': testCase.category === 'WEB',
+                          'bg-success': testCase.category === 'API',
+                          'bg-warning': testCase.category === 'MOBILE',
+                          'bg-info': testCase.category === 'DESKTOP'
+                        }">
+                    <i class="fas"
+                       [ngClass]="{
+                         'fa-globe': testCase.category === 'WEB',
+                         'fa-code': testCase.category === 'API',
+                         'fa-mobile-alt': testCase.category === 'MOBILE',
+                         'fa-desktop': testCase.category === 'DESKTOP'
+                       }">
+                    </i>
+                    {{ testCase.category }}
+                  </span>
+                </td>
+                <td>{{ testCase.thinkTime }}</td>
+                <td class="text-center">
+                  <i class="fas" 
+                     [ngClass]="testCase.exitOnFailure ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'">
+                  </i>
+                </td>
+                <td class="text-center">
+                  <i class="fas" 
+                     [ngClass]="testCase.mobile ? 'fa-check-circle text-success' : 'fa-times-circle text-danger'">
+                  </i>
+                </td>
+                <td>{{ testCase.lastModified }}</td>
+                <td>{{ testCase.updatedBy }}</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="btn btn-icon text-primary" title="Edit" (click)="$event.stopPropagation()">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-icon text-danger" title="Delete" (click)="deleteTestCase($event, testCase.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container d-flex align-items-center justify-content-between">
+          <div class="results-info">
+            <p class="mb-0">
+              Showing {{ (currentPage - 1) * pageSize + 1 }} to 
+              {{ Math.min(currentPage * pageSize, totalItems) }} of {{ totalItems }} entries
+            </p>
+          </div>
+          
+          <div class="d-flex align-items-center">
+            <div class="per-page-dropdown dropdown mr-3">
+              <button class="btn dropdown-toggle" type="button" id="perPageDropdown" data-toggle="dropdown">
+                {{ pageSize }} per page
+              </button>
+              <div class="dropdown-menu" aria-labelledby="perPageDropdown">
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 10}" (click)="onPageSizeChange(10)">10</a>
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 25}" (click)="onPageSizeChange(25)">25</a>
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 50}" (click)="onPageSizeChange(50)">50</a>
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 100}" (click)="onPageSizeChange(100)">100</a>
+              </div>
+            </div>
+            
+            <nav>
+              <ul class="pagination mb-0">
+                <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+                  <a class="page-link" (click)="onPageChange(currentPage - 1)" *ngIf="currentPage > 1">
+                    <i class="fas fa-chevron-left"></i>
+                  </a>
+                  <span class="page-link" *ngIf="currentPage === 1">
+                    <i class="fas fa-chevron-left"></i>
+                  </span>
+                </li>
+                
+                <ng-container *ngFor="let page of [].constructor(Math.ceil(totalItems / pageSize)); let i = index">
+                  <li class="page-item" *ngIf="showPageNumber(i + 1)" [ngClass]="{'active': currentPage === i + 1}">
+                    <a class="page-link" (click)="onPageChange(i + 1)">{{ i + 1 }}</a>
+                  </li>
+                </ng-container>
+                
+                <li class="page-item" [ngClass]="{'disabled': currentPage === Math.ceil(totalItems / pageSize)}">
+                  <a class="page-link" (click)="onPageChange(currentPage + 1)" *ngIf="currentPage < Math.ceil(totalItems / pageSize)">
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                  <span class="page-link" *ngIf="currentPage === Math.ceil(totalItems / pageSize)">
+                    <i class="fas fa-chevron-right"></i>
+                  </span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
