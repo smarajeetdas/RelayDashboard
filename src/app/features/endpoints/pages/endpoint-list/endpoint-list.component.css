@@ -282,11 +282,18 @@ select.form-control {
   background-position: right 12px center;
   background-size: 16px;
   padding-right: 40px;
+  color: #333333;
+  background-color: #ffffff;
+  font-weight: 500;
+}
+
+.font-weight-bold {
+  font-weight: 600 !important;
 }
 
 select.form-control option {
-  color: #333333;
-  background-color: #ffffff;
+  color: #333333 !important;
+  background-color: #ffffff !important;
   padding: 8px;
   font-weight: 500;
 }
