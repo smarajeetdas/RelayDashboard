@@ -144,7 +144,7 @@
   color: #ffffff;
   font-weight: 600;
   border-bottom: none;
-  padding: 14px 18px;
+  padding: 10px 12px; /* Reduced padding to fit more rows */
   font-size: 13px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
@@ -172,7 +172,7 @@
 }
 
 .endpoint-table tbody td {
-  padding: 14px 18px;
+  padding: 8px 12px; /* Reduced padding to fit more rows */
   vertical-align: middle;
   border-bottom: 1px solid #e0e0e0;
   font-weight: 500;
@@ -199,7 +199,7 @@
 
 .action-buttons {
   display: flex;
-  gap: 10px;
+  gap: 6px; /* Reduced gap to fit more rows */
   justify-content: center;
 }
 
@@ -356,7 +356,7 @@ select.form-control:focus {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   max-height: 300px;
   overflow-y: auto;
-  z-index: 100;
+  z-index: 1000;
   border: 1px solid #eaeaea;
 }
 
@@ -420,7 +420,7 @@ select.form-control:focus {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   max-height: 300px;
   overflow-y: auto;
-  z-index: 100;
+  z-index: 1000;
   border: 1px solid #eaeaea;
 }
 
@@ -484,7 +484,7 @@ select.form-control:focus {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   max-height: 300px;
   overflow-y: auto;
-  z-index: 100;
+  z-index: 1000;
   border: 1px solid #eaeaea;
 }
 
