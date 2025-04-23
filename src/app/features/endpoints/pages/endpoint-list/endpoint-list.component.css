@@ -69,12 +69,15 @@
 .create-btn {
   background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%);
   border: none;
-  padding: 9px 22px;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
   font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.5px;
+  font-size: 14px;
   border-radius: 8px;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 10px rgba(20, 115, 230, 0.2);
   transition: all 0.3s ease;
 }
@@ -90,6 +93,17 @@
   border-radius: 8px;
   padding: 9px 18px;
   transition: all 0.3s ease;
+}
+
+/* Square buttons for Clear and Search */
+.col-md-6 .btn-outline-primary,
+.col-md-6 .btn-primary {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary {
