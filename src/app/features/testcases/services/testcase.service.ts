@@ -72,6 +72,7 @@ export class TestCaseService {
   constructor() { }
 
   getTestCases(): Observable<TestCase[]> {
+    console.log('Fetching test cases:', this.mockTestCases);
     return of(this.mockTestCases);
   }
 

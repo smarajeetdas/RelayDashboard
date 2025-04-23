@@ -62,10 +62,13 @@ export class TestCaseListComponent implements OnInit {
 
   loadTestCases(): void {
     this.loading = true;
+    console.log('Loading test cases from service...');
     this.testCaseService.getTestCases().subscribe(
       (testCases) => {
+        console.log('Received test cases in component:', testCases);
         this.testCases = testCases;
         this.applyFilters();
+        console.log('Filtered test cases:', this.filteredTestCases);
         this.loading = false;
       },
       (error) => {
