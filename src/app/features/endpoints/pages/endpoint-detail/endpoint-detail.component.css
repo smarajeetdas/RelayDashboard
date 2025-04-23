@@ -6,6 +6,38 @@
   overflow-x: hidden;
 }
 
+/* Breadcrumb styling */
+.breadcrumb {
+  margin-bottom: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: '\f105';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #6c757d;
+  padding: 0 8px;
+}
+
+.breadcrumb-item a {
+  color: #1473e6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.breadcrumb-item a:hover {
+  color: #0d62c9;
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: #495057;
+  font-weight: 600;
+}
+
 .endpoint-detail-page::before {
   content: '';
   position: absolute;
