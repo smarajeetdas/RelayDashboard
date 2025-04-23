@@ -125,16 +125,40 @@
 }
 
 .mastersuite-table thead {
-  background: linear-gradient(135deg, #1473e6, #0954b6);
+  background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
   color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .mastersuite-table thead th {
   border-bottom: 0;
   font-weight: 600;
-  padding: 10px 15px;
+  padding: 10px 12px;
   vertical-align: middle;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.mastersuite-table thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.mastersuite-table thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.mastersuite-table thead th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
 }
 
 .mastersuite-table tbody td {
