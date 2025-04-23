@@ -1,5 +1,18 @@
 <div class="testcase-detail-page">
   <div class="container-fluid">
+    <!-- Breadcrumb Navigation -->
+    <div class="row mb-3" *ngIf="!loading && !error && testCase">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent p-0">
+            <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
+            <li class="breadcrumb-item"><a href="#" routerLink="/testcases"><i class="fas fa-clipboard-list mr-1"></i>Test Cases</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-file-alt mr-1"></i>{{ testCase.name }}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    
     <!-- Loading state -->
     <div class="row" *ngIf="loading">
       <div class="col-md-12">

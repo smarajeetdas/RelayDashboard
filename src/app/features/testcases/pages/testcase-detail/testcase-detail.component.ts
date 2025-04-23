@@ -17,16 +17,16 @@ export class TestCaseDetailComponent implements OnInit {
   
   // Sidebar configuration
   sidebarItems: SidebarItem[] = [
-    { id: 'basic', icon: 'fa-info-circle', label: 'Basic' },
-    { id: 'test-data', icon: 'fa-database', label: 'Test data' },
-    { id: 'schedule', icon: 'fa-calendar-alt', label: 'Schedule' },
-    { id: 'validations', icon: 'fa-check-circle', label: 'Validations' },
-    { id: 'certification', icon: 'fa-certificate', label: 'Certification' },
-    { id: 'notification', icon: 'fa-bell', label: 'Notification' },
-    { id: 'with', icon: 'fa-link', label: 'Associated with' },
-    { id: 'history', icon: 'fa-history', label: 'History' },
-    { id: 'execution-history', icon: 'fa-play-circle', label: 'Execution History' },
-    { id: 'result', icon: 'fa-chart-bar', label: 'Result' },
+    { id: 'basic', icon: 'info-circle', label: 'Basic' },
+    { id: 'test-data', icon: 'database', label: 'Test data' },
+    { id: 'schedule', icon: 'calendar-alt', label: 'Schedule' },
+    { id: 'validations', icon: 'check-circle', label: 'Validations' },
+    { id: 'certification', icon: 'certificate', label: 'Certification' },
+    { id: 'notification', icon: 'bell', label: 'Notification' },
+    { id: 'with', icon: 'link', label: 'Associated with' },
+    { id: 'history', icon: 'history', label: 'History' },
+    { id: 'execution-history', icon: 'play-circle', label: 'Execution History' },
+    { id: 'result', icon: 'chart-bar', label: 'Result' },
   ];
   activeSidebarItem: string = 'basic';
 
