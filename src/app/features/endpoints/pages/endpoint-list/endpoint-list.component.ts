@@ -36,6 +36,12 @@ export class EndpointListComponent implements OnInit {
   projectSearchTerm: string = '';
   showProjectDropdown: boolean = false;
   
+  // Endpoint type dropdown properties
+  showEndpointTypeDropdown: boolean = false;
+  
+  // Sort dropdown properties
+  showSortDropdown: boolean = false;
+  
   constructor(
     private endpointService: EndpointService,
     private router: Router
@@ -128,6 +134,40 @@ export class EndpointListComponent implements OnInit {
     setTimeout(() => {
       this.showProjectDropdown = false;
     }, 200);
+  }
+  
+  /**
+   * Handle endpoint type selection
+   */
+  selectEndpointType(type: string): void {
+    this.selectedEndpointType = type;
+    this.showEndpointTypeDropdown = false;
+    this.applyFilters();
+  }
+  
+  /**
+   * Handle sort option selection
+   */
+  selectSortOption(option: string): void {
+    this.selectedSortOption = option;
+    this.showSortDropdown = false;
+    this.applyFilters();
+  }
+  
+  /**
+   * Get the placeholder text for sort dropdown based on selected option
+   */
+  getSortPlaceholder(): string {
+    switch(this.selectedSortOption) {
+      case 'name':
+        return 'Sort by Name';
+      case 'updatedOn':
+        return 'Sort by Updated On';
+      case 'createdOn':
+        return 'Sort by Created On';
+      default:
+        return 'Sort by Name';
+    }
   }
   
   applyFilters(): void {
@@ -282,6 +322,11 @@ export class EndpointListComponent implements OnInit {
     this.searchCreatedBy = '';
     this.filteredEndpoints = [...this.endpoints];
     this.filteredProjects = [...this.projects];
+    
+    // Close all dropdowns
+    this.showProjectDropdown = false;
+    this.showEndpointTypeDropdown = false;
+    this.showSortDropdown = false;
     
     // Reset pagination
     this.currentPage = 1;

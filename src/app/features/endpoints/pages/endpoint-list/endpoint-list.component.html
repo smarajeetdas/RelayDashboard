@@ -33,7 +33,7 @@
                      (input)="filterProjects()"
                      (focus)="showProjectDropdown = true"
                      (blur)="onProjectInputBlur()">
-              <div class="project-dropdown" *ngIf="showProjectDropdown">
+              <div class="project-dropdown" *ngIf="showProjectDropdown" (mouseleave)="showProjectDropdown = false">
                 <div class="project-dropdown-item" 
                      *ngFor="let project of filteredProjects" 
                      (click)="selectProject(project)"
@@ -46,19 +46,53 @@
         </div>
         <div class="col-md-3 mb-3">
           <div class="form-group">
-            <select class="form-control font-weight-bold endpoint-type-select" [(ngModel)]="selectedEndpointType" (change)="applyFilters()">
-              <option value="">Select endpoint type</option>
-              <option *ngFor="let type of endpointTypes" [value]="type" [class.active-option]="selectedEndpointType === type">{{type}}</option>
-            </select>
+            <div class="endpoint-type-wrapper">
+              <input type="text" class="form-control endpoint-type-select" 
+                     placeholder="Select endpoint type" 
+                     [value]="selectedEndpointType" 
+                     readonly
+                     (click)="showEndpointTypeDropdown = !showEndpointTypeDropdown">
+              <div class="endpoint-type-dropdown" *ngIf="showEndpointTypeDropdown" (mouseleave)="showEndpointTypeDropdown = false">
+                <div class="endpoint-type-dropdown-item" 
+                     (click)="selectEndpointType('')"
+                     [class.active]="selectedEndpointType === ''">
+                  Select endpoint type
+                </div>
+                <div class="endpoint-type-dropdown-item" 
+                     *ngFor="let type of endpointTypes" 
+                     (click)="selectEndpointType(type)"
+                     [class.active]="selectedEndpointType === type">
+                  {{type}}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-3 mb-3">
           <div class="form-group">
-            <select class="form-control font-weight-bold sort-select" [(ngModel)]="selectedSortOption" (change)="applyFilters()">
-              <option value="name" [class.active-option]="selectedSortOption === 'name'">Sort by Name</option>
-              <option value="updatedOn" [class.active-option]="selectedSortOption === 'updatedOn'">Sort by Updated On</option>
-              <option value="createdOn" [class.active-option]="selectedSortOption === 'createdOn'">Sort by Created On</option>
-            </select>
+            <div class="sort-wrapper">
+              <input type="text" class="form-control sort-select" 
+                     [placeholder]="getSortPlaceholder()"
+                     readonly
+                     (click)="showSortDropdown = !showSortDropdown">
+              <div class="sort-dropdown" *ngIf="showSortDropdown" (mouseleave)="showSortDropdown = false">
+                <div class="sort-dropdown-item" 
+                     (click)="selectSortOption('name')"
+                     [class.active]="selectedSortOption === 'name'">
+                  Sort by Name
+                </div>
+                <div class="sort-dropdown-item" 
+                     (click)="selectSortOption('updatedOn')"
+                     [class.active]="selectedSortOption === 'updatedOn'">
+                  Sort by Updated On
+                </div>
+                <div class="sort-dropdown-item" 
+                     (click)="selectSortOption('createdOn')"
+                     [class.active]="selectedSortOption === 'createdOn'">
+                  Sort by Created On
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
