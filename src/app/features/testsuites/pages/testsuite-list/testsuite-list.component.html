@@ -1,0 +1,267 @@
+<div class="testsuite-page">
+  <div class="container-fluid pt-4 pb-5">
+    <!-- Breadcrumb Navigation -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent p-0">
+            <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-layer-group mr-1"></i>Test Suites</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    
+    <!-- Header section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="testsuite-title">Test Suites</h2>
+      <div class="testsuite-actions">
+        <div class="d-flex" style="gap: 10px;">
+          <button class="btn btn-filter" (click)="toggleFilterSection()">
+            <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
+          </button>
+          <button class="btn create-btn">
+            <i class="fas fa-plus text-white"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter section -->
+    <div class="row mb-4 filter-section" [ngClass]="{'d-none': !showFilterSection}">
+      <div class="col-md-12">
+        <div class="card shadow-sm border-0 rounded-lg">
+          <div class="card-body bg-light">
+            <div class="row">
+              <!-- Search input -->
+              <div class="col-md-6 mb-3 mb-md-0">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      placeholder="Search test suites" 
+                      [(ngModel)]="searchQuery"
+                      (keyup.enter)="searchTestSuites()"
+                    >
+                    <div class="input-group-append ml-2">
+                      <button class="btn btn-clear mr-2" (click)="clearFilters()" title="Clear filters">
+                        <i class="fas fa-times"></i>
+                      </button>
+                      <button class="btn btn-search" (click)="searchTestSuites()" title="Search">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Category filter -->
+              <div class="col-md-3 mb-3 mb-md-0">
+                <div class="category-search-wrapper" (mouseleave)="showCategoryDropdown = false">
+                  <div class="category-search" (click)="toggleCategoryDropdown($event)">
+                    {{ selectedCategory || 'Select Category' }}
+                  </div>
+                  <div class="category-dropdown" *ngIf="showCategoryDropdown">
+                    <div 
+                      class="category-dropdown-item" 
+                      [ngClass]="{'active': selectedCategory === ''}" 
+                      (click)="selectCategory('')"
+                    >
+                      All Categories
+                    </div>
+                    <div 
+                      *ngFor="let category of categoryOptions" 
+                      class="category-dropdown-item" 
+                      [ngClass]="{'active': selectedCategory === category}" 
+                      (click)="selectCategory(category)"
+                    >
+                      {{ category }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sort by -->
+              <div class="col-md-3">
+                <div class="sort-wrapper" (mouseleave)="showSortDropdown = false">
+                  <div class="sort-select" (click)="toggleSortDropdown($event)">
+                    Sort by: {{ getSortLabel() }}
+                    <i class="fas fa-chevron-down float-right mt-1" style="font-size: 12px;"></i>
+                  </div>
+                  <div class="sort-dropdown" *ngIf="showSortDropdown">
+                    <div 
+                      *ngFor="let option of sortOptions" 
+                      class="sort-dropdown-item" 
+                      [ngClass]="{'active': sortBy === option.value}" 
+                      (click)="selectSortOption(option.value)"
+                    >
+                      {{ option.label }}
+                      <i class="fas float-right mt-1" 
+                         *ngIf="sortBy === option.value" 
+                         [ngClass]="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'"
+                         style="font-size: 12px;">
+                      </i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div class="row" *ngIf="loading">
+      <div class="col-md-12 text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <p class="mt-2 text-muted">Loading test suites...</p>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div class="row" *ngIf="error && !loading">
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+          <i class="fas fa-exclamation-circle mr-2"></i> {{ error }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Table and pagination -->
+    <div class="row" *ngIf="!loading && !error">
+      <!-- Empty state -->
+      <div class="col-md-12" *ngIf="filteredTestSuites.length === 0">
+        <div class="card shadow-sm border-0 rounded-lg text-center py-5">
+          <div class="card-body">
+            <i class="fas fa-search fa-3x text-muted mb-3"></i>
+            <h4>No test suites found</h4>
+            <p class="text-muted">Try adjusting your search or filter criteria</p>
+            <button class="btn btn-outline-primary mt-2" (click)="clearFilters()">
+              <i class="fas fa-times mr-2"></i> Clear filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="col-md-12" *ngIf="filteredTestSuites.length > 0">
+        <div class="table-responsive">
+          <table class="table testsuite-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Project</th>
+                <th>Category</th>
+                <th>Test Cases</th>
+                <th>Parallel</th>
+                <th>Updated On</th>
+                <th>Updated By</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let testSuite of filteredTestSuites; let i = index" 
+                  class="testsuite-row" 
+                  (click)="viewTestSuiteDetails(testSuite)">
+                <td>
+                  <span class="font-weight-bold">{{ testSuite.name }}</span>
+                </td>
+                <td>{{ testSuite.project || 'N/A' }}</td>
+                <td>
+                  <span class="badge badge-pill" 
+                        [ngClass]="{
+                          'badge-primary': testSuite.category === 'WEB',
+                          'badge-success': testSuite.category === 'REST',
+                          'badge-warning': testSuite.category === 'MOBILE',
+                          'badge-info': testSuite.category === 'NA',
+                          'badge-secondary': testSuite.category !== 'WEB' && testSuite.category !== 'REST' && testSuite.category !== 'MOBILE' && testSuite.category !== 'NA'
+                        }">
+                    {{ testSuite.category }}
+                  </span>
+                </td>
+                <td>{{ testSuite.testCaseCount }}</td>
+                <td>
+                  <i class="fas" 
+                     [ngClass]="testSuite.parallel ? 'fa-check text-success' : 'fa-times text-danger'"></i>
+                </td>
+                <td>{{ testSuite.lastModified }}</td>
+                <td>{{ testSuite.updatedBy }}</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="btn btn-icon text-primary" title="Edit" (click)="$event.stopPropagation()">
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button class="btn btn-icon text-info" title="Execute" (click)="$event.stopPropagation()">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="btn btn-icon text-secondary" title="Clone" (click)="$event.stopPropagation()">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                    <button class="btn btn-icon text-danger" title="Delete" (click)="deleteTestSuite($event, testSuite.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container d-flex align-items-center justify-content-between">
+          <div class="results-info">
+            <p class="mb-0 font-weight-bold">
+              Total Test Suites: {{ totalItems }}
+            </p>
+          </div>
+          
+          <div class="d-flex align-items-center">
+            <div class="per-page-dropdown dropdown mr-3">
+              <button class="btn dropdown-toggle" type="button" id="perPageDropdown" data-toggle="dropdown">
+                {{ pageSize }} per page
+              </button>
+              <div class="dropdown-menu" aria-labelledby="perPageDropdown">
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 10}" (click)="onPageSizeChange(10)">10</a>
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 25}" (click)="onPageSizeChange(25)">25</a>
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 50}" (click)="onPageSizeChange(50)">50</a>
+                <a class="dropdown-item" [ngClass]="{'active': pageSize === 100}" (click)="onPageSizeChange(100)">100</a>
+              </div>
+            </div>
+            
+            <nav>
+              <ul class="pagination mb-0">
+                <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+                  <a class="page-link" (click)="onPageChange(currentPage - 1)" *ngIf="currentPage > 1">
+                    <i class="fas fa-chevron-left"></i>
+                  </a>
+                  <span class="page-link" *ngIf="currentPage === 1">
+                    <i class="fas fa-chevron-left"></i>
+                  </span>
+                </li>
+                
+                <ng-container *ngFor="let page of [].constructor(Math.ceil(totalItems / pageSize)); let i = index">
+                  <li class="page-item" *ngIf="showPageNumber(i + 1)" [ngClass]="{'active': currentPage === i + 1}">
+                    <a class="page-link" (click)="onPageChange(i + 1)">{{ i + 1 }}</a>
+                  </li>
+                </ng-container>
+                
+                <li class="page-item" [ngClass]="{'disabled': currentPage === Math.ceil(totalItems / pageSize)}">
+                  <a class="page-link" (click)="onPageChange(currentPage + 1)" *ngIf="currentPage < Math.ceil(totalItems / pageSize)">
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                  <span class="page-link" *ngIf="currentPage === Math.ceil(totalItems / pageSize)">
+                    <i class="fas fa-chevron-right"></i>
+                  </span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

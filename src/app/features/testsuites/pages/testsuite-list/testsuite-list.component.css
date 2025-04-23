@@ -1,0 +1,268 @@
+.testsuite-page {
+  background-color: #f8f9fa;
+}
+
+.testsuite-title {
+  font-weight: 600;
+  color: #212529;
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+
+/* Filter section styling */
+.filter-section {
+  transition: all 0.3s ease;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Dropdowns styling */
+.category-search-wrapper,
+.mobile-type-wrapper,
+.sort-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.category-search,
+.mobile-type-select,
+.sort-select {
+  display: block;
+  padding: 10px 15px;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category-dropdown,
+.mobile-type-dropdown,
+.sort-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.category-dropdown-item,
+.mobile-type-dropdown-item,
+.sort-dropdown-item {
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.category-dropdown-item:hover,
+.mobile-type-dropdown-item:hover,
+.sort-dropdown-item:hover,
+.category-dropdown-item.active,
+.mobile-type-dropdown-item.active,
+.sort-dropdown-item.active {
+  background-color: #f1f3f5;
+  color: #1473e6;
+}
+
+/* Button styling */
+.btn-filter, 
+.create-btn, 
+.btn-search,
+.btn-clear {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-filter, 
+.btn-search {
+  background: linear-gradient(135deg, #1473e6, #0954b6);
+  border: none;
+  color: white;
+}
+
+.create-btn {
+  background: linear-gradient(135deg, #1473e6, #0954b6);
+  border: none;
+  color: white;
+}
+
+.btn-clear {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  color: #495057;
+}
+
+/* Table styling */
+.table-responsive {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.testsuite-table {
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.testsuite-table thead {
+  background: linear-gradient(135deg, #1473e6, #0954b6);
+  color: white;
+}
+
+.testsuite-table thead th {
+  border-bottom: 0;
+  font-weight: 600;
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+
+.testsuite-table tbody td {
+  padding: 8px 15px;
+  vertical-align: middle;
+}
+
+.testsuite-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.testsuite-row:hover {
+  background-color: #f1f3f5;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Pagination styling */
+.pagination-container {
+  background-color: #fff;
+  padding: 10px 15px;
+  border-top: 1px solid #dee2e6;
+}
+
+.results-info {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.per-page-dropdown {
+  margin-right: 15px;
+}
+
+.per-page-dropdown .btn {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  font-size: 14px;
+}
+
+.pagination {
+  margin-bottom: 0;
+}
+
+.page-item.active .page-link {
+  background-color: #1473e6;
+  border-color: #1473e6;
+}
+
+.page-link {
+  color: #1473e6;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin: 0 2px;
+}
+
+.page-link:hover {
+  background-color: #e9ecef;
+  color: #0954b6;
+}
+
+/* Badge styling */
+.badge {
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.badge-primary {
+  background-color: #1473e6;
+}
+
+.badge-success {
+  background-color: #2ecc71;
+}
+
+.badge-warning {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.badge-info {
+  background-color: #3498db;
+}
+
+.badge-secondary {
+  background-color: #95a5a6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .testsuite-title {
+    font-size: 1.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-icon {
+    margin-bottom: 5px;
+  }
+}

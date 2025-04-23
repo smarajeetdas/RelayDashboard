@@ -4,19 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 
-// Components will be created later
-// import { TestSuiteListComponent } from './pages/testsuite-list/testsuite-list.component';
-// import { TestSuiteDetailComponent } from './pages/testsuite-detail/testsuite-detail.component';
+// Import components
+import { TestSuiteListComponent } from './pages/testsuite-list/testsuite-list.component';
+import { TestSuiteDetailComponent } from './pages/testsuite-detail/testsuite-detail.component';
 
 const routes: Routes = [
-  // { path: '', component: TestSuiteListComponent },
-  // { path: ':id', component: TestSuiteDetailComponent }
+  { path: '', component: TestSuiteListComponent },
+  { path: ':id', component: TestSuiteDetailComponent }
 ];
 
 @NgModule({
   declarations: [
-    // TestSuiteListComponent,
-    // TestSuiteDetailComponent
+    TestSuiteListComponent,
+    TestSuiteDetailComponent
   ],
   imports: [
     CommonModule,
