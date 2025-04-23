@@ -14,6 +14,7 @@ export class EndpointListComponent implements OnInit {
   searchKeyword: string = '';
   selectedProject: string = '';
   selectedEndpointType: string = '';
+  selectedSortOption: string = 'name';
   showCertifiedOnly: boolean = false;
   showSubFlowOnly: boolean = false;
   searchUpdatedBy: string = '';
@@ -61,15 +62,46 @@ export class EndpointListComponent implements OnInit {
       filters.subFlow = true;
     }
     
+    if (this.searchUpdatedBy) {
+      filters.updatedBy = this.searchUpdatedBy;
+    }
+    
+    if (this.searchCreatedBy) {
+      filters.createdBy = this.searchCreatedBy;
+    }
+    
     this.endpointService.searchEndpoints(this.searchKeyword, filters).subscribe(results => {
-      this.filteredEndpoints = results;
+      // Sort the results based on the selected sort option
+      this.sortEndpoints(results);
     });
+  }
+  
+  sortEndpoints(endpoints: Endpoint[]): void {
+    switch(this.selectedSortOption) {
+      case 'name':
+        this.filteredEndpoints = [...endpoints].sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'updatedOn':
+        this.filteredEndpoints = [...endpoints].sort((a, b) => new Date(b.updatedOn).getTime() - new Date(a.updatedOn).getTime());
+        break;
+      case 'createdOn':
+        // Assuming there's a createdOn property - if not, fallback to updatedOn
+        this.filteredEndpoints = [...endpoints].sort((a, b) => {
+          const dateA = a['createdOn'] ? new Date(a['createdOn']).getTime() : new Date(a.updatedOn).getTime();
+          const dateB = b['createdOn'] ? new Date(b['createdOn']).getTime() : new Date(b.updatedOn).getTime();
+          return dateB - dateA;
+        });
+        break;
+      default:
+        this.filteredEndpoints = endpoints;
+    }
   }
   
   resetFilters(): void {
     this.searchKeyword = '';
     this.selectedProject = '';
     this.selectedEndpointType = '';
+    this.selectedSortOption = 'name';
     this.showCertifiedOnly = false;
     this.showSubFlowOnly = false;
     this.searchUpdatedBy = '';
