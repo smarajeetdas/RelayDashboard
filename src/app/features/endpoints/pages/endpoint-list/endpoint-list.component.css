@@ -292,17 +292,26 @@
 
 select.form-control {
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231473e6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
   padding-right: 40px;
-  color: #000000;
+  color: #1473e6;
   background-color: #ffffff;
   font-weight: 600;
   line-height: 24px;
   height: 50px;
   text-indent: 4px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+select.form-control:focus {
+  border-color: #1473e6;
+  box-shadow: 0 0 0 3px rgba(20, 115, 230, 0.15);
 }
 
 .font-weight-bold {
@@ -310,13 +319,37 @@ select.form-control {
 }
 
 select.form-control option {
-  color: #000000 !important;
-  background-color: #ffffff !important;
-  padding: 12px;
-  font-weight: 600;
+  color: #333333 !important;
+  background-color: #f8f9fa !important;
+  padding: 16px 15px;
+  font-weight: 500;
   font-size: 14px;
-  height: 40px;
-  line-height: 40px;
+  height: 46px;
+  line-height: 46px;
+  border-bottom: 1px solid #eaeaea;
+  transition: all 0.2s ease;
+}
+
+select.form-control option:hover,
+select.form-control option:focus,
+select.form-control option:checked,
+select.form-control option.active-option {
+  background: linear-gradient(135deg, rgba(20, 115, 230, 0.1) 0%, rgba(13, 98, 201, 0.1) 100%) !important;
+  color: #1473e6 !important;
+  font-weight: 600;
+}
+
+select.form-control option:first-child {
+  font-weight: 600;
+  color: #1473e6 !important;
+  background: linear-gradient(135deg, rgba(20, 115, 230, 0.1) 0%, rgba(13, 98, 201, 0.1) 100%) !important;
+  border-bottom: 2px solid #1473e6;
+}
+
+/* Highlight selected option */
+select.form-control option:checked {
+  box-shadow: 0 0 10px 100px #1473e6 inset;
+  color: white !important;
 }
 
 .input-group-text {
@@ -526,13 +559,21 @@ select.form-control option {
 
 .per-page-dropdown .btn {
   background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  color: #495057;
-  font-weight: 500;
-  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  color: #1473e6;
+  font-weight: 600;
+  padding: 8px 14px;
   display: flex;
   align-items: center;
   border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.per-page-dropdown .btn:hover {
+  background-color: #ffffff;
+  border-color: #1473e6;
+  box-shadow: 0 0 0 3px rgba(20, 115, 230, 0.15);
 }
 
 .per-page-dropdown .dropdown-toggle::after {
@@ -544,18 +585,33 @@ select.form-control option {
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   border: none;
+  min-width: 100px;
 }
 
 .per-page-dropdown .dropdown-item {
-  padding: 8px 16px;
+  padding: 10px 16px;
   font-size: 14px;
   font-weight: 500;
   color: #495057;
   transition: all 0.2s ease;
   cursor: pointer;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.per-page-dropdown .dropdown-item:last-child {
+  border-bottom: none;
 }
 
 .per-page-dropdown .dropdown-item:hover {
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, rgba(20, 115, 230, 0.1) 0%, rgba(13, 98, 201, 0.1) 100%);
   color: #1473e6;
+  font-weight: 600;
+}
+
+.per-page-dropdown .dropdown-item.active {
+  background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(13, 98, 201, 0.3);
 }
