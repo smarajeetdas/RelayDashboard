@@ -6,7 +6,7 @@ import { EndpointService } from '../../services/endpoint.service';
 @Component({
   selector: 'app-endpoint-list',
   templateUrl: './endpoint-list.component.html',
-  styleUrls: ['./endpoint-list.component.css']
+  styleUrls: ['./endpoint-list.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class EndpointListComponent implements OnInit {
   // Adding Math property for use in the template

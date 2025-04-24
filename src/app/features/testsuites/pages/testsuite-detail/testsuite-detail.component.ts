@@ -13,7 +13,7 @@ interface Environment {
 @Component({
   selector: 'app-testsuite-detail',
   templateUrl: './testsuite-detail.component.html',
-  styleUrls: ['./testsuite-detail.component.css', './button-styles.css']
+  styleUrls: ['./testsuite-detail.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class TestSuiteDetailComponent implements OnInit {
   testSuiteId: string;

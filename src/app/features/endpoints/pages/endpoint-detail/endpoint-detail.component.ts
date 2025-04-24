@@ -7,7 +7,7 @@ import { SidebarItem } from '../../../../shared/components/detail-sidebar/detail
 @Component({
   selector: 'app-endpoint-detail',
   templateUrl: './endpoint-detail.component.html',
-  styleUrls: ['./endpoint-detail.component.css']
+  styleUrls: ['./endpoint-detail.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class EndpointDetailComponent implements OnInit {
   endpoint: EndpointDetail | undefined;

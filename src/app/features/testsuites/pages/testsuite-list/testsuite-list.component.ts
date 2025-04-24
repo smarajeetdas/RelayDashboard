@@ -6,7 +6,7 @@ import { TestSuiteService } from '../../services/testsuite.service';
 @Component({
   selector: 'app-testsuite-list',
   templateUrl: './testsuite-list.component.html',
-  styleUrls: ['./testsuite-list.component.css']
+  styleUrls: ['./testsuite-list.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class TestSuiteListComponent implements OnInit {
   // Add Math property for template use
