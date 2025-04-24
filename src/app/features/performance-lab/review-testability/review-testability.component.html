@@ -41,10 +41,10 @@
     <!-- Filter Section -->
     <div class="filters-panel mb-4">
       <div class="filters-container">
-        <!-- Row 1: Project & Testcase -->
+        <!-- Row 1: Project, Testcase, Users, Status -->
         <div class="row mb-2">
           <!-- 1. Project Search -->
-          <div class="col-md-6 mb-2">
+          <div class="col-md-3 mb-2">
             <div class="form-group">
               <div class="project-search-wrapper">
                 <input type="text" 
@@ -67,7 +67,7 @@
           </div>
           
           <!-- 2. Testcase Search (replaced Version) -->
-          <div class="col-md-6 mb-2">
+          <div class="col-md-3 mb-2">
             <div class="form-group">
               <div class="testcase-search-wrapper">
                 <input type="text" 
@@ -88,12 +88,9 @@
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Row 2: Users & Status -->
-        <div class="row mb-2">
+          
           <!-- 3. Users Search (replaced Type) -->
-          <div class="col-md-6 mb-2">
+          <div class="col-md-3 mb-2">
             <div class="form-group">
               <div class="users-search-wrapper">
                 <input type="text" 
@@ -116,7 +113,7 @@
           </div>
           
           <!-- 4. Status Dropdown -->
-          <div class="col-md-6 mb-2">
+          <div class="col-md-3 mb-2">
             <div class="form-group">
               <div class="status-wrapper">
                 <input type="text" 
@@ -137,10 +134,10 @@
           </div>
         </div>
         
-        <!-- Row 3: Location & Date Pickers -->
+        <!-- Row 2: Location, Date Pickers, and Buttons -->
         <div class="row mb-2">
           <!-- 5. Location Dropdown -->
-          <div class="col-md-4 mb-2">
+          <div class="col-md-2 mb-2">
             <div class="form-group">
               <div class="location-wrapper">
                 <input type="text" 
@@ -161,7 +158,7 @@
           </div>
           
           <!-- 6. Start Date Picker -->
-          <div class="col-md-4 mb-2">
+          <div class="col-md-2 mb-2">
             <div class="form-group">
               <input type="date" 
                      class="form-control date-picker" 
@@ -171,7 +168,7 @@
           </div>
           
           <!-- 7. End Date Picker -->
-          <div class="col-md-4 mb-2">
+          <div class="col-md-2 mb-2">
             <div class="form-group">
               <input type="date" 
                      class="form-control date-picker" 
@@ -179,17 +176,15 @@
                      [(ngModel)]="endDate">
             </div>
           </div>
-        </div>
-        
-        <!-- Row 4: Action Buttons -->
-        <div class="row action-row">
-          <div class="col-md-12 text-right">
-            <div class="d-flex action-buttons-container">
-              <!-- 9. Clear Button -->
+          
+          <!-- 8-9. Action Buttons -->
+          <div class="col-md-6 mb-2">
+            <div class="d-flex action-buttons-container h-100 align-items-center justify-content-end">
+              <!-- Clear Button -->
               <button class="btn btn-clear mr-3" (click)="clearFilter()">
                 <i class="fas fa-times mr-2"></i>Clear
               </button>
-              <!-- 8. Search Button -->
+              <!-- Search Button -->
               <button class="btn btn-primary btn-search-large" (click)="search()">
                 <i class="fas fa-search mr-2"></i>Search
               </button>

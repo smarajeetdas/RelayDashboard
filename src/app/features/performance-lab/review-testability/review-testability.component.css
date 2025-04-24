@@ -331,11 +331,7 @@
   margin-bottom: 15px;
 }
 
-.action-row {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #eaeaea;
-}
+/* No longer used - remove redundant style */
 
 .action-buttons-container {
   justify-content: flex-end;
