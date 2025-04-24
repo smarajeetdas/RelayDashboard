@@ -1,0 +1,181 @@
+<div class="user-list-page container-fluid">
+  <div class="breadcrumbs mb-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Users</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="page-title mb-0">Users</h2>
+    <button class="create-btn">
+      <i class="fas fa-plus"></i> Create User
+    </button>
+  </div>
+  
+  <!-- Loading indicator -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <p class="mt-2">Loading users...</p>
+  </div>
+  
+  <!-- Error message -->
+  <div *ngIf="error && !loading" class="alert alert-danger">
+    <i class="fas fa-exclamation-circle mr-2"></i>
+    {{ error }}
+  </div>
+  
+  <!-- User list content -->
+  <div *ngIf="!loading && !error">
+    <!-- Filter section -->
+    <div class="filter-section mb-4">
+      <div class="row">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <label for="search">Search</label>
+          <input 
+            type="text" 
+            id="search" 
+            class="form-control search-input" 
+            placeholder="Search by name, email, role..." 
+            [(ngModel)]="searchQuery"
+            (keyup.enter)="onSearch()"
+          >
+        </div>
+        <div class="col-md-2 mb-3 mb-md-0">
+          <label for="roleFilter">Role</label>
+          <select 
+            id="roleFilter" 
+            class="form-control filter-dropdown" 
+            [(ngModel)]="selectedRole"
+          >
+            <option value="">All Roles</option>
+            <option *ngFor="let role of roleOptions" [value]="role">{{ role }}</option>
+          </select>
+        </div>
+        <div class="col-md-2 mb-3 mb-md-0">
+          <label for="statusFilter">Status</label>
+          <select 
+            id="statusFilter" 
+            class="form-control filter-dropdown" 
+            [(ngModel)]="selectedStatus"
+          >
+            <option value="">All Statuses</option>
+            <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
+        </div>
+        <div class="col-md-2 mb-3 mb-md-0">
+          <label for="geographyFilter">Geography</label>
+          <select 
+            id="geographyFilter" 
+            class="form-control filter-dropdown" 
+            [(ngModel)]="selectedGeography"
+          >
+            <option value="">All Geographies</option>
+            <option *ngFor="let geography of geographyOptions" [value]="geography">{{ geography }}</option>
+          </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <div class="d-flex w-100">
+            <button class="filter-button filter-button-search mr-2" (click)="onSearch()">
+              <i class="fas fa-search mr-1"></i> Search
+            </button>
+            <button class="filter-button filter-button-clear" (click)="clearFilters()">
+              <i class="fas fa-times mr-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Users table -->
+    <div class="user-table-container">
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Geography</th>
+            <th>Status</th>
+            <th style="width: 100px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of paginatedUsers">
+            <td>{{ user.firstName }} {{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.geography }}</td>
+            <td>
+              <span 
+                class="status-badge" 
+                [ngClass]="user.status === 'Active' ? 'status-active' : 'status-inactive'"
+              >
+                {{ user.status }}
+              </span>
+            </td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn action-btn-view" title="View" (click)="viewUserDetails(user.id)">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="action-btn action-btn-edit" title="Edit">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- Empty state -->
+      <div *ngIf="filteredUsers.length === 0" class="text-center py-5">
+        <i class="fas fa-users fa-3x text-muted mb-3"></i>
+        <h5>No users found</h5>
+        <p class="text-muted">Try adjusting your search criteria or clear filters.</p>
+      </div>
+      
+      <!-- Pagination -->
+      <div *ngIf="filteredUsers.length > 0" class="pagination-container">
+        <div class="pagination-info">
+          Showing {{ (currentPage - 1) * itemsPerPage + 1 }} to 
+          {{ currentPage * itemsPerPage > totalItems ? totalItems : currentPage * itemsPerPage }} 
+          of {{ totalItems }} users
+        </div>
+        <ul class="pagination">
+          <li class="pagination-item">
+            <a 
+              class="pagination-link" 
+              [ngClass]="{'disabled': currentPage === 1}"
+              (click)="goToPreviousPage()"
+            >
+              <i class="fas fa-chevron-left"></i>
+            </a>
+          </li>
+          <li class="pagination-item" *ngFor="let page of [].constructor(totalPages); let i = index">
+            <a 
+              class="pagination-link" 
+              [ngClass]="{'active': currentPage === i + 1}"
+              (click)="goToPage(i + 1)"
+            >
+              {{ i + 1 }}
+            </a>
+          </li>
+          <li class="pagination-item">
+            <a 
+              class="pagination-link" 
+              [ngClass]="{'disabled': currentPage === totalPages}"
+              (click)="goToNextPage()"
+            >
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/mastersuites/mastersuites.module').then(m => m.MasterSuitesModule)
   },
   {
+    path: 'users',
+    loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

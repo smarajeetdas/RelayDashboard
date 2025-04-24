@@ -1,0 +1,244 @@
+.user-detail-page {
+  background-color: #f8f9fa;
+  padding-top: 100px; /* Increased padding to account for fixed header */
+}
+
+.user-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  max-width: fit-content;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.user-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1473e6, #0d62c9);
+}
+
+.user-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(20, 115, 230, 0.1), transparent);
+  pointer-events: none;
+}
+
+/* Detail layout with sidebar */
+.detail-layout {
+  display: flex;
+  gap: 20px;
+  min-height: 600px;
+  margin-top: 20px;
+}
+
+.detail-sidebar-container {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.detail-content {
+  flex: 1;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 100px;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #1473e6, #0954b6);
+  border: none;
+  color: white;
+}
+
+.btn-icon-text {
+  margin-right: 8px;
+}
+
+/* Tab navigation */
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 20px;
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: -1px;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 10px 20px;
+  color: #495057;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #1473e6;
+  border-color: #e9ecef #e9ecef #dee2e6;
+}
+
+.nav-tabs .nav-link.active {
+  color: #1473e6;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+  border-bottom: 2px solid #1473e6;
+}
+
+/* Content cards */
+.content-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: 600;
+  color: #212529;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.info-group {
+  margin-bottom: 15px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.info-value {
+  color: #212529;
+}
+
+/* User project list */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+}
+
+.user-table th {
+  padding: 10px 12px;
+  border-bottom: 0;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: white;
+  background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
+  position: relative;
+}
+
+.user-table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.user-table th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.user-table th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.user-table td {
+  padding: 8px 15px;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: middle;
+}
+
+.user-table .user-row:hover {
+  background-color: #f1f3f5;
+}
+
+/* Badge styling */
+.badge {
+  padding: 5px 10px;
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.badge-primary {
+  background-color: #1473e6;
+}
+
+.badge-success {
+  background-color: #2ecc71;
+}
+
+.badge-warning {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.badge-info {
+  background-color: #3498db;
+}
+
+.badge-secondary {
+  background-color: #95a5a6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .user-title {
+    font-size: 1.5rem;
+  }
+  
+  .nav-tabs .nav-link {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
