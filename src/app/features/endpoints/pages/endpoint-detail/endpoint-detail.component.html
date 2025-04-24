@@ -55,8 +55,13 @@
                  [ngClass]="{'expanded': sidebarExpanded}">
               <!-- Sidebar Header -->
               <div class="sidebar-header">
-                <h5 class="mb-0">Test Case</h5>
-                <p class="text-muted mb-0 sidebar-subtitle">Configuration Options</p>
+                <div class="sidebar-header-icon">
+                  <i class="fas fa-plug"></i>
+                </div>
+                <div class="sidebar-header-text">
+                  <h5 class="mb-0">Endpoint</h5>
+                  <p class="text-muted mb-0 sidebar-subtitle">Configuration</p>
+                </div>
               </div>
               
               <!-- Sidebar Content -->
@@ -75,10 +80,10 @@
               <!-- Sidebar Footer -->
               <div class="sidebar-footer">
                 <div class="sidebar-footer-icon">
-                  <i class="fas fa-robot"></i>
+                  <i class="fas fa-question-circle"></i>
                 </div>
                 <div class="sidebar-footer-text">
-                  Relay AI Powered
+                  Need help? View documentation
                 </div>
               </div>
             </div>
