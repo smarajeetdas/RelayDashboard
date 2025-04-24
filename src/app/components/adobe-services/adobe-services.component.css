@@ -5,39 +5,18 @@
   overflow: hidden;
 }
 
-.adobe-services-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(to right, #1473e6, #0d62c9);
-  z-index: 1;
-}
+/* Top blue line removed */
 
 .section-title {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: 700;
   color: #1c2536;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
 }
 
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(to right, #1473e6, #0d62c9);
-  border-radius: 3px;
-}
+/* Section title underline removed */
 
 .section-subtitle {
   color: #718096;
