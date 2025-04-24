@@ -1,0 +1,180 @@
+.adobe-services-section {
+  padding: 5rem 0;
+  background-color: #fdfdfd;
+  position: relative;
+  overflow: hidden;
+}
+
+.adobe-services-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, #1473e6, #0d62c9);
+  z-index: 1;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #1c2536;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #1473e6, #0d62c9);
+  border-radius: 3px;
+}
+
+.section-subtitle {
+  color: #718096;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.adobe-services-container {
+  padding: 1rem 0;
+}
+
+.adobe-service-card {
+  height: 180px;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid;
+  cursor: pointer;
+}
+
+.adobe-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.service-icon i {
+  color: white;
+  font-size: 28px;
+  transition: all 0.3s ease;
+}
+
+.service-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #2d3748;
+  transition: all 0.3s ease;
+}
+
+.service-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateY(20px);
+  border-radius: 16px;
+}
+
+.adobe-service-card:hover .service-hover-overlay {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+.service-hover-content {
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+
+.service-hover-content i {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 991.98px) {
+  .adobe-service-card {
+    height: 160px;
+  }
+  
+  .service-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .service-icon i {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .adobe-services-section {
+    padding: 4rem 0;
+  }
+  
+  .adobe-service-card {
+    height: 150px;
+    padding: 15px;
+  }
+  
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .service-icon i {
+    font-size: 20px;
+  }
+  
+  .service-name {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation classes for the elements */
+[data-animation="zoom-in"] {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+[data-animation="zoom-in"].animated {
+  opacity: 1;
+  transform: scale(1);
+}

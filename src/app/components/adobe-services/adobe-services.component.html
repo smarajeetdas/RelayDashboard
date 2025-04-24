@@ -1,0 +1,31 @@
+<section id="adobe-services" class="adobe-services-section">
+  <div class="container">
+    <h2 class="section-title" data-animation="fade-in-up">Adobe Services who helped us in platform transformation</h2>
+    <p class="section-subtitle text-center mb-5" data-animation="fade-in-up" data-animation-delay="1">
+      Leveraging industry-leading Adobe products to enhance and transform our testing platform
+    </p>
+    
+    <div class="adobe-services-container">
+      <div class="row justify-content-center">
+        <div class="col-md-4 col-lg-3 mb-4" *ngFor="let service of adobeServices; let i = index" 
+            [attr.data-animation]="'zoom-in'" 
+            [attr.data-animation-delay]="i * 0.2 + 1">
+          <div class="adobe-service-card" [style.border-color]="service.color">
+            <div class="service-icon" [style.background-color]="service.color">
+              <i class="fas {{service.logo}}"></i>
+            </div>
+            <div class="service-name">
+              {{service.name}}
+            </div>
+            <div class="service-hover-overlay" [style.background-color]="service.color">
+              <div class="service-hover-content">
+                <i class="fas {{service.logo}} mb-2"></i>
+                <div>{{service.name}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

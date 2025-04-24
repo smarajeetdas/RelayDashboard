@@ -12,6 +12,7 @@ import { HeroComponent } from './components/hero/hero.component';
 import { CapabilitiesComponent } from './components/capabilities/capabilities.component';
 import { QualityDrivenComponent } from './components/quality-driven/quality-driven.component';
 import { AiFeaturesComponent } from './components/ai-features/ai-features.component';
+import { AdobeServicesComponent } from './components/adobe-services/adobe-services.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { CtaComponent } from './components/cta/cta.component';
 import { FeatureCardComponent } from './shared/feature-card/feature-card.component';
@@ -26,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
     CapabilitiesComponent,
     QualityDrivenComponent,
     AiFeaturesComponent,
+    AdobeServicesComponent,
     TestimonialsComponent,
     CtaComponent,
     FeatureCardComponent,
