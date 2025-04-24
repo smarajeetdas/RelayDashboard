@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 234" width="48" height="48">
+  <defs>
+    <style>.a{fill:#FA0F00;}</style>
+  </defs>
+  <rect class="a" width="240" height="234" rx="42.5"/>
+  <path d="M71.9,61.3v111.3h95.9V61.3H71.9z M155.9,161.1H83.8V72.8h72.1V161.1z"/>
+  <polygon points="95.2,110.5 120,85.6 144.8,110.5 144.8,85.6 120,60.7 95.2,85.6 "/>
+  <polygon points="120,135.4 95.2,110.5 95.2,135.4 120,160.2 144.8,135.4 144.8,110.5 "/>
+  <polygon points="95.2,135.4 120,160.2 95.2,160.2 "/>
+  <polygon points="144.8,135.4 120,160.2 144.8,160.2 "/>
+</svg>

@@ -3,7 +3,7 @@ import { ScrollAnimationService } from '../../services/scroll-animation.service'
 
 interface AdobeService {
   name: string;
-  logo: string;
+  logoPath: string;
   color: string;
 }
 
@@ -14,15 +14,15 @@ interface AdobeService {
 })
 export class AdobeServicesComponent implements OnInit, AfterViewInit {
   adobeServices: AdobeService[] = [
-    { name: 'Lightroom', logo: 'fa-camera-retro', color: '#ADD8E6' },
-    { name: 'Photoshop', logo: 'fa-image', color: '#31A8FF' },
-    { name: 'Adobe Connect', logo: 'fa-video', color: '#69C8C8' },
-    { name: 'Acrobat', logo: 'fa-file-pdf', color: '#ED2224' },
-    { name: 'Adobe Express', logo: 'fa-palette', color: '#FF61F6' },
-    { name: 'Illustrator', logo: 'fa-pen-nib', color: '#FF9A00' },
-    { name: 'After Effects', logo: 'fa-film', color: '#9999FF' },
-    { name: 'Adobe Learning Manager', logo: 'fa-graduation-cap', color: '#4B99D8' },
-    { name: 'Adobe Experience Platform', logo: 'fa-cogs', color: '#FA0F00' }
+    { name: 'Lightroom', logoPath: 'assets/images/adobe-logos/lightroom.svg', color: '#ADD8E6' },
+    { name: 'Photoshop', logoPath: 'assets/images/adobe-logos/photoshop.svg', color: '#31A8FF' },
+    { name: 'Adobe Connect', logoPath: 'assets/images/adobe-logos/connect.svg', color: '#69C8C8' },
+    { name: 'Acrobat', logoPath: 'assets/images/adobe-logos/acrobat.svg', color: '#ED2224' },
+    { name: 'Adobe Express', logoPath: 'assets/images/adobe-logos/express.svg', color: '#FF61F6' },
+    { name: 'Illustrator', logoPath: 'assets/images/adobe-logos/illustrator.svg', color: '#FF9A00' },
+    { name: 'After Effects', logoPath: 'assets/images/adobe-logos/after-effects.svg', color: '#9999FF' },
+    { name: 'Adobe Learning Manager', logoPath: 'assets/images/adobe-logos/learning-manager.svg', color: '#4B99D8' },
+    { name: 'Adobe Experience Platform', logoPath: 'assets/images/adobe-logos/experience.svg', color: '#FA0F00' }
   ];
 
   constructor(private scrollAnimationService: ScrollAnimationService) { }

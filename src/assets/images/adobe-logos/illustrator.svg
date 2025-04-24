@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 234" width="48" height="48">
+  <defs>
+    <style>.a{fill:#FF9A00;}</style>
+  </defs>
+  <rect class="a" width="240" height="234" rx="42.5"/>
+  <path d="M116.3,140.4H92.7L86.4,160H69l27.1-74.9h17.4L140.4,160h-17.8L116.3,140.4z M94.9,127.3h18.8l-9.3-29.1L94.9,127.3z"/>
+  <path d="M156,74h15.5v86h-15.5V74z"/>
+</svg>

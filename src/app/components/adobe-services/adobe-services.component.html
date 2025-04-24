@@ -12,14 +12,14 @@
             [attr.data-animation-delay]="i * 0.2 + 1">
           <div class="adobe-service-card" [style.border-color]="service.color">
             <div class="service-icon" [style.background-color]="service.color">
-              <i class="fas {{service.logo}}"></i>
+              <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo">
             </div>
             <div class="service-name">
               {{service.name}}
             </div>
             <div class="service-hover-overlay" [style.background-color]="service.color">
               <div class="service-hover-content">
-                <i class="fas {{service.logo}} mb-2"></i>
+                <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo-hover mb-2">
                 <div>{{service.name}}</div>
               </div>
             </div>
