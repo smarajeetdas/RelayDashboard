@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TestSuiteDetail } from '../../models/testsuite.model';
 import { TestSuiteService } from '../../services/testsuite.service';
+import { SidebarItem } from '../../../../shared/components/detail-sidebar/detail-sidebar.component';
 
 interface Environment {
   id: string;
@@ -33,8 +34,20 @@ export class TestSuiteDetailComponent implements OnInit {
   selectedEnvironment: Environment = this.environments[0];
   isEnvironmentDropdownOpen: boolean = false;
 
-  // Side Panel Management
-  showListOfEndpoints: boolean = true;
+  // Sidebar configuration
+  sidebarItems: SidebarItem[] = [
+    { id: 'basic', icon: 'info-circle', label: 'Basic Information' },
+    { id: 'test-data', icon: 'database', label: 'Test Data' },
+    { id: 'schedule', icon: 'calendar-alt', label: 'Schedule' },
+    { id: 'validations', icon: 'check-circle', label: 'Validations' },
+    { id: 'certification', icon: 'certificate', label: 'Certification' },
+    { id: 'notification', icon: 'bell', label: 'Notification' },
+    { id: 'with', icon: 'link', label: 'Associated with' },
+    { id: 'history', icon: 'history', label: 'History' },
+    { id: 'execution-history', icon: 'play-circle', label: 'Execution History' },
+    { id: 'result', icon: 'chart-bar', label: 'Result' },
+  ];
+  activeSidebarItem: string = 'with'; // Default to "Associated with" as shown in screenshot
   
   constructor(
     private route: ActivatedRoute,
@@ -100,7 +113,11 @@ export class TestSuiteDetailComponent implements OnInit {
     }
   }
 
-  toggleListOfEndpoints(): void {
-    this.showListOfEndpoints = !this.showListOfEndpoints;
+  onSidebarItemSelect(itemId: string): void {
+    this.activeSidebarItem = itemId;
+    // In a real application, you might show different content based on the selected sidebar item
+    if (itemId === 'with') {
+      this.activeTab = 'testcases'; // Show the testcases tab when Associated with is selected
+    }
   }
 }
