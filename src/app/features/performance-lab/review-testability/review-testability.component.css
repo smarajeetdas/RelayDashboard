@@ -10,9 +10,11 @@
 }
 
 /* Breadcrumb styling */
-/* Breadcrumb styling - matching the endpoint detail page */
-.breadcrumbs {
-  margin-bottom: 0.5rem;
+/* Simple Breadcrumb styling - matching the screenshot */
+.simple-breadcrumb-container {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  padding: 12px 0 12px 30px;
 }
 
 .breadcrumb {
@@ -22,9 +24,7 @@
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-  content: '\f105';
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+  content: '>';
   color: #6c757d;
   padding: 0 8px;
 }
@@ -44,11 +44,6 @@
 .breadcrumb-item.active {
   color: #495057;
   font-weight: 600;
-}
-
-.detail-header {
-  border-bottom: 1px solid #e9ecef;
-  padding-bottom: 1rem;
 }
 
 /* Page Header Styles */
