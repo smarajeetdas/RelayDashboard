@@ -1,0 +1,22 @@
+/* Create buttons styling based on the provided image */
+.create-endpoint-btn, .create-testcase-btn {
+  background-color: #2c66dd;
+  border: none;
+  color: white;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.create-endpoint-btn:hover, .create-testcase-btn:hover {
+  background-color: #2658c2;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.create-endpoint-btn:active, .create-testcase-btn:active {
+  transform: translateY(1px);
+}
