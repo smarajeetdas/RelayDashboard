@@ -6,7 +6,7 @@ import { MasterSuiteService } from '../../services/mastersuite.service';
 @Component({
   selector: 'app-mastersuite-list',
   templateUrl: './mastersuite-list.component.html',
-  styleUrls: ['./mastersuite-list.component.css']
+  styleUrls: ['./mastersuite-list.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class MasterSuiteListComponent implements OnInit {
   // Add Math property for template use

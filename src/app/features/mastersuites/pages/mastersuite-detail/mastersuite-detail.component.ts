@@ -6,7 +6,7 @@ import { MasterSuiteService } from '../../services/mastersuite.service';
 @Component({
   selector: 'app-mastersuite-detail',
   templateUrl: './mastersuite-detail.component.html',
-  styleUrls: ['./mastersuite-detail.component.css']
+  styleUrls: ['./mastersuite-detail.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class MasterSuiteDetailComponent implements OnInit {
   masterSuiteId: string;
