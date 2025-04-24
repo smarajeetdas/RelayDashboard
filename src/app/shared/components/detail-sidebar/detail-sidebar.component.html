@@ -1,14 +1,16 @@
 <div class="detail-sidebar">
-  <!-- Header with blue background -->
   <div class="sidebar-header">
     <div class="sidebar-header-content">
-      <div class="sidebar-title">
-        <i class="fas fa-user"></i> User
-      </div>
+      <div class="sidebar-title">Management</div>
+      <div class="sidebar-subtitle">{{ title }}</div>
+    </div>
+    <div class="sidebar-decoration">
+      <div class="decoration-dot"></div>
+      <div class="decoration-dot"></div>
+      <div class="decoration-dot"></div>
     </div>
   </div>
   
-  <!-- Menu items -->
   <ul class="sidebar-menu">
     <li *ngFor="let item of items" 
         [ngClass]="{'active': isActive(item.id)}"
@@ -22,10 +24,11 @@
     </li>
   </ul>
   
-  <!-- Footer with blue background -->
   <div class="sidebar-footer">
-    <div class="sidebar-title">
-      <i class="fas fa-search"></i> Review & Certification
+    <div class="footer-indicator">
+      <div class="indicator-dot" [ngClass]="{'active': activeIndex < 3}"></div>
+      <div class="indicator-dot" [ngClass]="{'active': activeIndex >= 3 && activeIndex < 6}"></div>
+      <div class="indicator-dot" [ngClass]="{'active': activeIndex >= 6}"></div>
     </div>
   </div>
 </div>
