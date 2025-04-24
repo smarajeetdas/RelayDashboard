@@ -15,8 +15,8 @@
       <h1 class="endpoint-title">ENDPOINT</h1>
       <div class="endpoint-actions">
         <div class="d-flex" style="gap: 15px;">
-          <button class="icon-btn filter-btn" id="toggleFilters">
-            <i class="fas fa-filter"></i>
+          <button class="btn btn-filter" (click)="toggleFilterSection()">
+            <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
           </button>
           <button class="create-btn" (click)="createNewEndpoint()">
             <i class="fas fa-plus"></i> Create Endpoint
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Filter section -->
-    <div class="filter-section">
+    <div class="filter-section" [ngClass]="{'d-none': !showFilterSection}">
       <div class="row mb-3">
         <div class="col-md-3 mb-3">
           <div class="form-group">

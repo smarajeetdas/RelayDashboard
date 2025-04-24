@@ -28,6 +28,9 @@ export class EndpointListComponent implements OnInit {
   itemsPerPage: number = 10;
   totalItems: number = 0;
   totalPages: number = 0;
+  
+  // Filter section display control
+  showFilterSection: boolean = false;
   paginatedEndpoints: Endpoint[] = [];
   availablePerPage: number[] = [10, 25, 50, 100];
   
@@ -356,5 +359,12 @@ export class EndpointListComponent implements OnInit {
         }
       });
     }
+  }
+  
+  /**
+   * Toggle the filter section visibility
+   */
+  toggleFilterSection(): void {
+    this.showFilterSection = !this.showFilterSection;
   }
 }

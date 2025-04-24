@@ -10,9 +10,16 @@
   
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="user-title">User Management</h2>
-    <button class="create-btn">
-      <i class="fas fa-plus"></i> Create User
-    </button>
+    <div class="user-actions">
+      <div class="d-flex" style="gap: 15px;">
+        <button class="btn btn-filter" (click)="toggleFilterSection()">
+          <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
+        </button>
+        <button class="create-btn">
+          <i class="fas fa-plus"></i> Create User
+        </button>
+      </div>
+    </div>
   </div>
   
   <!-- Content with Sidebar -->
@@ -46,7 +53,7 @@
       <!-- User list content -->
       <div *ngIf="!loading && !error">
         <!-- Filter section -->
-        <div class="filter-section mb-4">
+        <div class="filter-section mb-4" [ngClass]="{'d-none': !showFilterSection}">
           <div class="row">
             <div class="col-md-4 mb-3 mb-md-0">
               <label for="search">Search</label>

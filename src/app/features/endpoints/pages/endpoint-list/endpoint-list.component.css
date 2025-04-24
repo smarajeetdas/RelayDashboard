@@ -127,6 +127,36 @@
   transition: all 0.3s ease;
 }
 
+.btn-filter {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1473e6, #0954b6);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 10px rgba(20, 115, 230, 0.2);
+}
+
+.btn-filter:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.btn-filter i {
+  font-size: 14px;
+  color: white;
+}
+
+.btn-filter:hover {
+  background: linear-gradient(135deg, #0d62c9 0%, #0a4fa3 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(20, 115, 230, 0.3);
+}
+
 /* Square buttons for Clear and Search */
 .col-md-6 .btn-outline-primary,
 .col-md-6 .btn-primary {

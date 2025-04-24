@@ -31,6 +31,9 @@ export class UserListComponent implements OnInit {
   itemsPerPage: number = 10;
   totalItems: number = 0;
   
+  // Filter section visibility control
+  showFilterSection: boolean = false;
+  
   // Sidebar configuration
   sidebarItems: SidebarItem[] = [
     { id: 'user-details', label: 'User Details', icon: 'user' },
@@ -169,5 +172,12 @@ export class UserListComponent implements OnInit {
     } else if (itemId === 'global-testdata' || itemId === 'projects') {
       this.activeView = 'grid';
     }
+  }
+  
+  /**
+   * Toggle the filter section visibility
+   */
+  toggleFilterSection(): void {
+    this.showFilterSection = !this.showFilterSection;
   }
 }
