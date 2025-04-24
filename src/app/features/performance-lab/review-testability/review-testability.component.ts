@@ -13,13 +13,6 @@ interface TestabilityFilter {
 })
 export class ReviewTestabilityComponent implements OnInit {
   
-  filters: TestabilityFilter[] = [
-    { name: 'project', placeholder: 'Select Project(s)' },
-    { name: 'version', placeholder: 'Select Version' },
-    { name: 'type', placeholder: 'Select Type' },
-    { name: 'status', placeholder: 'Select Status' }
-  ];
-  
   tableHeaders = [
     { name: 'Statement', sortable: true },
     { name: 'Type', sortable: true },
@@ -52,8 +45,29 @@ export class ReviewTestabilityComponent implements OnInit {
   filteredProjects: string[] = [];
   selectedProject: string = '';
   
+  // Testcase search (replacing version)
+  testcaseSearchTerm: string = '';
+  showTestcaseDropdown: boolean = false;
+  testcases = ['Login Authentication', 'Password Reset', 'User Registration', 'Profile Update', 'Payment Processing'];
+  filteredTestcases: string[] = [];
+  selectedTestcase: string = '';
+  
+  // Users search (replacing type)
+  usersSearchTerm: string = '';
+  showUsersDropdown: boolean = false;
+  users = ['John Smith', 'Jane Doe', 'Robert Johnson', 'Maria Garcia', 'David Lee'];
+  filteredUsers: string[] = [];
+  selectedUser: string = '';
+  
+  // Status dropdown
+  statuses = ['PASSED', 'FAILED'];
+  selectedStatus: string = '';
+  showStatusDropdown: boolean = false;
+  
   constructor() { 
     this.filteredProjects = [...this.projects];
+    this.filteredTestcases = [...this.testcases];
+    this.filteredUsers = [...this.users];
   }
 
   ngOnInit(): void {
@@ -67,12 +81,17 @@ export class ReviewTestabilityComponent implements OnInit {
   
   clearFilter(): void {
     // Reset all filters
+    this.selectedProject = '';
+    this.projectSearchTerm = '';
+    this.selectedTestcase = '';
+    this.testcaseSearchTerm = '';
+    this.selectedUser = '';
+    this.usersSearchTerm = '';
+    this.selectedStatus = '';
     this.selectedLocation = '';
     this.startDate = '';
     this.endDate = '';
     this.selectedLoadType = 'API';
-    this.projectSearchTerm = '';
-    this.selectedProject = '';
     console.log('Filters cleared');
   }
   
@@ -85,6 +104,7 @@ export class ReviewTestabilityComponent implements OnInit {
     this.selectedLoadType = type;
   }
   
+  // Project methods
   filterProjects(): void {
     if (this.projectSearchTerm) {
       this.filteredProjects = this.projects.filter(project => 
@@ -106,5 +126,57 @@ export class ReviewTestabilityComponent implements OnInit {
     setTimeout(() => {
       this.showProjectDropdown = false;
     }, 200);
+  }
+  
+  // Testcase methods
+  filterTestcases(): void {
+    if (this.testcaseSearchTerm) {
+      this.filteredTestcases = this.testcases.filter(testcase => 
+        testcase.toLowerCase().includes(this.testcaseSearchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredTestcases = [...this.testcases];
+    }
+  }
+  
+  selectTestcase(testcase: string): void {
+    this.selectedTestcase = testcase;
+    this.testcaseSearchTerm = testcase;
+    this.showTestcaseDropdown = false;
+  }
+  
+  onTestcaseInputBlur(): void {
+    setTimeout(() => {
+      this.showTestcaseDropdown = false;
+    }, 200);
+  }
+  
+  // Users methods
+  filterUsers(): void {
+    if (this.usersSearchTerm) {
+      this.filteredUsers = this.users.filter(user => 
+        user.toLowerCase().includes(this.usersSearchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredUsers = [...this.users];
+    }
+  }
+  
+  selectUser(user: string): void {
+    this.selectedUser = user;
+    this.usersSearchTerm = user;
+    this.showUsersDropdown = false;
+  }
+  
+  onUserInputBlur(): void {
+    setTimeout(() => {
+      this.showUsersDropdown = false;
+    }, 200);
+  }
+  
+  // Status methods
+  selectStatus(status: string): void {
+    this.selectedStatus = status;
+    this.showStatusDropdown = false;
   }
 }

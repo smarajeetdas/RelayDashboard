@@ -9,10 +9,12 @@
           <li class="breadcrumb-item active" aria-current="page">Review Testability Comparison</li>
         </ol>
       </nav>
-      <h1 class="page-title">
-        <i class="fas fa-chart-line title-icon"></i> 
-        Review Testability Comparison
-      </h1>
+      <div class="title-wrapper">
+        <h1 class="page-title">
+          <i class="fas fa-chart-line title-icon"></i> 
+          Review Testability Comparison
+        </h1>
+      </div>
     </div>
   </div>
 
@@ -38,104 +40,160 @@
     
     <!-- Filter Section -->
     <div class="filters-panel mb-4">
-      <div class="row">
-        <!-- Project Search -->
-        <div class="col-md-3 mb-3">
-          <div class="form-group">
-            <div class="project-search-wrapper">
-              <input type="text" 
-                     class="form-control project-search" 
-                     placeholder="Select Project(s)" 
-                     [(ngModel)]="projectSearchTerm"
-                     (input)="filterProjects()"
-                     (focus)="showProjectDropdown = true"
-                     (blur)="onProjectInputBlur()">
-              <div class="project-dropdown" *ngIf="showProjectDropdown">
-                <div class="project-dropdown-item" 
-                     *ngFor="let project of filteredProjects" 
-                     (click)="selectProject(project)"
-                     [class.active]="selectedProject === project">
-                  {{project}}
+      <div class="filters-container">
+        <!-- Row 1: Project & Testcase -->
+        <div class="row mb-3">
+          <!-- 1. Project Search -->
+          <div class="col-md-6 mb-3">
+            <div class="form-group">
+              <div class="project-search-wrapper">
+                <input type="text" 
+                       class="form-control project-search" 
+                       placeholder="Select Project(s)" 
+                       [(ngModel)]="projectSearchTerm"
+                       (input)="filterProjects()"
+                       (focus)="showProjectDropdown = true"
+                       (blur)="onProjectInputBlur()">
+                <div class="project-dropdown" *ngIf="showProjectDropdown">
+                  <div class="project-dropdown-item" 
+                       *ngFor="let project of filteredProjects" 
+                       (click)="selectProject(project)"
+                       [class.active]="selectedProject === project">
+                    {{project}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 2. Testcase Search (replaced Version) -->
+          <div class="col-md-6 mb-3">
+            <div class="form-group">
+              <div class="testcase-search-wrapper">
+                <input type="text" 
+                       class="form-control testcase-search" 
+                       placeholder="Select Testcase" 
+                       [(ngModel)]="testcaseSearchTerm"
+                       (input)="filterTestcases()"
+                       (focus)="showTestcaseDropdown = true"
+                       (blur)="onTestcaseInputBlur()">
+                <div class="testcase-dropdown" *ngIf="showTestcaseDropdown">
+                  <div class="testcase-dropdown-item" 
+                       *ngFor="let testcase of filteredTestcases" 
+                       (click)="selectTestcase(testcase)"
+                       [class.active]="selectedTestcase === testcase">
+                    {{testcase}}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Location Dropdown -->
-        <div class="col-md-3 mb-3">
-          <div class="form-group">
-            <div class="location-wrapper">
-              <input type="text" 
-                     class="form-control location-select" 
-                     [value]="selectedLocation || 'Select Location'" 
-                     readonly
-                     (click)="showLocationDropdown = !showLocationDropdown">
-              <div class="location-dropdown" *ngIf="showLocationDropdown" (mouseleave)="showLocationDropdown = false">
-                <div class="location-dropdown-item" 
-                     *ngFor="let location of locations" 
-                     (click)="selectLocation(location)"
-                     [class.active]="selectedLocation === location">
-                  {{location}}
+        <!-- Row 2: Users & Status -->
+        <div class="row mb-3">
+          <!-- 3. Users Search (replaced Type) -->
+          <div class="col-md-6 mb-3">
+            <div class="form-group">
+              <div class="users-search-wrapper">
+                <input type="text" 
+                       class="form-control users-search" 
+                       placeholder="Select Users" 
+                       [(ngModel)]="usersSearchTerm"
+                       (input)="filterUsers()"
+                       (focus)="showUsersDropdown = true"
+                       (blur)="onUserInputBlur()">
+                <div class="users-dropdown" *ngIf="showUsersDropdown">
+                  <div class="users-dropdown-item" 
+                       *ngFor="let user of filteredUsers" 
+                       (click)="selectUser(user)"
+                       [class.active]="selectedUser === user">
+                    {{user}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 4. Status Dropdown -->
+          <div class="col-md-6 mb-3">
+            <div class="form-group">
+              <div class="status-wrapper">
+                <input type="text" 
+                       class="form-control status-select" 
+                       [value]="selectedStatus || 'Select Status'" 
+                       readonly
+                       (click)="showStatusDropdown = !showStatusDropdown">
+                <div class="status-dropdown" *ngIf="showStatusDropdown" (mouseleave)="showStatusDropdown = false">
+                  <div class="status-dropdown-item" 
+                       *ngFor="let status of statuses" 
+                       (click)="selectStatus(status)"
+                       [class.active]="selectedStatus === status">
+                    {{status}}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Start Date Picker -->
-        <div class="col-md-3 mb-3">
-          <div class="form-group">
-            <input type="date" 
-                   class="form-control date-picker" 
-                   placeholder="Start Date"
-                   [(ngModel)]="startDate">
+        <!-- Row 3: Location & Date Pickers -->
+        <div class="row mb-3">
+          <!-- 5. Location Dropdown -->
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <div class="location-wrapper">
+                <input type="text" 
+                       class="form-control location-select" 
+                       [value]="selectedLocation || 'Select Location'" 
+                       readonly
+                       (click)="showLocationDropdown = !showLocationDropdown">
+                <div class="location-dropdown" *ngIf="showLocationDropdown" (mouseleave)="showLocationDropdown = false">
+                  <div class="location-dropdown-item" 
+                       *ngFor="let location of locations" 
+                       (click)="selectLocation(location)"
+                       [class.active]="selectedLocation === location">
+                    {{location}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 6. Start Date Picker -->
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <input type="date" 
+                     class="form-control date-picker" 
+                     placeholder="Start Date"
+                     [(ngModel)]="startDate">
+            </div>
+          </div>
+          
+          <!-- 7. End Date Picker -->
+          <div class="col-md-4 mb-3">
+            <div class="form-group">
+              <input type="date" 
+                     class="form-control date-picker" 
+                     placeholder="End Date"
+                     [(ngModel)]="endDate">
+            </div>
           </div>
         </div>
         
-        <!-- End Date Picker -->
-        <div class="col-md-3 mb-3">
-          <div class="form-group">
-            <input type="date" 
-                   class="form-control date-picker" 
-                   placeholder="End Date"
-                   [(ngModel)]="endDate">
-          </div>
-        </div>
-      </div>
-      
-      <!-- Additional Filters Row -->
-      <div class="row mb-3">
-        <!-- Version Filter -->
-        <div class="col-md-3 mb-3">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Select Version">
-          </div>
-        </div>
-        
-        <!-- Type Filter -->
-        <div class="col-md-3 mb-3">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Select Type">
-          </div>
-        </div>
-        
-        <!-- Status Filter -->
-        <div class="col-md-3 mb-3">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Select Status">
-          </div>
-        </div>
-        
-        <!-- Action Buttons -->
-        <div class="col-md-3 text-right">
-          <div class="d-flex" style="gap: 10px;">
-            <button class="btn btn-clear" (click)="clearFilter()">
-              <i class="fas fa-times"></i>
-            </button>
-            <button class="btn btn-primary btn-search" (click)="search()">
-              <i class="fas fa-search"></i>
-            </button>
+        <!-- Row 4: Action Buttons -->
+        <div class="row action-row">
+          <div class="col-md-12 text-right">
+            <div class="d-flex action-buttons-container">
+              <!-- 9. Clear Button -->
+              <button class="btn btn-clear mr-3" (click)="clearFilter()">
+                <i class="fas fa-times mr-2"></i>Clear
+              </button>
+              <!-- 8. Search Button -->
+              <button class="btn btn-primary btn-search-large" (click)="search()">
+                <i class="fas fa-search mr-2"></i>Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
