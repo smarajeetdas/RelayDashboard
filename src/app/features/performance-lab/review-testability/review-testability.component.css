@@ -331,11 +331,30 @@
   margin-bottom: 15px;
 }
 
-/* No longer used - remove redundant style */
+/* Bordered inputs styles */
+.bordered-input {
+  position: relative;
+  padding: 0 2px;
+}
+
+.bordered-input:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 0;
+  height: 28px;
+  width: 1px;
+  background-color: #d1d5db;
+  opacity: 0.7;
+}
+
+.action-col {
+  padding-left: 15px;
+}
 
 .action-buttons-container {
   justify-content: flex-end;
-  gap: 15px;
+  gap: 10px;
 }
 
 /* Testcase Search Dropdown */

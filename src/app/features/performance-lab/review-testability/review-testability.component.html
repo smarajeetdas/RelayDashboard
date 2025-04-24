@@ -41,11 +41,11 @@
     <!-- Filter Section -->
     <div class="filters-panel mb-4">
       <div class="filters-container">
-        <!-- Row 1: Project, Testcase, Users, Status -->
+        <!-- Single Row with all form elements -->
         <div class="row mb-2">
           <!-- 1. Project Search -->
-          <div class="col-md-3 mb-2">
-            <div class="form-group">
+          <div class="col bordered-input">
+            <div class="form-group mb-0">
               <div class="project-search-wrapper">
                 <input type="text" 
                        class="form-control project-search" 
@@ -66,9 +66,9 @@
             </div>
           </div>
           
-          <!-- 2. Testcase Search (replaced Version) -->
-          <div class="col-md-3 mb-2">
-            <div class="form-group">
+          <!-- 2. Testcase Search -->
+          <div class="col bordered-input">
+            <div class="form-group mb-0">
               <div class="testcase-search-wrapper">
                 <input type="text" 
                        class="form-control testcase-search" 
@@ -89,9 +89,9 @@
             </div>
           </div>
           
-          <!-- 3. Users Search (replaced Type) -->
-          <div class="col-md-3 mb-2">
-            <div class="form-group">
+          <!-- 3. Users Search -->
+          <div class="col bordered-input">
+            <div class="form-group mb-0">
               <div class="users-search-wrapper">
                 <input type="text" 
                        class="form-control users-search" 
@@ -113,8 +113,8 @@
           </div>
           
           <!-- 4. Status Dropdown -->
-          <div class="col-md-3 mb-2">
-            <div class="form-group">
+          <div class="col bordered-input">
+            <div class="form-group mb-0">
               <div class="status-wrapper">
                 <input type="text" 
                        class="form-control status-select" 
@@ -132,13 +132,10 @@
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Row 2: Location, Date Pickers, and Buttons -->
-        <div class="row mb-2">
+          
           <!-- 5. Location Dropdown -->
-          <div class="col-md-2 mb-2">
-            <div class="form-group">
+          <div class="col bordered-input">
+            <div class="form-group mb-0">
               <div class="location-wrapper">
                 <input type="text" 
                        class="form-control location-select" 
@@ -158,8 +155,8 @@
           </div>
           
           <!-- 6. Start Date Picker -->
-          <div class="col-md-2 mb-2">
-            <div class="form-group">
+          <div class="col bordered-input">
+            <div class="form-group mb-0">
               <input type="date" 
                      class="form-control date-picker" 
                      placeholder="Start Date"
@@ -168,8 +165,8 @@
           </div>
           
           <!-- 7. End Date Picker -->
-          <div class="col-md-2 mb-2">
-            <div class="form-group">
+          <div class="col bordered-input">
+            <div class="form-group mb-0">
               <input type="date" 
                      class="form-control date-picker" 
                      placeholder="End Date"
@@ -178,15 +175,15 @@
           </div>
           
           <!-- 8-9. Action Buttons -->
-          <div class="col-md-6 mb-2">
+          <div class="col-md-auto action-col">
             <div class="d-flex action-buttons-container h-100 align-items-center justify-content-end">
               <!-- Clear Button -->
-              <button class="btn btn-clear mr-3" (click)="clearFilter()">
-                <i class="fas fa-times mr-2"></i>Clear
+              <button class="btn btn-clear mr-2" (click)="clearFilter()">
+                <i class="fas fa-times mr-1"></i>Clear
               </button>
               <!-- Search Button -->
               <button class="btn btn-primary btn-search-large" (click)="search()">
-                <i class="fas fa-search mr-2"></i>Search
+                <i class="fas fa-search mr-1"></i>Search
               </button>
             </div>
           </div>
