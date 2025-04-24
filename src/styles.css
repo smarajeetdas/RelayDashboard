@@ -466,7 +466,7 @@ p {
 
 /* Breadcrumb styling */
 .breadcrumbs {
-  padding-top: 100px; /* This prevents the breadcrumb from being hidden by the navbar */
+  padding-top: 10px; /* Reduced padding for better spacing below the header */
 }
 
 .breadcrumb {
@@ -527,6 +527,6 @@ p {
   }
   
   .breadcrumbs {
-    padding-top: 80px;
+    padding-top: 5px;
   }
 }
