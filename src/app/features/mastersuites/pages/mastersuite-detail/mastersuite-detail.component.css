@@ -132,6 +132,27 @@
   color: white;
 }
 
+.btn-select-env {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #f0f3f5;
+  color: #374151;
+  border: 1px solid #e2e8f0;
+  min-width: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-select-env:hover {
+  background-color: #e2e8f0;
+  border-color: #cbd5e0;
+}
+
 .btn-icon-text {
   margin-right: 8px;
 }
