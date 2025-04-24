@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TestSuiteDetail } from '../../models/testsuite.model';
 import { TestSuiteService } from '../../services/testsuite.service';
+
+interface Environment {
+  id: string;
+  name: string;
+  type: string;
+}
 
 @Component({
   selector: 'app-testsuite-detail',
@@ -16,6 +22,19 @@ export class TestSuiteDetailComponent implements OnInit {
   
   // Tab management
   activeTab: string = 'info';
+  
+  // Environment dropdown
+  environments: Environment[] = [
+    { id: 'dev', name: 'Development', type: 'DEV' },
+    { id: 'qa', name: 'Quality Assurance', type: 'QA' },
+    { id: 'stage', name: 'Staging', type: 'STAGE' },
+    { id: 'prod', name: 'Production', type: 'PROD' }
+  ];
+  selectedEnvironment: Environment = this.environments[0];
+  isEnvironmentDropdownOpen: boolean = false;
+
+  // Side Panel Management
+  showListOfEndpoints: boolean = true;
   
   constructor(
     private route: ActivatedRoute,
@@ -60,5 +79,28 @@ export class TestSuiteDetailComponent implements OnInit {
   
   navigateBack(): void {
     this.router.navigate(['/testsuites']);
+  }
+
+  toggleEnvironmentDropdown(): void {
+    this.isEnvironmentDropdownOpen = !this.isEnvironmentDropdownOpen;
+  }
+
+  selectEnvironment(env: Environment): void {
+    this.selectedEnvironment = env;
+    this.isEnvironmentDropdownOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event): void {
+    const targetElement = event.target as HTMLElement;
+    const environmentDropdownElement = document.querySelector('.environment-dropdown-wrapper');
+    
+    if (environmentDropdownElement && !environmentDropdownElement.contains(targetElement)) {
+      this.isEnvironmentDropdownOpen = false;
+    }
+  }
+
+  toggleListOfEndpoints(): void {
+    this.showListOfEndpoints = !this.showListOfEndpoints;
   }
 }

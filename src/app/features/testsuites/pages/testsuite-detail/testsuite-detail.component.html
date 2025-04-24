@@ -50,7 +50,25 @@
           <h2 class="testsuite-title">{{ testSuite.name }}</h2>
         </div>
         <div class="header-actions">
-          <button class="btn btn-action btn-edit">
+          <!-- Environment Selection Dropdown -->
+          <div class="environment-dropdown-wrapper" (click)="$event.stopPropagation()">
+            <div class="environment-selector" (click)="toggleEnvironmentDropdown()">
+              <div class="environment-label">Environment Region:</div>
+              <div class="environment-value">
+                {{ selectedEnvironment.name }}
+                <i class="fas fa-chevron-down ml-2"></i>
+              </div>
+            </div>
+            <div class="environment-dropdown" *ngIf="isEnvironmentDropdownOpen">
+              <div class="environment-dropdown-item" *ngFor="let env of environments" 
+                   [ngClass]="{'active': selectedEnvironment.id === env.id}"
+                   (click)="selectEnvironment(env)">
+                {{ env.name }}
+              </div>
+            </div>
+          </div>
+          
+          <button class="btn btn-action btn-edit ml-3">
             <i class="fas fa-pencil-alt btn-icon-text"></i>
             Edit
           </button>
@@ -59,6 +77,12 @@
             Execute
           </button>
         </div>
+      </div>
+      
+      <!-- Parallel Execution Status -->
+      <div class="parallel-execution-status mb-4">
+        <span class="status-label">Parallel Run:</span>
+        <span class="status-value">{{ testSuite.parallel ? 'True' : 'False' }}</span>
       </div>
       
       <!-- Tab navigation -->
@@ -329,6 +353,80 @@
                   <i class="fas fa-plus mr-1"></i> Add Test Case
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- List of Endpoints Section -->
+        <div *ngSwitchCase="'testcases'">
+          <div class="endpoints-section mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="section-title">List of Endpoints</h3>
+              <div class="d-flex">
+                <button class="btn btn-sm btn-primary create-endpoint-btn mr-2">
+                  <i class="fas fa-plus mr-1"></i> Create
+                </button>
+              </div>
+            </div>
+            
+            <div class="endpoints-table-container">
+              <table class="table endpoint-table">
+                <thead>
+                  <tr>
+                    <th style="width: 35px;"><i class="fas fa-check"></i></th>
+                    <th>Endpoint Name</th>
+                    <th style="width: 120px; text-align: center;">Today (run)</th>
+                    <th style="width: 60px; text-align: center;">Retry</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><i class="fas fa-check-circle text-muted"></i></td>
+                    <td>EP_WSG_MGT_Domain_Test</td>
+                    <td style="text-align: center;">
+                      <span class="status-time">Today (run)</span>
+                      <span class="badge badge-success">1</span>
+                    </td>
+                    <td style="text-align: center;"><i class="fas fa-redo"></i></td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-check-circle text-muted"></i></td>
+                    <td>EP_FW_ID_Status_MGT_Rest</td>
+                    <td style="text-align: center;">
+                      <span class="status-time">Today (run)</span>
+                      <span class="badge badge-success">1</span>
+                    </td>
+                    <td style="text-align: center;"><i class="fas fa-redo"></i></td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-check-circle text-muted"></i></td>
+                    <td>EP_API_Folder_Id_Mgt_Test</td>
+                    <td style="text-align: center;">
+                      <span class="status-time">Today (run)</span>
+                      <span class="badge badge-success">0</span>
+                    </td>
+                    <td style="text-align: center;"><i class="fas fa-redo"></i></td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-check-circle text-muted"></i></td>
+                    <td>EP_Data_Search_CRM_Series_T...</td>
+                    <td style="text-align: center;">
+                      <span class="status-time">Today (run)</span>
+                      <span class="badge badge-success">0</span>
+                    </td>
+                    <td style="text-align: center;"><i class="fas fa-redo"></i></td>
+                  </tr>
+                  <tr>
+                    <td><i class="fas fa-check-circle text-muted"></i></td>
+                    <td>EP_Country_Mapping_Test</td>
+                    <td style="text-align: center;">
+                      <span class="status-time">Today (run)</span>
+                      <span class="badge badge-success">0</span>
+                    </td>
+                    <td style="text-align: center;"><i class="fas fa-redo"></i></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
