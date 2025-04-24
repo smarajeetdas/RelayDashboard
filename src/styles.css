@@ -466,13 +466,13 @@ p {
 
 /* Breadcrumb styling */
 .breadcrumbs {
-  padding-top: 10px; /* Reduced padding for better spacing below the header */
+  padding: 10px 0 5px; /* Consistent padding for all components */
 }
 
 .breadcrumb {
   background-color: transparent;
   margin: 0;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   list-style: none;
   display: flex;
   align-items: center;
@@ -486,12 +486,12 @@ p {
 }
 
 .breadcrumb-item+.breadcrumb-item {
-  padding-left: 0.75rem;
+  padding-left: 0.5rem;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
   display: inline-block;
-  padding-right: 0.75rem;
+  padding-right: 0.5rem;
   color: #6c757d;
   content: "/";
 }
@@ -527,6 +527,6 @@ p {
   }
   
   .breadcrumbs {
-    padding-top: 5px;
+    padding: 5px 0 3px;
   }
 }
