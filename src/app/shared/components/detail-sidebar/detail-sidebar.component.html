@@ -1,16 +1,4 @@
 <div class="detail-sidebar">
-  <div class="sidebar-header">
-    <div class="sidebar-header-content">
-      <div class="sidebar-title">Management</div>
-      <div class="sidebar-subtitle">{{ title }}</div>
-    </div>
-    <div class="sidebar-decoration">
-      <div class="decoration-dot"></div>
-      <div class="decoration-dot"></div>
-      <div class="decoration-dot"></div>
-    </div>
-  </div>
-  
   <ul class="sidebar-menu">
     <li *ngFor="let item of items" 
         [ngClass]="{'active': isActive(item.id)}"
