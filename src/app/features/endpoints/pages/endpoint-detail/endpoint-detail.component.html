@@ -43,52 +43,23 @@
         </div>
       </div>
 
-      <!-- Main content with floating sidebar and full-width content -->
+      <!-- Main content with icon sidebar and full-width content -->
       <div class="row position-relative">
-        <!-- Toggle button for sidebar -->
-        <div class="sidebar-toggle-container">
-          <button 
-            class="btn sidebar-toggle-btn" 
-            (click)="toggleSidebar()"
-            [ngClass]="{'active': isSidebarOpen}"
-            aria-label="Toggle sidebar">
-            <i class="fas" [ngClass]="isSidebarOpen ? 'fa-times' : 'fa-sliders-h'"></i>
-            <span class="toggle-label" *ngIf="!isSidebarOpen">Config</span>
-          </button>
-        </div>
-        
-        <!-- Overlay Sidebar -->
-        <div class="sidebar-overlay" [ngClass]="{'show': isSidebarOpen}">
-          <div class="sidebar-overlay-content">
-            <div class="sidebar-header-overlay">
-              <h5 class="mb-0">Endpoint Configuration</h5>
-              <button 
-                class="btn close-sidebar-btn" 
-                (click)="toggleSidebar()"
-                aria-label="Close sidebar">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="sidebar-body-overlay">
-              <app-detail-sidebar 
-                [items]="sidebarItems" 
-                [activeItemId]="activeSidebarItem"
-                [title]="'Endpoint'"
-                [subtitle]="'Configuration Options'"
-                (itemSelect)="onSidebarItemSelect($event)">
-              </app-detail-sidebar>
+        <!-- Icon Sidebar -->
+        <div class="icon-sidebar" (mouseenter)="showSidebarLabels = true" (mouseleave)="showSidebarLabels = false">
+          <div class="icon-sidebar-items">
+            <div *ngFor="let item of sidebarItems" 
+                 class="sidebar-icon-item" 
+                 [ngClass]="{'active': activeSidebarItem === item.id}"
+                 (click)="onSidebarItemSelect(item.id)">
+              <i class="fas fa-{{item.icon}}"></i>
+              <span class="sidebar-label" [ngClass]="{'visible': showSidebarLabels}">{{item.label}}</span>
             </div>
           </div>
         </div>
-        
-        <!-- Backdrop overlay -->
-        <div class="sidebar-backdrop" 
-             [ngClass]="{'show': isSidebarOpen}" 
-             (click)="toggleSidebar()">
-        </div>
 
         <!-- Full width content area -->
-        <div class="col-12">
+        <div class="col-12 content-with-icon-sidebar">
           <!-- Summary card -->
           <div class="card mb-4 summary-card">
             <div class="card-body">

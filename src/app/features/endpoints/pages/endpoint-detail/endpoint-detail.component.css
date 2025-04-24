@@ -135,128 +135,94 @@
   color: #a0aec0;
 }
 
-/* Sidebar toggle button styling */
-.sidebar-toggle-container {
+/* Icon sidebar styling */
+.icon-sidebar {
   position: fixed;
-  top: 140px;
+  top: 130px;
   left: 0;
+  width: 60px;
+  border-radius: 0 12px 12px 0;
+  background: linear-gradient(180deg, #2a3749 0%, #1c2536 100%);
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
   z-index: 1030;
+  overflow: visible;
   transition: all 0.3s ease;
 }
 
-.sidebar-toggle-btn {
-  background: linear-gradient(135deg, #1473e6 0%, #0954b6 100%);
-  color: white;
-  border: none;
-  border-radius: 0 8px 8px 0;
-  padding: 10px 15px;
-  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+.icon-sidebar-items {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+.sidebar-icon-item {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
 }
 
-.sidebar-toggle-btn:hover {
-  background: linear-gradient(135deg, #0954b6 0%, #0d4ca3 100%);
-  transform: translateX(3px);
+.sidebar-icon-item:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.sidebar-toggle-btn.active {
-  background: #dc3545;
+.sidebar-icon-item.active {
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(20, 115, 230, 0.2), rgba(20, 115, 230, 0.05));
 }
 
-.toggle-label {
-  margin-left: 8px;
+.sidebar-icon-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #1473e6;
+}
+
+.sidebar-icon-item i {
+  font-size: 18px;
+  min-width: 28px;
+  text-align: center;
+}
+
+.sidebar-label {
+  position: absolute;
+  left: 60px;
+  top: 0;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #2a3749 0%, #1c2536 90%);
+  color: white;
+  padding: 12px 15px;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+  transform: translateX(-20px);
+  opacity: 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
   font-weight: 500;
   font-size: 14px;
+  z-index: -1;
 }
 
-/* Overlay sidebar styling */
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: -320px;
-  width: 320px;
-  height: 100vh;
-  z-index: 1040;
-  background: linear-gradient(135deg, #2a3749 0%, #1c2536 100%);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar-overlay.show {
-  left: 0;
-}
-
-.sidebar-overlay-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.sidebar-header-overlay {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.2);
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.close-sidebar-btn {
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 18px;
-  padding: 5px;
-  line-height: 1;
-  opacity: 0.7;
-  transition: all 0.2s ease;
-}
-
-.close-sidebar-btn:hover {
+.sidebar-label.visible {
+  transform: translateX(0);
   opacity: 1;
-  transform: scale(1.1);
+  z-index: 1031;
 }
 
-.sidebar-body-overlay {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-}
-
-/* Backdrop overlay */
-.sidebar-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1035;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.sidebar-backdrop.show {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Update detail sidebar component within overlay */
-.sidebar-body-overlay app-detail-sidebar {
-  height: 100%;
-  display: block;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
-  border: none;
+/* Content with sidebar margin adjustment */
+.content-with-icon-sidebar {
+  margin-left: 70px;
 }
 
 /* Right content area */
@@ -599,13 +565,8 @@
     padding-top: 80px;
   }
   
-  .sidebar-toggle-container {
+  .icon-sidebar {
     top: 120px;
-  }
-  
-  .sidebar-overlay {
-    width: 280px;
-    left: -280px;
   }
   
   .detail-group label {
@@ -626,16 +587,28 @@
     padding-top: 70px;
   }
   
-  .sidebar-toggle-container {
+  .icon-sidebar {
     top: 110px;
+    width: 50px;
   }
   
-  .sidebar-toggle-btn {
-    padding: 8px 12px;
+  .sidebar-icon-item {
+    padding: 10px 14px;
   }
   
-  .toggle-label {
-    font-size: 12px;
+  .sidebar-icon-item i {
+    font-size: 16px;
+    min-width: 22px;
+  }
+  
+  .sidebar-label {
+    left: 50px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .content-with-icon-sidebar {
+    margin-left: 60px;
   }
   
   .endpoint-title {
@@ -643,17 +616,8 @@
     padding: 12px 15px;
   }
   
-  .col-md-3.col-lg-2 {
-    margin-bottom: 20px;
-  }
-  
   .card-body {
     padding: 15px;
-  }
-  
-  .sidebar-overlay {
-    width: 260px;
-    left: -260px;
   }
 }
 
@@ -662,13 +626,23 @@
     padding-top: 60px;
   }
   
-  .sidebar-toggle-container {
+  .icon-sidebar {
     top: 100px;
+    width: 45px;
   }
   
-  .sidebar-overlay {
-    width: 85%;
-    left: -100%;
+  .sidebar-icon-item {
+    padding: 10px 12px;
+  }
+  
+  .sidebar-label {
+    left: 45px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  
+  .content-with-icon-sidebar {
+    margin-left: 50px;
   }
   
   .endpoint-title {
