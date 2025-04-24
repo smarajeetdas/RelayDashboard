@@ -9,7 +9,7 @@ declare const Math: any;
 @Component({
   selector: 'app-testcase-list',
   templateUrl: './testcase-list.component.html',
-  styleUrls: ['./testcase-list.component.css']
+  styleUrls: ['./testcase-list.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class TestCaseListComponent implements OnInit {
   testCases: TestCase[] = [];
