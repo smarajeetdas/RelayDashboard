@@ -46,7 +46,7 @@ export class UserListComponent implements OnInit {
     { id: 'admin-settings', label: 'Admin settings', icon: 'cog' },
     { id: 'schedule-triggers', label: 'Schedule triggers', icon: 'clock' },
     { id: 'masking-config', label: 'Masking config', icon: 'mask' },
-    { id: 'browser-extension', label: 'Browser Extension', icon: 'browser' },
+    { id: 'browser-extension', label: 'Browser Extension', icon: 'puzzle-piece' },
     { id: 'perf-admin-config', label: 'Perf Admin Config', icon: 'tachometer-alt' },
     { id: 'web-cluster', label: 'Web Cluster', icon: 'server' },
     { id: 'code-coverage', label: 'Code coverage', icon: 'code' },
