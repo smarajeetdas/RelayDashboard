@@ -17,14 +17,16 @@ export class EndpointDetailComponent implements OnInit {
   
   // Sidebar configuration
   sidebarItems: SidebarItem[] = [
-    { id: 'basic', icon: 'info-circle', label: 'Basic' },
-    { id: 'environment', icon: 'globe', label: 'Environment' },
+    { id: 'basic', icon: 'circle', label: 'Basic' },
     { id: 'testdata', icon: 'database', label: 'Test data' },
+    { id: 'environment', icon: 'calendar-alt', label: 'Schedule' },
+    { id: 'parameters', icon: 'check-circle', label: 'Validations' },
+    { id: 'headers', icon: 'certificate', label: 'Certification' },
+    { id: 'apitrends', icon: 'bell', label: 'Notification' },
     { id: 'associated', icon: 'link', label: 'Associated with' },
     { id: 'history', icon: 'history', label: 'History' },
-    { id: 'apitrends', icon: 'chart-line', label: 'API trends' },
-    { id: 'execution', icon: 'tasks', label: 'Execution History' },
-    { id: 'result', icon: 'clipboard-check', label: 'Result' }
+    { id: 'execution', icon: 'play-circle', label: 'Execution History' },
+    { id: 'result', icon: 'chart-bar', label: 'Result' }
   ];
   
   activeSidebarItem: string = 'basic';
