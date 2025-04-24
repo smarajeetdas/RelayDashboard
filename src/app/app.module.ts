@@ -18,6 +18,9 @@ import { CtaComponent } from './components/cta/cta.component';
 import { FeatureCardComponent } from './shared/feature-card/feature-card.component';
 import { HomeComponent } from './components/home/home.component';
 
+// Feature modules
+import { PerformanceLabModule } from './features/performance-lab/performance-lab.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +41,8 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PerformanceLabModule
   ],
   providers: [],
   bootstrap: [AppComponent]

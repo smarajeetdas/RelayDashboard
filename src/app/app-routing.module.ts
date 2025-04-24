@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule)
   },
   {
+    path: 'performance-lab',
+    loadChildren: () => import('./features/performance-lab/performance-lab.module').then(m => m.PerformanceLabModule)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

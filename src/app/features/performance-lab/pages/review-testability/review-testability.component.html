@@ -1,0 +1,134 @@
+<div class="review-testability-container">
+  <!-- Page Header with Title -->
+  <div class="page-header">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Performance Lab</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Review Testability Comparison</li>
+        </ol>
+      </nav>
+      <h1 class="page-title">
+        <i class="fas fa-chart-line title-icon"></i> 
+        Review Testability Comparison
+      </h1>
+    </div>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="content-container container-fluid">
+    <!-- Filter Section -->
+    <div class="filters-panel mb-4">
+      <div class="row">
+        <!-- Project Filter -->
+        <div class="col-md-3 mb-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Select Project(s)">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Version Filter -->
+        <div class="col-md-3 mb-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Select Version">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Type Filter -->
+        <div class="col-md-3 mb-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Select Type">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Status Filter -->
+        <div class="col-md-3 mb-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Select Status">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <button class="btn btn-primary search-btn" (click)="search()">
+            <i class="fas fa-search mr-2"></i>Search
+          </button>
+          <button class="btn btn-outline-secondary clear-btn ml-2" (click)="clearFilter()">
+            <i class="fas fa-times mr-2"></i>Clear Filter
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Results Table -->
+    <div class="table-responsive testability-table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Statement</th>
+            <th scope="col">Type</th>
+            <th scope="col">Location</th>
+            <th scope="col">Users</th>
+            <th scope="col">Schedule Date & Time</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- No Results Message -->
+          <tr *ngIf="hasNoResults">
+            <td colspan="6" class="text-center py-4">
+              <div class="no-results">
+                <i class="fas fa-search mb-3"></i>
+                <p>Please select project and testcase.</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Table Footer - Empty Stats -->
+    <div class="table-footer">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="table-stats">Showing 0 entries</p>
+        </div>
+        <div class="col-md-6">
+          <nav aria-label="Page navigation" class="pagination-container">
+            <ul class="pagination justify-content-end">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
