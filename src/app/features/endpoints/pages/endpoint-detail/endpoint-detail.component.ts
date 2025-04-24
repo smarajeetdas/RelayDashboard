@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EndpointDetail, TestCase } from '../../models/endpoint.model';
 import { EndpointService } from '../../services/endpoint.service';
@@ -28,6 +28,36 @@ export class EndpointDetailComponent implements OnInit {
   ];
   
   activeSidebarItem: string = 'basic';
+  isSidebarOpen: boolean = false;
+  
+  // Close sidebar when clicking outside on small screens
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    // Check if clicked element is outside the sidebar and sidebar is open
+    if (this.isSidebarOpen) {
+      const clickedElement = event.target as HTMLElement;
+      // Check if the click is on the toggle button (which has a specific class)
+      const isOnToggleButton = clickedElement.closest('.sidebar-toggle-btn');
+      // Check if the click is inside the sidebar
+      const isInsideSidebar = clickedElement.closest('.sidebar-overlay');
+      
+      if (!isInsideSidebar && !isOnToggleButton) {
+        this.isSidebarOpen = false;
+      }
+    }
+  }
+  
+  // Responsive handling
+  isSmallScreen: boolean = window.innerWidth < 992;
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.isSmallScreen = window.innerWidth < 992;
+    // Close sidebar automatically when resizing to large screen
+    if (!this.isSmallScreen) {
+      this.isSidebarOpen = false;
+    }
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -67,7 +97,14 @@ export class EndpointDetailComponent implements OnInit {
   
   onSidebarItemSelect(itemId: string): void {
     this.activeSidebarItem = itemId;
-    console.log('Selected sidebar item:', itemId);
+    // For small screens, close the sidebar after item selection
+    if (this.isSmallScreen) {
+      this.isSidebarOpen = false;
+    }
+  }
+  
+  toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   setActiveTab(tab: 'details' | 'parameters' | 'headers' | 'testCases'): void {
