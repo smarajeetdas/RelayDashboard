@@ -28,7 +28,7 @@ export class EndpointDetailComponent implements OnInit {
   ];
   
   activeSidebarItem: string = 'basic';
-  showSidebarLabels: boolean = false;
+  sidebarExpanded: boolean = false;
   
   // Responsive handling
   isSmallScreen: boolean = window.innerWidth < 992;
@@ -36,6 +36,14 @@ export class EndpointDetailComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     this.isSmallScreen = window.innerWidth < 992;
+  }
+  
+  expandSidebar(): void {
+    this.sidebarExpanded = true;
+  }
+  
+  collapseSidebar(): void {
+    this.sidebarExpanded = false;
   }
 
   constructor(

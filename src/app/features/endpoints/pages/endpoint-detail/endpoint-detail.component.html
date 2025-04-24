@@ -43,23 +43,36 @@
         </div>
       </div>
 
-      <!-- Main content with icon sidebar and full-width content -->
+      <!-- Main content with collapsible sidebar and full-width content -->
       <div class="row position-relative">
-        <!-- Icon Sidebar -->
-        <div class="icon-sidebar" (mouseenter)="showSidebarLabels = true" (mouseleave)="showSidebarLabels = false">
-          <div class="icon-sidebar-items">
-            <div *ngFor="let item of sidebarItems" 
-                 class="sidebar-icon-item" 
-                 [ngClass]="{'active': activeSidebarItem === item.id}"
-                 (click)="onSidebarItemSelect(item.id)">
-              <i class="fas fa-{{item.icon}}"></i>
-              <span class="sidebar-label" [ngClass]="{'visible': showSidebarLabels}">{{item.label}}</span>
+        <!-- Full width content container -->
+        <div class="col-12">
+          <div class="content-layout">
+            <!-- Collapsible sidebar -->
+            <div class="collapsible-sidebar" 
+                 (mouseenter)="expandSidebar()" 
+                 (mouseleave)="collapseSidebar()"
+                 [ngClass]="{'expanded': sidebarExpanded}">
+              <div class="sidebar-header" *ngIf="sidebarExpanded">
+                <h5 class="mb-0">Endpoint</h5>
+                <p class="text-muted mb-0 sidebar-subtitle">Configuration</p>
+              </div>
+              <div class="sidebar-content">
+                <div *ngFor="let item of sidebarItems" 
+                     class="sidebar-item" 
+                     [ngClass]="{'active': activeSidebarItem === item.id}"
+                     (click)="onSidebarItemSelect(item.id)">
+                  <div class="icon-container">
+                    <i class="fas fa-{{item.icon}}"></i>
+                  </div>
+                  <span class="item-label" [ngClass]="{'hidden': !sidebarExpanded}">{{item.label}}</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Full width content area -->
-        <div class="col-12 content-with-icon-sidebar">
+            
+            <!-- Main content section with correct spacing -->
+            <div class="main-content" 
+                 [ngClass]="{'with-expanded-sidebar': sidebarExpanded, 'with-collapsed-sidebar': !sidebarExpanded}">
           <!-- Summary card -->
           <div class="card mb-4 summary-card">
             <div class="card-body">
@@ -303,6 +316,8 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
             </div>
           </div>
         </div>
