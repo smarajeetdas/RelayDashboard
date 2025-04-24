@@ -4,7 +4,7 @@
 .review-testability-container {
   background-color: #f9f9f9;
   min-height: 100vh;
-  padding-top: 70px; /* Increased to account for fixed header height */
+  padding-top: 80px; /* Reduced padding */
   max-width: 1800px;
   margin: 0 auto;
 }
@@ -12,10 +12,8 @@
 /* Breadcrumb styling */
 .breadcrumb {
   margin-bottom: 0;
-  padding: 8px 15px;
+  padding: 0;
   background-color: transparent;
-  margin-left: 1rem;
-  margin-top: 1rem;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -70,11 +68,9 @@
   overflow: hidden;
   max-width: fit-content;
   margin-bottom: 0;
-  margin-left: 1rem;
   display: inline-block;
   height: 45px;
   line-height: 25px;
-  text-align: left;
 }
 
 .page-title::before {
@@ -129,81 +125,42 @@
   border-radius: 2px;
 }
 
-/* Custom Radio Button Group */
-.custom-radio-group {
+.load-type-buttons {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.custom-radio-option {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.custom-radio-option input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.custom-radio-label {
-  display: flex;
-  align-items: center;
-  font-size: 15px;
+.load-type-buttons .btn {
+  border-radius: 8px;
+  padding: 8px 20px;
   font-weight: 500;
-  color: #333;
-  padding: 8px 0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 0;
+  transition: all 0.3s ease;
+  border: 1px solid #1473e6;
 }
 
-.radio-outer {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #1473e6;
-  margin-right: 10px;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(20, 115, 230, 0.1);
-  background-color: white;
-  transition: all 0.2s ease;
+.load-type-buttons .btn-primary {
+  background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 10px rgba(20, 115, 230, 0.2);
 }
 
-.radio-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #1473e6;
-  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-/* When radio is checked */
-.custom-radio-option input[type="radio"]:checked + .custom-radio-label .radio-inner {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.custom-radio-option input[type="radio"]:checked + .custom-radio-label {
+.load-type-buttons .btn-outline-primary {
   color: #1473e6;
-  font-weight: 600;
+  background-color: transparent;
+  border: 1px solid #1473e6;
 }
 
-.custom-radio-option:hover .radio-outer {
-  border-color: #0d62c9;
-  transform: scale(1.05);
+.load-type-buttons .btn-primary:hover {
+  background: linear-gradient(135deg, #0d62c9 0%, #0a4fa3 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(20, 115, 230, 0.3);
 }
 
-.custom-radio-option:hover .custom-radio-label {
-  color: #0d62c9;
+.load-type-buttons .btn-outline-primary:hover {
+  background-color: #1473e6;
+  color: white;
+  transform: translateY(-2px);
 }
 
 /* Filter Section */

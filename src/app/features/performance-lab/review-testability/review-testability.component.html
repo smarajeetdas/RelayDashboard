@@ -25,20 +25,14 @@
       <div class="row">
         <div class="col-md-12">
           <h5 class="section-subtitle mb-3">Load Types:</h5>
-          <div class="custom-radio-group">
-            <div class="custom-radio-option" *ngFor="let type of loadTypes">
-              <input type="radio" 
-                     [id]="'loadType-' + type" 
-                     name="loadType" 
-                     [checked]="selectedLoadType === type" 
-                     (click)="setLoadType(type)">
-              <label [for]="'loadType-' + type" class="custom-radio-label">
-                <span class="radio-outer">
-                  <span class="radio-inner"></span>
-                </span>
-                {{ type }}
-              </label>
-            </div>
+          <div class="btn-group load-type-buttons" role="group">
+            <button type="button" 
+                    class="btn" 
+                    *ngFor="let type of loadTypes" 
+                    [ngClass]="{'btn-primary': selectedLoadType === type, 'btn-outline-primary': selectedLoadType !== type}"
+                    (click)="setLoadType(type)">
+              {{ type }}
+            </button>
           </div>
         </div>
       </div>
