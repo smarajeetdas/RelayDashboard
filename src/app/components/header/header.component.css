@@ -10,6 +10,7 @@
   background-color: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+  height: 60px; /* Fixed height for better spacing */
 }
 
 .header.scrolled {
