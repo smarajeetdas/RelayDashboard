@@ -37,7 +37,10 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('performance')}">
               <div class="dropdown-menu-inner">
-                <a href="#" *ngFor="let option of performanceLabOptions" class="dropdown-item-custom">
+                <a *ngFor="let option of performanceLabOptions" 
+                   [routerLink]="option.route ? option.route : '#'" 
+                   (click)="option.route ? closeAllDropdowns() : $event.preventDefault()"
+                   class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
                 </a>
               </div>
