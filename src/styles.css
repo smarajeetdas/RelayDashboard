@@ -464,6 +464,54 @@ p {
   padding-right: 5%;
 }
 
+/* Breadcrumb styling */
+.breadcrumbs {
+  padding-top: 100px; /* This prevents the breadcrumb from being hidden by the navbar */
+}
+
+.breadcrumb {
+  background-color: transparent;
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+  padding-left: 0.75rem;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.75rem;
+  color: #6c757d;
+  content: "/";
+}
+
+.breadcrumb-item a {
+  color: #1473e6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+  color: #0954b6;
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #495057;
+  font-weight: 600;
+}
+
 /* Responsive text size adjustments */
 @media (max-width: 768px) {
   h1 {
@@ -476,5 +524,9 @@ p {
   
   h3 {
     font-size: 1.5rem;
+  }
+  
+  .breadcrumbs {
+    padding-top: 80px;
   }
 }
