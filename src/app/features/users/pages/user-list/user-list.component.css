@@ -49,8 +49,9 @@
 }
 
 .detail-sidebar-container {
-  width: 220px;
+  width: 200px;
   flex-shrink: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .detail-content {

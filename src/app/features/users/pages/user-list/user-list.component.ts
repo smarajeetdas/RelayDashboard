@@ -33,15 +33,29 @@ export class UserListComponent implements OnInit {
   
   // Sidebar configuration
   sidebarItems: SidebarItem[] = [
-    { id: 'list', label: 'User List', icon: 'list' },
-    { id: 'grid', label: 'Grid View', icon: 'th-large' },
-    { id: 'admin', label: 'Admin Settings', icon: 'cog' },
-    { id: 'recent', label: 'Recent Activity', icon: 'history' },
-    { id: 'groups', label: 'User Groups', icon: 'users' },
-    { id: 'roles', label: 'Roles & Permissions', icon: 'shield-alt' }
+    { id: 'user-details', label: 'User Details', icon: 'user' },
+    { id: 'projects', label: 'Projects', icon: 'project-diagram' },
+    { id: 'project-configuration', label: 'Project Configuration', icon: 'cogs' },
+    { id: 'environments', label: 'Environments', icon: 'server' },
+    { id: 'schedule-executions', label: 'Schedule Executions', icon: 'calendar-alt' },
+    { id: 'global-testdata', label: 'Global Testdata', icon: 'globe' },
+    { id: 'secret-management', label: 'Secret Management', icon: 'key' },
+    { id: 'inbox', label: 'Inbox', icon: 'inbox' },
+    { id: 'file-management', label: 'File Management', icon: 'file-alt' },
+    { id: 'web-locator', label: 'Web Locator', icon: 'search-location' },
+    { id: 'admin-settings', label: 'Admin settings', icon: 'cog' },
+    { id: 'schedule-triggers', label: 'Schedule triggers', icon: 'clock' },
+    { id: 'masking-config', label: 'Masking config', icon: 'mask' },
+    { id: 'browser-extension', label: 'Browser Extension', icon: 'browser' },
+    { id: 'perf-admin-config', label: 'Perf Admin Config', icon: 'tachometer-alt' },
+    { id: 'web-cluster', label: 'Web Cluster', icon: 'server' },
+    { id: 'code-coverage', label: 'Code coverage', icon: 'code' },
+    { id: 'audit-trial', label: 'Audit Trial', icon: 'history' },
+    { id: 'feedback-list', label: 'FeedBack List', icon: 'comment-alt' },
+    { id: 'review-certification', label: 'Review & Certification', icon: 'certificate' }
   ];
   
-  activeSidebarItemId: string = 'list';
+  activeSidebarItemId: string = 'user-details';
   activeView: string = 'list';
   
   constructor(
@@ -146,15 +160,14 @@ export class UserListComponent implements OnInit {
   onSidebarItemSelect(itemId: string): void {
     this.activeSidebarItemId = itemId;
     
-    // Update active view based on sidebar selection
-    if (itemId === 'list' || itemId === 'grid' || itemId === 'admin') {
-      this.activeView = itemId;
-    } else if (itemId === 'recent') {
-      // For demo purposes, just show list view
-      this.activeView = 'list';
-    } else if (itemId === 'groups' || itemId === 'roles') {
-      // For demo purposes, show admin view
+    // For all sidebar items, just display the user list view as demo
+    this.activeView = 'list';
+    
+    // Just for demonstration purposes - in a real app these would show different content
+    if (itemId === 'admin-settings') {
       this.activeView = 'admin';
+    } else if (itemId === 'global-testdata' || itemId === 'projects') {
+      this.activeView = 'grid';
     }
   }
 }

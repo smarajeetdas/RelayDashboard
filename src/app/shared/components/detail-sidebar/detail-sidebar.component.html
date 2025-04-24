@@ -1,4 +1,14 @@
 <div class="detail-sidebar">
+  <!-- Header with blue background -->
+  <div class="sidebar-header">
+    <div class="sidebar-header-content">
+      <div class="sidebar-title">
+        <i class="fas fa-user"></i> User
+      </div>
+    </div>
+  </div>
+  
+  <!-- Menu items -->
   <ul class="sidebar-menu">
     <li *ngFor="let item of items" 
         [ngClass]="{'active': isActive(item.id)}"
@@ -11,4 +21,11 @@
       </div>
     </li>
   </ul>
+  
+  <!-- Footer with blue background -->
+  <div class="sidebar-footer">
+    <div class="sidebar-title">
+      <i class="fas fa-search"></i> Review & Certification
+    </div>
+  </div>
 </div>
