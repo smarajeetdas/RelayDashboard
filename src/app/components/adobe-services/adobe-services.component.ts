@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ScrollAnimationService } from '../../services/scroll-animation.service';
 
 interface AdobeService {
@@ -13,6 +13,7 @@ interface AdobeService {
   styleUrls: ['./adobe-services.component.css']
 })
 export class AdobeServicesComponent implements OnInit, AfterViewInit {
+  @ViewChild('sliderTrack') sliderTrack: ElementRef;
   adobeServices: AdobeService[] = [
     { name: 'Lightroom', logoPath: 'assets/images/adobe-logos-official/lightroom.png', color: '#31A8FF' },
     { name: 'Photoshop', logoPath: 'assets/images/adobe-logos-official/photoshop.png', color: '#31A8FF' },

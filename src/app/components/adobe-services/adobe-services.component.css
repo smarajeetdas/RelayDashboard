@@ -5,6 +5,21 @@
   overflow: hidden;
 }
 
+/* Add subtle background pattern */
+.adobe-services-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(#e1e1e1 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Top blue line removed */
 
 .section-title {
@@ -28,14 +43,83 @@
   line-height: 1.6;
 }
 
-.adobe-services-container {
+/* Horizontal scrolling slider */
+.adobe-services-slider {
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle indicators for scrolling */
+.adobe-services-slider::before,
+.adobe-services-slider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 2;
+  height: 100%;
+}
+
+.adobe-services-slider::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(250, 250, 250, 0.9), rgba(250, 250, 250, 0));
+}
+
+.adobe-services-slider::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(250, 250, 250, 0.9), rgba(250, 250, 250, 0));
+}
+
+.slider-container {
+  overflow-x: hidden;
   padding: 1rem 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  position: relative;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.slider-track {
+  display: flex;
+  padding: 0 1rem;
+  width: fit-content; 
+  animation: scrollAdobe 45s linear infinite;
+  gap: 25px;
+  padding-bottom: 10px; /* Provide space for shadow */
+}
+
+.slider-container:hover .slider-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollAdobe {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-220px * 9 - 225px)); /* Adjust based on card width, count, and gap */
+  }
+}
+
+.adobe-service-slide {
+  flex: 0 0 auto;
+  width: 220px;
+}
+
+.duplicate-card {
+  opacity: 1;
 }
 
 .adobe-service-card {
   height: 180px;
   border-radius: 16px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
   background: white;
   display: flex;
   flex-direction: column;
@@ -43,16 +127,18 @@
   justify-content: center;
   text-align: center;
   padding: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
   border-top: 4px solid;
   cursor: pointer;
+  transform: translateZ(0); /* Hardware acceleration */
 }
 
 .adobe-service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  z-index: 1;
 }
 
 .service-icon {
@@ -131,6 +217,10 @@
     height: 160px;
   }
   
+  .adobe-service-slide {
+    width: 200px;
+  }
+  
   .service-icon {
     width: 60px;
     height: 60px;
@@ -140,11 +230,24 @@
     width: 90%;
     height: 90%;
   }
+  
+  @keyframes scrollAdobe {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-200px * 9 - 225px));
+    }
+  }
 }
 
 @media (max-width: 767.98px) {
   .adobe-services-section {
     padding: 4rem 0;
+  }
+  
+  .adobe-service-slide {
+    width: 180px;
   }
   
   .adobe-service-card {
@@ -165,6 +268,19 @@
   
   .service-name {
     font-size: 0.9rem;
+  }
+  
+  @keyframes scrollAdobe {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-180px * 9 - 225px));
+    }
+  }
+  
+  .slider-track {
+    gap: 20px;
   }
 }
 

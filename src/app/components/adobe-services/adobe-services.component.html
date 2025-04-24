@@ -5,22 +5,42 @@
       Adobe apps that powered our transformation and continue to drive innovation.
     </p>
     
-    <div class="adobe-services-container">
-      <div class="row justify-content-center">
-        <div class="col-md-4 col-lg-3 mb-4" *ngFor="let service of adobeServices; let i = index" 
-            [attr.data-animation]="'zoom-in'" 
-            [attr.data-animation-delay]="i * 0.2 + 1">
-          <div class="adobe-service-card" [style.border-color]="service.color">
-            <div class="service-icon" [style.background-color]="service.color">
-              <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo">
+    <!-- Horizontal continuously scrolling banner -->
+    <div class="adobe-services-slider" data-animation="fade-in-up" data-animation-delay="1">
+      <div class="slider-container">
+        <div class="slider-track" #sliderTrack>
+          <!-- Original items -->
+          <div class="adobe-service-slide" *ngFor="let service of adobeServices; let i = index">
+            <div class="adobe-service-card" [style.border-color]="service.color">
+              <div class="service-icon" [style.background-color]="service.color">
+                <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo">
+              </div>
+              <div class="service-name">
+                {{service.name}}
+              </div>
+              <div class="service-hover-overlay" [style.background-color]="service.color">
+                <div class="service-hover-content">
+                  <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo-hover mb-2">
+                  <div>{{service.name}}</div>
+                </div>
+              </div>
             </div>
-            <div class="service-name">
-              {{service.name}}
-            </div>
-            <div class="service-hover-overlay" [style.background-color]="service.color">
-              <div class="service-hover-content">
-                <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo-hover mb-2">
-                <div>{{service.name}}</div>
+          </div>
+          
+          <!-- Duplicate items for infinite scrolling effect -->
+          <div class="adobe-service-slide duplicate-card" *ngFor="let service of adobeServices; let i = index">
+            <div class="adobe-service-card" [style.border-color]="service.color">
+              <div class="service-icon" [style.background-color]="service.color">
+                <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo">
+              </div>
+              <div class="service-name">
+                {{service.name}}
+              </div>
+              <div class="service-hover-overlay" [style.background-color]="service.color">
+                <div class="service-hover-content">
+                  <img [src]="service.logoPath" [alt]="service.name + ' logo'" class="service-logo-hover mb-2">
+                  <div>{{service.name}}</div>
+                </div>
               </div>
             </div>
           </div>
