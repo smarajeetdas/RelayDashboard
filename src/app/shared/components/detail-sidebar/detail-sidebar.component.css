@@ -191,41 +191,6 @@
   background: rgba(20, 115, 230, 0.2);
 }
 
-/* Sidebar footer styling */
-.sidebar-footer {
-  padding: 8px;
-  position: relative;
-  margin-top: auto;
-  border-top: 1px solid rgba(20, 115, 230, 0.1);
-}
-
-.sidebar-footer::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  right: 14px;
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(to left, #1473e6, transparent);
-}
-
-.footer-indicator {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-}
-
-.indicator-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(20, 115, 230, 0.2);
-  transition: all 0.3s ease;
-}
-
-.indicator-dot.active {
-  background: #1473e6;
-  box-shadow: 0 0 6px rgba(20, 115, 230, 0.4);
-}
+/* Removed sidebar footer styling */
 
 /* Simple styles without complex animations */
