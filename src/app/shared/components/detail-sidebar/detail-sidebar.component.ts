@@ -16,6 +16,7 @@ export class DetailSidebarComponent implements OnChanges {
   @Input() items: SidebarItem[] = [];
   @Input() activeItemId: string = '';
   @Input() title: string = 'Navigation';
+  @Input() subtitle: string = 'Management Console';
   @Output() itemSelect = new EventEmitter<string>();
   
   activeIndex: number = 0;
