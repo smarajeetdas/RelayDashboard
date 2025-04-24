@@ -1,17 +1,20 @@
-<div class="user-list-page container-fluid">
-  <div class="breadcrumbs mb-3">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Users</li>
-      </ol>
-    </nav>
-  </div>
-  
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="user-title">User Management</h2>
-    <div class="user-actions">
-      <div class="d-flex" style="gap: 15px;">
+<div class="user-list-page">
+  <div class="container-fluid pt-2 pb-5">
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumbs mb-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-users mr-1"></i>Users</li>
+        </ol>
+      </nav>
+    </div>
+    
+    <!-- Header section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="user-title">User Management</h2>
+      <div class="user-actions">
+        <div class="d-flex" style="gap: 15px;">
         <button class="btn btn-filter" (click)="toggleFilterSection()">
           <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
         </button>
