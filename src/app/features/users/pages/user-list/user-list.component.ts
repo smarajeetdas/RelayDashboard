@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { SidebarItem } from '../../../../shared/components/detail-sidebar/detail-sidebar.component';
 
 @Component({
   selector: 'app-user-list',
@@ -29,6 +30,19 @@ export class UserListComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 10;
   totalItems: number = 0;
+  
+  // Sidebar configuration
+  sidebarItems: SidebarItem[] = [
+    { id: 'list', label: 'User List', icon: 'list' },
+    { id: 'grid', label: 'Grid View', icon: 'th-large' },
+    { id: 'admin', label: 'Admin Settings', icon: 'cog' },
+    { id: 'recent', label: 'Recent Activity', icon: 'history' },
+    { id: 'groups', label: 'User Groups', icon: 'users' },
+    { id: 'roles', label: 'Roles & Permissions', icon: 'shield-alt' }
+  ];
+  
+  activeSidebarItemId: string = 'list';
+  activeView: string = 'list';
   
   constructor(
     private router: Router,
@@ -126,6 +140,21 @@ export class UserListComponent implements OnInit {
   goToNextPage(): void {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
+    }
+  }
+  
+  onSidebarItemSelect(itemId: string): void {
+    this.activeSidebarItemId = itemId;
+    
+    // Update active view based on sidebar selection
+    if (itemId === 'list' || itemId === 'grid' || itemId === 'admin') {
+      this.activeView = itemId;
+    } else if (itemId === 'recent') {
+      // For demo purposes, just show list view
+      this.activeView = 'list';
+    } else if (itemId === 'groups' || itemId === 'roles') {
+      // For demo purposes, show admin view
+      this.activeView = 'admin';
     }
   }
 }
