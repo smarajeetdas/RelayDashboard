@@ -31,3 +31,33 @@
 .icon-btn.filter-btn:hover {
   background-color: #e0e0e0;
 }
+
+/* Text buttons with + icon */
+.create-btn {
+  background-color: #2c66dd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 15px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.create-btn i {
+  margin-right: 8px;
+}
+
+.create-btn:hover {
+  background-color: #2658c2;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.create-btn:active {
+  transform: translateY(0px);
+}
