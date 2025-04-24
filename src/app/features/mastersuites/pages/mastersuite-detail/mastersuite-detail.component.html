@@ -50,40 +50,65 @@
           <h2 class="mastersuite-title">{{ masterSuite.name }}</h2>
         </div>
         <div class="header-actions">
-          <button class="btn btn-action btn-edit">
+          <!-- Environment Selection Dropdown -->
+          <div class="environment-dropdown-wrapper" (mouseleave)="showEnvironmentDropdown = false">
+            <button class="btn btn-action btn-execute" (click)="toggleEnvironmentDropdown($event)">
+              <i class="fas fa-play btn-icon-text"></i>
+              {{ selectedEnvironment }} <i class="fas fa-chevron-down ml-1" style="font-size: 10px;"></i>
+            </button>
+            <div class="environment-dropdown" *ngIf="showEnvironmentDropdown">
+              <div *ngFor="let env of executionEnvironments" 
+                   class="environment-dropdown-item" 
+                   [ngClass]="{'active': selectedEnvironment === env}"
+                   (click)="selectEnvironment(env)">
+                {{ env }}
+              </div>
+            </div>
+          </div>
+          
+          <button class="btn btn-action btn-edit ml-2">
             <i class="fas fa-pencil-alt btn-icon-text"></i>
             Edit
-          </button>
-          <button class="btn btn-action btn-execute">
-            <i class="fas fa-play btn-icon-text"></i>
-            Execute
           </button>
         </div>
       </div>
       
-      <!-- Tab navigation -->
-      <ul class="nav nav-tabs mb-4">
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': activeTab === 'info'}" (click)="setActiveTab('info')">
-            Basic Information
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': activeTab === 'testsuites'}" (click)="setActiveTab('testsuites')">
-            Test Suites ({{ masterSuite.testSuiteCount }})
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': activeTab === 'execution'}" (click)="setActiveTab('execution')">
-            Execution History
-          </a>
-        </li>
-      </ul>
-      
-      <!-- Tab content -->
-      <div [ngSwitch]="activeTab">
-        <!-- Basic Information Tab -->
-        <div *ngSwitchCase="'info'">
+      <!-- Content with Sidebar -->
+      <div class="detail-layout">
+        <!-- Left Sidebar -->
+        <div class="detail-sidebar-container">
+          <app-detail-sidebar 
+            [items]="sidebarItems" 
+            [activeItemId]="activeSidebarItemId"
+            (itemSelect)="onSidebarItemSelect($event)">
+          </app-detail-sidebar>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="detail-content">
+          <!-- Tab navigation -->
+          <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': activeTab === 'info'}" (click)="setActiveTab('info')">
+                Basic Information
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': activeTab === 'testsuites'}" (click)="setActiveTab('testsuites')">
+                Test Suites ({{ masterSuite.testSuiteCount }})
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': activeTab === 'execution'}" (click)="setActiveTab('execution')">
+                Execution History
+              </a>
+            </li>
+          </ul>
+          
+          <!-- Tab content -->
+          <div [ngSwitch]="activeTab">
+            <!-- Basic Information Tab -->
+            <div *ngSwitchCase="'info'">
           <div class="row">
             <div class="col-md-6">
               <div class="content-card">
@@ -267,89 +292,91 @@
           </div>
         </div>
         
-        <!-- Test Suites Tab -->
-        <div *ngSwitchCase="'testsuites'">
-          <div class="content-card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-              <span>Test Suites</span>
-              <button class="create-btn">
-                <i class="fas fa-plus"></i> Add Test Suite
-              </button>
-            </div>
-            <div class="card-body p-0">
-              <table class="testsuite-table" *ngIf="masterSuite.testSuites && masterSuite.testSuites.length > 0">
-                <thead>
-                  <tr>
-                    <th style="width: 50px;">Order</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Test Cases</th>
-                    <th style="width: 100px;">Status</th>
-                    <th style="width: 100px;">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let testSuite of masterSuite.testSuites" class="testsuite-row">
-                    <td>{{ testSuite.order }}</td>
-                    <td>{{ testSuite.name }}</td>
-                    <td>
-                      <span class="badge badge-pill" 
-                            [ngClass]="{
-                              'badge-primary': testSuite.category === 'WEB',
-                              'badge-success': testSuite.category === 'REST',
-                              'badge-warning': testSuite.category === 'MOBILE',
-                              'badge-info': testSuite.category === 'NA',
-                              'badge-secondary': testSuite.category !== 'WEB' && testSuite.category !== 'REST' && testSuite.category !== 'MOBILE' && testSuite.category !== 'NA'
-                            }">
-                        {{ testSuite.category }}
-                      </span>
-                    </td>
-                    <td>{{ testSuite.testCaseCount }}</td>
-                    <td>
-                      <span [ngClass]="testSuite.active ? 'text-success' : 'text-danger'">
-                        <i class="fas" [ngClass]="testSuite.active ? 'fa-check-circle' : 'fa-times-circle'"></i>
-                        {{ testSuite.active ? 'Active' : 'Inactive' }}
-                      </span>
-                    </td>
-                    <td>
-                      <div class="d-flex">
-                        <button class="btn btn-icon text-primary" title="View Details">
-                          <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="btn btn-icon text-info" title="Execute">
-                          <i class="fas fa-play"></i>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              <div *ngIf="!masterSuite.testSuites || masterSuite.testSuites.length === 0" class="text-center py-4">
-                <i class="fas fa-layer-group fa-3x text-muted mb-3"></i>
-                <h5>No test suites found</h5>
-                <p class="text-muted">This master suite doesn't contain any test suites yet.</p>
-                <button class="create-btn mt-2">
-                  <i class="fas fa-plus"></i> Add Test Suite
-                </button>
+            <!-- Test Suites Tab -->
+            <div *ngSwitchCase="'testsuites'">
+              <div class="content-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <span>Test Suites</span>
+                  <button class="create-btn">
+                    <i class="fas fa-plus"></i> Add Test Suite
+                  </button>
+                </div>
+                <div class="card-body p-0">
+                  <table class="testsuite-table" *ngIf="masterSuite.testSuites && masterSuite.testSuites.length > 0">
+                    <thead>
+                      <tr>
+                        <th style="width: 50px;">Order</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Test Cases</th>
+                        <th style="width: 100px;">Status</th>
+                        <th style="width: 100px;">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let testSuite of masterSuite.testSuites" class="testsuite-row">
+                        <td>{{ testSuite.order }}</td>
+                        <td>{{ testSuite.name }}</td>
+                        <td>
+                          <span class="badge badge-pill" 
+                                [ngClass]="{
+                                  'badge-primary': testSuite.category === 'WEB',
+                                  'badge-success': testSuite.category === 'REST',
+                                  'badge-warning': testSuite.category === 'MOBILE',
+                                  'badge-info': testSuite.category === 'NA',
+                                  'badge-secondary': testSuite.category !== 'WEB' && testSuite.category !== 'REST' && testSuite.category !== 'MOBILE' && testSuite.category !== 'NA'
+                                }">
+                            {{ testSuite.category }}
+                          </span>
+                        </td>
+                        <td>{{ testSuite.testCaseCount }}</td>
+                        <td>
+                          <span [ngClass]="testSuite.active ? 'text-success' : 'text-danger'">
+                            <i class="fas" [ngClass]="testSuite.active ? 'fa-check-circle' : 'fa-times-circle'"></i>
+                            {{ testSuite.active ? 'Active' : 'Inactive' }}
+                          </span>
+                        </td>
+                        <td>
+                          <div class="d-flex">
+                            <button class="btn btn-icon text-primary" title="View Details">
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-icon text-info" title="Execute">
+                              <i class="fas fa-play"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  <div *ngIf="!masterSuite.testSuites || masterSuite.testSuites.length === 0" class="text-center py-4">
+                    <i class="fas fa-layer-group fa-3x text-muted mb-3"></i>
+                    <h5>No test suites found</h5>
+                    <p class="text-muted">This master suite doesn't contain any test suites yet.</p>
+                    <button class="create-btn mt-2">
+                      <i class="fas fa-plus"></i> Add Test Suite
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
         
-        <!-- Execution History Tab -->
-        <div *ngSwitchCase="'execution'">
-          <div class="content-card">
-            <div class="card-header">
-              Execution History
-            </div>
-            <div class="card-body text-center py-4">
-              <i class="fas fa-history fa-3x text-muted mb-3"></i>
-              <h5>No execution history available</h5>
-              <p class="text-muted">This master suite has not been executed yet.</p>
-              <button class="btn btn-primary mt-2">
-                <i class="fas fa-play mr-1"></i> Execute Now
-              </button>
+            <!-- Execution History Tab -->
+            <div *ngSwitchCase="'execution'">
+              <div class="content-card">
+                <div class="card-header">
+                  Execution History
+                </div>
+                <div class="card-body text-center py-4">
+                  <i class="fas fa-history fa-3x text-muted mb-3"></i>
+                  <h5>No execution history available</h5>
+                  <p class="text-muted">This master suite has not been executed yet.</p>
+                  <button class="btn btn-primary mt-2">
+                    <i class="fas fa-play mr-1"></i> Execute Now
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

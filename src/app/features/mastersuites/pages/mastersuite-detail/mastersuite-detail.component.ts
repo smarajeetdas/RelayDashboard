@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MasterSuiteDetail } from '../../models/mastersuite.model';
 import { MasterSuiteService } from '../../services/mastersuite.service';
+import { SidebarItem } from '../../../../shared/components/detail-sidebar/detail-sidebar.component';
 
 @Component({
   selector: 'app-mastersuite-detail',
@@ -16,6 +17,22 @@ export class MasterSuiteDetailComponent implements OnInit {
   
   // Tab management
   activeTab: string = 'info';
+  
+  // Sidebar items
+  sidebarItems: SidebarItem[] = [
+    { id: 'basic', icon: 'info-circle', label: 'Basic Information' },
+    { id: 'schedule', icon: 'calendar-alt', label: 'Schedule' },
+    { id: 'notification', icon: 'bell', label: 'Notification' },
+    { id: 'history', icon: 'history', label: 'History' },
+    { id: 'execution', icon: 'tasks', label: 'Execution History' },
+    { id: 'results', icon: 'chart-bar', label: 'Results' }
+  ];
+  activeSidebarItemId: string = 'basic';
+  
+  // Execute dropdown options
+  executionEnvironments: string[] = ['DEV', 'QA', 'STAGING', 'PROD'];
+  selectedEnvironment: string = 'DEV';
+  showEnvironmentDropdown: boolean = false;
   
   constructor(
     private route: ActivatedRoute,
@@ -60,5 +77,33 @@ export class MasterSuiteDetailComponent implements OnInit {
   
   navigateBack(): void {
     this.router.navigate(['/mastersuites']);
+  }
+  
+  onSidebarItemSelect(itemId: string): void {
+    this.activeSidebarItemId = itemId;
+    
+    // Map sidebar items to corresponding tabs if needed
+    if (itemId === 'execution') {
+      this.setActiveTab('execution');
+    } else if (itemId === 'basic') {
+      this.setActiveTab('info');
+    } else if (itemId === 'results') {
+      this.setActiveTab('execution');
+    }
+  }
+  
+  toggleEnvironmentDropdown(event: Event): void {
+    event.stopPropagation();
+    this.showEnvironmentDropdown = !this.showEnvironmentDropdown;
+  }
+  
+  selectEnvironment(environment: string): void {
+    this.selectedEnvironment = environment;
+    this.showEnvironmentDropdown = false;
+  }
+  
+  executeInEnvironment(): void {
+    console.log(`Executing master suite in ${this.selectedEnvironment} environment`);
+    // Implement execution logic here
   }
 }
