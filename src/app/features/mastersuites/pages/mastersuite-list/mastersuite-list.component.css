@@ -165,10 +165,11 @@
   font-weight: 600;
   padding: 10px 12px;
   vertical-align: middle;
-  font-size: 13px;
-  letter-spacing: 0.3px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .mastersuite-table thead th:first-child {
@@ -194,6 +195,15 @@
 .mastersuite-table tbody td {
   padding: 8px 15px;
   vertical-align: middle;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mastersuite-table tbody td .font-weight-bold {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c2536;
+  letter-spacing: 0.2px;
 }
 
 .mastersuite-row {
