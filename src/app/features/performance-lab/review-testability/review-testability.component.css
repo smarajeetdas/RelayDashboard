@@ -4,7 +4,7 @@
 .review-testability-container {
   background-color: #f9f9f9;
   min-height: 100vh;
-  padding-top: 100px; /* Increased padding to account for fixed header */
+  padding-top: 80px; /* Reduced padding */
 }
 
 /* Breadcrumb styling */
@@ -43,23 +43,23 @@
 .page-header {
   background: transparent;
   color: #333;
-  padding: 1.5rem 0;
-  margin-bottom: 2rem;
+  padding: 0.6rem 0;
+  margin-bottom: 0.8rem;
 }
 
 .title-wrapper {
   display: flex;
   align-items: center;
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .page-title {
   color: #ffffff;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.3px;
   background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
-  padding: 12px 18px;
+  padding: 10px 16px;
   border-radius: 8px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   position: relative;
@@ -67,8 +67,8 @@
   max-width: fit-content;
   margin-bottom: 0;
   display: inline-block;
-  height: 50px;
-  line-height: 26px;
+  height: 45px;
+  line-height: 25px;
 }
 
 .page-title::before {
@@ -91,25 +91,25 @@
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 2rem;
-  margin-bottom: 2rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Load Types Section */
 .load-types-section {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .section-subtitle {
   color: #333;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .load-type-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .load-type-buttons .btn {
@@ -157,14 +157,14 @@
 .form-control {
   border-radius: 8px;
   border: 1px solid #ddd;
-  padding: 12px 16px;
+  padding: 8px 12px;
   font-size: 14px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
   transition: all 0.3s ease;
   background-color: #ffffff;
   color: #333333;
   font-weight: 500;
-  height: 50px;
+  height: 40px;
 }
 
 .form-control:focus {
@@ -185,10 +185,10 @@
 .project-search {
   color: #666;
   font-weight: 500;
-  height: 50px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  padding: 10px 12px;
+  padding: 8px 12px;
   width: 100%;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231473e6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -248,10 +248,10 @@
 .location-select {
   color: #666;
   font-weight: 500;
-  height: 50px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  padding: 10px 12px;
+  padding: 8px 12px;
   width: 100%;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231473e6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -303,8 +303,8 @@
 .date-picker {
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  padding: 10px 12px;
-  height: 50px;
+  padding: 8px 12px;
+  height: 40px;
   color: #666;
   font-weight: 500;
 }
@@ -324,16 +324,16 @@
 }
 
 .filters-container {
-  padding: 20px;
+  padding: 12px;
   background-color: #f8fafc;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .action-row {
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid #eaeaea;
 }
 
@@ -350,10 +350,10 @@
 .testcase-search {
   color: #666;
   font-weight: 500;
-  height: 50px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  padding: 10px 12px;
+  padding: 8px 12px;
   width: 100%;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231473e6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -413,10 +413,10 @@
 .users-search {
   color: #666;
   font-weight: 500;
-  height: 50px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  padding: 10px 12px;
+  padding: 8px 12px;
   width: 100%;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231473e6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -476,10 +476,10 @@
 .status-select {
   color: #666;
   font-weight: 500;
-  height: 50px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
-  padding: 10px 12px;
+  padding: 8px 12px;
   width: 100%;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231473e6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -530,7 +530,7 @@
 /* Action Buttons */
 .btn-clear {
   min-width: 100px;
-  height: 45px;
+  height: 40px;
   padding: 0 20px !important;
   display: flex;
   align-items: center;
@@ -552,7 +552,7 @@
 
 .btn-search-large {
   min-width: 120px;
-  height: 45px;
+  height: 40px;
   padding: 0 25px !important;
   display: flex;
   align-items: center;
