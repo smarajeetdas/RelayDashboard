@@ -211,6 +211,8 @@
   color: #333;
   transition: all 0.2s ease;
   line-height: 1.5; /* Improved line height for better readability */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
 }
 
 .testcase-table tbody tr:last-child td {
@@ -540,7 +542,10 @@ select.form-control:focus {
 }
 
 .font-weight-bold {
+  font-size: 14px;
   font-weight: 600 !important;
+  color: #1c2536;
+  letter-spacing: 0.2px;
 }
 
 /* Filter Toggle Styles */
