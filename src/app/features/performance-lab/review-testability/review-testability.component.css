@@ -5,6 +5,8 @@
   background-color: #f9f9f9;
   min-height: 100vh;
   padding-top: 80px; /* Reduced padding */
+  max-width: 1800px;
+  margin: 0 auto;
 }
 
 /* Breadcrumb styling */
@@ -91,8 +93,10 @@
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 1.25rem;
+  padding: 1.5rem 2rem;
   margin-bottom: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 /* Load Types Section */
@@ -102,9 +106,23 @@
 
 .section-subtitle {
   color: #333;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 15px;
+  letter-spacing: 0.2px;
+}
+
+.section-subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #1473e6;
+  border-radius: 2px;
 }
 
 .load-type-buttons {
