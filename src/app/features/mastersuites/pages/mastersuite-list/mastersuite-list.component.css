@@ -167,7 +167,7 @@
 .mastersuite-table thead th {
   background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
   color: #ffffff;
-  font-weight: 600;
+  font-weight: normal;
   border-bottom: none;
   padding: 10px 12px; /* Reduced padding to fit more rows */
   font-size: 13px;
