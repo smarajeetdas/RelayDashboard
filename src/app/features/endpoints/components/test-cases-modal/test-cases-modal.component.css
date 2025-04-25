@@ -136,7 +136,7 @@
 }
 
 .endpoint-table thead th {
-  background: linear-gradient(to right, #1473e6, #0d62c9);
+  background: linear-gradient(90deg, #1c2536 0%, #2a3749 100%);
   color: #ffffff;
   font-weight: 500;
   border-bottom: none;
