@@ -28,9 +28,9 @@
     <div class="filter-section mb-4" [ngClass]="{'d-none': !showFilters}">
       <div class="card">
         <div class="card-body">
-          <div class="row">
+          <div class="row align-items-end">
             <!-- Project Filter -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-2">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">Project</label>
                 <div class="project-filter-selector" (click)="toggleDropdown('project')">
@@ -50,7 +50,7 @@
             </div>
             
             <!-- User Filter -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-2">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">User</label>
                 <div class="user-filter-selector" (click)="toggleDropdown('user')">
@@ -70,7 +70,7 @@
             </div>
             
             <!-- Status Filter -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-2">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">Status</label>
                 <div class="status-filter-selector" (click)="toggleDropdown('status')">
@@ -90,19 +90,17 @@
             </div>
             
             <!-- Keyword Search -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3">
               <label class="form-label">Keyword</label>
               <input type="text" class="form-control" 
                      placeholder="Search..." 
                      [(ngModel)]="filterValues.keyword"
                      (keyup.enter)="applyFilters()">
             </div>
-          </div>
-          
-          <!-- Filter Action Buttons -->
-          <div class="row mt-2">
-            <div class="col-12 d-flex justify-content-end">
-              <button class="btn btn-outline-secondary me-2" (click)="clearFilters()">
+            
+            <!-- Filter Action Buttons -->
+            <div class="col-md-3 d-flex justify-content-end">
+              <button class="btn btn-outline-primary me-3" (click)="clearFilters()">
                 <i class="fas fa-times me-1"></i> Clear
               </button>
               <button class="btn btn-primary" (click)="applyFilters()">

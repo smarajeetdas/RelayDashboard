@@ -184,7 +184,7 @@
 .project-filter-selector:hover,
 .user-filter-selector:hover,
 .status-filter-selector:hover {
-  border-color: #ff9500;
+  border-color: #1473e6;
 }
 
 .project-filter-selector .placeholder,
@@ -221,12 +221,12 @@
 }
 
 .dropdown-filter-item:hover {
-  background-color: rgba(255, 149, 0, 0.04);
+  background-color: rgba(20, 115, 230, 0.04);
 }
 
 .dropdown-filter-item.active {
-  background-color: rgba(255, 149, 0, 0.08);
-  color: #ff9500;
+  background-color: rgba(20, 115, 230, 0.08);
+  color: #1473e6;
   font-weight: 600;
 }
 
@@ -242,26 +242,26 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ff9500 0%, #ff7500 100%);
+  background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%);
   border: none;
-  box-shadow: 0 4px 10px rgba(255, 149, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(20, 115, 230, 0.15);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #ff8000 0%, #ff6500 100%);
+  background: linear-gradient(135deg, #0d62c9 0%, #0a4da1 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(255, 149, 0, 0.2);
+  box-shadow: 0 6px 15px rgba(20, 115, 230, 0.2);
 }
 
-.btn-outline-secondary {
-  color: #6c757d;
+.btn-outline-primary {
+  color: #1473e6;
   background-color: transparent;
-  border: 1px solid #ced4da;
+  border: 1px solid #1473e6;
 }
 
-.btn-outline-secondary:hover {
-  background-color: #f8f9fa;
-  color: #495057;
+.btn-outline-primary:hover {
+  background-color: rgba(20, 115, 230, 0.05);
+  color: #0d62c9;
   transform: translateY(-2px);
 }
 
@@ -323,7 +323,7 @@
 }
 
 .test-results-table tbody tr:hover td {
-  background-color: rgba(255, 149, 0, 0.03);
+  background-color: rgba(20, 115, 230, 0.03);
 }
 
 .result-row {
@@ -331,7 +331,7 @@
 }
 
 .result-row:hover {
-  background-color: #f8f9fa;
+  background-color: rgba(20, 115, 230, 0.05);
 }
 
 /* Status Badge Styling */
@@ -544,9 +544,9 @@
 
 .btn-icon:hover {
   transform: translateY(-2px);
-  color: #ff9500;
-  border-color: #ffcc80;
-  background-color: #fff8ee;
+  color: #1473e6;
+  border-color: rgba(20, 115, 230, 0.3);
+  background-color: rgba(20, 115, 230, 0.05);
 }
 
 .btn-icon:active {
@@ -573,15 +573,15 @@
 }
 
 .btn-rerun {
-  color: #ff9500;
-  border-color: rgba(255, 149, 0, 0.3);
-  background-color: rgba(255, 149, 0, 0.08);
+  color: #1473e6;
+  border-color: rgba(20, 115, 230, 0.3);
+  background-color: rgba(20, 115, 230, 0.08);
 }
 
 .btn-rerun:hover {
-  color: #ff7500;
-  border-color: rgba(255, 117, 0, 0.4);
-  background-color: rgba(255, 149, 0, 0.15);
+  color: #0d62c9;
+  border-color: rgba(20, 115, 230, 0.4);
+  background-color: rgba(20, 115, 230, 0.15);
 }
 
 /* No results styling */
