@@ -670,16 +670,20 @@ select.form-control option:first-child {
 }
 
 .badge {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 11px;
-  padding: 6px 10px;
-  border-radius: 20px;
+  padding: 4px 8px;
+  border-radius: 4px;
   letter-spacing: 0.3px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  color: #444;
+  background-color: transparent !important;
+  border: 1px solid #e0e0e0;
 }
 
 .badge i {
@@ -688,29 +692,33 @@ select.form-control option:first-child {
 }
 
 .bg-danger {
-  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
-  border: 1px solid rgba(200, 35, 51, 0.2);
+  color: #e34850 !important;
+  border-color: #e34850 !important;
+  background-color: rgba(227, 72, 80, 0.08) !important;
 }
 
 .bg-primary {
-  background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%) !important;
-  border: 1px solid rgba(13, 98, 201, 0.2);
+  color: #1473e6 !important;
+  border-color: #1473e6 !important;
+  background-color: rgba(20, 115, 230, 0.08) !important;
 }
 
 .bg-warning {
-  background: linear-gradient(135deg, #ff9f00 0%, #f08700 100%) !important;
-  border: 1px solid rgba(240, 135, 0, 0.2);
-  color: #fff;
+  color: #e68619 !important;
+  border-color: #e68619 !important;
+  background-color: rgba(230, 134, 25, 0.08) !important;
 }
 
 .bg-success {
-  background: linear-gradient(135deg, #28a745 0%, #218838 100%) !important;
-  border: 1px solid rgba(33, 136, 56, 0.2);
+  color: #2d9d78 !important;
+  border-color: #2d9d78 !important;
+  background-color: rgba(45, 157, 120, 0.08) !important;
 }
 
 .bg-info {
-  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%) !important;
-  border: 1px solid rgba(19, 132, 150, 0.2);
+  color: #2680eb !important;
+  border-color: #2680eb !important;
+  background-color: rgba(38, 128, 235, 0.08) !important;
 }
 
 /* Filter Toggle Styles */
