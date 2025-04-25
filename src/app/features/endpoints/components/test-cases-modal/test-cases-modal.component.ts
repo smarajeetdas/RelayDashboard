@@ -13,7 +13,7 @@ export class TestCasesModalComponent implements OnInit {
   testCases: TestCase[] = [];
   loading = false;
   showModal = false;
-  title = 'Associated TESTCASE';
+  title = 'Associated Testcase';
 
   constructor(
     private endpointService: EndpointService,
