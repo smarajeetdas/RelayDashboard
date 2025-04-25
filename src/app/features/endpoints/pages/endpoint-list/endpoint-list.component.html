@@ -183,7 +183,11 @@
             <td>{{endpoint.project}}</td>
             <td>{{endpoint.requestType}}</td>
             <td>
-              <span>{{endpoint.category}}</span>
+              <span class="badge" [ngClass]="{
+                'bg-danger': endpoint.category === 'REST',
+                'bg-primary': endpoint.category === 'WEB',
+                'bg-warning': endpoint.category === 'MOBILE'
+              }">{{endpoint.category}}</span>
             </td>
             <td>{{endpoint.updatedOn}}</td>
             <td>{{endpoint.updatedBy}}</td>
