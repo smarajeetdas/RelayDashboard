@@ -43,6 +43,8 @@
   width: fit-content; 
   animation: scroll 30s linear infinite;
   gap: 20px;
+  /* Start with Functional Automation visible (4th card) */
+  transform: translateX(calc(-250px * 3 - 60px)); /* Position to show functional card */
 }
 
 .slider-container:hover .slider-track {
@@ -51,10 +53,13 @@
 
 @keyframes scroll {
   0% {
-    transform: translateX(0);
+    transform: translateX(calc(-250px * 3 - 60px)); /* Start with Functional Automation visible */
+  }
+  50% {
+    transform: translateX(calc(-250px * 5 - 100px)); /* Full scroll to the end */
   }
   100% {
-    transform: translateX(calc(-250px * 5 - 100px)); /* Width of 5 cards + gaps */
+    transform: translateX(calc(-250px * 3 - 60px)); /* Back to Functional Automation */
   }
 }
 

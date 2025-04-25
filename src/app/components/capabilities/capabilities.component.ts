@@ -121,13 +121,31 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
   constructor(private scrollAnimationService: ScrollAnimationService) { }
 
   ngOnInit(): void {
-    // Don't initialize any capability as active
-    this.activeCapability = null;
-    this.isDetailVisible = false;
+    // Initialize with Functional Automation as active by default
+    const functionalAutomation = this.capabilities.find(cap => cap.id === 'functional');
+    if (functionalAutomation) {
+      this.activeCapability = functionalAutomation;
+      this.isDetailVisible = true;
+      
+      // Allow time for DOM to render before initializing animations
+      setTimeout(() => {
+        this.initializeDetailAnimations();
+      }, 300);
+    }
   }
   
   ngAfterViewInit(): void {
-    // No initialization needed since we're using CSS animation for scrolling
+    // Pause scrolling animation initially to keep Functional Automation centered
+    const sliderTrack = document.querySelector('.slider-track') as HTMLElement;
+    if (sliderTrack) {
+      // Pause initially to ensure the Functional Automation card is visible
+      sliderTrack.style.animationPlayState = 'paused';
+      
+      // Start scrolling animation after a short delay
+      setTimeout(() => {
+        sliderTrack.style.animationPlayState = 'running';
+      }, 2000);
+    }
   }
 
   /**
