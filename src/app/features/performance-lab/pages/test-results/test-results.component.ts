@@ -8,7 +8,7 @@ interface TestResult {
   startTime: string;
   duration: string;
   environment: string;
-  status: 'Scheduled' | 'InProgress' | 'Passed' | 'Failed';
+  status: 'Scheduled' | 'InProgress' | 'Passed' | 'Failed' | 'Aborted';
   project: string;
   executedBy: string;
   category?: string;
@@ -78,7 +78,8 @@ export class TestResultsComponent implements OnInit {
         environment: 'Production',
         status: 'Passed', 
         project: 'E-commerce', 
-        executedBy: 'Jane Smith' 
+        executedBy: 'Jane Smith',
+        category: 'Web'
       },
       { 
         id: 2, 
@@ -89,7 +90,8 @@ export class TestResultsComponent implements OnInit {
         environment: 'Staging',
         status: 'Failed', 
         project: 'E-commerce', 
-        executedBy: 'John Doe' 
+        executedBy: 'John Doe',
+        category: 'API'
       },
       { 
         id: 3, 
@@ -100,7 +102,8 @@ export class TestResultsComponent implements OnInit {
         environment: 'Development',
         status: 'InProgress', 
         project: 'Banking App', 
-        executedBy: 'Alex Johnson' 
+        executedBy: 'Alex Johnson',
+        category: 'Integration'
       },
       { 
         id: 4, 
@@ -111,7 +114,8 @@ export class TestResultsComponent implements OnInit {
         environment: 'Production',
         status: 'Passed', 
         project: 'Project B', 
-        executedBy: 'Olivia Wilson' 
+        executedBy: 'Olivia Wilson',
+        category: 'Web'
       },
       { 
         id: 5, 
@@ -122,7 +126,8 @@ export class TestResultsComponent implements OnInit {
         environment: 'Staging',
         status: 'Scheduled', 
         project: 'E-commerce', 
-        executedBy: 'William Brown' 
+        executedBy: 'William Brown',
+        category: 'Mobile'
       },
       { 
         id: 6, 
@@ -133,7 +138,8 @@ export class TestResultsComponent implements OnInit {
         environment: 'Production',
         status: 'Passed', 
         project: 'Banking App', 
-        executedBy: 'Jane Smith' 
+        executedBy: 'Jane Smith',
+        category: 'API'
       },
       { 
         id: 7, 
@@ -144,7 +150,8 @@ export class TestResultsComponent implements OnInit {
         environment: 'Development',
         status: 'Failed', 
         project: 'Banking App', 
-        executedBy: 'Alex Johnson' 
+        executedBy: 'Alex Johnson',
+        category: 'Integration'
       },
       { 
         id: 8, 
@@ -155,7 +162,20 @@ export class TestResultsComponent implements OnInit {
         environment: 'Staging',
         status: 'Passed', 
         project: 'Project C', 
-        executedBy: 'John Doe' 
+        executedBy: 'John Doe',
+        category: 'Web'
+      },
+      { 
+        id: 9, 
+        testcaseName: 'Security Scan Test', 
+        testcaseId: 10009,
+        startTime: '2025-04-24 13:45:37', 
+        duration: '00:05:18', 
+        environment: 'Staging',
+        status: 'Aborted', 
+        project: 'Banking App', 
+        executedBy: 'William Brown',
+        category: 'Security'
       }
     ];
   }
@@ -231,6 +251,7 @@ export class TestResultsComponent implements OnInit {
       case 'InProgress': return 'fa-spinner fa-spin';
       case 'Passed': return 'fa-check-circle';
       case 'Failed': return 'fa-times-circle';
+      case 'Aborted': return 'fa-ban';
       default: return 'fa-question-circle';
     }
   }
@@ -242,6 +263,7 @@ export class TestResultsComponent implements OnInit {
       case 'InProgress': return 'text-primary';
       case 'Passed': return 'text-success';
       case 'Failed': return 'text-danger';
+      case 'Aborted': return 'text-warning';
       default: return '';
     }
   }

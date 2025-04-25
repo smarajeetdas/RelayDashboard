@@ -148,6 +148,12 @@
               <td>
                 <div class="status-badge status-{{ result.status.toLowerCase() }}" 
                      [title]="result.status">
+                  <i class="fas" [ngClass]="{
+                    'fa-check-circle': result.status === 'Passed',
+                    'fa-times-circle': result.status === 'Failed',
+                    'fa-sync-alt fa-spin': result.status === 'InProgress',
+                    'fa-clock': result.status === 'Scheduled'
+                  }"></i>
                   {{ result.status }}
                 </div>
               </td>
