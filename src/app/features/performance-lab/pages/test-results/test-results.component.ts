@@ -251,7 +251,7 @@ export class TestResultsComponent implements OnInit {
       case 'InProgress': return 'fa-spinner fa-spin';
       case 'Passed': return 'fa-check-circle';
       case 'Failed': return 'fa-times-circle';
-      case 'Aborted': return 'fa-ban';
+      case 'Aborted': return 'fa-hand-paper';
       default: return 'fa-question-circle';
     }
   }
