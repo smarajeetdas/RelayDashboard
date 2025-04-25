@@ -3,21 +3,24 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ReviewTestabilityComponent } from './review-testability/review-testability.component';
+import { ReviewTestabilityComponent } from './pages/review-testability/review-testability.component';
+import { TestResultsComponent } from './pages/test-results/test-results.component';
 
 const routes: Routes = [
   { 
     path: '', 
     children: [
       { path: '', redirectTo: 'review-testability', pathMatch: 'full' },
-      { path: 'review-testability', component: ReviewTestabilityComponent }
+      { path: 'review-testability', component: ReviewTestabilityComponent },
+      { path: 'test-results', component: TestResultsComponent }
     ]
   }
 ];
 
 @NgModule({
   declarations: [
-    ReviewTestabilityComponent
+    ReviewTestabilityComponent,
+    TestResultsComponent
   ],
   imports: [
     CommonModule,

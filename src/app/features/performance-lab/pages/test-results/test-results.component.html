@@ -1,0 +1,180 @@
+<div class="test-results-page">
+  <div class="container-fluid pt-2 px-md-4 pb-5">
+    <!-- Page Header with Breadcrumb and Title -->
+    <div class="mb-4">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Performance Lab</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Test Results</li>
+        </ol>
+      </nav>
+      
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="test-results-title">
+          <i class="fas fa-clipboard-check me-2"></i> Test Results
+        </h1>
+        <div class="header-actions">
+          <button class="btn btn-filter" (click)="toggleFilters()" title="Show/Hide Filters">
+            <i class="fas fa-filter"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Filter Section -->
+    <div class="filter-section mb-4" [ngClass]="{'d-none': !showFilters}">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <!-- Project Filter -->
+            <div class="col-md-3 mb-3">
+              <div class="dropdown-filter-wrapper position-relative">
+                <label class="form-label">Project</label>
+                <div class="project-filter-selector" (click)="toggleDropdown('project')">
+                  <span *ngIf="!filterValues.project" class="placeholder">Select Project</span>
+                  <span *ngIf="filterValues.project">{{ filterValues.project }}</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-filter" *ngIf="dropdownState.project">
+                  <div class="dropdown-filter-item" 
+                       *ngFor="let project of filterOptions.projects"
+                       (click)="selectFilterOption('project', project)"
+                       [class.active]="filterValues.project === project">
+                    {{ project }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- User Filter -->
+            <div class="col-md-3 mb-3">
+              <div class="dropdown-filter-wrapper position-relative">
+                <label class="form-label">User</label>
+                <div class="user-filter-selector" (click)="toggleDropdown('user')">
+                  <span *ngIf="!filterValues.user" class="placeholder">Select User</span>
+                  <span *ngIf="filterValues.user">{{ filterValues.user }}</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-filter" *ngIf="dropdownState.user">
+                  <div class="dropdown-filter-item" 
+                       *ngFor="let user of filterOptions.users"
+                       (click)="selectFilterOption('user', user)"
+                       [class.active]="filterValues.user === user">
+                    {{ user }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Status Filter -->
+            <div class="col-md-3 mb-3">
+              <div class="dropdown-filter-wrapper position-relative">
+                <label class="form-label">Status</label>
+                <div class="status-filter-selector" (click)="toggleDropdown('status')">
+                  <span *ngIf="!filterValues.status" class="placeholder">Select Status</span>
+                  <span *ngIf="filterValues.status">{{ filterValues.status }}</span>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-filter" *ngIf="dropdownState.status">
+                  <div class="dropdown-filter-item" 
+                       *ngFor="let status of filterOptions.statuses"
+                       (click)="selectFilterOption('status', status)"
+                       [class.active]="filterValues.status === status">
+                    {{ status }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Keyword Search -->
+            <div class="col-md-3 mb-3">
+              <label class="form-label">Keyword</label>
+              <input type="text" class="form-control" 
+                     placeholder="Search..." 
+                     [(ngModel)]="filterValues.keyword"
+                     (keyup.enter)="applyFilters()">
+            </div>
+          </div>
+          
+          <!-- Filter Action Buttons -->
+          <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-end">
+              <button class="btn btn-outline-secondary me-2" (click)="clearFilters()">
+                <i class="fas fa-times me-1"></i> Clear
+              </button>
+              <button class="btn btn-primary" (click)="applyFilters()">
+                <i class="fas fa-search me-1"></i> Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Results Table -->
+    <div class="test-results-table-container">
+      <div class="table-responsive">
+        <table class="table test-results-table">
+          <thead>
+            <tr>
+              <th width="30px">#</th>
+              <th>Test Case</th>
+              <th>Start Time</th>
+              <th>Duration</th>
+              <th>Environment</th>
+              <th>Status</th>
+              <th>Project</th>
+              <th>Executed By</th>
+              <th width="80px">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of filteredResults; let i = index" class="result-row">
+              <td>{{ i + 1 }}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-sm btn-icon-link me-2" 
+                          (click)="navigateToTestCase(result.testcaseId)"
+                          title="Go to Test Case Details">
+                    <i class="fas fa-link"></i>
+                  </button>
+                  {{ result.testcaseName }}
+                </div>
+              </td>
+              <td>{{ result.startTime }}</td>
+              <td>{{ result.duration }}</td>
+              <td>{{ result.environment }}</td>
+              <td>
+                <div class="d-flex align-items-center status-cell" 
+                     [ngClass]="getStatusColorClass(result.status)"
+                     [title]="result.status">
+                  <i [class]="'fas me-2 ' + getStatusIconClass(result.status)"></i>
+                  {{ result.status }}
+                </div>
+              </td>
+              <td>{{ result.project }}</td>
+              <td>{{ result.executedBy }}</td>
+              <td>
+                <button class="btn btn-sm btn-icon btn-rerun" 
+                        (click)="rerunTest(result.id)"
+                        title="Rerun Test">
+                  <i class="fas fa-redo-alt"></i>
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="filteredResults.length === 0">
+              <td colspan="9" class="text-center py-4">
+                <div class="no-results">
+                  <i class="fas fa-search mb-3"></i>
+                  <h5>No test results found</h5>
+                  <p>Try adjusting your filters or creating a new test.</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

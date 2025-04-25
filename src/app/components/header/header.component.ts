@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   performanceLabOptions = [
     { id: 'overview', name: 'Overview', icon: 'fa-circle' },
     { id: 'test-manager', name: 'Test Manager', icon: 'fa-circle' },
-    { id: 'test-results', name: 'Test Results', icon: 'fa-circle' },
+    { id: 'test-results', name: 'Test Results', icon: 'fa-circle', route: '/performance-lab/test-results' },
     { id: 'review-testability', name: 'Review Testability Comparison', icon: 'fa-circle', route: '/performance-lab/review-testability' }
   ];
   
