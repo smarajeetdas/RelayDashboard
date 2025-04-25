@@ -7,6 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 // Import pages and components
 import { EndpointListComponent } from './pages/endpoint-list/endpoint-list.component';
 import { EndpointDetailComponent } from './pages/endpoint-detail/endpoint-detail.component';
+import { TestCasesModalComponent } from './components/test-cases-modal/test-cases-modal.component';
 
 const routes: Routes = [
   { path: '', component: EndpointListComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     EndpointListComponent,
-    EndpointDetailComponent
+    EndpointDetailComponent,
+    TestCasesModalComponent
   ],
   imports: [
     CommonModule,

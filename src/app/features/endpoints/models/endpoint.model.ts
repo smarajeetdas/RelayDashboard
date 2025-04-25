@@ -38,6 +38,7 @@ export interface EndpointHeader {
 export interface TestCase {
   id: string;
   name: string;
+  project: string;
   status: 'passed' | 'failed' | 'pending';
   lastRun?: string;
   duration?: number;

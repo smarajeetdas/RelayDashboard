@@ -123,19 +123,33 @@ export class EndpointService {
   
   private generateMockTestCases(endpointId: string): TestCase[] {
     const statuses: ('passed' | 'failed' | 'pending')[] = ['passed', 'failed', 'pending'];
-    const count = Math.floor(Math.random() * 5) + 1;
+    const count = 2; // Fixed to match the screenshot example
     const testCases: TestCase[] = [];
     
-    for (let i = 1; i <= count; i++) {
-      const status = statuses[Math.floor(Math.random() * statuses.length)];
-      testCases.push({
-        id: `${endpointId}-tc-${i}`,
-        name: `Test Case ${i}: Verify ${status === 'passed' ? 'success' : status === 'failed' ? 'error' : 'pending'} scenario`,
-        status,
-        lastRun: status !== 'pending' ? '16-04-2025' : undefined,
-        duration: status !== 'pending' ? Math.floor(Math.random() * 1000) + 100 : undefined
-      });
-    }
+    // Get the endpoint to access its project name
+    const endpoint = this.mockEndpoints.find(e => e.id === endpointId);
+    
+    // Always use testsaam-1 as the project name to match the screenshot
+    const projectName = 'testsaam-1';
+    
+    // Create test cases to match the screenshot
+    testCases.push({
+      id: `${endpointId}-tc-1`,
+      name: 'TC-Newone',
+      project: projectName,
+      status: 'passed',
+      lastRun: '16-04-2025',
+      duration: 245
+    });
+    
+    testCases.push({
+      id: `${endpointId}-tc-2`,
+      name: 'java script expression-1',
+      project: projectName,
+      status: 'passed',
+      lastRun: '16-04-2025',
+      duration: 312
+    });
     
     return testCases;
   }
@@ -174,5 +188,9 @@ export class EndpointService {
     const initialLength = this.mockEndpoints.length;
     this.mockEndpoints = this.mockEndpoints.filter(endpoint => endpoint.id !== id);
     return of(this.mockEndpoints.length !== initialLength);
+  }
+  
+  getTestCasesForEndpoint(endpointId: string): Observable<TestCase[]> {
+    return of(this.generateMockTestCases(endpointId));
   }
 }

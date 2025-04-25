@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Endpoint } from '../../models/endpoint.model';
 import { EndpointService } from '../../services/endpoint.service';
+import { TestCasesModalComponent } from '../../components/test-cases-modal/test-cases-modal.component';
 
 @Component({
   selector: 'app-endpoint-list',
@@ -9,6 +10,8 @@ import { EndpointService } from '../../services/endpoint.service';
   styleUrls: ['./endpoint-list.component.css', '../../../../shared/styles/icon-buttons.css']
 })
 export class EndpointListComponent implements OnInit {
+  @ViewChild(TestCasesModalComponent) testCasesModal: TestCasesModalComponent;
+  
   // Adding Math property for use in the template
   Math = Math;
   
@@ -366,5 +369,13 @@ export class EndpointListComponent implements OnInit {
    */
   toggleFilterSection(): void {
     this.showFilterSection = !this.showFilterSection;
+  }
+  
+  /**
+   * Open modal to view test cases associated with an endpoint
+   */
+  viewTestCases(endpointId: string, event: Event): void {
+    event.stopPropagation(); // Prevent the row click event
+    this.testCasesModal.openModal(endpointId);
   }
 }

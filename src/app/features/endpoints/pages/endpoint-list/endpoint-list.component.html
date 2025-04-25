@@ -193,7 +193,8 @@
             <td>{{endpoint.updatedBy}}</td>
             <td>
               <div class="action-buttons">
-                <button class="btn btn-sm btn-icon" title="View Test Cases">
+                <button class="btn btn-sm btn-icon" title="View Test Cases"
+                        (click)="viewTestCases(endpoint.id, $event)">
                   <i class="fas fa-vial"></i>
                 </button>
                 <button class="btn btn-sm btn-icon" title="Edit">
@@ -270,4 +271,7 @@
       </div>
     </div>
   </div>
+
+  <!-- Test Cases Modal Component -->
+  <app-test-cases-modal></app-test-cases-modal>
 </div>

@@ -1,0 +1,166 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1060;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 600px;
+  margin: 1.75rem auto;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  outline: 0;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
+  color: white;
+  border-bottom: 0;
+  padding: 1rem 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.close {
+  color: white;
+  opacity: 0.8;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0;
+  margin: -1rem -1rem -1rem auto;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 0;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e9ecef;
+  background-color: #f8f9fa;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(224, 168, 0, 0.2);
+}
+
+/* Table Styles */
+.endpoint-table {
+  background-color: #fff;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.endpoint-table thead th {
+  background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
+  color: #ffffff;
+  font-weight: normal;
+  border-bottom: none;
+  padding: 10px 12px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.endpoint-table tbody td {
+  padding: 8px 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.2s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+}
+
+.endpoint-table tbody tr:hover td {
+  background-color: rgba(20, 115, 230, 0.03);
+}
+
+.testcase-link {
+  display: flex;
+  align-items: center;
+  color: #1473e6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.testcase-link:hover {
+  color: #0d62c9;
+  text-decoration: underline;
+}
+
+.testcase-link i {
+  font-size: 12px;
+  margin-right: 5px;
+}
