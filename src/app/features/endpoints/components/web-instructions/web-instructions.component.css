@@ -34,6 +34,34 @@
   border-radius: 2px;
 }
 
+/* Underline highlight animation for elements in card body */
+.endpoint-table tbody td {
+  position: relative;
+}
+
+.endpoint-table tbody td.highlight-text {
+  font-weight: 600;
+  color: #1473e6;
+}
+
+.endpoint-table tbody td.highlight-text::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  bottom: 8px;
+  height: 2px;
+  width: calc(100% - 24px);
+  background: linear-gradient(90deg, #1473e6, #0d62c9);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 1px;
+}
+
+.endpoint-table tbody tr:hover td.highlight-text::after {
+  transform: scaleX(1);
+}
+
 .button-group {
   display: flex;
   gap: 8px;

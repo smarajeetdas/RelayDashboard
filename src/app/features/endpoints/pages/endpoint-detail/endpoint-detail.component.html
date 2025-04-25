@@ -98,7 +98,7 @@
                 <div class="col-md-3 mb-3">
                   <div class="detail-group">
                     <label>Project</label>
-                    <p>{{ endpoint.project }}</p>
+                    <p><span class="highlight-element">{{ endpoint.project }}</span></p>
                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
@@ -116,13 +116,13 @@
                 <div class="col-md-3 mb-3">
                   <div class="detail-group">
                     <label>Request Type</label>
-                    <p>{{ endpoint.requestType !== 'NA' ? endpoint.requestType : '-' }}</p>
+                    <p><span class="highlight-element">{{ endpoint.requestType !== 'NA' ? endpoint.requestType : '-' }}</span></p>
                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
                   <div class="detail-group">
                     <label>Last Updated</label>
-                    <p>{{ endpoint.updatedOn }}<br><small>by {{ endpoint.updatedBy }}</small></p>
+                    <p>{{ endpoint.updatedOn }}<br><small>by <span class="highlight-element">{{ endpoint.updatedBy }}</span></small></p>
                   </div>
                 </div>
               </div>
@@ -140,7 +140,7 @@
                 <div class="col-12">
                   <div class="detail-group">
                     <label>Description</label>
-                    <p>{{ endpoint.description }}</p>
+                    <p><span class="highlight-element">{{ endpoint.description }}</span></p>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Basic Information</h5>
                   <p class="mb-0" *ngIf="endpoint.description; else noDetailInfo">
-                    {{ endpoint.description }}
+                    <span class="highlight-element">{{ endpoint.description }}</span>
                   </p>
                   <ng-template #noDetailInfo>
                     <p class="text-muted mb-0">No additional details available for this endpoint.</p>

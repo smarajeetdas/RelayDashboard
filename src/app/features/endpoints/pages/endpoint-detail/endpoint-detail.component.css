@@ -572,6 +572,32 @@
   border-radius: 3px;
 }
 
+/* Underline highlighter for card body elements */
+.card-body .highlight-element {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  color: #1473e6;
+}
+
+.card-body .highlight-element::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #1473e6, #0d62c9);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 1px;
+}
+
+.card-body .highlight-element:hover::after {
+  transform: scaleX(1);
+}
+
 /* Form control styling for the environment section */
 .form-check {
   margin-bottom: 14px;
