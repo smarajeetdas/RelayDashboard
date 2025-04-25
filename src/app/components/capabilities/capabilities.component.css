@@ -43,8 +43,8 @@
   width: fit-content; 
   animation: scroll 30s linear infinite;
   gap: 20px;
-  /* Start with Functional Automation visible (4th card) */
-  transform: translateX(calc(-250px * 3 - 60px)); /* Position to show functional card */
+  /* Start with cards positioned so that Functional Automation will be centered */
+  transform: translateX(calc(-250px * 3 - 60px)); /* Initial offset to position functional card in center */
 }
 
 .slider-container:hover .slider-track {
@@ -53,13 +53,10 @@
 
 @keyframes scroll {
   0% {
-    transform: translateX(calc(-250px * 3 - 60px)); /* Start with Functional Automation visible */
-  }
-  50% {
-    transform: translateX(calc(-250px * 5 - 100px)); /* Full scroll to the end */
+    transform: translateX(0); /* Start from right side */
   }
   100% {
-    transform: translateX(calc(-250px * 3 - 60px)); /* Back to Functional Automation */
+    transform: translateX(calc(-250px * 5 - 100px)); /* Scroll to left */
   }
 }
 

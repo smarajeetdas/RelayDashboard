@@ -135,14 +135,28 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
   }
   
   ngAfterViewInit(): void {
-    // Pause scrolling animation initially to keep Functional Automation centered
+    // First position the Functional Automation card in center, then start animation
     const sliderTrack = document.querySelector('.slider-track') as HTMLElement;
     if (sliderTrack) {
-      // Pause initially to ensure the Functional Automation card is visible
+      // Position the functional card in the center by setting the initial transform
+      sliderTrack.style.transform = 'translateX(calc(-250px * 3 - 60px))';
+      
+      // Pause animation initially
       sliderTrack.style.animationPlayState = 'paused';
       
-      // Start scrolling animation after a short delay
+      // Restart animation from beginning after a short delay
       setTimeout(() => {
+        // Remove the transform to let animation take over
+        sliderTrack.style.transform = '';
+        
+        // Set animation to start at its beginning
+        sliderTrack.style.animationName = 'none';
+        
+        // Force a reflow to ensure the animation restart
+        void sliderTrack.offsetWidth;
+        
+        // Restart animation
+        sliderTrack.style.animationName = 'scroll';
         sliderTrack.style.animationPlayState = 'running';
       }, 2000);
     }
@@ -209,10 +223,15 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
     // Pause the carousel animation when a card is selected
     const sliderTrack = document.querySelector('.slider-track') as HTMLElement;
     if (sliderTrack) {
+      // Pause animation
       sliderTrack.style.animationPlayState = 'paused';
       
-      // Resume after 5 seconds
+      // Resume animation after 5 seconds
       setTimeout(() => {
+        // Ensure animation is running from right to left
+        sliderTrack.style.animationName = 'none';
+        void sliderTrack.offsetWidth; // Force reflow
+        sliderTrack.style.animationName = 'scroll';
         sliderTrack.style.animationPlayState = 'running';
       }, 5000);
     }
