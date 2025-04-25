@@ -120,12 +120,11 @@
             <tr>
               <th width="30px">#</th>
               <th>Test Case</th>
-              <th>Start Time</th>
-              <th>Duration</th>
-              <th>Environment</th>
+              <th>Type</th>
+              <th>Location</th>
+              <th>User/TPM</th>
+              <th>Scheduled Date Time (PST)</th>
               <th>Status</th>
-              <th>Project</th>
-              <th>Executed By</th>
               <th width="80px">Action</th>
             </tr>
           </thead>
@@ -137,24 +136,21 @@
                   <a href="javascript:void(0)" class="testcase-link" 
                      (click)="navigateToTestCase(result.testcaseId)"
                      title="Go to Test Case Details">
-                    <i class="fas fa-external-link-alt me-2"></i>
+                    <i class="fas fa-external-link-alt"></i>
                     {{ result.testcaseName }}
                   </a>
                 </div>
               </td>
-              <td>{{ result.startTime }}</td>
-              <td>{{ result.duration }}</td>
+              <td>{{ result.category || 'Web' }}</td>
               <td>{{ result.environment }}</td>
+              <td>{{ result.executedBy }}</td>
+              <td>{{ result.startTime }}</td>
               <td>
-                <div class="d-flex align-items-center status-cell" 
-                     [ngClass]="getStatusColorClass(result.status)"
+                <div class="status-badge status-{{ result.status.toLowerCase() }}" 
                      [title]="result.status">
-                  <i [class]="'fas me-2 ' + getStatusIconClass(result.status)"></i>
                   {{ result.status }}
                 </div>
               </td>
-              <td>{{ result.project }}</td>
-              <td>{{ result.executedBy }}</td>
               <td>
                 <button class="btn btn-sm btn-icon btn-rerun" 
                         (click)="rerunTest(result.id)"

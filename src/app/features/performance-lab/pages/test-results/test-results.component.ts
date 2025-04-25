@@ -11,6 +11,7 @@ interface TestResult {
   status: 'Scheduled' | 'InProgress' | 'Passed' | 'Failed';
   project: string;
   executedBy: string;
+  category?: string;
 }
 
 // Interface for filter options
