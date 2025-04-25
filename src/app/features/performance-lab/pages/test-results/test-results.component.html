@@ -134,12 +134,12 @@
               <td>{{ i + 1 }}</td>
               <td>
                 <div class="d-flex align-items-center">
-                  <button class="btn btn-sm btn-icon-link me-2" 
-                          (click)="navigateToTestCase(result.testcaseId)"
-                          title="Go to Test Case Details">
-                    <i class="fas fa-link"></i>
-                  </button>
-                  {{ result.testcaseName }}
+                  <a href="javascript:void(0)" class="testcase-link" 
+                     (click)="navigateToTestCase(result.testcaseId)"
+                     title="Go to Test Case Details">
+                    <i class="fas fa-external-link-alt me-2"></i>
+                    {{ result.testcaseName }}
+                  </a>
                 </div>
               </td>
               <td>{{ result.startTime }}</td>
