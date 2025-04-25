@@ -325,6 +325,18 @@
   background-color: rgba(220, 53, 69, 0.1);
 }
 
+/* Custom style for the test cases button */
+.test-cases-btn {
+  color: #1473e6;
+  background-color: #e6f2ff;
+  border-color: #b3d9ff;
+}
+
+.test-cases-btn:hover {
+  background-color: #d1e8ff;
+  color: #0a58ca;
+}
+
 .form-group {
   margin-bottom: 0;
 }
