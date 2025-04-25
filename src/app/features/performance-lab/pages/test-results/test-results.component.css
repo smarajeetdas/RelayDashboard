@@ -150,8 +150,8 @@
 }
 
 .form-control:focus {
-  border-color: #ff9500;
-  box-shadow: 0 0 0 0.2rem rgba(255, 149, 0, 0.15);
+  border-color: #1473e6;
+  box-shadow: 0 0 0 0.2rem rgba(20, 115, 230, 0.15);
 }
 
 .form-control::placeholder {
@@ -162,6 +162,11 @@
 /* Custom dropdown styling */
 .dropdown-filter-wrapper {
   margin-bottom: 15px;
+}
+
+.button-container {
+  height: 44px;
+  margin-top: 25px;
 }
 
 .project-filter-selector,

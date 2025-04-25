@@ -30,7 +30,7 @@
         <div class="card-body">
           <div class="row align-items-end">
             <!-- Project Filter -->
-            <div class="col-md-2">
+            <div class="col-md-2 mb-3">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">Project</label>
                 <div class="project-filter-selector" (click)="toggleDropdown('project')">
@@ -50,7 +50,7 @@
             </div>
             
             <!-- User Filter -->
-            <div class="col-md-2">
+            <div class="col-md-2 mb-3">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">User</label>
                 <div class="user-filter-selector" (click)="toggleDropdown('user')">
@@ -70,7 +70,7 @@
             </div>
             
             <!-- Status Filter -->
-            <div class="col-md-2">
+            <div class="col-md-2 mb-3">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">Status</label>
                 <div class="status-filter-selector" (click)="toggleDropdown('status')">
@@ -90,22 +90,24 @@
             </div>
             
             <!-- Keyword Search -->
-            <div class="col-md-3">
+            <div class="col-md-3 mb-3">
               <label class="form-label">Keyword</label>
-              <input type="text" class="form-control" 
+              <input type="text" class="form-control keyword-input" 
                      placeholder="Search..." 
                      [(ngModel)]="filterValues.keyword"
                      (keyup.enter)="applyFilters()">
             </div>
             
             <!-- Filter Action Buttons -->
-            <div class="col-md-3 d-flex justify-content-end">
-              <button class="btn btn-outline-primary me-3" (click)="clearFilters()">
-                <i class="fas fa-times me-1"></i> Clear
-              </button>
-              <button class="btn btn-primary" (click)="applyFilters()">
-                <i class="fas fa-search me-1"></i> Search
-              </button>
+            <div class="col-md-3 mb-3">
+              <div class="d-flex justify-content-end button-container">
+                <button class="btn btn-outline-primary me-3" (click)="clearFilters()">
+                  <i class="fas fa-times me-1"></i> Clear
+                </button>
+                <button class="btn btn-primary" (click)="applyFilters()">
+                  <i class="fas fa-search me-1"></i> Search
+                </button>
+              </div>
             </div>
           </div>
         </div>
