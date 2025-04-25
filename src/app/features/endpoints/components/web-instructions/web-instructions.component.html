@@ -36,13 +36,27 @@
           <th width="6%">Entity</th>
           <th width="10%">Action</th>
           <th width="20%">Value(s)</th>
-          <th width="12%">Active</th>
-          <th width="12%">Save Screenshot</th>
+          <th width="12%">
+            <div class="d-flex flex-column align-items-center">
+              <span class="d-flex align-items-center">
+                <i class="fas fa-power-off mr-1 text-success"></i> Active
+              </span>
+              <small class="text-muted">Toggle Status</small>
+            </div>
+          </th>
+          <th width="12%">
+            <div class="d-flex flex-column align-items-center">
+              <span class="d-flex align-items-center">
+                <i class="fas fa-camera mr-1 text-primary"></i> Screenshot
+              </span>
+              <small class="text-muted">Save Image</small>
+            </div>
+          </th>
           <th width="8%">Options</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let instruction of webInstructions; let i = index">
+        <tr *ngFor="let instruction of webInstructions; let i = index" [class.inactive-row]="!instruction.active">
           <td>
             <i class="fas fa-chevron-right"></i>
           </td>
@@ -52,21 +66,27 @@
           <td>{{ instruction.action }}</td>
           <td>{{ instruction.value || 'NA' }}</td>
           <td>
-            <div class="form-check form-switch d-flex justify-content-center">
-              <input 
-                class="form-check-input" 
-                type="checkbox" 
-                [checked]="instruction.active"
-                (change)="toggleActive(instruction)">
+            <div class="toggle-container d-flex justify-content-center align-items-center">
+              <div class="toggle-switch" 
+                   [class.active]="instruction.active" 
+                   (click)="toggleActive(instruction)">
+                <div class="toggle-slider"></div>
+              </div>
+              <span class="toggle-status ml-2" [class.active-text]="instruction.active">
+                {{ instruction.active ? 'ON' : 'OFF' }}
+              </span>
             </div>
           </td>
           <td>
-            <div class="form-check form-switch d-flex justify-content-center">
-              <input 
-                class="form-check-input" 
-                type="checkbox" 
-                [checked]="instruction.saveScreenshot"
-                (change)="toggleScreenshot(instruction)">
+            <div class="toggle-container d-flex justify-content-center align-items-center">
+              <div class="toggle-switch" 
+                   [class.active]="instruction.saveScreenshot" 
+                   (click)="toggleScreenshot(instruction)">
+                <div class="toggle-slider"></div>
+              </div>
+              <span class="toggle-status ml-2" [class.active-text]="instruction.saveScreenshot">
+                {{ instruction.saveScreenshot ? 'ON' : 'OFF' }}
+              </span>
             </div>
           </td>
           <td>
