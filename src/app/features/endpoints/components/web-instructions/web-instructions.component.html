@@ -1,0 +1,95 @@
+<div class="web-instructions-section">
+  <div class="section-header d-flex justify-content-between align-items-center">
+    <h5 class="section-title">Web Instructions</h5>
+    <div class="button-group">
+      <button class="btn btn-primary btn-sm action-btn" (click)="recordInstruction()">
+        <i class="fas fa-record-vinyl mr-1"></i> Record
+      </button>
+      <button class="btn btn-outline-primary btn-sm action-btn" (click)="copyInstruction()">
+        <i class="fas fa-copy mr-1"></i> Copy Instructions
+      </button>
+      <button class="btn btn-outline-primary btn-sm action-btn" (click)="createIteratableInstruction()">
+        <i class="fas fa-redo mr-1"></i> Create Iteratable Web Instruction
+      </button>
+      <button class="btn btn-primary btn-sm action-btn" (click)="createWebInstruction()">
+        <i class="fas fa-plus mr-1"></i> Create Web Instruction
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div *ngIf="loading" class="text-center py-4">
+    <div class="spinner-border spinner-border-sm text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-2 mb-0">Loading web instructions...</p>
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive" *ngIf="!loading">
+    <table class="table endpoint-table">
+      <thead>
+        <tr>
+          <th width="5%"></th>
+          <th width="5%">#</th>
+          <th width="22%">Locator</th>
+          <th width="6%">Entity</th>
+          <th width="10%">Action</th>
+          <th width="20%">Value(s)</th>
+          <th width="12%">Active</th>
+          <th width="12%">Save Screenshot</th>
+          <th width="8%">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let instruction of webInstructions; let i = index">
+          <td>
+            <i class="fas fa-chevron-right"></i>
+          </td>
+          <td>{{ i + 1 }}</td>
+          <td>{{ instruction.locator }}</td>
+          <td>{{ instruction.element || 'NA' }}</td>
+          <td>{{ instruction.action }}</td>
+          <td>{{ instruction.value || 'NA' }}</td>
+          <td>
+            <div class="form-check form-switch d-flex justify-content-center">
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                [checked]="instruction.active"
+                (change)="toggleActive(instruction)">
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch d-flex justify-content-center">
+              <input 
+                class="form-check-input" 
+                type="checkbox" 
+                [checked]="instruction.saveScreenshot"
+                (change)="toggleScreenshot(instruction)">
+            </div>
+          </td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn btn-sm btn-icon" title="Clone Instruction" (click)="cloneInstruction(instruction.id)">
+                <i class="fas fa-clone"></i>
+              </button>
+              <button class="btn btn-sm btn-icon" title="Edit Instruction" (click)="editInstruction(instruction.id)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-sm btn-icon text-danger" title="Delete Instruction" (click)="deleteInstruction(instruction.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="webInstructions.length === 0 && !loading">
+          <td colspan="9" class="text-center py-4">
+            <i class="fas fa-info-circle text-muted mb-2" style="font-size: 24px;"></i>
+            <p class="mb-0 mt-2">No web instructions found for this endpoint. Create one using the buttons above.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { EndpointListComponent } from './pages/endpoint-list/endpoint-list.component';
 import { EndpointDetailComponent } from './pages/endpoint-detail/endpoint-detail.component';
 import { TestCasesModalComponent } from './components/test-cases-modal/test-cases-modal.component';
+import { WebInstructionsComponent } from './components/web-instructions/web-instructions.component';
 
 const routes: Routes = [
   { path: '', component: EndpointListComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   declarations: [
     EndpointListComponent,
     EndpointDetailComponent,
-    TestCasesModalComponent
+    TestCasesModalComponent,
+    WebInstructionsComponent
   ],
   imports: [
     CommonModule,

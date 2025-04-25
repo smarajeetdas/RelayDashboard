@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Endpoint, EndpointDetail, TestCase } from '../models/endpoint.model';
+import { Endpoint, EndpointDetail, TestCase, WebInstruction } from '../models/endpoint.model';
 
 @Injectable({
   providedIn: 'root'
@@ -118,6 +118,14 @@ export class EndpointService {
       testCases: this.generateMockTestCases(endpoint.id)
     };
     
+    // Add web instructions for WEB category endpoints
+    if (endpoint.category === 'WEB') {
+      // Use web instructions asynchronously
+      this.getWebInstructionsForEndpoint(endpoint.id).subscribe(instructions => {
+        endpointDetail.webInstructions = instructions;
+      });
+    }
+    
     return of(endpointDetail);
   }
   
@@ -192,5 +200,64 @@ export class EndpointService {
   
   getTestCasesForEndpoint(endpointId: string): Observable<TestCase[]> {
     return of(this.generateMockTestCases(endpointId));
+  }
+  
+  getWebInstructionsForEndpoint(endpointId: string): Observable<WebInstruction[]> {
+    // Get the endpoint to check if it's a WEB category
+    const endpoint = this.mockEndpoints.find(e => e.id === endpointId);
+    
+    if (!endpoint || endpoint.category !== 'WEB') {
+      return of([]);
+    }
+    
+    // Mock web instructions for WEB category endpoints
+    const mockWebInstructions: WebInstruction[] = [
+      {
+        id: `${endpointId}-wi-1`,
+        locator: '#username',
+        element: 'input',
+        active: true,
+        saveScreenshot: false,
+        action: 'type',
+        value: 'test@example.com'
+      },
+      {
+        id: `${endpointId}-wi-2`,
+        locator: '#password',
+        element: 'input',
+        active: true,
+        saveScreenshot: true,
+        action: 'type',
+        value: 'password123'
+      },
+      {
+        id: `${endpointId}-wi-3`,
+        locator: '.btn-login',
+        element: 'button',
+        active: true,
+        saveScreenshot: true,
+        action: 'click'
+      },
+      {
+        id: `${endpointId}-wi-4`,
+        locator: '#error-message',
+        element: 'div',
+        active: false,
+        saveScreenshot: false,
+        action: 'verify-text',
+        value: 'Invalid credentials'
+      },
+      {
+        id: `${endpointId}-wi-5`,
+        locator: 'window',
+        element: 'window',
+        active: true,
+        saveScreenshot: false,
+        action: 'navigate',
+        value: 'https://example.com/dashboard'
+      }
+    ];
+    
+    return of(mockWebInstructions);
   }
 }

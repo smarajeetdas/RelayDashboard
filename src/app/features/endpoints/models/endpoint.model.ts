@@ -17,6 +17,18 @@ export interface EndpointDetail extends Endpoint {
   parameters?: EndpointParameter[];
   headers?: EndpointHeader[];
   testCases?: TestCase[];
+  webInstructions?: WebInstruction[];
+}
+
+export interface WebInstruction {
+  id: string;
+  locator: string;
+  element?: string;
+  active: boolean;
+  saveScreenshot: boolean;
+  action: string;
+  value?: string;
+  optional?: boolean;
 }
 
 export interface EndpointParameter {

@@ -162,6 +162,11 @@
                   </ng-template>
                 </div>
               </div>
+              
+              <!-- Web Instructions section for WEB category endpoints -->
+              <div *ngIf="endpoint.category === 'WEB'" class="mt-4">
+                <app-web-instructions [endpointId]="endpoint.id"></app-web-instructions>
+              </div>
             </div>
 
             <!-- Environment section -->
