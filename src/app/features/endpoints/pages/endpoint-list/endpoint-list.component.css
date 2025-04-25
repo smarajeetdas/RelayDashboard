@@ -328,13 +328,13 @@
 /* Custom style for the test cases button */
 .test-cases-btn {
   color: #1473e6;
-  background-color: #e6f2ff;
-  border-color: #b3d9ff;
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
 }
 
 .test-cases-btn:hover {
-  background-color: #d1e8ff;
-  color: #0a58ca;
+  color: #1473e6;
+  border-color: #a4cafe;
 }
 
 .form-group {
