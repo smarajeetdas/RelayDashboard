@@ -16,22 +16,22 @@
 
 .section-title {
   font-size: 18px;
-  font-weight: 700;
-  color: #2d3748;
+  font-weight: 600;
+  color: #1c2536;
   margin-bottom: 0;
   position: relative;
-  padding-bottom: 10px;
+  padding-left: 12px;
 }
 
-.section-title::after {
+.section-title::before {
   content: '';
   position: absolute;
-  bottom: 0;
   left: 0;
-  width: 40px;
-  height: 3px;
-  background: linear-gradient(to right, #1473e6, #0d62c9);
-  border-radius: 3px;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #1473e6, #0d62c9);
+  border-radius: 2px;
 }
 
 .button-group {
@@ -65,18 +65,6 @@
   text-transform: uppercase;
   position: relative;
   vertical-align: middle;
-}
-
-/* Add underline similar to detail-group labels for th elements */
-.endpoint-table thead th::after {
-  content: '';
-  position: absolute;
-  left: 12px; /* align with the padding */
-  bottom: 6px;
-  width: 20px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.4); /* lighter color for better visibility on dark background */
-  border-radius: 2px;
 }
 
 .endpoint-table thead th small {
