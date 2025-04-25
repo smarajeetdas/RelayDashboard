@@ -27,10 +27,10 @@
     <!-- Filter Section -->
     <div class="filter-section mb-4" [ngClass]="{'d-none': !showFilters}">
       <div class="card">
-        <div class="card-body">
-          <div class="row align-items-end">
+        <div class="card-body py-3">
+          <div class="row align-items-end g-2">
             <!-- Project Filter -->
-            <div class="col-md-2 mb-3">
+            <div class="col-md-2">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">Project</label>
                 <div class="project-filter-selector" (click)="toggleDropdown('project')">
@@ -50,7 +50,7 @@
             </div>
             
             <!-- User Filter -->
-            <div class="col-md-2 mb-3">
+            <div class="col-md-2">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">User</label>
                 <div class="user-filter-selector" (click)="toggleDropdown('user')">
@@ -70,7 +70,7 @@
             </div>
             
             <!-- Status Filter -->
-            <div class="col-md-2 mb-3">
+            <div class="col-md-2">
               <div class="dropdown-filter-wrapper position-relative">
                 <label class="form-label">Status</label>
                 <div class="status-filter-selector" (click)="toggleDropdown('status')">
@@ -90,7 +90,7 @@
             </div>
             
             <!-- Keyword Search -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3">
               <label class="form-label">Keyword</label>
               <input type="text" class="form-control keyword-input" 
                      placeholder="Search..." 
@@ -99,7 +99,7 @@
             </div>
             
             <!-- Filter Action Buttons -->
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3">
               <div class="d-flex justify-content-end button-container">
                 <button class="btn btn-outline-primary me-3" (click)="clearFilters()">
                   <i class="fas fa-times me-1"></i> Clear

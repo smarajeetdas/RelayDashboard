@@ -161,12 +161,17 @@
 
 /* Custom dropdown styling */
 .dropdown-filter-wrapper {
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 
 .button-container {
   height: 44px;
-  margin-top: 25px;
+  margin-top: 28px;
+}
+
+/* Remove the top margin from form-label to make inputs align */
+.form-label {
+  margin-bottom: 0.25rem;
 }
 
 .project-filter-selector,
