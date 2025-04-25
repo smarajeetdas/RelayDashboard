@@ -411,24 +411,25 @@
 
 .detail-group label {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  color: #718096;
-  margin-bottom: 8px;
+  color: #2d3748;
+  margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   position: relative;
+  padding-bottom: 6px;
 }
 
 .detail-group label::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
-  width: 20px;
-  height: 2px;
-  background: rgba(20, 115, 230, 0.3);
-  border-radius: 2px;
+  bottom: 0;
+  width: 45px;
+  height: 3px;
+  background-color: #1473e6;
+  border-radius: 3px;
 }
 
 .detail-group p {
@@ -704,7 +705,7 @@
   }
   
   .detail-group label {
-    font-size: 11px;
+    font-size: 13px;
   }
   
   .detail-group p {
