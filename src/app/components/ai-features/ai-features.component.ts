@@ -33,6 +33,7 @@ export class AiFeaturesComponent implements OnInit {
 
   // Modal control variables
   showTestResultsSummaryModal: boolean = false;
+  showTestCaseValidationModal: boolean = false;
 
   constructor() { }
 
@@ -55,6 +56,8 @@ export class AiFeaturesComponent implements OnInit {
     // Handle specific feature actions
     if (feature.id === 'test-results-summary' && feature.isActive) {
       this.openTestResultsSummaryModal();
+    } else if (feature.id === 'test-case-validation' && feature.isActive) {
+      this.openTestCaseValidationModal();
     }
   }
 
@@ -67,6 +70,20 @@ export class AiFeaturesComponent implements OnInit {
     
     // Reset the active state of the related feature
     const feature = this.aiFeatures.find(f => f.id === 'test-results-summary');
+    if (feature) {
+      feature.isActive = false;
+    }
+  }
+
+  openTestCaseValidationModal(): void {
+    this.showTestCaseValidationModal = true;
+  }
+
+  closeTestCaseValidationModal(): void {
+    this.showTestCaseValidationModal = false;
+    
+    // Reset the active state of the related feature
+    const feature = this.aiFeatures.find(f => f.id === 'test-case-validation');
     if (feature) {
       feature.isActive = false;
     }

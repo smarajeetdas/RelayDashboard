@@ -1,0 +1,73 @@
+<div class="modal-backdrop" [class.active]="isVisible" (click)="onClose()">
+  <div class="modal-container" [class.active]="isVisible" (click)="stopPropagation($event)">
+    <div class="modal-header">
+      <h3>Intelligent Test Case Validation</h3>
+      <button class="close-button" (click)="onClose()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="content-card context">
+        <div class="section-icon">
+          <i class="fas fa-thumbtack"></i>
+        </div>
+        <div class="section-content">
+          <h4>Context</h4>
+          <p>Traditional test case validation is manual, time-consuming, and prone to inconsistencies. Quality engineers spend considerable time reviewing test cases instead of focusing on higher-value activities.</p>
+        </div>
+      </div>
+      
+      <div class="content-card proposal">
+        <div class="section-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="section-content">
+          <h4>Proposal</h4>
+          <p>Relay brings AI to test validation to:</p>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Analyze test case structure and content</li>
+            <li><span class="bullet">•</span> Identify inconsistencies and coverage gaps</li>
+            <li><span class="bullet">•</span> Suggest improvements and best practices</li>
+            <li><span class="bullet">•</span> Generate complementary test scenarios automatically</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content-card outcome">
+        <div class="section-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <div class="section-content">
+          <h4>Outcome</h4>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Automated test quality assurance</li>
+            <li><span class="bullet">•</span> More comprehensive test coverage</li>
+            <li><span class="bullet">•</span> Rapid test case improvements</li>
+            <li><span class="bullet">•</span> Standardized approach across teams</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content-card business-value">
+        <div class="section-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="section-content">
+          <h4>Business Value</h4>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> 40% less time spent reviewing test cases</li>
+            <li><span class="bullet">•</span> Higher quality releases through better test coverage</li>
+            <li><span class="bullet">•</span> More consistent testing approach across the organization</li>
+            <li><span class="bullet">•</span> Faster onboarding of new QA team members</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="onClose()">Close</button>
+      <button class="btn-primary">Learn More</button>
+    </div>
+  </div>
+</div>
