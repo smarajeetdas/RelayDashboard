@@ -95,12 +95,15 @@
   white-space: nowrap;
   z-index: 5;
   box-shadow: 0 0 20px rgba(20, 115, 230, 0.2);
+  max-width: calc(100% - 20px); /* Prevent overflow */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .keyword-1 {
   top: 20%;
   left: 20%;
-  font-size: 1.4rem;
+  font-size: 1.3rem; /* Slightly smaller font size for longer text */
   animation-delay: 0s;
 }
 
