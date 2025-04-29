@@ -21,4 +21,10 @@
       </div>
     </div>
   </div>
+
+  <!-- Intelligent Test Results Summary Modal -->
+  <app-intelligent-summary-modal 
+    [isVisible]="showTestResultsSummaryModal"
+    (closeModal)="closeTestResultsSummaryModal()">
+  </app-intelligent-summary-modal>
 </section>

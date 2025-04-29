@@ -1,0 +1,73 @@
+<div class="modal-backdrop" [class.active]="isVisible" (click)="onClose()">
+  <div class="modal-container" [class.active]="isVisible" (click)="stopPropagation($event)">
+    <div class="modal-header">
+      <h3>Intelligent Test Result Summary</h3>
+      <button class="close-button" (click)="onClose()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="content-card context">
+        <div class="section-icon">
+          <i class="fas fa-thumbtack"></i>
+        </div>
+        <div class="section-content">
+          <h4>Context</h4>
+          <p>Performance test results are often complex and require expert analysis. This limits understanding for non-technical users and slows down decision-making across teams.</p>
+        </div>
+      </div>
+      
+      <div class="content-card proposal">
+        <div class="section-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="section-content">
+          <h4>Proposal</h4>
+          <p>Relay uses AI to interpret performance test data for everyone:</p>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Reads raw test data</li>
+            <li><span class="bullet">•</span> Masks sensitive info</li>
+            <li><span class="bullet">•</span> Uses LLMs to generate clear, actionable summaries</li>
+            <li><span class="bullet">•</span> Delivers insights in simple language, ready for stakeholders</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content-card outcome">
+        <div class="section-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <div class="section-content">
+          <h4>Outcome</h4>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Test insights available to all users</li>
+            <li><span class="bullet">•</span> Faster, automated reporting</li>
+            <li><span class="bullet">•</span> Clear communication across teams</li>
+            <li><span class="bullet">•</span> Secure by default</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content-card business-value">
+        <div class="section-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="section-content">
+          <h4>Business Value</h4>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Quicker decisions with instant insights</li>
+            <li><span class="bullet">•</span> Lower reliance on experts</li>
+            <li><span class="bullet">•</span> Consistent, stakeholder-friendly reports</li>
+            <li><span class="bullet">•</span> Stronger alignment between tech and business</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="onClose()">Close</button>
+      <button class="btn-primary">Learn More</button>
+    </div>
+  </div>
+</div>
