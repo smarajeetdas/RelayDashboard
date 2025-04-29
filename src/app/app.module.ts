@@ -14,6 +14,7 @@ import { QualityDrivenComponent } from './components/quality-driven/quality-driv
 import { AiFeaturesComponent } from './components/ai-features/ai-features.component';
 import { IntelligentSummaryModalComponent } from './components/ai-features/intelligent-summary-modal/intelligent-summary-modal.component';
 import { TestCaseValidationModalComponent } from './components/ai-features/test-case-validation-modal/test-case-validation-modal.component';
+import { TestDataRecommendationModalComponent } from './components/ai-features/test-data-recommendation-modal/test-data-recommendation-modal.component';
 import { AdobeServicesComponent } from './components/adobe-services/adobe-services.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { CtaComponent } from './components/cta/cta.component';
@@ -34,6 +35,7 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     AiFeaturesComponent,
     IntelligentSummaryModalComponent,
     TestCaseValidationModalComponent,
+    TestDataRecommendationModalComponent,
     AdobeServicesComponent,
     TestimonialsComponent,
     CtaComponent,

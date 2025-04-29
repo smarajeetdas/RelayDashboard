@@ -1,0 +1,73 @@
+<div class="modal-backdrop" [class.active]="isVisible" (click)="onClose()">
+  <div class="modal-container" [class.active]="isVisible" (click)="stopPropagation($event)">
+    <div class="modal-header">
+      <h3>Intelligent Test Data Recommendation</h3>
+      <button class="close-button" (click)="onClose()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="content-card context">
+        <div class="section-icon">
+          <i class="fas fa-thumbtack"></i>
+        </div>
+        <div class="section-content">
+          <h4>Context</h4>
+          <p>Creating effective test data is time-consuming and often incomplete. Manual test data creation doesn't adequately cover edge cases, leading to missed defects and inconsistent quality.</p>
+        </div>
+      </div>
+      
+      <div class="content-card proposal">
+        <div class="section-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <div class="section-content">
+          <h4>Proposal</h4>
+          <p>Relay's AI analyzes your application to suggest optimal test data:</p>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Creates diverse, realistic test datasets</li>
+            <li><span class="bullet">•</span> Identifies boundary conditions and edge cases</li>
+            <li><span class="bullet">•</span> Generates negative test scenarios</li>
+            <li><span class="bullet">•</span> Ensures complete coverage of business rules</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content-card outcome">
+        <div class="section-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <div class="section-content">
+          <h4>Outcome</h4>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Comprehensive data coverage</li>
+            <li><span class="bullet">•</span> Earlier detection of edge case issues</li>
+            <li><span class="bullet">•</span> Test data that evolves with your application</li>
+            <li><span class="bullet">•</span> Reduced manual effort in data creation</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content-card business-value">
+        <div class="section-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="section-content">
+          <h4>Business Value</h4>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Higher quality from day one</li>
+            <li><span class="bullet">•</span> 60% reduction in test data preparation time</li>
+            <li><span class="bullet">•</span> Fewer production defects from missed edge cases</li>
+            <li><span class="bullet">•</span> More reliable releases</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn-secondary" (click)="onClose()">Close</button>
+      <button class="btn-primary">Learn More</button>
+    </div>
+  </div>
+</div>

@@ -34,6 +34,7 @@ export class AiFeaturesComponent implements OnInit {
   // Modal control variables
   showTestResultsSummaryModal: boolean = false;
   showTestCaseValidationModal: boolean = false;
+  showTestDataRecommendationModal: boolean = false;
 
   constructor() { }
 
@@ -58,6 +59,8 @@ export class AiFeaturesComponent implements OnInit {
       this.openTestResultsSummaryModal();
     } else if (feature.id === 'test-case-validation' && feature.isActive) {
       this.openTestCaseValidationModal();
+    } else if (feature.id === 'test-data-recommendation' && feature.isActive) {
+      this.openTestDataRecommendationModal();
     }
   }
 
@@ -84,6 +87,20 @@ export class AiFeaturesComponent implements OnInit {
     
     // Reset the active state of the related feature
     const feature = this.aiFeatures.find(f => f.id === 'test-case-validation');
+    if (feature) {
+      feature.isActive = false;
+    }
+  }
+
+  openTestDataRecommendationModal(): void {
+    this.showTestDataRecommendationModal = true;
+  }
+
+  closeTestDataRecommendationModal(): void {
+    this.showTestDataRecommendationModal = false;
+    
+    // Reset the active state of the related feature
+    const feature = this.aiFeatures.find(f => f.id === 'test-data-recommendation');
     if (feature) {
       feature.isActive = false;
     }
