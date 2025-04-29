@@ -1,1 +1,48 @@
-/* Main application styles */
+/* Global styles for the application */
+
+/* Scroll to top button styles */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1473e6;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-top.visible {
+  opacity: 0.9;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  opacity: 1;
+  background-color: #0d5bbd;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top i {
+  font-size: 24px;
+}
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add some padding to section anchors to account for fixed header */
+section[id] {
+  scroll-margin-top: 80px;
+}

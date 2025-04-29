@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { SmoothScrollService } from '../../services/smooth-scroll.service';
 
 @Component({
   selector: 'app-header',
@@ -64,7 +65,7 @@ export class HeaderComponent implements OnInit {
     { id: 'support', name: 'Support', icon: 'fa-question-circle' }
   ];
 
-  constructor() { }
+  constructor(private smoothScrollService: SmoothScrollService) { }
 
   ngOnInit(): void {
   }
@@ -92,5 +93,15 @@ export class HeaderComponent implements OnInit {
 
   closeAllDropdowns(): void {
     this.activeDropdown = null;
+  }
+  
+  /**
+   * Scroll to a section using the smooth scroll service
+   * @param sectionId The ID of the section to scroll to
+   */
+  scrollToSection(sectionId: string): void {
+    this.smoothScrollService.scrollToElement(sectionId);
+    this.closeAllDropdowns();
+    this.isMenuCollapsed = true; // Close mobile menu after clicking
   }
 }
