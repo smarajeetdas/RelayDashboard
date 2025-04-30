@@ -44,9 +44,9 @@
   right: 0;
   bottom: 0;
   background: radial-gradient(circle at center, 
-              rgba(255, 165, 0, 0.08) 0%, 
-              rgba(255, 140, 0, 0.05) 40%, 
-              rgba(255, 69, 0, 0) 80%);
+              rgba(20, 115, 230, 0.12) 0%, 
+              rgba(65, 145, 255, 0.08) 40%, 
+              rgba(40, 120, 235, 0) 80%);
   opacity: 0;
   transform: scale(0.8);
   animation: backgroundPulse 4s ease-in-out infinite alternate;
@@ -79,7 +79,7 @@
   height: auto;
   width: 120px;
   margin-right: 0;
-  filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.4));
+  filter: drop-shadow(0 0 6px rgba(20, 115, 230, 0.5));
   transition: all 0.3s ease;
   animation: logoGlow 4s ease-in-out infinite alternate;
   transform-origin: center;
@@ -87,22 +87,22 @@
 
 @keyframes logoGlow {
   0% {
-    filter: drop-shadow(0 0 3px rgba(255, 165, 0, 0.2)) 
-            drop-shadow(0 0 8px rgba(255, 125, 0, 0.1))
-            drop-shadow(0 0 1px rgba(255, 69, 0, 0.1));
+    filter: drop-shadow(0 0 3px rgba(20, 115, 230, 0.2)) 
+            drop-shadow(0 0 8px rgba(65, 145, 255, 0.1))
+            drop-shadow(0 0 1px rgba(40, 120, 235, 0.1));
     transform: scale(0.98);
     opacity: 0.85;
   }
   40% {
-    filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.3)) 
-            drop-shadow(0 0 12px rgba(255, 125, 0, 0.2))
-            drop-shadow(0 0 2px rgba(255, 69, 0, 0.2));
+    filter: drop-shadow(0 0 5px rgba(20, 115, 230, 0.3)) 
+            drop-shadow(0 0 12px rgba(65, 145, 255, 0.2))
+            drop-shadow(0 0 2px rgba(40, 120, 235, 0.2));
     opacity: 0.92;
   }
   100% {
-    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.5)) 
-            drop-shadow(0 0 15px rgba(255, 125, 0, 0.3))
-            drop-shadow(0 0 3px rgba(255, 69, 0, 0.3));
+    filter: drop-shadow(0 0 8px rgba(20, 115, 230, 0.5)) 
+            drop-shadow(0 0 15px rgba(65, 145, 255, 0.3))
+            drop-shadow(0 0 3px rgba(40, 120, 235, 0.3));
     transform: scale(1.02);
     opacity: 1;
   }
@@ -117,9 +117,9 @@
   right: -10px;
   bottom: -10px;
   background: radial-gradient(circle at center, 
-                rgba(255, 165, 0, 0.15) 0%, 
-                rgba(255, 140, 0, 0.1) 40%, 
-                rgba(255, 69, 0, 0) 70%);
+                rgba(20, 115, 230, 0.18) 0%, 
+                rgba(65, 145, 255, 0.12) 40%, 
+                rgba(40, 120, 235, 0) 70%);
   border-radius: 50%;
   z-index: -1;
   opacity: 0;
