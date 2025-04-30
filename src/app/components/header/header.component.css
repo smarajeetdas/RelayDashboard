@@ -12,28 +12,43 @@
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
 .header.scrolled {
   background-color: rgba(0, 0, 0, 0.9);
   padding: 0.5rem 0;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
+.header.scrolled .logo-wrapper {
+  height: 35px;
+}
+
 .header.scrolled .relay-logo {
   height: 35px;
-  width: 100px;
+  width: auto;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
   color: var(--light-text);
+  padding: 0;
+  margin-right: 2rem;
 }
 
 .logo-wrapper {
   position: relative;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0;
   border-radius: 8px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 40px;
 }
 
 .logo-wrapper::before {
@@ -67,17 +82,18 @@
   display: flex;
   align-items: center;
   line-height: 1;
-  margin-right: 0.5rem;
+  margin-right: 0;
   position: relative;
   z-index: 2;
-  padding: 8px;
+  padding: 0;
   border-radius: 8px;
   overflow: visible;
+  height: 100%;
 }
 
 .relay-logo {
-  height: auto;
-  width: 120px;
+  height: 40px;
+  width: auto;
   margin-right: 0;
   filter: drop-shadow(0 0 6px rgba(20, 115, 230, 0.4)) 
           drop-shadow(0 0 5px rgba(255, 120, 0, 0.3));
@@ -195,9 +211,16 @@
   }
 }
 
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
 .nav-item {
   position: relative;
   margin: 0 2px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-item.ai-features-item .nav-link {
@@ -378,6 +401,8 @@
 
   .navbar-nav {
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
   }
   
   .dropdown-wrapper {
