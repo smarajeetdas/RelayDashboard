@@ -19,7 +19,8 @@
 }
 
 .header.scrolled .relay-logo {
-  height: 40px;
+  height: 45px;
+  width: 140px;
 }
 
 .navbar-brand {
@@ -72,8 +73,9 @@
 }
 
 .relay-logo {
-  height: 50px;
-  margin-right: 12px;
+  height: 55px;
+  width: 160px;
+  margin-right: 0;
   filter: drop-shadow(0 0 6px rgba(20, 115, 230, 0.4));
   transition: all 0.3s ease;
   animation: logoGlow 3s ease-in-out infinite alternate;
@@ -81,10 +83,10 @@
 
 @keyframes logoGlow {
   0% {
-    filter: drop-shadow(0 0 4px rgba(20, 115, 230, 0.3));
+    filter: drop-shadow(0 0 3px rgba(20, 115, 230, 0.2));
   }
   100% {
-    filter: drop-shadow(0 0 8px rgba(20, 115, 230, 0.6));
+    filter: drop-shadow(0 0 6px rgba(20, 115, 230, 0.4));
   }
 }
 
@@ -382,7 +384,8 @@
   }
   
   .relay-logo {
-    height: 35px;
+    height: 40px;
+    width: 120px;
   }
   
   .logo-text {

@@ -4,7 +4,104 @@
       <a class="navbar-brand" href="#">
         <div class="logo-wrapper">
           <div class="logo-container">
-            <img src="attached_assets/logoAsset 5.png" alt="AI Powered Logo" class="relay-logo">
+            <svg class="relay-logo" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="chipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFA500">
+                    <animate attributeName="stop-color" values="#FFA500; #FF8800; #FFA500" dur="4s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="100%" stop-color="#FF8800">
+                    <animate attributeName="stop-color" values="#FF8800; #FF6600; #FF8800" dur="4s" repeatCount="indefinite" />
+                  </stop>
+                </linearGradient>
+                
+                <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#39B9EF">
+                    <animate attributeName="stop-color" values="#39B9EF; #1E90FF; #39B9EF" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="100%" stop-color="#1E90FF">
+                    <animate attributeName="stop-color" values="#1E90FF; #39B9EF; #1E90FF" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                </linearGradient>
+                
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              <!-- AI chip icon with animation -->
+              <g>
+                <!-- Outer chip border with pulse animation -->
+                <rect x="40" y="25" width="50" height="50" rx="6" fill="url(#chipGradient)" filter="url(#glow)">
+                  <animate attributeName="opacity" values="0.9; 1; 0.9" dur="2s" repeatCount="indefinite" />
+                </rect>
+                
+                <!-- Inner chip -->
+                <rect x="45" y="30" width="40" height="40" rx="4" fill="#FFFFFF" />
+                
+                <!-- AI letters -->
+                <g>
+                  <!-- A letter -->
+                  <text x="52" y="57" font-family="Arial" font-size="25" font-weight="bold" fill="url(#chipGradient)">A</text>
+                  
+                  <!-- I letter -->
+                  <text x="72" y="57" font-family="Arial" font-size="25" font-weight="bold" fill="url(#chipGradient)">I</text>
+                </g>
+                
+                <!-- Pins with sequential animation -->
+                <g>
+                  <animate attributeName="opacity" values="0.7; 1; 0.7" dur="1.5s" repeatCount="indefinite" />
+                  
+                  <!-- Top pins -->
+                  <rect x="53" y="15" width="4" height="10" fill="url(#blueGradient)">
+                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0s" repeatCount="indefinite" />
+                  </rect>
+                  <rect x="73" y="15" width="4" height="10" fill="url(#blueGradient)">
+                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0.2s" repeatCount="indefinite" />
+                  </rect>
+                  
+                  <!-- Bottom pins -->
+                  <rect x="53" y="75" width="4" height="10" fill="url(#blueGradient)">
+                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0.4s" repeatCount="indefinite" />
+                  </rect>
+                  <rect x="73" y="75" width="4" height="10" fill="url(#blueGradient)">
+                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0.6s" repeatCount="indefinite" />
+                  </rect>
+                  
+                  <!-- Left pins -->
+                  <rect x="30" y="38" width="10" height="4" fill="url(#blueGradient)">
+                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="0.8s" repeatCount="indefinite" />
+                  </rect>
+                  <rect x="30" y="58" width="10" height="4" fill="url(#blueGradient)">
+                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="1.0s" repeatCount="indefinite" />
+                  </rect>
+                  
+                  <!-- Right pins -->
+                  <rect x="90" y="38" width="10" height="4" fill="url(#blueGradient)">
+                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="1.2s" repeatCount="indefinite" />
+                  </rect>
+                  <rect x="90" y="58" width="10" height="4" fill="url(#blueGradient)">
+                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="1.4s" repeatCount="indefinite" />
+                  </rect>
+                </g>
+              </g>
+              
+              <!-- AI POWERED text with animation -->
+              <g>
+                <text x="120" y="55" font-family="Arial" font-size="22" font-weight="bold" fill="url(#blueGradient)" filter="url(#glow)">
+                  AI
+                  <animate attributeName="opacity" values="0.9; 1; 0.9" dur="3s" repeatCount="indefinite" />
+                </text>
+                <rect x="145" y="45" width="55" height="15" fill="url(#blueGradient)" filter="url(#glow)">
+                  <animate attributeName="opacity" values="0.9; 1; 0.9" dur="2s" repeatCount="indefinite" />
+                </rect>
+                <text x="147" y="58" font-family="Arial" font-size="12" font-weight="bold" fill="#FFFFFF">POWERED</text>
+              </g>
+            </svg>
           </div>
         </div>
       </a>
