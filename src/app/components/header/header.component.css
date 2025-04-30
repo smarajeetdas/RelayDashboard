@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   transition: all 0.3s ease;
   background-color: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -48,8 +48,8 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  height: 40px;
-  margin-top: 15px;
+  height: 35px;
+  margin-top: 12px;
 }
 
 .logo-wrapper::before {
@@ -93,7 +93,7 @@
 }
 
 .relay-logo {
-  height: 40px;
+  height: 35px;
   width: auto;
   margin-right: 0;
   filter: drop-shadow(0 0 6px rgba(20, 115, 230, 0.4)) 
@@ -241,7 +241,7 @@
 
 .nav-link {
   color: rgba(255, 255, 255, 0.9) !important;
-  padding: 0.65rem 0.85rem !important;
+  padding: 0.55rem 0.85rem 0.45rem !important;
   transition: all 0.2s ease;
   font-size: 0.85rem;
   font-weight: 500;
