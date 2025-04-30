@@ -464,6 +464,45 @@ p {
   padding-right: 5%;
 }
 
+/* Custom container for wider layout */
+.container-wide {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container-wide {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-wide {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-wide {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-wide {
+    max-width: 1320px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-wide {
+    max-width: 1400px;
+  }
+}
+
 /* Breadcrumb styling */
 .breadcrumbs {
   padding: 10px 0 5px; /* Consistent padding for all components */
