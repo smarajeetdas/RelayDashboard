@@ -4,104 +4,108 @@
       <a class="navbar-brand" href="#">
         <div class="logo-wrapper">
           <div class="logo-container">
-            <svg class="relay-logo" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="chipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#FFA500">
-                    <animate attributeName="stop-color" values="#FFA500; #FF8800; #FFA500" dur="4s" repeatCount="indefinite" />
-                  </stop>
-                  <stop offset="100%" stop-color="#FF8800">
-                    <animate attributeName="stop-color" values="#FF8800; #FF6600; #FF8800" dur="4s" repeatCount="indefinite" />
-                  </stop>
-                </linearGradient>
-                
-                <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#39B9EF">
-                    <animate attributeName="stop-color" values="#39B9EF; #1E90FF; #39B9EF" dur="3s" repeatCount="indefinite" />
-                  </stop>
-                  <stop offset="100%" stop-color="#1E90FF">
-                    <animate attributeName="stop-color" values="#1E90FF; #39B9EF; #1E90FF" dur="3s" repeatCount="indefinite" />
-                  </stop>
-                </linearGradient>
-                
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              
-              <!-- AI chip icon with animation -->
-              <g>
-                <!-- Outer chip border with pulse animation -->
-                <rect x="40" y="25" width="50" height="50" rx="6" fill="url(#chipGradient)" filter="url(#glow)">
-                  <animate attributeName="opacity" values="0.9; 1; 0.9" dur="2s" repeatCount="indefinite" />
-                </rect>
-                
-                <!-- Inner chip -->
-                <rect x="45" y="30" width="40" height="40" rx="4" fill="#FFFFFF" />
-                
-                <!-- AI letters -->
-                <g>
-                  <!-- A letter -->
-                  <text x="52" y="57" font-family="Arial" font-size="25" font-weight="bold" fill="url(#chipGradient)">A</text>
-                  
-                  <!-- I letter -->
-                  <text x="72" y="57" font-family="Arial" font-size="25" font-weight="bold" fill="url(#chipGradient)">I</text>
-                </g>
-                
-                <!-- Pins with sequential animation -->
-                <g>
-                  <animate attributeName="opacity" values="0.7; 1; 0.7" dur="1.5s" repeatCount="indefinite" />
-                  
-                  <!-- Top pins -->
-                  <rect x="53" y="15" width="4" height="10" fill="url(#blueGradient)">
-                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0s" repeatCount="indefinite" />
-                  </rect>
-                  <rect x="73" y="15" width="4" height="10" fill="url(#blueGradient)">
-                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0.2s" repeatCount="indefinite" />
-                  </rect>
-                  
-                  <!-- Bottom pins -->
-                  <rect x="53" y="75" width="4" height="10" fill="url(#blueGradient)">
-                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0.4s" repeatCount="indefinite" />
-                  </rect>
-                  <rect x="73" y="75" width="4" height="10" fill="url(#blueGradient)">
-                    <animate attributeName="height" values="10; 12; 10" dur="2s" begin="0.6s" repeatCount="indefinite" />
-                  </rect>
-                  
-                  <!-- Left pins -->
-                  <rect x="30" y="38" width="10" height="4" fill="url(#blueGradient)">
-                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="0.8s" repeatCount="indefinite" />
-                  </rect>
-                  <rect x="30" y="58" width="10" height="4" fill="url(#blueGradient)">
-                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="1.0s" repeatCount="indefinite" />
-                  </rect>
-                  
-                  <!-- Right pins -->
-                  <rect x="90" y="38" width="10" height="4" fill="url(#blueGradient)">
-                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="1.2s" repeatCount="indefinite" />
-                  </rect>
-                  <rect x="90" y="58" width="10" height="4" fill="url(#blueGradient)">
-                    <animate attributeName="width" values="10; 12; 10" dur="2s" begin="1.4s" repeatCount="indefinite" />
-                  </rect>
-                </g>
-              </g>
-              
-              <!-- AI POWERED text with animation -->
-              <g>
-                <text x="120" y="55" font-family="Arial" font-size="22" font-weight="bold" fill="url(#blueGradient)" filter="url(#glow)">
-                  AI
-                  <animate attributeName="opacity" values="0.9; 1; 0.9" dur="3s" repeatCount="indefinite" />
-                </text>
-                <rect x="145" y="45" width="55" height="15" fill="url(#blueGradient)" filter="url(#glow)">
-                  <animate attributeName="opacity" values="0.9; 1; 0.9" dur="2s" repeatCount="indefinite" />
-                </rect>
-                <text x="147" y="58" font-family="Arial" font-size="12" font-weight="bold" fill="#FFFFFF">POWERED</text>
-              </g>
-            </svg>
+            <img src="data:image/png;base64,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
+...
+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" alt="Relay Logo" class="relay-logo">
           </div>
         </div>
       </a>
