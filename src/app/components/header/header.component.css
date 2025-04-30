@@ -48,7 +48,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  height: 35px;
+  height: 38px;
   margin-top: 12px;
 }
 
@@ -93,7 +93,7 @@
 }
 
 .relay-logo {
-  height: 35px;
+  height: 38px;
   width: auto;
   margin-right: 0;
   filter: drop-shadow(0 0 6px rgba(20, 115, 230, 0.4)) 
@@ -461,8 +461,8 @@
   }
   
   .relay-logo {
-    height: 35px;
-    width: 100px;
+    height: 38px;
+    width: auto;
   }
   
   .logo-text {
