@@ -19,6 +19,7 @@
 }
 
 .header.scrolled .relay-logo {
+  width: 60px;
   height: 35px;
 }
 
@@ -72,10 +73,21 @@
 }
 
 .relay-logo {
+  width: 70px;
   height: 40px;
   margin-right: 12px;
   filter: drop-shadow(0 0 6px rgba(20, 115, 230, 0.4));
   transition: all 0.3s ease;
+  animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(20, 115, 230, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(20, 115, 230, 0.6));
+  }
 }
 
 .logo-text-container {
@@ -372,6 +384,7 @@
   }
   
   .relay-logo {
+    width: 56px;
     height: 32px;
   }
   

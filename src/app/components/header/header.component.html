@@ -4,7 +4,85 @@
       <a class="navbar-brand" href="#">
         <div class="logo-wrapper">
           <div class="logo-container">
-            <img src="assets/images/relay-logo.png" alt="Relay Logo" class="relay-logo">
+            <svg class="relay-logo" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gear-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff8a00">
+                    <animate attributeName="stop-color" values="#ff8a00; #f83600; #ff8a00" dur="4s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="100%" stop-color="#e52e71">
+                    <animate attributeName="stop-color" values="#e52e71; #fe8c00; #e52e71" dur="4s" repeatCount="indefinite" />
+                  </stop>
+                </linearGradient>
+                <linearGradient id="chip-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#4facfe">
+                    <animate attributeName="stop-color" values="#4facfe; #00f2fe; #4facfe" dur="4s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="100%" stop-color="#00f2fe">
+                    <animate attributeName="stop-color" values="#00f2fe; #4facfe; #00f2fe" dur="4s" repeatCount="indefinite" />
+                  </stop>
+                </linearGradient>
+                <linearGradient id="r-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f83600">
+                    <animate attributeName="stop-color" values="#f83600; #ff8a00; #f83600" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="100%" stop-color="#fe8c00">
+                    <animate attributeName="stop-color" values="#fe8c00; #e52e71; #fe8c00" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                </linearGradient>
+                
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              <!-- Rotating Gear with animation -->
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="0 40 50" to="360 40 50" dur="20s" repeatCount="indefinite" />
+                <circle cx="40" cy="50" r="30" fill="url(#gear-gradient)" />
+                <circle cx="40" cy="50" r="20" fill="#06070f" />
+                
+                <!-- Gear teeth -->
+                <rect x="8" y="48" width="5" height="4" fill="url(#gear-gradient)" />
+                <rect x="67" y="48" width="5" height="4" fill="url(#gear-gradient)" />
+                <rect x="38" y="78" width="4" height="5" fill="url(#gear-gradient)" />
+                <rect x="38" y="17" width="4" height="5" fill="url(#gear-gradient)" />
+              </g>
+              
+              <!-- Pulsing Chip icon in the center -->
+              <rect x="30" y="40" width="20" height="20" rx="2" fill="url(#chip-gradient)" filter="url(#glow)">
+                <animate attributeName="opacity" values="0.7; 1; 0.7" dur="2s" repeatCount="indefinite" />
+              </rect>
+              
+              <!-- Chip pins with animation -->
+              <g>
+                <animate attributeName="opacity" values="0.7; 1; 0.7" dur="1.5s" repeatCount="indefinite" />
+                <line x1="40" y1="30" x2="40" y2="38" stroke="#5EBEF4" stroke-width="2"/>
+                <line x1="25" y1="50" x2="30" y2="50" stroke="#5EBEF4" stroke-width="2"/>
+                <line x1="50" y1="50" x2="55" y2="50" stroke="#5EBEF4" stroke-width="2"/>
+                <line x1="40" y1="62" x2="40" y2="70" stroke="#5EBEF4" stroke-width="2"/>
+                
+                <!-- Left pins -->
+                <line x1="30" y1="45" x2="25" y2="45" stroke="#5EBEF4" stroke-width="2"/>
+                <line x1="30" y1="55" x2="25" y2="55" stroke="#5EBEF4" stroke-width="2"/>
+                
+                <!-- Right pins -->
+                <line x1="50" y1="45" x2="55" y2="45" stroke="#5EBEF4" stroke-width="2"/>
+                <line x1="50" y1="55" x2="55" y2="55" stroke="#5EBEF4" stroke-width="2"/>
+              </g>
+              
+              <!-- R letter with subtle animation -->
+              <g>
+                <animate attributeName="opacity" values="0.9; 1; 0.9" dur="3s" repeatCount="indefinite" />
+                <path d="M75 20 L75 80 L85 80 L85 55 L105 55 C115 55 120 45 120 40 C120 30 115 20 105 20 Z" fill="url(#r-gradient)" />
+                <path d="M85 30 L105 30 C108 30 110 35 110 40 C110 45 108 45 105 45 L85 45 Z" fill="#06070f" />
+                <path d="M105 55 L125 80 L135 80 L115 55 Z" fill="url(#r-gradient)" />
+              </g>
+            </svg>
             <div class="logo-text-container">
               <div class="logo-text">Relay</div>
               <div class="logo-tagline">AI Powered</div>
