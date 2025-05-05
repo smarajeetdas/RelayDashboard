@@ -155,11 +155,33 @@
   z-index: 1;
 }
 
+.sidebar-title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.sidebar-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, #1473e6, #0d62c9);
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-title-icon i {
+  color: white;
+  font-size: 14px;
+}
+
 .sidebar-title {
   font-size: 16px;
   font-weight: 600;
   color: #1473e6;
-  margin-bottom: 3px;
   letter-spacing: 0.3px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
