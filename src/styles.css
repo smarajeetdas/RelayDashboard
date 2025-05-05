@@ -11,6 +11,7 @@
   --dark-bg: #141414; /* Adobe dark background */
   --darker-bg: #000000; /* Adobe black background */
   --blue-accent: #1473e6; /* Adobe blue */
+  --purple-accent: #6c5ce7; /* Purple for Pending status */
   --light-text: #ffffff;
   --light-gray: #f5f5f5;
   --medium-gray: #707070;
@@ -443,6 +444,10 @@ p {
 
 .blue-text {
   color: var(--blue-accent);
+}
+
+.text-purple {
+  color: var(--purple-accent);
 }
 
 .text-light {

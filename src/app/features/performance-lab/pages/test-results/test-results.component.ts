@@ -8,7 +8,7 @@ interface TestResult {
   startTime: string;
   duration: string;
   environment: string;
-  status: 'Scheduled' | 'InProgress' | 'Passed' | 'Failed' | 'Aborted';
+  status: 'Scheduled' | 'InProgress' | 'Passed' | 'Failed' | 'Aborted' | 'Pending';
   project: string;
   executedBy: string;
   category?: string;
@@ -48,7 +48,7 @@ export class TestResultsComponent implements OnInit {
   filterOptions: FilterOptions = {
     projects: ['Project A', 'Project B', 'Project C', 'E-commerce', 'Banking App'],
     users: ['John Doe', 'Jane Smith', 'Alex Johnson', 'Olivia Wilson', 'William Brown'],
-    statuses: ['Scheduled', 'InProgress', 'Passed', 'Failed']
+    statuses: ['Scheduled', 'InProgress', 'Passed', 'Failed', 'Aborted', 'Pending']
   };
   
   // UI dropdown states
@@ -76,7 +76,7 @@ export class TestResultsComponent implements OnInit {
         startTime: '2025-04-24 10:30:21', 
         duration: '00:01:45', 
         environment: 'Production',
-        status: 'Passed', 
+        status: 'Pending', 
         project: 'E-commerce', 
         executedBy: 'Jane Smith',
         category: 'Web'
@@ -252,6 +252,7 @@ export class TestResultsComponent implements OnInit {
       case 'Passed': return 'fa-check-circle';
       case 'Failed': return 'fa-times-circle';
       case 'Aborted': return 'fa-hand-paper';
+      case 'Pending': return 'fa-hourglass-half';
       default: return 'fa-question-circle';
     }
   }
@@ -264,6 +265,7 @@ export class TestResultsComponent implements OnInit {
       case 'Passed': return 'text-success';
       case 'Failed': return 'text-danger';
       case 'Aborted': return 'text-warning';
+      case 'Pending': return 'text-purple';
       default: return '';
     }
   }
