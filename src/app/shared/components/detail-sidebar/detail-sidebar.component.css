@@ -165,17 +165,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 8px;
-  width: 26px;
-  height: 26px;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
   background: linear-gradient(135deg, #1473e6, #0d62c9);
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-title-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), transparent);
+  z-index: 1;
+}
+
+.sidebar-title-icon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40%;
+  height: 40%;
+  background: linear-gradient(to top left, rgba(0, 0, 0, 0.2), transparent);
+  z-index: 1;
 }
 
 .sidebar-title-icon i {
   color: white;
   font-size: 14px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-title {
