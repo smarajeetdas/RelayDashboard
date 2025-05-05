@@ -487,6 +487,31 @@
   );
 }
 
+/* Pending status */
+.status-pending {
+  color: #fff;
+  background: linear-gradient(135deg, #6c5ce7, #5758BB);
+  box-shadow: 0 3px 6px rgba(108, 92, 231, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.status-pending::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  animation: pendingPulse 2s ease-in-out infinite;
+}
+
 /* Animations */
 @keyframes shine {
   0% {
@@ -533,6 +558,21 @@
       0 0 0 40px rgba(255, 255, 255, 0),
       0 0 0 60px rgba(255, 255, 255, 0),
       0 0 0 80px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes pendingPulse {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  50% {
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
   }
 }
 
