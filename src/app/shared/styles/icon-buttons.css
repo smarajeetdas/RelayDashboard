@@ -34,7 +34,7 @@
 
 /* Text buttons for Create actions */
 .create-btn {
-  background-color: #2c66dd;
+  background-color: #4264e5; /* Use consistent blue color for all create buttons */
   color: white;
   border: none;
   border-radius: 8px;
@@ -45,7 +45,8 @@
   font-size: 14px;
   font-weight: 500;
   transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
-  min-width: 130px;
+  min-width: 160px; /* Standard width for create buttons */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .create-btn i {
@@ -65,32 +66,7 @@
   transform: translateY(0px);
 }
 
-/* Special styling for Test Case buttons to match the provided image */
-.create-btn.test-case-btn {
-  background-color: #4264e5;
-  border-radius: 16px;
-  padding: 8px 16px;
-  min-width: 150px;
-  font-weight: 600;
-}
-
-/* Specific styling for wider buttons */
-/* Base styling for endpoint and test case buttons - same styling */
-.create-btn.endpoint-btn,
-.create-btn.test-case-btn {
-  min-width: 160px; /* Wider minimum width to keep text on single line */
-  white-space: nowrap; /* Prevent text wrapping */
-  background-color: #4264e5; /* Ensure consistent color */
-}
-
-/* TestSuite button */
-.create-btn.testsuite-btn {
-  min-width: 160px; /* Wider minimum width to keep text on single line */
-  white-space: nowrap; /* Prevent text wrapping */
-}
-
 /* MasterSuite button - needs extra width */
 .create-btn.mastersuite-btn {
   min-width: 190px; /* Extra width for "Create Master Suite" text */
-  white-space: nowrap; /* Prevent text wrapping */
 }
