@@ -73,3 +73,24 @@
   min-width: 150px;
   font-weight: 600;
 }
+
+/* Specific styling for wider buttons */
+.create-btn.endpoint-btn {
+  min-width: 160px; /* Wider minimum width to keep text on single line */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.create-btn.test-case-btn {
+  min-width: 160px; /* Wider minimum width to keep text on single line */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.create-btn.testsuite-btn {
+  min-width: 160px; /* Wider minimum width to keep text on single line */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.create-btn.mastersuite-btn {
+  min-width: 190px; /* Extra width for "Create Master Suite" text */
+  white-space: nowrap; /* Prevent text wrapping */
+}
