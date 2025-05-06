@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { TestCase, TestCaseDetail, TestCaseStep } from '../models/testcase.model';
-import { TestExecution } from '../models/execution.model';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -241,73 +240,5 @@ export class TestCaseService {
     const initialLength = this.mockTestCases.length;
     this.mockTestCases = this.mockTestCases.filter(tc => tc.id !== id);
     return of(initialLength > this.mockTestCases.length);
-  }
-  
-  getExecutionHistory(testCaseId: string, filters: any = {}): Observable<TestExecution[]> {
-    // In a real application, this would make an API call to get execution history
-    // For now, we'll generate some mock data
-    const executionRecords: TestExecution[] = this.generateMockExecutionHistory(testCaseId);
-    
-    // Apply filtering
-    let filteredRecords = [...executionRecords];
-    
-    // Filter by status
-    if (filters.status) {
-      filteredRecords = filteredRecords.filter(record => record.status === filters.status);
-    }
-    
-    // Filter by date range
-    if (filters.startDate) {
-      const startDate = new Date(filters.startDate);
-      filteredRecords = filteredRecords.filter(record => new Date(record.startTime) >= startDate);
-    }
-    
-    if (filters.endDate) {
-      const endDate = new Date(filters.endDate);
-      // Add one day to include the end date in the range
-      endDate.setDate(endDate.getDate() + 1);
-      filteredRecords = filteredRecords.filter(record => new Date(record.startTime) <= endDate);
-    }
-    
-    // Sort by start time descending (newest first)
-    filteredRecords.sort((a, b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime());
-    
-    return of(filteredRecords);
-  }
-  
-  private generateMockExecutionHistory(testCaseId: string): TestExecution[] {
-    // This would be replaced with actual API calls in a real application
-    const statuses: Array<TestExecution['status']> = ['PASSED', 'FAILED', 'IN_PROGRESS', 'SCHEDULED', 'ABORTED', 'PENDING'];
-    const environments = ['Production', 'Staging', 'Development', 'QA'];
-    const browsers = ['Chrome', 'Firefox', 'Safari', 'Edge'];
-    const users = ['admin', 'tester1', 'tester2', 'automatedJob'];
-    
-    const mockRecords: TestExecution[] = [];
-    
-    // Generate 30 mock execution records
-    for (let i = 0; i < 30; i++) {
-      const startDate = new Date();
-      startDate.setDate(startDate.getDate() - Math.floor(Math.random() * 30));
-      const endDate = new Date(startDate);
-      const durationSecs = Math.floor(Math.random() * 300) + 60; // 1-6 minutes
-      endDate.setSeconds(endDate.getSeconds() + durationSecs);
-      
-      const status = statuses[Math.floor(Math.random() * statuses.length)];
-      
-      mockRecords.push({
-        id: `exec-${testCaseId}-${i}`,
-        testCaseId: testCaseId,
-        startTime: startDate.toISOString(),
-        endTime: endDate.toISOString(),
-        status: status,
-        executedBy: users[Math.floor(Math.random() * users.length)],
-        environment: environments[Math.floor(Math.random() * environments.length)],
-        browser: browsers[Math.floor(Math.random() * browsers.length)],
-        duration: durationSecs,
-        errorMessage: status === 'FAILED' ? 'Element not found: #login-button' : undefined
-      });
-    }
-    
-    return mockRecords;
   }
 }

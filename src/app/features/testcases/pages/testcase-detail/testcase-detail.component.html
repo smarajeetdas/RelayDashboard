@@ -1,196 +1,305 @@
-<div class="container-fluid py-4">
-  <div class="row mb-4">
-    <div class="col-12">
-      <div class="header-container d-flex justify-content-between align-items-center">
-        <div>
-          <button class="btn btn-light mr-3" (click)="goBack()">
-            <i class="fas fa-arrow-left"></i> Back
-          </button>
-          <h4 class="d-inline-block mb-0" *ngIf="testCase">Test Case: {{ testCase.name }}</h4>
-        </div>
-        <div>
-          <button class="btn btn-primary mr-2" *ngIf="testCase" (click)="viewExecutionHistory()">
-            <i class="fas fa-history"></i> Execution History
-          </button>
-          <button class="btn btn-success" *ngIf="testCase">
-            <i class="fas fa-play"></i> Execute
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Breadcrumb -->
-  <div class="row mb-4">
-    <div class="col-12">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-          <li class="breadcrumb-item"><a routerLink="/testcases">Test Cases</a></li>
-          <li class="breadcrumb-item active">Details</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-  
-  <!-- Error message -->
-  <div class="row" *ngIf="error">
-    <div class="col-12">
-      <div class="alert alert-danger">
-        {{ error }}
-      </div>
-    </div>
-  </div>
-  
-  <!-- Loading spinner -->
-  <div class="row" *ngIf="loading">
-    <div class="col-12 text-center py-5">
+<div class="testcase-detail-page">
+  <div class="container-fluid pt-2 px-md-4 pb-5">
+    
+    <!-- Loading state -->
+    <div *ngIf="loading" class="text-center py-5">
       <div class="spinner-border text-primary" role="status">
         <span class="sr-only">Loading...</span>
       </div>
-      <p class="mt-2">Loading test case details...</p>
+      <p class="mt-3">Loading test case details...</p>
     </div>
-  </div>
-  
-  <!-- Test case details -->
-  <div class="row" *ngIf="!loading && testCase">
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h5 class="card-title mb-0">General Information</h5>
-        </div>
-        <div class="card-body">
-          <div class="detail-item">
-            <span class="detail-label">ID:</span>
-            <span class="detail-value">{{ testCase.id }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Category:</span>
-            <span class="detail-value">{{ testCase.category }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Think Time:</span>
-            <span class="detail-value">{{ testCase.thinkTime }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Paced Time:</span>
-            <span class="detail-value">{{ testCase.pacedTime }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Exit on Failure:</span>
-            <span class="detail-value">{{ testCase.exitOnFailure ? 'Yes' : 'No' }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Mobile:</span>
-            <span class="detail-value">{{ testCase.mobile ? 'Yes' : 'No' }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Project:</span>
-            <span class="detail-value">{{ testCase.project }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Last Modified:</span>
-            <span class="detail-value">{{ testCase.lastModified }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Updated By:</span>
-            <span class="detail-value">{{ testCase.updatedBy }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Active:</span>
-            <span class="detail-value">{{ testCase.active ? 'Yes' : 'No' }}</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title mb-0">Environment</h5>
-        </div>
-        <div class="card-body">
-          <div class="detail-item">
-            <span class="detail-label">Environment:</span>
-            <span class="detail-value">{{ testCase.environment }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Domain:</span>
-            <span class="detail-value">{{ testCase.domain }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Environment Type:</span>
-            <span class="detail-value">{{ testCase.envType }}</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Score:</span>
-            <span class="detail-value">{{ testCase.score }}</span>
-          </div>
-        </div>
-      </div>
+
+    <!-- Error state -->
+    <div *ngIf="error && !loading" class="alert alert-danger">
+      <i class="fas fa-exclamation-circle me-2"></i> {{ error }}
+      <button class="btn btn-outline-danger btn-sm ms-3" (click)="goBack()">
+        Back to Test Cases List
+      </button>
     </div>
-    
-    <div class="col-md-8">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h5 class="card-title mb-0">Test Steps</h5>
-        </div>
-        <div class="card-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th style="width: 10%">Step #</th>
-                <th style="width: 40%">Name</th>
-                <th style="width: 15%">Category</th>
-                <th style="width: 15%">Think Time</th>
-                <th style="width: 10%">Active</th>
-                <th style="width: 10%">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let step of testCase.steps; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ step.name }}</td>
-                <td>{{ step.category }}</td>
-                <td>{{ step.thinkTime }}</td>
-                <td>
-                  <span class="badge" [ngClass]="step.active ? 'badge-success' : 'badge-secondary'">
-                    {{ step.active ? 'Yes' : 'No' }}
-                  </span>
-                </td>
-                <td>
-                  <button class="btn btn-icon text-primary" title="Edit">
-                    <i class="fas fa-pencil-alt"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          
-          <div class="text-center mt-3" *ngIf="testCase.steps.length === 0">
-            <p class="text-muted">No test steps defined.</p>
-            <button class="btn btn-outline-primary">
-              <i class="fas fa-plus"></i> Add Step
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title mb-0">Test Data</h5>
-        </div>
-        <div class="card-body">
-          <div *ngIf="testCase.testData">
-            <div *ngFor="let key of getTestDataKeys()" class="detail-item">
-              <span class="detail-label">{{ key }}:</span>
-              <span class="detail-value">{{ testCase.testData[key] }}</span>
+
+    <!-- TestCase content -->
+    <div *ngIf="!loading && !error && testCase" class="testcase-content">
+      <!-- Header with breadcrumb and actions -->
+      <div class="detail-header mb-4">
+        <!-- Separate breadcrumb section to allow for additional elements -->
+        <div class="breadcrumb-container">
+          <div class="d-flex justify-content-between align-items-center">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
+                <li class="breadcrumb-item"><a href="#" routerLink="/testcases"><i class="fas fa-tasks mr-1"></i>Test Cases</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-file-alt mr-1"></i>{{ testCase.name }}</li>
+              </ol>
+            </nav>
+          <!-- Action buttons -->
+          <div class="testcase-actions">
+            <div class="d-flex" style="gap: 10px;">
+              <button class="btn btn-outline-primary btn-action" title="Edit" (click)="editTestCase()">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-outline-danger btn-action" title="Delete" (click)="deleteTestCase()">
+                <i class="fas fa-trash-alt"></i>
+              </button>
             </div>
           </div>
-          
-          <div class="text-center mt-3" *ngIf="!testCase.testData || getTestDataKeys().length === 0">
-            <p class="text-muted">No test data defined.</p>
-            <button class="btn btn-outline-primary">
-              <i class="fas fa-plus"></i> Add Test Data
-            </button>
+        </div>
+      </div>
+
+      <!-- Main content with sidebar and detail panes -->
+      <div class="row">
+        <!-- Left sidebar -->
+        <div class="col-md-3 col-lg-2 mb-4 mb-md-0">
+          <app-detail-sidebar
+            [items]="sidebarItems"
+            [activeItemId]="activeSidebarItem"
+            [title]="'Test Case'"
+            [subtitle]="'Configuration Options'"
+            (itemSelect)="onSidebarItemSelect($event)">
+          </app-detail-sidebar>
+        </div>
+
+        <div class="col-md-9 col-lg-10">
+
+        <!-- TestCase header -->
+        <div class="testcase-header">
+          <div class="row">
+            <div class="col-md-8">
+              <h1 class="testcase-name">{{ testCase.name }}</h1>
+              <div class="testcase-category">
+                <span>Category:</span>
+                <span class="badge" 
+                      [ngClass]="{
+                        'badge-primary': testCase.category === 'WEB',
+                        'badge-success': testCase.category === 'API',
+                        'badge-warning': testCase.category === 'MOBILE',
+                        'badge-info': testCase.category === 'DESKTOP'
+                      }">
+                  <i class="fas"
+                     [ngClass]="{
+                       'fa-globe': testCase.category === 'WEB',
+                       'fa-code': testCase.category === 'API',
+                       'fa-mobile-alt': testCase.category === 'MOBILE',
+                       'fa-desktop': testCase.category === 'DESKTOP'
+                     }">
+                  </i>
+                  {{ testCase.category }}
+                </span>
+              </div>
+              <div class="testcase-info mt-2">
+                <div>Paced Time: {{ testCase.pacedTime }}</div>
+                <div class="d-flex align-items-center">
+                  <span>Mobile TestCase:</span>
+                  <i class="fas ml-2" 
+                     [ngClass]="getStatusIcon(testCase.mobile)" 
+                     [class]="getStatusClass(testCase.mobile)">
+                  </i>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 text-right">
+              <div class="testcase-score" *ngIf="testCase.score !== undefined">
+                <i class="fas fa-star"></i>
+                <span>Test Score:</span>
+                <span class="testcase-score-value">{{ testCase.score }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TestCase body -->
+        <div class="testcase-body">
+          <!-- Tabs -->
+          <div class="testcase-tabs border-bottom">
+            <span class="tab-link" 
+                  [ngClass]="{'active': activeTab === 'details'}" 
+                  (click)="setActiveTab('details')">
+              <i class="fas fa-info-circle mr-2"></i> Details
+            </span>
+            <span class="tab-link" 
+                  [ngClass]="{'active': activeTab === 'steps'}" 
+                  (click)="setActiveTab('steps')">
+              <i class="fas fa-tasks mr-2"></i> Steps
+            </span>
+            <span class="tab-link" 
+                  [ngClass]="{'active': activeTab === 'testData'}" 
+                  (click)="setActiveTab('testData')">
+              <i class="fas fa-database mr-2"></i> Test Data
+            </span>
+          </div>
+
+          <!-- Tab content -->
+          <div class="tab-content">
+            <!-- Details tab -->
+            <div *ngIf="activeTab === 'details'">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-row">
+                    <div class="detail-label">Last Modified</div>
+                    <div class="detail-value">{{ testCase.lastModified || 'N/A' }}</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Updated By</div>
+                    <div class="detail-value">{{ testCase.updatedBy || 'N/A' }}</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Think Time</div>
+                    <div class="detail-value">{{ testCase.thinkTime }}</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Exit on Failure</div>
+                    <div class="detail-value">
+                      <i class="fas mr-1" 
+                         [ngClass]="getStatusIcon(testCase.exitOnFailure)" 
+                         [class]="getStatusClass(testCase.exitOnFailure)">
+                      </i>
+                      {{ testCase.exitOnFailure ? 'Yes' : 'No' }}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="detail-row">
+                    <div class="detail-label">Environment</div>
+                    <div class="detail-value">{{ testCase.environment || 'N/A' }}</div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-label">Description</div>
+                    <div class="detail-value">{{ testCase.description || 'No description provided.' }}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile specific info -->
+              <div class="mobile-info" *ngIf="testCase.mobile">
+                <div class="mobile-info-header">
+                  <i class="fas fa-mobile-alt"></i> Mobile TestCase Information
+                </div>
+                <div class="mobile-info-row">
+                  <div class="mobile-info-label">Environment Type:</div>
+                  <div class="mobile-info-value">{{ testCase.envType || 'N/A' }}</div>
+                </div>
+                <div class="mobile-info-row">
+                  <div class="mobile-info-label">Domain:</div>
+                  <div class="mobile-info-value">{{ testCase.domain || 'N/A' }}</div>
+                </div>
+                <div class="mobile-info-row">
+                  <div class="mobile-info-label">Active:</div>
+                  <div class="mobile-info-value">
+                    <i class="fas mr-1" 
+                       [ngClass]="getStatusIcon(testCase.active)" 
+                       [class]="getStatusClass(testCase.active)">
+                    </i>
+                    {{ testCase.active ? 'Yes' : 'No' }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Steps tab -->
+            <div *ngIf="activeTab === 'steps'">
+              <div *ngIf="testCase.steps && testCase.steps.length > 0; else noSteps">
+                <div class="table-responsive">
+                  <table class="steps-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Think Time</th>
+                        <th>Active</th>
+                        <th class="text-center">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let step of testCase.steps">
+                        <td>{{ step.name }}</td>
+                        <td>
+                          <span class="badge" 
+                                [ngClass]="{
+                                  'badge-primary': step.category === 'WEB',
+                                  'badge-success': step.category === 'API',
+                                  'badge-warning': step.category === 'MOBILE',
+                                  'badge-info': step.category === 'DESKTOP'
+                                }">
+                            <i class="fas"
+                              [ngClass]="{
+                                'fa-globe': step.category === 'WEB',
+                                'fa-code': step.category === 'API',
+                                'fa-mobile-alt': step.category === 'MOBILE',
+                                'fa-desktop': step.category === 'DESKTOP'
+                              }">
+                            </i>
+                            {{ step.category }}
+                          </span>
+                        </td>
+                        <td>{{ step.thinkTime }}</td>
+                        <td>
+                          <i class="fas" 
+                             [ngClass]="getStatusIcon(step.active)" 
+                             [class]="getStatusClass(step.active)">
+                          </i>
+                        </td>
+                        <td>
+                          <div class="step-actions">
+                            <button class="text-primary" title="Edit Step">
+                              <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="text-success" title="Run Step" (click)="runStep(step)">
+                              <i class="fas fa-play"></i>
+                            </button>
+                            <button class="text-danger" title="Delete Step">
+                              <i class="fas fa-trash-alt"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="text-right mt-3">
+                  <button class="btn btn-primary">
+                    <i class="fas fa-plus mr-2"></i> Add Step
+                  </button>
+                </div>
+              </div>
+
+              <ng-template #noSteps>
+                <div class="no-steps">
+                  <i class="fas fa-tasks"></i>
+                  <h4>No Steps Added Yet</h4>
+                  <p>This test case doesn't have any steps. Add steps to define the test case workflow.</p>
+                  <button class="btn btn-primary">
+                    <i class="fas fa-plus mr-2"></i> Add First Step
+                  </button>
+                </div>
+              </ng-template>
+            </div>
+
+            <!-- Test Data tab -->
+            <div *ngIf="activeTab === 'testData'">
+              <div *ngIf="testCase.testData; else noTestData">
+                <div class="test-data-container">
+                  <pre>{{ testCase.testData | json }}</pre>
+                </div>
+                <div class="text-right mt-3">
+                  <button class="btn btn-outline-primary mr-2">
+                    <i class="fas fa-download mr-2"></i> Export
+                  </button>
+                  <button class="btn btn-primary">
+                    <i class="fas fa-edit mr-2"></i> Edit Test Data
+                  </button>
+                </div>
+              </div>
+
+              <ng-template #noTestData>
+                <div class="no-steps">
+                  <i class="fas fa-database"></i>
+                  <h4>No Test Data Available</h4>
+                  <p>This test case doesn't have any test data defined.</p>
+                  <button class="btn btn-primary">
+                    <i class="fas fa-plus mr-2"></i> Add Test Data
+                  </button>
+                </div>
+              </ng-template>
+            </div>
           </div>
         </div>
       </div>
