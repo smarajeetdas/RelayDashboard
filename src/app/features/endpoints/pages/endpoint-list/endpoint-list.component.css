@@ -72,29 +72,110 @@
 }
 
 .create-btn {
+  position: relative;
   background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%);
   border: none;
-  padding: 0 20px !important;
-  height: 42px !important;
-  font-weight: 600;
-  font-size: 14px;
-  border-radius: 8px;
+  height: 46px !important;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(20, 115, 230, 0.3);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: white;
+  padding: 0 !important;
+}
+
+.create-btn-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(20, 115, 230, 0.2);
+  height: 100%;
+  width: 100%;
+  padding: 0 25px;
+  position: relative;
+  z-index: 2;
+}
+
+.create-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  margin-right: 10px;
+  position: relative;
   transition: all 0.3s ease;
-  color: white;
+}
+
+.create-btn-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 .create-btn i {
-  margin-right: 8px;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.create-btn-text {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.create-btn-glow {
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .create-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 20px rgba(20, 115, 230, 0.4);
   background: linear-gradient(135deg, #0d62c9 0%, #0a4fa3 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(20, 115, 230, 0.3);
+}
+
+.create-btn:hover .create-btn-glow {
+  opacity: 1;
+}
+
+.create-btn:hover .create-btn-icon {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.create-btn:hover .create-btn-icon::before {
+  transform: scale(1.5);
+  opacity: 0.2;
+}
+
+.create-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 10px rgba(20, 115, 230, 0.3);
+  transition: all 0.1s ease;
 }
 
 .btn {

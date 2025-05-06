@@ -8,7 +8,13 @@
             <i class="fas" [ngClass]="showFilterSection ? 'fa-times' : 'fa-filter'"></i>
           </button>
           <button class="create-btn" (click)="createNewEndpoint()">
-            <i class="fas fa-plus"></i> Create Endpoint
+            <div class="create-btn-inner">
+              <span class="create-btn-icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span class="create-btn-text">Create Endpoint</span>
+            </div>
+            <div class="create-btn-glow"></div>
           </button>
         </div>
       </div>
