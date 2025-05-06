@@ -37,40 +37,13 @@
 }
 
 .endpoint-title {
-  color: #ffffff;
-  font-size: 22px;
+  color: #2d3748;
+  font-size: 28px;
   font-weight: 600;
   letter-spacing: -0.3px;
-  background: linear-gradient(135deg, #1c2536 0%, #2a3749 100%);
-  padding: 12px 18px;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  position: relative;
-  overflow: hidden;
-  max-width: fit-content;
   margin-bottom: 0;
   display: inline-block;
-}
-
-.endpoint-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, #1473e6, #0d62c9);
-}
-
-.endpoint-title::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  background: linear-gradient(to left, rgba(20, 115, 230, 0.1), transparent);
-  pointer-events: none;
+  position: relative;
 }
 
 .endpoint-actions {
