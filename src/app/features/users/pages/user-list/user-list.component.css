@@ -319,7 +319,7 @@
   transition: all 0.2s ease;
   box-shadow: 0 2px 5px rgba(20, 115, 230, 0.2);
   cursor: pointer;
-  min-width: 200px;
+  min-width: 120px;
 }
 
 .create-btn i {
