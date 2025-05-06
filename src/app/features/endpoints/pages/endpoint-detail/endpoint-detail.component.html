@@ -20,8 +20,9 @@
     <div *ngIf="endpoint && !loading" class="endpoint-content">
       <!-- Header with breadcrumb and actions -->
       <div class="detail-header mb-4">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="breadcrumbs">
+        <!-- Separate breadcrumb section to allow for additional elements -->
+        <div class="breadcrumb-container">
+          <div class="d-flex justify-content-between align-items-center">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
@@ -29,17 +30,31 @@
                 <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-file-alt mr-1"></i>{{ endpoint.name }}</li>
               </ol>
             </nav>
-            <h1 class="endpoint-title">
-              {{ endpoint.name }}
-              <span *ngIf="endpoint.certified" class="badge bg-success ms-2" title="Certified">
-                <i class="fas fa-check-circle"></i> Certified
-              </span>
-              <span *ngIf="endpoint.subFlow" class="badge bg-info ms-2" title="Sub Flow">
-                <i class="fas fa-random"></i> Sub Flow
-              </span>
-            </h1>
+            
+            <!-- Space for additional elements in the breadcrumb container -->
+            <div class="breadcrumb-actions">
+              <!-- You can add additional actions/elements here -->
+              <button class="btn btn-outline-primary btn-sm">
+                <i class="fas fa-history mr-1"></i> History
+              </button>
+              <button class="btn btn-outline-secondary btn-sm ml-2">
+                <i class="fas fa-cog mr-1"></i> Settings
+              </button>
+            </div>
           </div>
-          <!-- Buttons removed as they are already on the list page -->
+        </div>
+        
+        <!-- Title section below breadcrumb -->
+        <div class="title-section mt-3">
+          <h1 class="endpoint-title">
+            {{ endpoint.name }}
+            <span *ngIf="endpoint.certified" class="badge bg-success ms-2" title="Certified">
+              <i class="fas fa-check-circle"></i> Certified
+            </span>
+            <span *ngIf="endpoint.subFlow" class="badge bg-info ms-2" title="Sub Flow">
+              <i class="fas fa-random"></i> Sub Flow
+            </span>
+          </h1>
         </div>
       </div>
 
