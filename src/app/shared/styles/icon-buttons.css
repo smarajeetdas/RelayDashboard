@@ -75,21 +75,21 @@
 }
 
 /* Specific styling for wider buttons */
-.create-btn.endpoint-btn {
-  min-width: 160px; /* Wider minimum width to keep text on single line */
-  white-space: nowrap; /* Prevent text wrapping */
-}
-
+/* Base styling for endpoint and test case buttons - same styling */
+.create-btn.endpoint-btn,
 .create-btn.test-case-btn {
   min-width: 160px; /* Wider minimum width to keep text on single line */
   white-space: nowrap; /* Prevent text wrapping */
+  background-color: #4264e5; /* Ensure consistent color */
 }
 
+/* TestSuite button */
 .create-btn.testsuite-btn {
   min-width: 160px; /* Wider minimum width to keep text on single line */
   white-space: nowrap; /* Prevent text wrapping */
 }
 
+/* MasterSuite button - needs extra width */
 .create-btn.mastersuite-btn {
   min-width: 190px; /* Extra width for "Create Master Suite" text */
   white-space: nowrap; /* Prevent text wrapping */
