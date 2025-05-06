@@ -1,18 +1,35 @@
 <div class="mastersuite-detail-page">
   <div class="container-fluid pt-2 pb-5">
-    <!-- Breadcrumb Navigation -->
-    <div class="breadcrumbs mb-3">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
-          <li class="breadcrumb-item"><a href="#" routerLink="/mastersuites"><i class="fas fa-cubes mr-1"></i>Master Suites</a></li>
-          <li class="breadcrumb-item active" aria-current="page">
-            <span *ngIf="masterSuite">{{ masterSuite.name }}</span>
-            <span *ngIf="loading">Loading...</span>
-          </li>
-        </ol>
+    <!-- Separate breadcrumb section to allow for additional elements -->
+    <div class="breadcrumb-container mb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
+            <li class="breadcrumb-item"><a href="#" routerLink="/mastersuites"><i class="fas fa-sitemap mr-1"></i>Master Suites</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <span *ngIf="masterSuite">{{ masterSuite.name }}</span>
+              <span *ngIf="loading">Loading...</span>
+            </li>
+          </ol>
         </nav>
+
+        <!-- Action buttons can go here if needed -->
+        <div *ngIf="masterSuite" class="mastersuite-actions">
+          <div class="d-flex" style="gap: 10px;">
+            <button class="btn btn-outline-primary btn-action" title="Edit">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-outline-success btn-action" title="Execute">
+              <i class="fas fa-play"></i>
+            </button>
+            <button class="btn btn-outline-danger btn-action" title="Delete">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
       </div>
+    </div>
     
     <!-- Loading state -->
     <div class="row" *ngIf="loading">

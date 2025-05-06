@@ -21,16 +21,16 @@
     <div *ngIf="!loading && !error && testCase" class="testcase-content">
       <!-- Header with breadcrumb and actions -->
       <div class="detail-header mb-4">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="breadcrumbs">
+        <!-- Separate breadcrumb section to allow for additional elements -->
+        <div class="breadcrumb-container">
+          <div class="d-flex justify-content-between align-items-center">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
-                <li class="breadcrumb-item"><a href="#" routerLink="/testcases"><i class="fas fa-clipboard-list mr-1"></i>Test Cases</a></li>
+                <li class="breadcrumb-item"><a href="#" routerLink="/testcases"><i class="fas fa-tasks mr-1"></i>Test Cases</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-file-alt mr-1"></i>{{ testCase.name }}</li>
               </ol>
             </nav>
-          </div>
           <!-- Action buttons -->
           <div class="testcase-actions">
             <div class="d-flex" style="gap: 10px;">

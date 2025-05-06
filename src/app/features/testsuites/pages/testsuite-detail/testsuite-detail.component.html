@@ -21,8 +21,9 @@
     <div *ngIf="!loading && !error && testSuite" class="testsuite-content">
       <!-- Header with breadcrumb and actions -->
       <div class="detail-header mb-4">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="breadcrumbs">
+        <!-- Separate breadcrumb section to allow for additional elements -->
+        <div class="breadcrumb-container">
+          <div class="d-flex justify-content-between align-items-center">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#" routerLink="/"><i class="fas fa-home mr-1"></i>Home</a></li>
@@ -30,7 +31,6 @@
                 <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-file-alt mr-1"></i>{{ testSuite.name }}</li>
               </ol>
             </nav>
-          </div>
           <div class="d-flex align-items-center">
             <!-- Environment Selection Dropdown -->
             <div class="environment-dropdown-wrapper" (click)="$event.stopPropagation()">
