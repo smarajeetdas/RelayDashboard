@@ -32,6 +32,15 @@
   background-color: #e0e0e0;
 }
 
+/* Styling for the history button */
+.text-history {
+  color: #6354C4 !important;
+}
+
+.text-history:hover {
+  color: #4C3FA3 !important;
+}
+
 /* Text buttons for Create actions */
 .create-btn {
   background-color: #4264e5; /* Use consistent blue color for all create buttons */

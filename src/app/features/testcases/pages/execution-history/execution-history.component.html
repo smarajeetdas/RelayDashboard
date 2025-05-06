@@ -1,0 +1,206 @@
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="header-container d-flex justify-content-between align-items-center">
+        <div>
+          <button class="btn btn-light mr-3" (click)="goBack()">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+          <h4 class="d-inline-block mb-0">Execution History: {{ testCaseName }}</h4>
+        </div>
+        <button class="btn btn-primary" [disabled]="loading">
+          <i class="fas fa-redo"></i> Refresh
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Breadcrumb -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/testcases">Test Cases</a></li>
+          <li class="breadcrumb-item active">Execution History</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  
+  <!-- Error message -->
+  <div class="row" *ngIf="error">
+    <div class="col-12">
+      <div class="alert alert-danger">
+        {{ error }}
+      </div>
+    </div>
+  </div>
+  
+  <!-- Filter section -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Status</label>
+                <select class="form-control" [(ngModel)]="statusFilter">
+                  <option value="">All Statuses</option>
+                  <option value="PASSED">Passed</option>
+                  <option value="FAILED">Failed</option>
+                  <option value="IN_PROGRESS">In Progress</option>
+                  <option value="SCHEDULED">Scheduled</option>
+                  <option value="ABORTED">Aborted</option>
+                  <option value="PENDING">Pending</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" class="form-control" [(ngModel)]="dateRangeStart">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label>End Date</label>
+                <input type="date" class="form-control" [(ngModel)]="dateRangeEnd">
+              </div>
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+              <button class="btn btn-primary mr-2" (click)="applyFilters()">
+                <i class="fas fa-filter"></i> Apply
+              </button>
+              <button class="btn btn-outline-secondary" (click)="clearFilters()">
+                <i class="fas fa-times"></i> Clear
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Loading spinner -->
+  <div class="row" *ngIf="loading">
+    <div class="col-12 text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <p class="mt-2">Loading execution history...</p>
+    </div>
+  </div>
+  
+  <!-- Results section -->
+  <div class="row" *ngIf="!loading && executionRecords.length > 0">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Execution ID</th>
+                  <th>Status</th>
+                  <th>Start Time</th>
+                  <th>Duration</th>
+                  <th>Environment</th>
+                  <th>Browser</th>
+                  <th>Executed By</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let record of executionRecords">
+                  <td>{{ record.id }}</td>
+                  <td>
+                    <span class="badge" [ngClass]="getStatusClass(record.status)">
+                      <i class="fas" [ngClass]="getStatusIcon(record.status)"></i>
+                      {{ record.status }}
+                    </span>
+                  </td>
+                  <td>{{ formatDate(record.startTime) }}</td>
+                  <td>{{ formatDuration(record.duration) }}</td>
+                  <td>{{ record.environment }}</td>
+                  <td>{{ record.browser }}</td>
+                  <td>{{ record.executedBy }}</td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn btn-icon text-primary" title="View Details">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button class="btn btn-icon text-info" title="Download Report">
+                        <i class="fas fa-download"></i>
+                      </button>
+                      <button class="btn btn-icon text-secondary" title="Rerun Test">
+                        <i class="fas fa-redo-alt"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- No results message -->
+  <div class="row" *ngIf="!loading && executionRecords.length === 0">
+    <div class="col-12">
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle mr-2"></i> No execution records found for this test case.
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pagination -->
+  <div class="row mt-4" *ngIf="!loading && executionRecords.length > 0">
+    <div class="col-12">
+      <div class="pagination-container d-flex align-items-center justify-content-between">
+        <div class="results-info">
+          <p class="mb-0 font-weight-bold">
+            Total Executions: {{ totalItems }}
+          </p>
+        </div>
+        
+        <nav>
+          <ul class="pagination mb-0">
+            <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+              <a class="page-link" (click)="onPageChange(currentPage - 1)" *ngIf="currentPage > 1">
+                <i class="fas fa-chevron-left"></i>
+              </a>
+              <span class="page-link" *ngIf="currentPage === 1">
+                <i class="fas fa-chevron-left"></i>
+              </span>
+            </li>
+            
+            <li class="page-item" [ngClass]="{'active': currentPage === 1}">
+              <a class="page-link" (click)="onPageChange(1)">1</a>
+            </li>
+            
+            <li class="page-item" [ngClass]="{'active': currentPage === 2}" *ngIf="totalItems > pageSize">
+              <a class="page-link" (click)="onPageChange(2)">2</a>
+            </li>
+            
+            <li class="page-item" [ngClass]="{'active': currentPage === 3}" *ngIf="totalItems > pageSize * 2">
+              <a class="page-link" (click)="onPageChange(3)">3</a>
+            </li>
+            
+            <li class="page-item" [ngClass]="{'disabled': currentPage === Math.ceil(totalItems / pageSize)}">
+              <a class="page-link" (click)="onPageChange(currentPage + 1)" *ngIf="currentPage < Math.ceil(totalItems / pageSize)">
+                <i class="fas fa-chevron-right"></i>
+              </a>
+              <span class="page-link" *ngIf="currentPage === Math.ceil(totalItems / pageSize)">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

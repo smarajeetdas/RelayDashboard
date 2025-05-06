@@ -225,6 +225,12 @@ export class TestCaseListComponent implements OnInit {
       );
     }
   }
+  
+  viewExecutionHistory(event: Event, id: string): void {
+    event.stopPropagation(); // Prevent row click navigation
+    // Navigate to execution history page/modal
+    this.router.navigate(['/testcases/history', id]);
+  }
 
   // Helper methods for UI
   getMobileLabel(mobile: boolean | undefined): string {
