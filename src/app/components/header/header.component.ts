@@ -96,6 +96,22 @@ export class HeaderComponent implements OnInit {
   }
   
   /**
+   * Handle mouse enter event on dropdown menu items
+   * @param dropdown The dropdown menu to show
+   */
+  onMouseEnter(dropdown: string): void {
+    this.activeDropdown = dropdown;
+  }
+  
+  /**
+   * Handle mouse leave event on dropdown menu items
+   * @param dropdown The dropdown menu to hide
+   */
+  onMouseLeave(dropdown: string): void {
+    this.activeDropdown = null;
+  }
+  
+  /**
    * Scroll to a section using the smooth scroll service
    * @param sectionId The ID of the section to scroll to
    */

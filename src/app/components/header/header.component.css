@@ -171,23 +171,24 @@
   border: none;
   border-radius: 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  display: none;
+  display: block;
   padding: 0;
   margin: 0;
   border-top: 3px solid #1473e6;
   transform-origin: top center;
-  transition: all 0.3s ease;
+  transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
   z-index: 1000;
+  visibility: hidden;
 }
 
 .dropdown-menu.show {
-  display: block;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  visibility: visible;
 }
 
 .dropdown-menu-inner {
@@ -314,6 +315,19 @@
     border-top: none;
     background: linear-gradient(to right, rgba(20, 20, 35, 0.95), rgba(10, 10, 20, 0.98));
     margin-top: 0;
+    transition: all 0.3s ease;
+  }
+  
+  /* Keep dropdown behavior click-based on mobile instead of hover */
+  .dropdown-wrapper:hover .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transform: translateY(0);
+    visibility: hidden;
+  }
+  
+  .dropdown-wrapper .nav-link {
+    cursor: pointer;
   }
   
   .dropdown-item-custom {

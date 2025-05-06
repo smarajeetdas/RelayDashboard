@@ -14,8 +14,9 @@
 
       <div class="collapse navbar-collapse" [ngClass]="{'show': !isMenuCollapsed}">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('functional')}">
-            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('functional')">
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('functional')}"
+              (mouseenter)="onMouseEnter('functional')" (mouseleave)="onMouseLeave('functional')">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
               <span>Functional Automation</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('functional')}">
@@ -30,8 +31,9 @@
             </div>
           </li>
           
-          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('performance')}">
-            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('performance')">
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('performance')}"
+              (mouseenter)="onMouseEnter('performance')" (mouseleave)="onMouseLeave('performance')">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
               <span>Performance Lab</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('performance')}">
@@ -46,8 +48,9 @@
             </div>
           </li>
           
-          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('chaos')}">
-            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('chaos')">
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('chaos')}"
+              (mouseenter)="onMouseEnter('chaos')" (mouseleave)="onMouseLeave('chaos')">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
               <span>Chaos Simulator</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('chaos')}">
@@ -59,8 +62,9 @@
             </div>
           </li>
           
-          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('mobile')}">
-            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('mobile')">
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('mobile')}"
+              (mouseenter)="onMouseEnter('mobile')" (mouseleave)="onMouseLeave('mobile')">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
               <span>Mobile Automation</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('mobile')}">
@@ -72,8 +76,9 @@
             </div>
           </li>
           
-          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('desktop')}">
-            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault(); toggleDropdown('desktop')">
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('desktop')}"
+              (mouseenter)="onMouseEnter('desktop')" (mouseleave)="onMouseLeave('desktop')">
+            <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
               <span>Desktop Automation</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('desktop')}">
@@ -97,8 +102,9 @@
             </a>
           </li>
           
-          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}">
-            <a class="nav-link nav-more" href="#" (click)="$event.preventDefault(); toggleDropdown('more')">
+          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}"
+              (mouseenter)="onMouseEnter('more')" (mouseleave)="onMouseLeave('more')">
+            <a class="nav-link nav-more" href="#" (click)="$event.preventDefault()">
               <span>More</span>
               <i class="fas fa-ellipsis-h nav-icon"></i>
             </a>
