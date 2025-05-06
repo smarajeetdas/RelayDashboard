@@ -74,9 +74,8 @@
 .create-btn {
   background: linear-gradient(135deg, #1473e6 0%, #0d62c9 100%);
   border: none;
-  width: 40px !important;
-  height: 40px !important;
-  padding: 0 !important;
+  padding: 0 20px !important;
+  height: 42px !important;
   font-weight: 600;
   font-size: 14px;
   border-radius: 8px;
@@ -85,6 +84,11 @@
   justify-content: center;
   box-shadow: 0 4px 10px rgba(20, 115, 230, 0.2);
   transition: all 0.3s ease;
+  color: white;
+}
+
+.create-btn i {
+  margin-right: 8px;
 }
 
 .create-btn:hover {
