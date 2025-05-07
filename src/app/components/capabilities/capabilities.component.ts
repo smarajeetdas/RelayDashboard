@@ -73,7 +73,7 @@ export class CapabilitiesComponent implements OnInit, AfterViewInit {
       iconBgColor: 'rgba(113, 44, 249, 0.1)',
       bgClass: 'chaos-bg',
       imageUrl: 'assets/images/capabilities/chaos-simulator.svg',
-      detailedDescription: 'Introduce failure. Build confidence. Empower your teams with controlled chaos engineering to uncover weaknesses before your service teams do.',
+      detailedDescription: 'Introduce failure, Empower teams with controlled fault injection to uncover weaknesses, Build confidence.',
       features: [
         { title: 'Precision Fault Injection', description: 'Precision Fault Injection for infrastructure issues' },
         { title: 'Self-Service GameDays', description: 'Self-Service Chaos GameDays with unified interface' },
