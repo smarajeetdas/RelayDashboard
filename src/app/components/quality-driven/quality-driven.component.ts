@@ -19,7 +19,7 @@ export class QualityDrivenComponent implements OnInit {
       id: 'no-code',
       icon: 'fa-code',
       title: 'No-Code Automation',
-      description: 'Build complete test suites with intuitive drag-n-drop functionality—no coding required.',
+      description: 'Build complete testcases with drag-n-drop functionality',
       iconBgColor: '#6f42c1' // Purple
     },
     {
