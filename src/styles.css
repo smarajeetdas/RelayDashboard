@@ -465,15 +465,23 @@ p {
 
 /* Container overrides for consistent spacing */
 .container-fluid {
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* Override Bootstrap's container class for consistent spacing */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Custom container for wider layout */
 .container-wide {
   width: 100%;
-  padding-right: 5%;
-  padding-left: 5%;
+  padding-right: 10%;
+  padding-left: 10%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -498,13 +506,13 @@ p {
 
 @media (min-width: 1200px) {
   .container-wide {
-    max-width: 1240px;  /* Reduced from 1320px to allow more space on sides */
+    max-width: 1140px;  /* Reduced to allow more space on sides */
   }
 }
 
 @media (min-width: 1400px) {
   .container-wide {
-    max-width: 1320px;  /* Reduced from 1400px to allow more space on sides */
+    max-width: 1200px;  /* Reduced to allow more space on sides */
   }
 }
 
