@@ -40,7 +40,7 @@ export class QualityDrivenComponent implements OnInit {
       id: 'ci/cd',
       icon: 'fa-cogs',
       title: 'CI/CD Integration',
-      description: 'Seamlessly integrate into continuous development workflows with built-in connectors.',
+      description: 'Integrate seamlessly with Ethos Flex and CI/CD platforms.',
       iconBgColor: '#20c997' // Teal
     },
     {
