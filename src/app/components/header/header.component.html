@@ -101,12 +101,6 @@
               <span>AI&nbsp;Features</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="#demo-videos" (click)="scrollToSection('demo-videos'); $event.preventDefault();">
-              <span>Demo Videos</span>
-            </a>
-          </li>
           
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}"
               (mouseenter)="onMouseEnter('more')" (mouseleave)="onMouseLeave('more')">
@@ -117,8 +111,8 @@
             <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownActive('more')}">
               <div class="dropdown-menu-inner">
                 <a *ngFor="let option of moreOptions" 
-                   [routerLink]="option.route ? option.route : '#'" 
-                   (click)="option.route ? closeAllDropdowns() : $event.preventDefault()"
+                   [routerLink]="option.route && !option.route.startsWith('#') ? option.route : null" 
+                   (click)="option.route && option.route.startsWith('#') ? (scrollToSection(option.route.substring(1)), $event.preventDefault()) : (option.route ? closeAllDropdowns() : $event.preventDefault())"
                    class="dropdown-item-custom">
                   <i class="fas {{ option.icon }} option-icon"></i>
                   <span>{{ option.name }}</span>
