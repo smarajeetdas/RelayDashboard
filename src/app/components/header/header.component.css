@@ -247,6 +247,7 @@
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.85rem;
   margin-top: 5px;
+  white-space: nowrap;
 }
 
 .user-name {
@@ -297,6 +298,7 @@
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  white-space: nowrap;
 }
 
 .btn-sign-in:hover, .btn-sign-in:focus {
@@ -393,13 +395,16 @@
   }
   
   .btn-sign-in {
-    margin: 0.5rem 0;
-    width: 100%;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    min-width: auto;
+    width: auto;
     justify-content: center;
   }
   
   .d-flex.align-items-center {
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;
   }
 }
