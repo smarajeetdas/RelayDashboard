@@ -121,4 +121,23 @@ export class HeaderComponent implements OnInit {
     this.closeAllDropdowns();
     this.isMenuCollapsed = true; // Close mobile menu after clicking
   }
+  
+  /**
+   * Handle menu item clicks for the More dropdown
+   * @param option The menu option that was clicked
+   * @param event The click event
+   */
+  handleMenuClick(option: any, event: MouseEvent): void {
+    if (option.route && option.route.startsWith('#')) {
+      // Handle anchor links for scrolling
+      this.scrollToSection(option.route.substring(1));
+      event.preventDefault();
+    } else if (option.route) {
+      // For other routes, just close dropdowns
+      this.closeAllDropdowns();
+    } else {
+      // Prevent default for items without routes
+      event.preventDefault();
+    }
+  }
 }

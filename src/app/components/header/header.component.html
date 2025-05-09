@@ -112,7 +112,7 @@
               <div class="dropdown-menu-inner">
                 <a *ngFor="let option of moreOptions" 
                    [routerLink]="option.route && !option.route.startsWith('#') ? option.route : null" 
-                   (click)="option.route && option.route.startsWith('#') ? (scrollToSection(option.route.substring(1)), $event.preventDefault()) : (option.route ? closeAllDropdowns() : $event.preventDefault())"
+                   (click)="handleMenuClick(option, $event)"
                    class="dropdown-item-custom">
                   <i class="fas {{ option.icon }} option-icon"></i>
                   <span>{{ option.name }}</span>
@@ -131,7 +131,6 @@
             <i class="fas fa-sign-in-alt mr-1"></i> Sign In
           </a>
           <div class="user-welcome">
-            <span>Welcome</span>
             <span class="user-name">{{ userName }} <i class="fas fa-chevron-down"></i></span>
           </div>
         </div>
