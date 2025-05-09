@@ -101,6 +101,12 @@
               <span>AI&nbsp;Features</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#demo-videos" (click)="scrollToSection('demo-videos'); $event.preventDefault();">
+              <span>Demo Videos</span>
+            </a>
+          </li>
           
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}"
               (mouseenter)="onMouseEnter('more')" (mouseleave)="onMouseLeave('more')">
@@ -126,9 +132,14 @@
           </li>
         </ul>
         
-        <div class="user-welcome ml-3">
-          <span>Welcome</span>
-          <span class="user-name">{{ userName }} <i class="fas fa-chevron-down"></i></span>
+        <div class="d-flex align-items-center">
+          <a href="#" class="btn btn-sign-in mr-3">
+            <i class="fas fa-sign-in-alt mr-1"></i> Sign In
+          </a>
+          <div class="user-welcome">
+            <span>Welcome</span>
+            <span class="user-name">{{ userName }} <i class="fas fa-chevron-down"></i></span>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,56 @@
+<section id="demo-videos" class="demo-videos-section">
+  <div class="container-wide">
+    <h2 class="section-title" data-animation="fade-in-up">Demo Videos</h2>
+    <p class="text-center mb-5" data-animation="fade-in-up" data-animation-delay="1">
+      Watch our video tutorials to see how Relay enhances your testing workflow with AI-powered capabilities.
+    </p>
+    
+    <div class="row">
+      <div class="col-md-6 col-lg-3 mb-4" *ngFor="let video of demoVideos; let i = index"
+           data-animation="fade-in-up" 
+           [attr.data-animation-delay]="i + 1">
+        <div class="video-card" (click)="openVideoModal(video)">
+          <div class="video-thumbnail">
+            <img src="../../assets/images/video-placeholder.jpg" alt="{{ video.title }}" class="img-fluid">
+            <div class="play-button">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="video-duration">{{ video.duration }}</div>
+          </div>
+          <div class="video-info">
+            <h5>{{ video.title }}</h5>
+            <p>{{ video.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4" data-animation="fade-in-up" data-animation-delay="5">
+      <a href="#" class="btn btn-gradient-blue">View All Videos</a>
+    </div>
+  </div>
+  
+  <!-- Video Modal -->
+  <div class="video-modal" *ngIf="showVideoModal" (click)="closeVideoModal()">
+    <div class="video-modal-content" (click)="$event.stopPropagation()">
+      <div class="video-modal-header">
+        <h4 *ngIf="activeVideo">{{ activeVideo.title }}</h4>
+        <button class="close-btn" (click)="closeVideoModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="video-container">
+        <div class="video-placeholder">
+          <div class="coming-soon-overlay">
+            <i class="fas fa-film fa-3x mb-3"></i>
+            <h3>Coming Soon</h3>
+            <p>This video content is currently in production.</p>
+          </div>
+        </div>
+      </div>
+      <div class="video-modal-footer" *ngIf="activeVideo">
+        <p>{{ activeVideo.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

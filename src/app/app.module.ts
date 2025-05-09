@@ -20,6 +20,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
 import { CtaComponent } from './components/cta/cta.component';
 import { FeatureCardComponent } from './shared/feature-card/feature-card.component';
 import { HomeComponent } from './components/home/home.component';
+import { DemoVideosComponent } from './components/demo-videos/demo-videos.component';
 
 // Feature modules
 import { PerformanceLabModule } from './features/performance-lab/performance-lab.module';
@@ -40,7 +41,8 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     TestimonialsComponent,
     CtaComponent,
     FeatureCardComponent,
-    HomeComponent
+    HomeComponent,
+    DemoVideosComponent
   ],
   imports: [
     BrowserModule,
