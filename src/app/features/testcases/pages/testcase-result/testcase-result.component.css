@@ -31,12 +31,12 @@
 }
 
 .breadcrumb-item a {
-  color: #1473e6;
+  color: #444;
   text-decoration: none;
 }
 
 .breadcrumb-item a:hover {
-  color: #0d66d0;
+  color: #666;
   text-decoration: underline;
 }
 
@@ -134,7 +134,7 @@
 .nav-tabs .nav-link.active {
   color: white;
   border: 0;
-  background-color: rgba(20, 115, 230, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   font-weight: 600;
 }
 
