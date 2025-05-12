@@ -152,6 +152,13 @@
   margin-left: 4px;
 }
 
+.menu-icon {
+  margin-right: 8px;
+  font-size: 16px;
+  color: #1473e6;
+  opacity: 0.9;
+}
+
 .nav-link:hover, .nav-link:focus {
   color: white !important;
   background-color: rgba(255, 255, 255, 0.08);
