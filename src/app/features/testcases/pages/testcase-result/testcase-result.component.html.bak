@@ -115,10 +115,8 @@
           </ul>
         </div>
 
-        <!-- Tab Content Container -->
-        <div class="card-body p-0">
-          <!-- Overview Tab -->
-          <div *ngIf="activeTab === 'overview'" class="tab-content">
+        <!-- Overview Tab -->
+        <div *ngIf="activeTab === 'overview'" class="tab-content">
             <div class="row">
               <div class="col-lg-6">
                 <!-- Request Information -->
@@ -130,7 +128,7 @@
                     <div class="info-row">
                       <div class="info-label">Request Type</div>
                       <div class="info-value">
-                        <span class="badge bg-secondary">{{ testResult.requestType }}</span>
+                        <span class="badge bg-primary">{{ testResult.requestType }}</span>
                       </div>
                     </div>
                     <div class="info-row">
@@ -236,11 +234,11 @@
             </div>
           </div>
           
-          <!-- Test Detail Tab -->
-          <div *ngIf="activeTab === 'detail'" class="tab-content">
+        <!-- Test Detail Tab -->
+        <div *ngIf="activeTab === 'detail'" class="tab-content">
             <div class="content-section">
               <h3 class="section-title mb-3">
-                <i class="fas fa-info-circle me-2 text-secondary"></i> Test Case Details
+                <i class="fas fa-info-circle me-2 text-primary"></i> Test Case Details
               </h3>
               <div class="info-table">
                 <div class="info-row">
@@ -263,16 +261,16 @@
             </div>
           </div>
           
-          <!-- Response Tab -->
-          <div *ngIf="activeTab === 'response'" class="tab-content">
+        <!-- Response Tab -->
+        <div *ngIf="activeTab === 'response'" class="tab-content">
             <!-- Response Headers -->
             <div class="content-section mb-4">
               <h3 class="section-title mb-3">
-                <i class="fas fa-tags me-2 text-secondary"></i> Response Headers
+                <i class="fas fa-tags me-2 text-primary"></i> Response Headers
               </h3>
               <div class="code-block-container">
                 <div class="table-responsive">
-                  <table class="endpoint-table">
+                  <table class="table table-borderless table-hover custom-table">
                     <thead>
                       <tr>
                         <th>Header</th>
@@ -361,11 +359,11 @@
                     </div>
                     <div class="col-md-3 text-center mb-3 mb-md-0">
                       <div class="summary-stat">
-                        <div class="stat-value text-dark">
+                        <div class="stat-value text-info">
                           <span>{{ testResult.duration }}</span>
                         </div>
-                        <div class="stat-label">Duration</div>
-                        <div class="stat-text">Milliseconds</div>
+                        <div class="stat-label">Duration (ms)</div>
+                        <div class="stat-text">Response Time</div>
                       </div>
                     </div>
                     <div class="col-md-3 text-center mb-3 mb-md-0">
