@@ -52,9 +52,9 @@ export class HeaderComponent implements OnInit {
   
   // Execution History dropdown options
   executionHistoryOptions = [
-    { id: 'recent', name: 'Recent Executions', icon: 'fa-circle' },
-    { id: 'scheduled', name: 'Scheduled Tests', icon: 'fa-circle' },
-    { id: 'reports', name: 'Reports', icon: 'fa-circle' }
+    { id: 'recent', name: 'Recent Executions', icon: 'fa-history' },
+    { id: 'scheduled', name: 'Scheduled Tests', icon: 'fa-calendar-alt' },
+    { id: 'reports', name: 'Reports', icon: 'fa-chart-line' }
   ];
   
   // More dropdown options
