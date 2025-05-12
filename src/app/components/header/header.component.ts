@@ -59,7 +59,6 @@ export class HeaderComponent implements OnInit {
   
   // More dropdown options
   moreOptions = [
-    { id: 'demo-videos', name: 'Demo Videos', icon: 'fa-video', route: '#demo-videos' },
     { id: 'users', name: 'Users', icon: 'fa-users', route: '/users' },
     { id: 'documentation', name: 'Documentation', icon: 'fa-book' },
     { id: 'settings', name: 'Settings', icon: 'fa-cog' },
