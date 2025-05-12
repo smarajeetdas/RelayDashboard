@@ -124,7 +124,7 @@
           <a href="#" class="btn btn-sign-in mr-3">
             <i class="fas fa-sign-in-alt mr-1"></i> Sign In
           </a>
-          <div class="user-welcome">
+          <div class="user-welcome" *ngIf="userName">
             <span class="user-name">{{ userName }} <i class="fas fa-chevron-down"></i></span>
           </div>
         </div>

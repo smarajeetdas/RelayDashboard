@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   isScrolled = false;
   isMenuCollapsed = true;
   activeDropdown: string | null = null;
-  userName: string = 'Smarajeet';
+  userName: string = '';
 
   // Functional automation dropdown options
   functionalAutomationOptions = [
