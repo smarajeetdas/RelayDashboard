@@ -36,9 +36,11 @@
 .navbar-brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   color: var(--light-text);
-  padding: 0;
+  padding: 0.5rem 0;
   margin-right: 2rem;
+  margin-top: 0.5rem;
 }
 
 .logo-wrapper {
@@ -48,8 +50,8 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  height: 42px;
-  margin-top: 2px;
+  height: 44px;
+  margin-top: 0;
 }
 
 /* Removed background pulse effect */
@@ -105,7 +107,7 @@
 .navbar-nav {
   display: flex;
   align-items: stretch;
-  margin-top: 0;
+  margin-top: 0.5rem;
 }
 
 .nav-item {
