@@ -143,14 +143,14 @@
 .nav-tabs .nav-link:focus {
   color: rgba(255, 255, 255, 0.9);
   border: 0;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(20, 115, 230, 0.5); /* Lighter blue (#1473e6 with transparency) */
   opacity: 0.9;
 }
 
 .nav-tabs .nav-link.active {
   color: white;
   border: 0;
-  background-color: rgba(255, 255, 255, 0.35);
+  background-color: #1473e6; /* Adobe blue */
   font-weight: 600;
   opacity: 1;
   box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
