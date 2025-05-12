@@ -96,12 +96,20 @@
             </a>
           </li>
           
-          <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}"
-              (mouseenter)="onMouseEnter('more')" (mouseleave)="onMouseLeave('more')">
-            <a class="nav-link nav-more" href="#" (click)="$event.preventDefault()">
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="$event.preventDefault()">
               <i class="fas fa-history menu-icon"></i> <span>Execution History</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownActive('more')}">
+          </li>
+        </ul>
+        
+        <div class="d-flex align-items-center">
+          <div class="dropdown-wrapper" [ngClass]="{'active': isDropdownActive('user')}"
+              (mouseenter)="onMouseEnter('user')" (mouseleave)="onMouseLeave('user')">
+            <a href="#" class="btn btn-sign-in mr-3" (click)="$event.preventDefault()">
+              <span>Smarajeet</span> <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownActive('user')}">
               <div class="dropdown-menu-inner">
                 <a *ngFor="let option of moreOptions" 
                    [routerLink]="option.route && !option.route.startsWith('#') ? option.route : null" 
@@ -117,13 +125,7 @@
                 </a>
               </div>
             </div>
-          </li>
-        </ul>
-        
-        <div class="d-flex align-items-center">
-          <a href="#" class="btn btn-sign-in mr-3">
-            <span>Smarajeet</span> <i class="fas fa-chevron-down"></i>
-          </a>
+          </div>
         </div>
       </div>
     </div>

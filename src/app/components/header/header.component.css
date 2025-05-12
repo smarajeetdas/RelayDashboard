@@ -121,9 +121,12 @@
 
 .dropdown-wrapper {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.dropdown-wrapper.active .nav-link {
+.dropdown-wrapper.active .nav-link, 
+.dropdown-wrapper.active .btn-sign-in {
   color: white !important;
   background-color: rgba(255, 255, 255, 0.08);
   border-bottom: 3px solid #1473e6;
