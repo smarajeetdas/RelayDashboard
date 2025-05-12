@@ -125,6 +125,11 @@
                   (click)="setActiveTab('testData')">
               <i class="fas fa-database mr-2"></i> Test Data
             </span>
+            <span class="tab-link" 
+                  [ngClass]="{'active': activeTab === 'results'}" 
+                  (click)="setActiveTab('results')">
+              <i class="fas fa-chart-bar mr-2"></i> Results
+            </span>
           </div>
 
           <!-- Tab content -->
@@ -296,6 +301,94 @@
                   <p>This test case doesn't have any test data defined.</p>
                   <button class="btn btn-primary">
                     <i class="fas fa-plus mr-2"></i> Add Test Data
+                  </button>
+                </div>
+              </ng-template>
+            </div>
+            
+            <!-- Results tab -->
+            <div *ngIf="activeTab === 'results'">
+              <div *ngIf="testCase.recentResults && testCase.recentResults.length > 0; else noResults">
+                <div class="table-responsive">
+                  <table class="steps-table">
+                    <thead>
+                      <tr>
+                        <th>Execution Time</th>
+                        <th>Status</th>
+                        <th>Executed By</th>
+                        <th>Response Time</th>
+                        <th>Response Code</th>
+                        <th class="text-center">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let result of testCase.recentResults">
+                        <td>{{ result.executedAt | date:'medium' }}</td>
+                        <td>
+                          <span class="badge" 
+                                [ngClass]="{
+                                  'badge-success': result.status === 'PASSED',
+                                  'badge-danger': result.status === 'FAILED',
+                                  'badge-warning': result.status === 'ABORTED',
+                                  'badge-info': result.status === 'SCHEDULED' || result.status === 'IN_PROGRESS',
+                                  'badge-secondary': result.status === 'PENDING'
+                                }">
+                            <i class="fas"
+                              [ngClass]="{
+                                'fa-check-circle': result.status === 'PASSED',
+                                'fa-times-circle': result.status === 'FAILED',
+                                'fa-exclamation-circle': result.status === 'ABORTED',
+                                'fa-spinner fa-pulse': result.status === 'IN_PROGRESS',
+                                'fa-clock': result.status === 'SCHEDULED',
+                                'fa-hourglass-half': result.status === 'PENDING'
+                              }">
+                            </i>
+                            {{ result.status }}
+                          </span>
+                        </td>
+                        <td>{{ result.executedBy }}</td>
+                        <td>{{ result.responseTime }} ms</td>
+                        <td>
+                          <span class="badge" 
+                                [ngClass]="{
+                                  'badge-success': result.responseCode < 400,
+                                  'badge-danger': result.responseCode >= 400
+                                }">
+                            {{ result.responseCode }}
+                          </span>
+                        </td>
+                        <td>
+                          <div class="step-actions">
+                            <button class="text-primary" title="View Result Details" 
+                                    (click)="router.navigate(['/testcases', testCase.id, 'results', result.id])">
+                              <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="text-danger" title="Delete Result">
+                              <i class="fas fa-trash-alt"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="text-right mt-3">
+                  <button class="btn btn-outline-primary mr-2">
+                    <i class="fas fa-download mr-2"></i> Export Results
+                  </button>
+                  <button class="btn btn-primary">
+                    <i class="fas fa-play mr-2"></i> Run Test Case
+                  </button>
+                </div>
+              </div>
+
+              <ng-template #noResults>
+                <div class="no-steps">
+                  <i class="fas fa-chart-bar"></i>
+                  <h4>No Test Results Available</h4>
+                  <p>This test case hasn't been executed yet or no results are available.</p>
+                  <button class="btn btn-primary">
+                    <i class="fas fa-play mr-2"></i> Run Test Case
                   </button>
                 </div>
               </ng-template>

@@ -136,7 +136,33 @@ export class TestCaseService {
       testData: {
         username: 'testuser',
         password: '******'
-      }
+      },
+      recentResults: [
+        {
+          id: 'result001',
+          executedAt: '2025-05-12T11:17:54',
+          status: 'PASSED',
+          executedBy: 'user123@adobe.com',
+          responseTime: 125,
+          responseCode: 200
+        },
+        {
+          id: 'result002',
+          executedAt: '2025-05-11T09:23:16',
+          status: 'FAILED',
+          executedBy: 'user123@adobe.com',
+          responseTime: 187,
+          responseCode: 500
+        },
+        {
+          id: 'result003',
+          executedAt: '2025-05-10T15:42:31',
+          status: 'PASSED',
+          executedBy: 'user123@adobe.com',
+          responseTime: 134,
+          responseCode: 200
+        }
+      ]
     };
 
     return of(testCaseDetail);

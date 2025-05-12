@@ -20,6 +20,16 @@ export interface TestCaseDetail extends TestCase {
   score?: number;
   steps?: TestCaseStep[];
   testData?: any;
+  recentResults?: TestCaseResult[];
+}
+
+export interface TestCaseResult {
+  id: string;
+  executedAt: string;
+  status: 'PASSED' | 'FAILED' | 'PENDING' | 'IN_PROGRESS' | 'SCHEDULED' | 'ABORTED';
+  executedBy?: string;
+  responseTime?: number;
+  responseCode?: number;
 }
 
 export interface TestCaseStep {

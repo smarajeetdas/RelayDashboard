@@ -12,7 +12,7 @@ import { SidebarItem } from '../../../../shared/components/detail-sidebar/detail
 export class TestCaseDetailComponent implements OnInit {
   testCase: TestCaseDetail | undefined;
   loading: boolean = true;
-  activeTab: 'details' | 'steps' | 'testData' = 'details';
+  activeTab: 'details' | 'steps' | 'testData' | 'results' = 'details';
   error: string | null = null;
   
   // Sidebar configuration
@@ -75,10 +75,20 @@ export class TestCaseDetailComponent implements OnInit {
       this.activeTab = 'details';
     } else if (itemId === 'test-data') {
       this.activeTab = 'testData';
+    } else if (itemId === 'execution-history') {
+      this.activeTab = 'results';
+    } else if (itemId === 'result' && this.testCase) {
+      // Navigate to the most recent test result if available
+      if (this.testCase.recentResults && this.testCase.recentResults.length > 0) {
+        const latestResult = this.testCase.recentResults[0];
+        this.router.navigate(['/testcases', this.testCase.id, 'results', latestResult.id]);
+      } else {
+        alert('No test results available for this test case.');
+      }
     }
   }
 
-  setActiveTab(tab: 'details' | 'steps' | 'testData'): void {
+  setActiveTab(tab: 'details' | 'steps' | 'testData' | 'results'): void {
     this.activeTab = tab;
   }
 
