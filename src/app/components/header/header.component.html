@@ -17,7 +17,7 @@
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('functional')}"
               (mouseenter)="onMouseEnter('functional')" (mouseleave)="onMouseLeave('functional')">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
-              <span>Functional</span>
+              <i class="fas fa-cogs menu-icon"></i> <span>Functional</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('functional')}">
               <div class="dropdown-menu-inner">
@@ -34,7 +34,7 @@
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('performance')}"
               (mouseenter)="onMouseEnter('performance')" (mouseleave)="onMouseLeave('performance')">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
-              <span>Performance Lab</span>
+              <i class="fas fa-tachometer-alt menu-icon"></i> <span>Performance Lab</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('performance')}">
               <div class="dropdown-menu-inner">
@@ -51,7 +51,7 @@
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('chaos')}"
               (mouseenter)="onMouseEnter('chaos')" (mouseleave)="onMouseLeave('chaos')">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
-              <span>Chaos Simulator</span>
+              <i class="fas fa-random menu-icon"></i> <span>Chaos Simulator</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('chaos')}">
               <div class="dropdown-menu-inner">
@@ -65,7 +65,7 @@
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('mobile')}"
               (mouseenter)="onMouseEnter('mobile')" (mouseleave)="onMouseLeave('mobile')">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
-              <span>Mobile</span>
+              <i class="fas fa-mobile-alt menu-icon"></i> <span>Mobile</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('mobile')}">
               <div class="dropdown-menu-inner">
@@ -79,7 +79,7 @@
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('desktop')}"
               (mouseenter)="onMouseEnter('desktop')" (mouseleave)="onMouseLeave('desktop')">
             <a class="nav-link dropdown-toggle" href="#" (click)="$event.preventDefault()">
-              <span>Desktop</span>
+              <i class="fas fa-desktop menu-icon"></i> <span>Desktop</span>
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('desktop')}">
               <div class="dropdown-menu-inner">
@@ -92,14 +92,14 @@
           
           <li class="nav-item ai-features-item">
             <a class="nav-link" href="#ai-features" (click)="scrollToSection('ai-features'); $event.preventDefault();">
-              <span>AI Features</span>
+              <i class="fas fa-brain menu-icon"></i> <span>AI Features</span>
             </a>
           </li>
           
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}"
               (mouseenter)="onMouseEnter('more')" (mouseleave)="onMouseLeave('more')">
             <a class="nav-link nav-more" href="#" (click)="$event.preventDefault()">
-              <span>Execution History</span>
+              <i class="fas fa-history menu-icon"></i> <span>Execution History</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownActive('more')}">
               <div class="dropdown-menu-inner">

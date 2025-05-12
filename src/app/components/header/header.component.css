@@ -153,10 +153,10 @@
 }
 
 .menu-icon {
-  display: none; /* Hide icons to match screenshot */
+  display: inline-block;
   text-align: center;
-  margin-bottom: 6px; 
-  font-size: 18px;
+  margin-right: 5px; 
+  font-size: 15px;
   color: #1473e6;
   opacity: 0.9;
 }
