@@ -123,7 +123,7 @@
                 <!-- Request Information -->
                 <div class="content-section mb-4">
                   <h3 class="section-title mb-3">
-                    <i class="fas fa-paper-plane me-2 text-primary"></i> Request Information
+                    <i class="fas fa-paper-plane me-2 text-secondary"></i> Request Information
                   </h3>
                   <div class="info-table">
                     <div class="info-row">
@@ -192,7 +192,7 @@
               </h3>
               
               <div class="table-responsive">
-                <table class="table table-borderless table-hover custom-table">
+                <table class="endpoint-table">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -206,15 +206,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let step of testSteps">
-                      <td>{{ step.name }}</td>
+                    <tr *ngFor="let step of testSteps" class="endpoint-row">
+                      <td><span class="font-weight-bold">{{ step.name }}</span></td>
                       <td>
                         <span class="badge bg-info">{{ step.category }}</span>
                       </td>
                       <td>{{ step.startTime | date:'medium' }}</td>
                       <td>{{ step.endTime | date:'medium' }}</td>
                       <td>
-                        <span class="badge bg-primary">{{ step.requestType }}</span>
+                        <span class="badge bg-secondary">{{ step.requestType }}</span>
                       </td>
                       <td>{{ step.responseTime }} ms</td>
                       <td>
@@ -381,7 +381,7 @@
                     </div>
                     <div class="col-md-3 text-center">
                       <div class="summary-stat">
-                        <div class="stat-value text-primary">
+                        <div class="stat-value text-secondary">
                           <span>{{ testSteps.length }}</span>
                         </div>
                         <div class="stat-label">Steps</div>
