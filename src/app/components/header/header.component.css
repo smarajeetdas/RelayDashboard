@@ -131,15 +131,18 @@
 
 .nav-link {
   color: rgba(255, 255, 255, 0.9) !important;
-  padding: 0.4rem 0.85rem 0.3rem !important;
+  padding: 0.5rem 0.85rem 0.3rem !important;
   transition: all 0.2s ease;
   font-size: 0.85rem;
   font-weight: 500;
   border-radius: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   border-bottom: 3px solid transparent;
   position: relative;
+  text-align: center;
 }
 
 .nav-link span {
@@ -153,10 +156,10 @@
 }
 
 .menu-icon {
-  display: inline-block;
+  display: block;
   text-align: center;
-  margin-right: 5px; 
-  font-size: 15px;
+  margin-bottom: 6px; 
+  font-size: 18px;
   color: #1473e6;
   opacity: 0.9;
 }
@@ -246,6 +249,7 @@
 
 .nav-more {
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
