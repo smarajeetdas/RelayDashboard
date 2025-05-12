@@ -99,8 +99,8 @@
           <li class="nav-item dropdown-wrapper" [ngClass]="{'active': isDropdownActive('more')}"
               (mouseenter)="onMouseEnter('more')" (mouseleave)="onMouseLeave('more')">
             <a class="nav-link nav-more" href="#" (click)="$event.preventDefault()">
+              <i class="fas fa-ellipsis-h menu-icon"></i>
               <span>More</span>
-              <i class="fas fa-ellipsis-h nav-icon"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': isDropdownActive('more')}">
               <div class="dropdown-menu-inner">
