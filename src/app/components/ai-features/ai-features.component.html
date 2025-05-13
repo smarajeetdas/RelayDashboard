@@ -13,8 +13,16 @@
           [attr.data-animation]="i % 2 === 0 ? 'fade-in-left' : 'fade-in-right'" 
           [attr.data-animation-delay]="(i % 3) + 1">
         <div class="ai-feature-card" 
-             [ngClass]="{'active': feature.isActive}" 
+             [ngClass]="{'active': feature.isActive, 'completed': feature.status === 'completed', 'in-progress': feature.status === 'in-progress'}" 
              (click)="toggleFeature(feature)">
+          <div class="status-indicator">
+            <span *ngIf="feature.status === 'completed'" class="badge-completed">
+              <i class="fas fa-check-circle"></i> Completed
+            </span>
+            <span *ngIf="feature.status === 'in-progress'" class="badge-in-progress">
+              <i class="fas fa-spinner fa-spin"></i> In Progress
+            </span>
+          </div>
           <h4>{{feature.title}}</h4>
           <p>{{feature.description}}</p>
         </div>

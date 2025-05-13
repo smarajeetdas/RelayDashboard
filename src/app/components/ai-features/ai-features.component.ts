@@ -5,6 +5,7 @@ interface AiFeature {
   description: string;
   isActive?: boolean;
   id?: string;
+  status: 'completed' | 'in-progress';
 }
 
 @Component({
@@ -15,19 +16,34 @@ interface AiFeature {
 export class AiFeaturesComponent implements OnInit {
   aiFeatures: AiFeature[] = [
     {
+      id: 'prompt-based-automation',
+      title: 'Prompt Based Web Automation',
+      description: 'Create and execute test automation using natural language prompts instead of code.',
+      status: 'completed'
+    },
+    {
+      id: 'intelligent-image-comparison',
+      title: 'Intelligent Image Comparison',
+      description: 'AI-powered visual comparison that understands context and ignores irrelevant differences.',
+      status: 'completed'
+    },
+    {
       id: 'test-results-summary',
       title: 'Intelligent Test Results Summary',
-      description: 'Automatically generate simplified summaries from complex test execution results for quick analysis.'
+      description: 'Automatically generate simplified summaries from complex test execution results for quick analysis.',
+      status: 'in-progress'
     },
     {
       id: 'test-case-validation',
       title: 'Intelligent Test Case Validation',
-      description: 'AI-driven validation of test cases to ensure comprehensive coverage and reliability.'
+      description: 'AI-driven validation of test cases to ensure comprehensive coverage and reliability.',
+      status: 'in-progress'
     },
     {
       id: 'test-data-recommendation',
       title: 'Intelligent Test Data Recommendation',
-      description: 'Smart suggestions for test data based on application behavior and patterns.'
+      description: 'Smart suggestions for test data based on application behavior and patterns.',
+      status: 'in-progress'
     }
   ];
 

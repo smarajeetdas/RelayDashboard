@@ -86,3 +86,46 @@
   margin-bottom: 0;
   font-size: 0.95rem;
 }
+
+/* Status indicators */
+.status-indicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+}
+
+.badge-completed, 
+.badge-in-progress {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.badge-completed {
+  background-color: #43a047;
+  color: white;
+}
+
+.badge-in-progress {
+  background-color: #fb8c00;
+  color: white;
+}
+
+.ai-feature-card.completed {
+  border-left: 4px solid #43a047;
+}
+
+.ai-feature-card.in-progress {
+  border-left: 4px solid #fb8c00;
+}
+
+.ai-feature-card h4 {
+  padding-right: 80px; /* Make room for the status badge */
+}
