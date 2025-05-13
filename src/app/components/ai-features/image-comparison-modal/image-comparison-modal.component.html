@@ -1,17 +1,19 @@
-<div class="modal-overlay" *ngIf="isVisible" (click)="handleClose()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
+<div class="modal-backdrop" [class.active]="isVisible" (click)="handleClose()">
+  <div class="modal-container" [class.active]="isVisible" (click)="$event.stopPropagation()">
     <div class="modal-header">
       <h3>Intelligent Image Comparison</h3>
       <span class="tech-badge">Powered by OpenCV and OCR</span>
-      <button class="close-btn" (click)="handleClose()">
+      <button class="close-button" (click)="handleClose()">
         <i class="fas fa-times"></i>
       </button>
     </div>
     
     <div class="modal-body">
       <!-- Context Section -->
-      <div class="modal-section">
-        <div class="section-icon">📌</div>
+      <div class="content-card context">
+        <div class="section-icon">
+          <i class="fas fa-thumbtack"></i>
+        </div>
         <div class="section-content">
           <h4>Context</h4>
           <p>
@@ -21,56 +23,60 @@
       </div>
       
       <!-- Proposal Section -->
-      <div class="modal-section">
-        <div class="section-icon">💡</div>
+      <div class="content-card proposal">
+        <div class="section-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
         <div class="section-content">
           <h4>Proposal</h4>
           <p>
             Relay's Intelligent Image Comparison uses computer vision and OCR to analyze UI screenshots meaningfully:
           </p>
-          <ul>
-            <li>Detects layout shifts, visual inconsistencies, and missing elements</li>
-            <li>Reads and compares on-screen text using OCR</li>
-            <li>Ignores irrelevant pixel-level noise (e.g., rendering variations)</li>
-            <li>Automates visual validations with high accuracy</li>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Detects layout shifts, visual inconsistencies, and missing elements</li>
+            <li><span class="bullet">•</span> Reads and compares on-screen text using OCR</li>
+            <li><span class="bullet">•</span> Ignores irrelevant pixel-level noise (e.g., rendering variations)</li>
+            <li><span class="bullet">•</span> Automates visual validations with high accuracy</li>
           </ul>
         </div>
       </div>
       
       <!-- Outcome Section -->
-      <div class="modal-section">
-        <div class="section-icon">🎯</div>
+      <div class="content-card outcome">
+        <div class="section-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
         <div class="section-content">
           <h4>Outcome</h4>
-          <ul>
-            <li>Reliable detection of real UI changes</li>
-            <li>Elimination of false positives in visual tests</li>
-            <li>Automated verification of both structure and content</li>
-            <li>90% accuracy on image verification</li>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Reliable detection of real UI changes</li>
+            <li><span class="bullet">•</span> Elimination of false positives in visual tests</li>
+            <li><span class="bullet">•</span> Automated verification of both structure and content</li>
+            <li><span class="bullet">•</span> 90% accuracy on image verification</li>
           </ul>
         </div>
       </div>
       
       <!-- Business Value Section -->
-      <div class="modal-section">
-        <div class="section-icon">💼</div>
+      <div class="content-card business-value">
+        <div class="section-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
         <div class="section-content">
           <h4>Business Value</h4>
-          <ul>
-            <li>80% reduction in manual visual verification effort</li>
-            <li>Fewer bugs reaching production due to visual issues</li>
-            <li>Faster test runs with more relevant results</li>
-            <li>Enhanced user experience through consistent UI</li>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> 80% reduction in manual visual verification effort</li>
+            <li><span class="bullet">•</span> Fewer bugs reaching production due to visual issues</li>
+            <li><span class="bullet">•</span> Faster test runs with more relevant results</li>
+            <li><span class="bullet">•</span> Enhanced user experience through consistent UI</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="modal-footer">
-      <div class="status-badge complete">
-        <i class="fas fa-check-circle"></i> Available Now
-      </div>
-      <button class="btn-primary" (click)="handleClose()">Close</button>
+      <button class="btn-secondary" (click)="handleClose()">Close</button>
+      <button class="btn-primary">Learn More</button>
     </div>
   </div>
 </div>

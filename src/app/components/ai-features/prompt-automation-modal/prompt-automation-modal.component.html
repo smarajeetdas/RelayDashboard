@@ -1,16 +1,18 @@
-<div class="modal-overlay" *ngIf="isVisible" (click)="handleClose()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
+<div class="modal-backdrop" [class.active]="isVisible" (click)="handleClose()">
+  <div class="modal-container" [class.active]="isVisible" (click)="$event.stopPropagation()">
     <div class="modal-header">
       <h3>Prompt Based Web Automation</h3>
-      <button class="close-btn" (click)="handleClose()">
+      <button class="close-button" (click)="handleClose()">
         <i class="fas fa-times"></i>
       </button>
     </div>
     
     <div class="modal-body">
       <!-- Context Section -->
-      <div class="modal-section">
-        <div class="section-icon">📌</div>
+      <div class="content-card context">
+        <div class="section-icon">
+          <i class="fas fa-thumbtack"></i>
+        </div>
         <div class="section-content">
           <h4>Context</h4>
           <p>
@@ -20,56 +22,60 @@
       </div>
       
       <!-- Proposal Section -->
-      <div class="modal-section">
-        <div class="section-icon">💡</div>
+      <div class="content-card proposal">
+        <div class="section-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
         <div class="section-content">
           <h4>Proposal</h4>
           <p>
             Relay's Prompt Based Web Automation enables test execution using simple natural language instructions:
           </p>
-          <ul>
-            <li>Translates prompts into executable test flows</li>
-            <li>Requires no coding or scripting effort</li>
-            <li>Adapts dynamically to UI and content changes</li>
-            <li>Supports rapid authoring and maintenance of test cases</li>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Translates prompts into executable test flows</li>
+            <li><span class="bullet">•</span> Requires no coding or scripting effort</li>
+            <li><span class="bullet">•</span> Adapts dynamically to UI and content changes</li>
+            <li><span class="bullet">•</span> Supports rapid authoring and maintenance of test cases</li>
           </ul>
         </div>
       </div>
       
       <!-- Outcome Section -->
-      <div class="modal-section">
-        <div class="section-icon">🎯</div>
+      <div class="content-card outcome">
+        <div class="section-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
         <div class="section-content">
           <h4>Outcome</h4>
-          <ul>
-            <li>Faster test creation with minimal technical skills</li>
-            <li>Increased test coverage across user journeys</li>
-            <li>Quick adaptation to UI updates</li>
-            <li>Empowered QA and business teams alike</li>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> Faster test creation with minimal technical skills</li>
+            <li><span class="bullet">•</span> Increased test coverage across user journeys</li>
+            <li><span class="bullet">•</span> Quick adaptation to UI updates</li>
+            <li><span class="bullet">•</span> Empowered QA and business teams alike</li>
           </ul>
         </div>
       </div>
       
       <!-- Business Value Section -->
-      <div class="modal-section">
-        <div class="section-icon">💼</div>
+      <div class="content-card business-value">
+        <div class="section-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
         <div class="section-content">
           <h4>Business Value</h4>
-          <ul>
-            <li>70% reduction in test authoring time</li>
-            <li>Lower dependency on technical resources</li>
-            <li>Faster go-to-market through accelerated test cycles</li>
-            <li>Enhanced agility in response to product changes</li>
+          <ul class="feature-list">
+            <li><span class="bullet">•</span> 70% reduction in test authoring time</li>
+            <li><span class="bullet">•</span> Lower dependency on technical resources</li>
+            <li><span class="bullet">•</span> Faster go-to-market through accelerated test cycles</li>
+            <li><span class="bullet">•</span> Enhanced agility in response to product changes</li>
           </ul>
         </div>
       </div>
     </div>
     
     <div class="modal-footer">
-      <div class="status-badge complete">
-        <i class="fas fa-check-circle"></i> Available Now
-      </div>
-      <button class="btn-primary" (click)="handleClose()">Close</button>
+      <button class="btn-secondary" (click)="handleClose()">Close</button>
+      <button class="btn-primary">Learn More</button>
     </div>
   </div>
 </div>
