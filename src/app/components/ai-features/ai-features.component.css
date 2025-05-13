@@ -168,7 +168,7 @@
   margin-bottom: 0.75rem;
   color: #1473e6;
   transition: color 0.3s ease;
-  padding-right: 80px; /* Make room for the status badge */
+  padding-right: 100px; /* Make room for the status badge */
 }
 
 /* Status-specific title colors */
@@ -199,7 +199,7 @@
 /* Status indicators */
 .status-indicator {
   position: absolute;
-  top: 15px;
+  top: 18px;
   right: 15px;
   z-index: 2;
 }
