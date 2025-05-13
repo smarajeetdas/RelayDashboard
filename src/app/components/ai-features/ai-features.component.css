@@ -169,6 +169,7 @@
   color: #1473e6;
   transition: color 0.3s ease;
   padding-right: 100px; /* Make room for the status badge */
+  white-space: pre-line; /* Preserve line breaks in the title */
 }
 
 /* Status-specific title colors */
@@ -187,6 +188,12 @@
 
 .ai-feature-card.in-progress:hover h4 {
   color: #ef6c00;
+}
+
+/* Set smaller line height for Intelligent Test Case Validation title */
+.ai-feature-card h4 {
+  /* Title width adjustment for "Intelligent Test Case Validation" */
+  word-break: normal;
 }
 
 .ai-feature-card p {

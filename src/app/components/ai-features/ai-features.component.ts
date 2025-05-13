@@ -36,7 +36,7 @@ export class AiFeaturesComponent implements OnInit, AfterViewInit {
     },
     {
       id: 'test-case-validation',
-      title: 'Intelligent Test Case Validation',
+      title: 'Intelligent Test\nCase\nValidation',
       description: 'AI-driven validation of test cases to ensure comprehensive coverage and reliability.',
       status: 'in-progress'
     },
