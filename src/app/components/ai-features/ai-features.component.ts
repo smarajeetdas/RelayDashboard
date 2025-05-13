@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 
 interface AiFeature {
   title: string;
@@ -13,7 +13,8 @@ interface AiFeature {
   templateUrl: './ai-features.component.html',
   styleUrls: ['./ai-features.component.css']
 })
-export class AiFeaturesComponent implements OnInit {
+export class AiFeaturesComponent implements OnInit, AfterViewInit {
+  @ViewChild('sliderTrack') sliderTrack: ElementRef;
   aiFeatures: AiFeature[] = [
     {
       id: 'prompt-based-automation',
@@ -57,6 +58,21 @@ export class AiFeaturesComponent implements OnInit {
   ngOnInit(): void {
     // Initialize isActive property for all features
     this.aiFeatures.forEach(feature => feature.isActive = false);
+  }
+  
+  ngAfterViewInit(): void {
+    // Set up infinite scrolling animation
+    this.setupScrollAnimation();
+  }
+  
+  /**
+   * Set up the infinite scrolling animation for the AI features slider
+   */
+  private setupScrollAnimation(): void {
+    if (this.sliderTrack && this.sliderTrack.nativeElement) {
+      // Animation logic is handled by CSS
+      // This method can be used to add additional JavaScript animations if needed
+    }
   }
 
   toggleFeature(feature: AiFeature): void {

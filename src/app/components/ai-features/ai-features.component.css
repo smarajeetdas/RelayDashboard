@@ -1,6 +1,8 @@
 .ai-features-section {
   padding: 5rem 0;
   background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
 }
 
 .coming-soon {
@@ -32,14 +34,87 @@
   color: #1473e6;
 }
 
+/* Horizontal scrolling slider for AI features */
+.ai-features-slider {
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle indicators for scrolling */
+.ai-features-slider::before,
+.ai-features-slider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 2;
+  height: 100%;
+}
+
+.ai-features-slider::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+}
+
+.ai-features-slider::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+}
+
+.slider-container {
+  overflow-x: hidden;
+  padding: 1rem 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  position: relative;
+}
+
+.slider-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.slider-track {
+  display: flex;
+  padding: 0 1rem;
+  width: fit-content; 
+  animation: scrollFeatures 45s linear infinite;
+  gap: 25px;
+  padding-bottom: 10px; /* Provide space for shadow */
+}
+
+.slider-container:hover .slider-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollFeatures {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-270px * 5 - 125px)); /* Adjust based on card width, count, and gap */
+  }
+}
+
+.ai-feature-slide {
+  flex: 0 0 auto;
+  width: 270px;
+}
+
+.duplicate-card {
+  opacity: 1;
+}
+
 .ai-feature-card {
   background-color: #ffffff;
   border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 2rem;
-  height: 100%;
+  border-radius: 12px; /* Increased border radius */
+  padding: 1.5rem;
+  height: 220px; /* Fixed height for all cards */
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -47,7 +122,7 @@
 
 .ai-feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   border-color: #1473e6;
 }
 
@@ -74,17 +149,19 @@
 }
 
 .ai-feature-card h4 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: #1473e6;
   transition: color 0.3s ease;
+  padding-right: 80px; /* Make room for the status badge */
 }
 
 .ai-feature-card p {
   color: #6c757d;
   margin-bottom: 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* Status indicators */
@@ -99,7 +176,7 @@
 .badge-in-progress {
   display: inline-block;
   padding: 0.35rem 0.8rem;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1;
   border-radius: 20px;
@@ -126,6 +203,58 @@
   border-left: 4px solid #fb8c00;
 }
 
-.ai-feature-card h4 {
-  padding-right: 80px; /* Make room for the status badge */
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .ai-feature-slide {
+    width: 240px;
+  }
+  
+  .ai-feature-card {
+    height: 200px;
+  }
+  
+  @keyframes scrollFeatures {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-240px * 5 - 125px));
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .ai-features-section {
+    padding: 4rem 0;
+  }
+  
+  .ai-feature-slide {
+    width: 220px;
+  }
+  
+  .ai-feature-card {
+    height: 220px;
+    padding: 1.25rem;
+  }
+  
+  .ai-feature-card h4 {
+    font-size: 1rem;
+  }
+  
+  .ai-feature-card p {
+    font-size: 0.85rem;
+  }
+  
+  @keyframes scrollFeatures {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-220px * 5 - 100px));
+    }
+  }
+  
+  .slider-track {
+    gap: 20px;
+  }
 }

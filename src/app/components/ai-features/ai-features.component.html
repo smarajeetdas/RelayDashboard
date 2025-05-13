@@ -8,23 +8,45 @@
       The next generation of Relay brings cutting-edge artificial intelligence to revolutionize your testing workflows.
     </p>
     
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let feature of aiFeatures; let i = index" 
-          [attr.data-animation]="i % 2 === 0 ? 'fade-in-left' : 'fade-in-right'" 
-          [attr.data-animation-delay]="(i % 3) + 1">
-        <div class="ai-feature-card" 
-             [ngClass]="{'active': feature.isActive, 'completed': feature.status === 'completed', 'in-progress': feature.status === 'in-progress'}" 
-             (click)="toggleFeature(feature)">
-          <div class="status-indicator">
-            <span *ngIf="feature.status === 'completed'" class="badge-completed">
-              <i class="fas fa-check-circle"></i> Completed
-            </span>
-            <span *ngIf="feature.status === 'in-progress'" class="badge-in-progress">
-              <i class="fas fa-spinner fa-spin"></i> In Progress
-            </span>
+    <!-- Horizontal scrolling slider for AI features -->
+    <div class="ai-features-slider" data-animation="fade-in-up" data-animation-delay="1">
+      <div class="slider-container">
+        <div class="slider-track" #sliderTrack>
+          <!-- AI Features -->
+          <div class="ai-feature-slide" *ngFor="let feature of aiFeatures; let i = index">
+            <div class="ai-feature-card" 
+                 [ngClass]="{'active': feature.isActive, 'completed': feature.status === 'completed', 'in-progress': feature.status === 'in-progress'}" 
+                 (click)="toggleFeature(feature)">
+              <div class="status-indicator">
+                <span *ngIf="feature.status === 'completed'" class="badge-completed">
+                  <i class="fas fa-check-circle"></i> Completed
+                </span>
+                <span *ngIf="feature.status === 'in-progress'" class="badge-in-progress">
+                  <i class="fas fa-spinner fa-spin"></i> In Progress
+                </span>
+              </div>
+              <h4>{{feature.title}}</h4>
+              <p>{{feature.description}}</p>
+            </div>
           </div>
-          <h4>{{feature.title}}</h4>
-          <p>{{feature.description}}</p>
+          
+          <!-- Duplicate for continuous scrolling effect -->
+          <div class="ai-feature-slide duplicate-card" *ngFor="let feature of aiFeatures; let i = index">
+            <div class="ai-feature-card"
+                 [ngClass]="{'active': feature.isActive, 'completed': feature.status === 'completed', 'in-progress': feature.status === 'in-progress'}" 
+                 (click)="toggleFeature(feature)">
+              <div class="status-indicator">
+                <span *ngIf="feature.status === 'completed'" class="badge-completed">
+                  <i class="fas fa-check-circle"></i> Completed
+                </span>
+                <span *ngIf="feature.status === 'in-progress'" class="badge-in-progress">
+                  <i class="fas fa-spinner fa-spin"></i> In Progress
+                </span>
+              </div>
+              <h4>{{feature.title}}</h4>
+              <p>{{feature.description}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
