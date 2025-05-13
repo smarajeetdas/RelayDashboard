@@ -139,8 +139,22 @@
   left: 0;
   width: 0;
   height: 3px;
-  background: linear-gradient(to right, #1473e6, #0d5bbd);
   transition: width 0.3s ease;
+}
+
+/* Default color for cards */
+.ai-feature-card::after {
+  background: linear-gradient(to right, #1473e6, #0d5bbd);
+}
+
+/* Green color for completed cards */
+.ai-feature-card.completed::after {
+  background: linear-gradient(to right, #43a047, #2e7d32);
+}
+
+/* Orange color for in-progress cards */
+.ai-feature-card.in-progress::after {
+  background: linear-gradient(to right, #fb8c00, #ef6c00);
 }
 
 .ai-feature-card:hover::after,
@@ -155,6 +169,24 @@
   color: #1473e6;
   transition: color 0.3s ease;
   padding-right: 80px; /* Make room for the status badge */
+}
+
+/* Status-specific title colors */
+.ai-feature-card.completed h4 {
+  color: #43a047;
+}
+
+.ai-feature-card.in-progress h4 {
+  color: #fb8c00;
+}
+
+/* Enhanced hover colors for titles */
+.ai-feature-card.completed:hover h4 {
+  color: #2e7d32;
+}
+
+.ai-feature-card.in-progress:hover h4 {
+  color: #ef6c00;
 }
 
 .ai-feature-card p {
@@ -201,6 +233,17 @@
 
 .ai-feature-card.in-progress {
   border-left: 4px solid #fb8c00;
+}
+
+/* Enhanced hover effects for status-specific cards */
+.ai-feature-card.completed:hover {
+  border-color: #43a047;
+  box-shadow: 0 12px 24px rgba(67, 160, 71, 0.15);
+}
+
+.ai-feature-card.in-progress:hover {
+  border-color: #fb8c00;
+  box-shadow: 0 12px 24px rgba(251, 140, 0, 0.15);
 }
 
 /* Responsive adjustments */
