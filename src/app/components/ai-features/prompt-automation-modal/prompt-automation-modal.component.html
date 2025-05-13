@@ -1,0 +1,75 @@
+<div class="modal-overlay" *ngIf="isVisible" (click)="handleClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Prompt Based Web Automation</h3>
+      <button class="close-btn" (click)="handleClose()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <!-- Context Section -->
+      <div class="modal-section">
+        <div class="section-icon">📌</div>
+        <div class="section-content">
+          <h4>Context</h4>
+          <p>
+            Test automation often requires extensive scripting, which is time-consuming and inflexible. Teams struggle to adapt test cases quickly as application flows evolve, resulting in slower test cycles and reduced test coverage.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Proposal Section -->
+      <div class="modal-section">
+        <div class="section-icon">💡</div>
+        <div class="section-content">
+          <h4>Proposal</h4>
+          <p>
+            Relay's Prompt Based Web Automation enables test execution using simple natural language instructions:
+          </p>
+          <ul>
+            <li>Translates prompts into executable test flows</li>
+            <li>Requires no coding or scripting effort</li>
+            <li>Adapts dynamically to UI and content changes</li>
+            <li>Supports rapid authoring and maintenance of test cases</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Outcome Section -->
+      <div class="modal-section">
+        <div class="section-icon">🎯</div>
+        <div class="section-content">
+          <h4>Outcome</h4>
+          <ul>
+            <li>Faster test creation with minimal technical skills</li>
+            <li>Increased test coverage across user journeys</li>
+            <li>Quick adaptation to UI updates</li>
+            <li>Empowered QA and business teams alike</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Business Value Section -->
+      <div class="modal-section">
+        <div class="section-icon">💼</div>
+        <div class="section-content">
+          <h4>Business Value</h4>
+          <ul>
+            <li>70% reduction in test authoring time</li>
+            <li>Lower dependency on technical resources</li>
+            <li>Faster go-to-market through accelerated test cycles</li>
+            <li>Enhanced agility in response to product changes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <div class="status-badge complete">
+        <i class="fas fa-check-circle"></i> Available Now
+      </div>
+      <button class="btn-primary" (click)="handleClose()">Close</button>
+    </div>
+  </div>
+</div>

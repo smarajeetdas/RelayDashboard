@@ -52,6 +52,18 @@
     </div>
   </div>
 
+  <!-- Prompt Based Web Automation Modal -->
+  <app-prompt-automation-modal
+    [isVisible]="showPromptAutomationModal"
+    (closeModalEvent)="closePromptAutomationModal()">
+  </app-prompt-automation-modal>
+
+  <!-- Intelligent Image Comparison Modal -->
+  <app-image-comparison-modal
+    [isVisible]="showImageComparisonModal"
+    (closeModalEvent)="closeImageComparisonModal()">
+  </app-image-comparison-modal>
+
   <!-- Intelligent Test Results Summary Modal -->
   <app-intelligent-summary-modal 
     [isVisible]="showTestResultsSummaryModal"

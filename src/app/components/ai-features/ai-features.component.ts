@@ -49,6 +49,8 @@ export class AiFeaturesComponent implements OnInit, AfterViewInit {
   ];
 
   // Modal control variables
+  showPromptAutomationModal: boolean = false;
+  showImageComparisonModal: boolean = false;
   showTestResultsSummaryModal: boolean = false;
   showTestCaseValidationModal: boolean = false;
   showTestDataRecommendationModal: boolean = false;
@@ -87,7 +89,11 @@ export class AiFeaturesComponent implements OnInit, AfterViewInit {
     feature.isActive = !feature.isActive;
 
     // Handle specific feature actions
-    if (feature.id === 'test-results-summary' && feature.isActive) {
+    if (feature.id === 'prompt-based-automation' && feature.isActive) {
+      this.openPromptAutomationModal();
+    } else if (feature.id === 'intelligent-image-comparison' && feature.isActive) {
+      this.openImageComparisonModal();
+    } else if (feature.id === 'test-results-summary' && feature.isActive) {
       this.openTestResultsSummaryModal();
     } else if (feature.id === 'test-case-validation' && feature.isActive) {
       this.openTestCaseValidationModal();
@@ -133,6 +139,34 @@ export class AiFeaturesComponent implements OnInit, AfterViewInit {
     
     // Reset the active state of the related feature
     const feature = this.aiFeatures.find(f => f.id === 'test-data-recommendation');
+    if (feature) {
+      feature.isActive = false;
+    }
+  }
+
+  openPromptAutomationModal(): void {
+    this.showPromptAutomationModal = true;
+  }
+
+  closePromptAutomationModal(): void {
+    this.showPromptAutomationModal = false;
+    
+    // Reset the active state of the related feature
+    const feature = this.aiFeatures.find(f => f.id === 'prompt-based-automation');
+    if (feature) {
+      feature.isActive = false;
+    }
+  }
+
+  openImageComparisonModal(): void {
+    this.showImageComparisonModal = true;
+  }
+
+  closeImageComparisonModal(): void {
+    this.showImageComparisonModal = false;
+    
+    // Reset the active state of the related feature
+    const feature = this.aiFeatures.find(f => f.id === 'intelligent-image-comparison');
     if (feature) {
       feature.isActive = false;
     }

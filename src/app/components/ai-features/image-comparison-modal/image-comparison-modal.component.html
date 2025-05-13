@@ -1,0 +1,76 @@
+<div class="modal-overlay" *ngIf="isVisible" (click)="handleClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Intelligent Image Comparison</h3>
+      <span class="tech-badge">Powered by OpenCV and OCR</span>
+      <button class="close-btn" (click)="handleClose()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="modal-body">
+      <!-- Context Section -->
+      <div class="modal-section">
+        <div class="section-icon">📌</div>
+        <div class="section-content">
+          <h4>Context</h4>
+          <p>
+            Traditional image comparisons in testing are pixel-based and fail to capture meaningful visual differences like text mismatches or dynamic layouts. This leads to false positives and missed visual regressions.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Proposal Section -->
+      <div class="modal-section">
+        <div class="section-icon">💡</div>
+        <div class="section-content">
+          <h4>Proposal</h4>
+          <p>
+            Relay's Intelligent Image Comparison uses computer vision and OCR to analyze UI screenshots meaningfully:
+          </p>
+          <ul>
+            <li>Detects layout shifts, visual inconsistencies, and missing elements</li>
+            <li>Reads and compares on-screen text using OCR</li>
+            <li>Ignores irrelevant pixel-level noise (e.g., rendering variations)</li>
+            <li>Automates visual validations with high accuracy</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Outcome Section -->
+      <div class="modal-section">
+        <div class="section-icon">🎯</div>
+        <div class="section-content">
+          <h4>Outcome</h4>
+          <ul>
+            <li>Reliable detection of real UI changes</li>
+            <li>Elimination of false positives in visual tests</li>
+            <li>Automated verification of both structure and content</li>
+            <li>90% accuracy on image verification</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Business Value Section -->
+      <div class="modal-section">
+        <div class="section-icon">💼</div>
+        <div class="section-content">
+          <h4>Business Value</h4>
+          <ul>
+            <li>80% reduction in manual visual verification effort</li>
+            <li>Fewer bugs reaching production due to visual issues</li>
+            <li>Faster test runs with more relevant results</li>
+            <li>Enhanced user experience through consistent UI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <div class="status-badge complete">
+        <i class="fas fa-check-circle"></i> Available Now
+      </div>
+      <button class="btn-primary" (click)="handleClose()">Close</button>
+    </div>
+  </div>
+</div>

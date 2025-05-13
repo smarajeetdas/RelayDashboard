@@ -15,6 +15,8 @@ import { AiFeaturesComponent } from './components/ai-features/ai-features.compon
 import { IntelligentSummaryModalComponent } from './components/ai-features/intelligent-summary-modal/intelligent-summary-modal.component';
 import { TestCaseValidationModalComponent } from './components/ai-features/test-case-validation-modal/test-case-validation-modal.component';
 import { TestDataRecommendationModalComponent } from './components/ai-features/test-data-recommendation-modal/test-data-recommendation-modal.component';
+import { PromptAutomationModalComponent } from './components/ai-features/prompt-automation-modal/prompt-automation-modal.component';
+import { ImageComparisonModalComponent } from './components/ai-features/image-comparison-modal/image-comparison-modal.component';
 import { AdobeServicesComponent } from './components/adobe-services/adobe-services.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { CtaComponent } from './components/cta/cta.component';
@@ -37,6 +39,8 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     IntelligentSummaryModalComponent,
     TestCaseValidationModalComponent,
     TestDataRecommendationModalComponent,
+    PromptAutomationModalComponent,
+    ImageComparisonModalComponent,
     AdobeServicesComponent,
     TestimonialsComponent,
     CtaComponent,
