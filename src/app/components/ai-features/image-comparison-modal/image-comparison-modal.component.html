@@ -1,7 +1,10 @@
 <div class="modal-backdrop" [class.active]="isVisible" (click)="handleClose()">
   <div class="modal-container" [class.active]="isVisible" (click)="$event.stopPropagation()">
     <div class="modal-header">
-      <h3>Intelligent Image Comparison</h3>
+      <div>
+        <h3>Intelligent Image Comparison</h3>
+        <span class="tech-badge">Powered by OpenCV and OCR</span>
+      </div>
       <button class="close-button" (click)="handleClose()">
         ×
       </button>

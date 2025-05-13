@@ -133,6 +133,22 @@
   color: #333;
 }
 
+.context .section-content h4 {
+  color: #e57373;
+}
+
+.proposal .section-content h4 {
+  color: #ffb74d;
+}
+
+.outcome .section-content h4 {
+  color: #4fc3f7;
+}
+
+.business-value .section-content h4 {
+  color: #66bb6a;
+}
+
 .section-content p {
   margin: 0 0 15px 0;
   color: #555;
