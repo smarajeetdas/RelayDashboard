@@ -80,7 +80,7 @@
   display: flex;
   padding: 0 1rem;
   width: fit-content; 
-  animation: scrollFeatures 45s linear infinite;
+  animation: scrollFeatures 30s linear infinite;
   gap: 25px;
   padding-bottom: 10px; /* Provide space for shadow */
 }
