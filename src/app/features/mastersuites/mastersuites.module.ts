@@ -7,16 +7,19 @@ import { SharedModule } from '../../shared/shared.module';
 // Import components
 import { MasterSuiteListComponent } from './pages/mastersuite-list/mastersuite-list.component';
 import { MasterSuiteDetailComponent } from './pages/mastersuite-detail/mastersuite-detail.component';
+import { MasterSuiteResultComponent } from './pages/mastersuite-result/mastersuite-result.component';
 
 const routes: Routes = [
   { path: '', component: MasterSuiteListComponent },
-  { path: ':id', component: MasterSuiteDetailComponent }
+  { path: ':id', component: MasterSuiteDetailComponent },
+  { path: ':id/results/:resultId', component: MasterSuiteResultComponent }
 ];
 
 @NgModule({
   declarations: [
     MasterSuiteListComponent,
-    MasterSuiteDetailComponent
+    MasterSuiteDetailComponent,
+    MasterSuiteResultComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,125 @@
+<div class="result-container">
+  <!-- Breadcrumb navigation -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/mastersuites']">Master Suites</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Results</li>
+    </ol>
+  </nav>
+
+  <h2 class="page-title">Master Suite Results</h2>
+
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <!-- Summary section -->
+    <div class="summary-card">
+      <div class="summary-header">
+        <h3 class="summary-title">{{ masterSuiteResult.masterSuiteName }}</h3>
+        <span class="master-suite-status" [ngClass]="getStatusClass(masterSuiteResult.status)">
+          {{ masterSuiteResult.status }}
+        </span>
+      </div>
+
+      <div class="summary-stats">
+        <div class="stat-item">
+          <div class="stat-label">Execution Time</div>
+          <div class="stat-value">{{ formatDuration(masterSuiteResult.executionTime) }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Last Run</div>
+          <div class="stat-value">{{ masterSuiteResult.lastRunTimestamp | date:'MMM d, y h:mm a' }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Executed By</div>
+          <div class="stat-value executed-by">{{ masterSuiteResult.executedBy }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Test Suites</div>
+          <div class="stat-value">{{ masterSuiteResult.testSuites.length }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Test Cases</div>
+          <div class="stat-value">{{ masterSuiteResult.totalCount }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="progress-bar-container">
+            <div class="progress-bar" [style.width.%]="(masterSuiteResult.passedCount / masterSuiteResult.totalCount) * 100"></div>
+          </div>
+          <div class="progress-text">
+            <span class="count-passed">{{ masterSuiteResult.passedCount }} passed</span>
+            <span class="count-failed">{{ masterSuiteResult.failedCount }} failed</span>
+            <span class="count-skipped">{{ masterSuiteResult.skippedCount }} skipped</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter panel -->
+    <div class="filter-panel">
+      <h4 class="filter-title">Filters</h4>
+      <div class="filter-form">
+        <div class="filter-group">
+          <div class="filter-label">Status</div>
+          <select class="form-control" [(ngModel)]="statusFilter">
+            <option value="All">All</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Aborted">Aborted</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Executed By</div>
+          <input type="text" class="form-control" [(ngModel)]="executedByFilter" placeholder="Email address">
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="btn btn-reset" (click)="resetFilters()">Reset</button>
+        <button class="btn btn-apply" (click)="applyFilters()">Apply</button>
+      </div>
+    </div>
+
+    <!-- Test Suites Table -->
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Duration</th>
+          <th>Last Run</th>
+          <th>Test Cases</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="filteredTestSuites.length === 0">
+          <td colspan="5" class="no-results">No test suites match the current filters.</td>
+        </tr>
+        <tr *ngFor="let testSuite of filteredTestSuites" (click)="goToTestSuiteResult(testSuite.id)">
+          <td>{{ testSuite.name }}</td>
+          <td>
+            <span class="master-suite-status" [ngClass]="getStatusClass(testSuite.status)">
+              {{ testSuite.status }}
+            </span>
+          </td>
+          <td>{{ formatDuration(testSuite.executionDuration) }}</td>
+          <td>{{ testSuite.lastRunTimestamp | date:'MMM d, y h:mm a' }}</td>
+          <td>
+            <div class="test-count">
+              <span class="count-passed">{{ testSuite.passedCount }}</span> /
+              <span class="count-failed">{{ testSuite.failedCount }}</span> /
+              <span class="count-skipped">{{ testSuite.skippedCount }}</span>
+              ({{ testSuite.totalCount }} total)
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
