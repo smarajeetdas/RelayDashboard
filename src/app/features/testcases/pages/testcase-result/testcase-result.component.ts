@@ -14,9 +14,14 @@ export class TestcaseResultComponent implements OnInit {
   resultId: string = '';
   testResult: RestTestResult | undefined;
   testSteps: RestTestStep[] = [];
+  filteredTestSteps: RestTestStep[] = [];
   loading: boolean = true;
   error: string | null = null;
   activeTab: 'overview' | 'detail' | 'response' | 'validation' | 'report' = 'overview';
+  
+  // Filters
+  statusFilter: 'All' | 'PASSED' | 'FAILED' | 'IN_PROGRESS' | 'SCHEDULED' | 'ABORTED' | 'PENDING' = 'All';
+  endpointStatusFilter: 'All' | 'PASSED' | 'FAILED' = 'All';
   
   constructor(
     private route: ActivatedRoute,
@@ -59,6 +64,7 @@ export class TestcaseResultComponent implements OnInit {
       .subscribe(
         (steps) => {
           this.testSteps = steps;
+          this.filteredTestSteps = [...steps]; // Initialize filtered steps
           this.loading = false;
         },
         (error) => {
@@ -66,6 +72,28 @@ export class TestcaseResultComponent implements OnInit {
           this.loading = false;
         }
       );
+  }
+  
+  applyFilters(): void {
+    this.filteredTestSteps = this.testSteps.filter(step => {
+      // Apply test case status filter
+      if (this.statusFilter !== 'All' && this.testResult && this.testResult.status !== this.statusFilter) {
+        return false;
+      }
+      
+      // Apply endpoint status filter
+      if (this.endpointStatusFilter !== 'All' && step.status !== this.endpointStatusFilter) {
+        return false;
+      }
+      
+      return true;
+    });
+  }
+  
+  resetFilters(): void {
+    this.statusFilter = 'All';
+    this.endpointStatusFilter = 'All';
+    this.filteredTestSteps = [...this.testSteps];
   }
   
   goBack(): void {

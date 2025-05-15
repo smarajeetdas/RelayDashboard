@@ -12,7 +12,12 @@ export class MasterSuiteResultComponent implements OnInit {
   resultId: string = '';
   isLoading: boolean = true;
   masterSuiteResult: MasterSuiteResult;
-  statusFilter: 'All' | 'Passed' | 'Failed' = 'All';
+  
+  // Filters
+  statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
+  testSuiteStatusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
+  testCaseStatusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
+  endpointStatusFilter: 'All' | 'Passed' | 'Failed' = 'All';
   dateRangeFilter: { from: Date | null, to: Date | null } = { from: null, to: null };
   executedByFilter: string = '';
   filteredTestSuites: TestSuiteOverview[] = [];
@@ -34,6 +39,7 @@ export class MasterSuiteResultComponent implements OnInit {
   loadMasterSuiteResult(): void {
     // In a real application, this would be a service call
     // For now, we'll use mock data
+    this.isLoading = true;
     setTimeout(() => {
       this.masterSuiteResult = {
         id: this.resultId,
@@ -113,14 +119,30 @@ export class MasterSuiteResultComponent implements OnInit {
 
   applyFilters(): void {
     this.filteredTestSuites = this.masterSuiteResult.testSuites.filter(testSuite => {
-      // Apply status filter
-      if (this.statusFilter !== 'All' && testSuite.status !== this.statusFilter) {
+      // Apply master suite status filter
+      if (this.statusFilter !== 'All' && this.masterSuiteResult.status !== this.statusFilter) {
         return false;
       }
-
-      // Apply executed by filter (if implemented)
       
-      // Apply date range filter (if implemented)
+      // Apply test suite status filter
+      if (this.testSuiteStatusFilter !== 'All' && testSuite.status !== this.testSuiteStatusFilter) {
+        return false;
+      }
+      
+      // Apply test case status filter (simplified in this implementation)
+      // In a real app, you would check individual test cases within each test suite
+      
+      // Apply endpoint status filter (simplified in this implementation)
+      // In a real app, you would check individual endpoints within test cases
+      
+      // Apply executed by filter (if implemented)
+      if (this.executedByFilter && this.executedByFilter.trim() !== '') {
+        const lowerCaseExecutedBy = this.masterSuiteResult.executedBy.toLowerCase();
+        const filterValue = this.executedByFilter.toLowerCase().trim();
+        if (!lowerCaseExecutedBy.includes(filterValue)) {
+          return false;
+        }
+      }
       
       return true;
     });
@@ -128,6 +150,9 @@ export class MasterSuiteResultComponent implements OnInit {
 
   resetFilters(): void {
     this.statusFilter = 'All';
+    this.testSuiteStatusFilter = 'All';
+    this.testCaseStatusFilter = 'All';
+    this.endpointStatusFilter = 'All';
     this.dateRangeFilter = { from: null, to: null };
     this.executedByFilter = '';
     this.filteredTestSuites = [...this.masterSuiteResult.testSuites];

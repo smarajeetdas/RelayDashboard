@@ -66,13 +66,42 @@
       <h4 class="filter-title">Filters</h4>
       <div class="filter-form">
         <div class="filter-group">
-          <div class="filter-label">Status</div>
+          <div class="filter-label">MasterSuite Status</div>
           <select class="form-control" [(ngModel)]="statusFilter">
             <option value="All">All</option>
             <option value="Passed">Passed</option>
             <option value="Failed">Failed</option>
             <option value="In Progress">In Progress</option>
             <option value="Aborted">Aborted</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">TestSuite Status</div>
+          <select class="form-control" [(ngModel)]="testSuiteStatusFilter">
+            <option value="All">All</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Aborted">Aborted</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">TestCase Status</div>
+          <select class="form-control" [(ngModel)]="testCaseStatusFilter">
+            <option value="All">All</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Aborted">Aborted</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Endpoint Status</div>
+          <select class="form-control" [(ngModel)]="endpointStatusFilter">
+            <option value="All">All</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+            <option value="Skipped">Skipped</option>
           </select>
         </div>
         <div class="filter-group">

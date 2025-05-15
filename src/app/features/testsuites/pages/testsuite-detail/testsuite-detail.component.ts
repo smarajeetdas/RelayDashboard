@@ -49,6 +49,9 @@ export class TestSuiteDetailComponent implements OnInit {
   ];
   activeSidebarItem: string = 'with'; // Default to "Associated with" as shown in screenshot
   
+  // Latest result ID - in a real app this would come from an API
+  latestResultId: string = '1234';
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -119,5 +122,22 @@ export class TestSuiteDetailComponent implements OnInit {
     if (itemId === 'with') {
       this.activeTab = 'testcases'; // Show the testcases tab when Associated with is selected
     }
+    
+    // Navigate to results page if result sidebar item is selected
+    if (itemId === 'result') {
+      this.viewTestSuiteResults();
+    }
+  }
+  
+  viewTestSuiteResults(): void {
+    // Navigate to test suite results with the latest result ID
+    if (this.testSuiteId) {
+      this.router.navigate(['/testsuites', this.testSuiteId, 'results', this.latestResultId]);
+    }
+  }
+  
+  viewResults(testSuiteId: string, resultId: string): void {
+    // Navigate to specific test suite result
+    this.router.navigate(['/testsuites', testSuiteId, 'results', resultId]);
   }
 }

@@ -54,7 +54,12 @@
               <i class="fas fa-pencil-alt btn-icon-text"></i>
               Edit
             </button>
-            <button class="btn btn-action btn-execute">
+            <button class="btn btn-action btn-results ml-2" *ngIf="testSuite?.lastResultId" 
+                   (click)="viewResults(testSuite.id, testSuite.lastResultId)">
+              <i class="fas fa-chart-bar btn-icon-text"></i>
+              View Results
+            </button>
+            <button class="btn btn-action btn-execute ml-2">
               <i class="fas fa-play btn-icon-text"></i>
               Execute
             </button>

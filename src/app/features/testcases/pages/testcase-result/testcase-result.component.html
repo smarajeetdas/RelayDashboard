@@ -81,6 +81,45 @@
           </div>
         </div>
       </div>
+      
+      <!-- Filter panel -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Filters</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label">TestCase Status</label>
+              <select class="form-select" [(ngModel)]="statusFilter">
+                <option value="All">All</option>
+                <option value="PASSED">Passed</option>
+                <option value="FAILED">Failed</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="SCHEDULED">Scheduled</option>
+                <option value="ABORTED">Aborted</option>
+                <option value="PENDING">Pending</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Endpoint Status</label>
+              <select class="form-select" [(ngModel)]="endpointStatusFilter">
+                <option value="All">All</option>
+                <option value="PASSED">Passed</option>
+                <option value="FAILED">Failed</option>
+              </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end mb-3">
+              <button class="btn btn-primary me-2" (click)="applyFilters()">
+                <i class="fas fa-filter me-1"></i> Apply Filters
+              </button>
+              <button class="btn btn-outline-secondary" (click)="resetFilters()">
+                <i class="fas fa-times me-1"></i> Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Main content with tabs -->
       <div class="result-content card shadow-sm">
@@ -207,7 +246,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let step of testSteps" class="endpoint-row">
+                    <tr *ngFor="let step of filteredTestSteps" class="endpoint-row">
                       <td><span class="font-weight-bold">{{ step.name }}</span></td>
                       <td>
                         <span class="badge bg-info">{{ step.category }}</span>

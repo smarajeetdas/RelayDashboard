@@ -17,6 +17,7 @@ export interface TestSuiteDetail extends TestSuite {
   envType?: string;
   score?: number;
   testCases?: TestSuiteTestCase[];
+  lastResultId?: string;
 }
 
 export interface TestSuiteTestCase {
