@@ -1,26 +1,21 @@
+import { TestSuiteOverview } from '../../testsuites/models/testsuite-result.model';
+
 export interface MasterSuiteResult {
   id: string;
   masterSuiteId: string;
   masterSuiteName: string;
-  status: 'Passed' | 'Failed' | 'In Progress' | 'Aborted';
-  executionTime: number; // in milliseconds
-  lastRunTimestamp: string;
+  status: string;
+  lastRunTimestamp: string | Date;
+  executionTime: number;
   executedBy: string;
-  testSuites: TestSuiteOverview[];
+  totalCount: number;
   passedCount: number;
   failedCount: number;
   skippedCount: number;
-  totalCount: number;
+  abortedCount: number;
+  executionEnvironment?: string;
+  tags?: string[];
+  testSuites: TestSuiteOverview[];
 }
 
-export interface TestSuiteOverview {
-  id: string;
-  name: string;
-  status: 'Passed' | 'Failed' | 'In Progress' | 'Aborted';
-  executionDuration: number; // in milliseconds
-  lastRunTimestamp: string;
-  passedCount: number;
-  failedCount: number;
-  skippedCount: number;
-  totalCount: number;
-}
+export { TestSuiteOverview };

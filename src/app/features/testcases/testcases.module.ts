@@ -8,13 +8,13 @@ import { SharedModule } from '../../shared/shared.module';
 import { TestCaseListComponent } from './pages/testcase-list/testcase-list.component';
 import { TestCaseDetailComponent } from './pages/testcase-detail/testcase-detail.component';
 import { TestSimpleComponent } from './pages/test-simple/test-simple.component';
-import { TestcaseResultComponent } from './pages/testcase-result/testcase-result.component';
+import { TestCaseResultComponent } from './pages/testcase-result/testcase-result.component';
 
 const routes: Routes = [
   { path: '', component: TestCaseListComponent },
   { path: 'simple', component: TestSimpleComponent },
   { path: ':id', component: TestCaseDetailComponent },
-  { path: ':id/results/:resultId', component: TestcaseResultComponent }
+  { path: ':id/results/:resultId', component: TestCaseResultComponent }
 ];
 
 @NgModule({
@@ -22,7 +22,7 @@ const routes: Routes = [
     TestCaseListComponent,
     TestCaseDetailComponent,
     TestSimpleComponent,
-    TestcaseResultComponent
+    TestCaseResultComponent
   ],
   imports: [
     CommonModule,

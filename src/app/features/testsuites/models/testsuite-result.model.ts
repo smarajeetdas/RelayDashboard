@@ -1,25 +1,41 @@
+export interface TestCaseOverview {
+  id: string;
+  name: string;
+  status: string;
+  executionDuration: number;
+  lastRunTimestamp?: string | Date;
+  assertionsSummary?: string;
+  passedAssertions: number;
+  totalAssertions: number;
+  tags: string[];
+}
+
 export interface TestSuiteResult {
   id: string;
   testSuiteId: string;
   testSuiteName: string;
-  status: 'Passed' | 'Failed' | 'In Progress' | 'Aborted';
-  executionTime: number; // in milliseconds
-  lastRunTimestamp: string;
+  status: string;
+  lastRunTimestamp: string | Date;
+  executionTime: number;
   executedBy: string;
-  testCases: TestCaseOverview[];
+  totalCount: number;
   passedCount: number;
   failedCount: number;
   skippedCount: number;
-  totalCount: number;
+  abortedCount: number;
+  executionEnvironment?: string;
+  tags?: string[];
+  testCases: TestCaseOverview[];
 }
 
-export interface TestCaseOverview {
+export interface TestSuiteOverview {
   id: string;
   name: string;
-  status: 'Passed' | 'Failed' | 'In Progress' | 'Aborted';
-  executionDuration: number; // in milliseconds
-  assertionsSummary: string; // e.g., "3/5 passed"
-  passedAssertions: number;
-  totalAssertions: number;
-  tags: string[]; // categories or tags
+  status: string;
+  executionDuration: number;
+  lastRunTimestamp: string | Date;
+  totalCount: number;
+  passedCount: number;
+  failedCount: number;
+  skippedCount: number;
 }

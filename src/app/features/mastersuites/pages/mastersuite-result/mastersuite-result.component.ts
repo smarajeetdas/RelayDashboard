@@ -109,6 +109,7 @@ export class MasterSuiteResultComponent implements OnInit {
         passedCount: 49,
         failedCount: 5,
         skippedCount: 4,
+        abortedCount: 0,
         totalCount: 58
       };
       
@@ -172,15 +173,19 @@ export class MasterSuiteResultComponent implements OnInit {
   getStatusClass(status: string): string {
     switch (status) {
       case 'Passed':
-        return 'status-passed';
+        return 'passed';
       case 'Failed':
-        return 'status-failed';
+        return 'failed';
       case 'In Progress':
-        return 'status-in-progress';
+        return 'in-progress';
       case 'Aborted':
-        return 'status-aborted';
+        return 'aborted';
       default:
         return '';
     }
+  }
+  
+  navigateBack(): void {
+    this.router.navigate(['/mastersuites', this.masterSuiteId]);
   }
 }

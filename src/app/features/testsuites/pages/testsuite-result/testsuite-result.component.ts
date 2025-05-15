@@ -94,6 +94,7 @@ export class TestSuiteResultComponent implements OnInit {
         passedCount: 2,
         failedCount: 1,
         skippedCount: 1,
+        abortedCount: 0,
         totalCount: 4
       };
       
@@ -147,6 +148,11 @@ export class TestSuiteResultComponent implements OnInit {
   goToTestCaseResult(testCaseId: string): void {
     // Navigate to test case result
     this.router.navigate(['/testcases', testCaseId, 'results', this.resultId]);
+  }
+  
+  goBack(): void {
+    // Navigate back to test suite details
+    this.router.navigate(['/testsuites', this.testSuiteId]);
   }
 
   formatDuration(milliseconds: number): string {

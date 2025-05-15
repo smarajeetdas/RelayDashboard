@@ -1,36 +1,36 @@
 export interface TestResult {
   id: string;
   testCaseId: string;
-  status: 'PASSED' | 'FAILED' | 'PENDING' | 'IN_PROGRESS' | 'SCHEDULED' | 'ABORTED';
-  executedAt: string;
+  testCaseName: string;
+  status: string;
+  executedAt: Date;
   executedBy: string;
   duration: number;
-  runReport: string;
-  detail?: string;
-}
-
-export interface RestTestResult extends TestResult {
   requestType: string;
   requestUrl: string;
-  responseTime: number;
-  responseCode: number;
-  responseSize?: number;
-  startTime: string;
-  endTime: string;
   requestBody?: string;
+  responseCode: number;
+  responseTime: number;
+  responseSize?: number;
   responseBody?: string;
   responseHeaders?: { [key: string]: string };
-  validationStatus?: 'PASSED' | 'FAILED';
-  executionSuccess?: boolean;
+  executionSuccess: boolean;
+  validationStatus: string;
+  detail?: string;
+  runReport: string;
+  startTime: Date;
+  endTime: Date;
+  testSteps: TestStep[];
 }
 
-export interface RestTestStep {
+export interface TestStep {
+  id: string;
   name: string;
-  category: 'REST';
-  startTime: string;
-  endTime: string;
+  category: string;
+  status: string;
+  startTime: Date;
+  endTime: Date;
   requestType: string;
-  responseTime: number;
   responseCode: number;
-  status: 'PASSED' | 'FAILED';
+  responseTime: number;
 }

@@ -1,90 +1,49 @@
-@import '../../../../shared/styles/result-pages.css';
+/* Shared styles for all result pages */
 
-/* Component-specific styles */
-.tag-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-  border-radius: 12px;
+/* Common container styling */
+.result-container {
+  padding: 0 0 2rem 0;
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
   background-color: #f4f5f7;
-  color: #505f79;
-  font-size: 0.75rem;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* Test case assertions styles */
-.test-count {
-  font-size: 0.85rem;
-  color: #505f79;
-}
-
-/* Status pill styling */
-.status-pill {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: white;
-}
-
-/* Progress bar styling */
-.progress-bar-container {
-  width: 100%;
-  height: 6px;
-  background-color: #e9ecef;
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #1473e6, #0d66d0);
-  border-radius: 3px;
-}
-
-/* Tab styling */
-.tab-navigation {
-  display: flex;
-  border-bottom: 1px solid #dfe1e6;
-  margin-bottom: 0;
-}
-
-.tab-item {
-  padding: 0.75rem 1.25rem;
+.breadcrumb-item a {
   color: #42526e;
-  cursor: pointer;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #0052cc;
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #172b4d;
   font-weight: 500;
-  transition: all 0.2s ease;
-  border-bottom: 2px solid transparent;
 }
 
-.tab-item:hover {
-  color: #0052cc;
-  background-color: #f4f5f7;
+/* Page title */
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #172b4d;
 }
 
-.tab-item.active {
-  color: #0052cc;
-  border-bottom-color: #0052cc;
-}
-
-.tab-content {
-  padding: 1.5rem;
-}
-
-.tab-pane {
-  display: none;
-}
-
-.tab-pane.active {
-  display: block;
+/* Loading spinner */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  color: #42526e;
 }
 
 /* Status colors */
@@ -180,7 +139,45 @@
   font-weight: 500;
 }
 
-/* Tables styling */
+/* Tab styling */
+.tab-navigation {
+  display: flex;
+  border-bottom: 1px solid #dfe1e6;
+  margin-bottom: 0;
+}
+
+.tab-item {
+  padding: 0.75rem 1.25rem;
+  color: #42526e;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-item:hover {
+  color: #0052cc;
+  background-color: #f4f5f7;
+}
+
+.tab-item.active {
+  color: #0052cc;
+  border-bottom-color: #0052cc;
+}
+
+.tab-content {
+  padding: 1.5rem;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Data tables styling */
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -214,11 +211,28 @@
   font-style: italic;
 }
 
+/* Progress bar styling */
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background-color: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1473e6, #0d66d0);
+  border-radius: 3px;
+}
+
 /* Summary section styling */
 .summary-card {
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
 }
 
 .count-passed {

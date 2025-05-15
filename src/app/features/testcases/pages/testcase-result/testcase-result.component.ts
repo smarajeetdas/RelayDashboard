@@ -1,154 +1,206 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RestTestResult, RestTestStep } from '../../models/test-result.model';
-import { TestResultService } from '../../services/test-result.service';
-import { TestCaseService } from '../../services/testcase.service';
+import { TestResult } from '../../models/test-result.model';
 
 @Component({
   selector: 'app-testcase-result',
   templateUrl: './testcase-result.component.html',
   styleUrls: ['./testcase-result.component.css']
 })
-export class TestcaseResultComponent implements OnInit {
+export class TestCaseResultComponent implements OnInit {
   testCaseId: string = '';
   resultId: string = '';
-  testResult: RestTestResult | undefined;
-  testSteps: RestTestStep[] = [];
-  filteredTestSteps: RestTestStep[] = [];
   loading: boolean = true;
-  error: string | null = null;
-  activeTab: 'overview' | 'detail' | 'response' | 'validation' | 'report' = 'overview';
+  error: string = '';
+  testResult: TestResult;
+  activeTab: string = 'overview';
   
-  // Filters
-  statusFilter: 'All' | 'PASSED' | 'FAILED' | 'IN_PROGRESS' | 'SCHEDULED' | 'ABORTED' | 'PENDING' = 'All';
+  // Filtering
+  statusFilter: 'All' | 'PASSED' | 'FAILED' | 'IN_PROGRESS' | 'ABORTED' | 'SCHEDULED' | 'PENDING' = 'All';
   endpointStatusFilter: 'All' | 'PASSED' | 'FAILED' = 'All';
-  
+  filteredTestSteps: any[] = [];
+
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private testResultService: TestResultService,
-    private testCaseService: TestCaseService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    const resultIdParam = this.route.snapshot.paramMap.get('resultId');
-    
-    if (!idParam || !resultIdParam) {
-      this.error = 'Invalid test case or result ID.';
-      this.loading = false;
-      return;
-    }
-    
-    this.testCaseId = idParam;
-    this.resultId = resultIdParam;
+    this.testCaseId = this.route.snapshot.paramMap.get('id') || '';
+    this.resultId = this.route.snapshot.paramMap.get('resultId') || '';
     this.loadTestResult();
   }
 
   loadTestResult(): void {
-    this.testResultService.getRestTestResult(this.testCaseId, this.resultId)
-      .subscribe(
-        (result) => {
-          this.testResult = result;
-          this.loadTestSteps();
+    // Mock data for demonstration - in a real app, this would come from a service
+    setTimeout(() => {
+      this.testResult = {
+        id: this.resultId,
+        testCaseId: this.testCaseId,
+        testCaseName: 'User Authentication Test',
+        status: 'PASSED',
+        executedAt: new Date(),
+        executedBy: 'automation@example.com',
+        duration: 2500,
+        requestType: 'POST',
+        requestUrl: 'https://api.example.com/auth/login',
+        requestBody: JSON.stringify({
+          username: 'testuser',
+          password: 'password123'
+        }, null, 2),
+        responseCode: 200,
+        responseTime: 320,
+        responseSize: 1240,
+        responseBody: JSON.stringify({
+          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+          user: {
+            id: 123,
+            username: 'testuser',
+            email: 'test@example.com',
+            role: 'user'
+          }
+        }, null, 2),
+        responseHeaders: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
         },
-        (error) => {
-          this.error = 'Failed to load test result. ' + error.message;
-          this.loading = false;
-        }
-      );
+        executionSuccess: true,
+        validationStatus: 'PASSED',
+        runReport: 'Daily Regression - May 15, 2025',
+        startTime: new Date(Date.now() - 2500),
+        endTime: new Date(),
+        testSteps: [
+          {
+            id: '1',
+            name: 'Initialize Test Environment',
+            category: 'Setup',
+            status: 'PASSED',
+            startTime: new Date(Date.now() - 2500),
+            endTime: new Date(Date.now() - 2300),
+            requestType: 'N/A',
+            responseCode: 0,
+            responseTime: 200
+          },
+          {
+            id: '2',
+            name: 'Login API Request',
+            category: 'API',
+            status: 'PASSED',
+            startTime: new Date(Date.now() - 2300),
+            endTime: new Date(Date.now() - 1800),
+            requestType: 'POST',
+            responseCode: 200,
+            responseTime: 320
+          },
+          {
+            id: '3',
+            name: 'Token Validation',
+            category: 'Validation',
+            status: 'PASSED',
+            startTime: new Date(Date.now() - 1800),
+            endTime: new Date(Date.now() - 1500),
+            requestType: 'N/A',
+            responseCode: 0,
+            responseTime: 300
+          },
+          {
+            id: '4',
+            name: 'Profile Data Retrieval',
+            category: 'API',
+            status: 'PASSED',
+            startTime: new Date(Date.now() - 1500),
+            endTime: new Date(Date.now() - 900),
+            requestType: 'GET',
+            responseCode: 200,
+            responseTime: 600
+          },
+          {
+            id: '5',
+            name: 'User Permissions Check',
+            category: 'Validation',
+            status: 'PASSED',
+            startTime: new Date(Date.now() - 900),
+            endTime: new Date(Date.now() - 0),
+            requestType: 'N/A',
+            responseCode: 0,
+            responseTime: 900
+          }
+        ]
+      };
+
+      this.filteredTestSteps = [...this.testResult.testSteps];
+      this.loading = false;
+    }, 1000);
   }
-  
-  loadTestSteps(): void {
-    this.testResultService.getTestSteps(this.testCaseId, this.resultId)
-      .subscribe(
-        (steps) => {
-          this.testSteps = steps;
-          this.filteredTestSteps = [...steps]; // Initialize filtered steps
-          this.loading = false;
-        },
-        (error) => {
-          this.error = 'Failed to load test steps. ' + error.message;
-          this.loading = false;
-        }
-      );
+
+  setActiveTab(tabName: string): void {
+    this.activeTab = tabName;
   }
-  
+
   applyFilters(): void {
-    this.filteredTestSteps = this.testSteps.filter(step => {
-      // Apply test case status filter
-      if (this.statusFilter !== 'All' && this.testResult && this.testResult.status !== this.statusFilter) {
-        return false;
-      }
+    this.filteredTestSteps = this.testResult.testSteps.filter(step => {
+      const matchesStatus = this.statusFilter === 'All' || step.status === this.statusFilter;
+      const matchesEndpoint = this.endpointStatusFilter === 'All' || 
+        (step.category === 'API' && step.status === this.endpointStatusFilter);
       
-      // Apply endpoint status filter
-      if (this.endpointStatusFilter !== 'All' && step.status !== this.endpointStatusFilter) {
-        return false;
-      }
-      
-      return true;
+      return matchesStatus && matchesEndpoint;
     });
   }
-  
+
   resetFilters(): void {
     this.statusFilter = 'All';
     this.endpointStatusFilter = 'All';
-    this.filteredTestSteps = [...this.testSteps];
+    this.filteredTestSteps = [...this.testResult.testSteps];
   }
-  
-  goBack(): void {
-    this.router.navigate(['/testcases', this.testCaseId]);
-  }
-  
-  setActiveTab(tab: 'overview' | 'detail' | 'response' | 'validation' | 'report'): void {
-    this.activeTab = tab;
-  }
-  
+
   getStatusClass(status: string): string {
     switch (status) {
       case 'PASSED':
-        return 'success';
+        return 'passed';
       case 'FAILED':
-        return 'danger';
+        return 'failed';
       case 'IN_PROGRESS':
-        return 'primary';
-      case 'SCHEDULED':
-        return 'info';
+        return 'in-progress';
       case 'ABORTED':
-        return 'warning';
+        return 'aborted';
+      case 'SCHEDULED':
+        return 'scheduled';
       case 'PENDING':
-        return 'secondary';
+        return 'pending';
       default:
-        return 'secondary';
+        return '';
     }
   }
-  
+
   getStatusIcon(status: string): string {
     switch (status) {
       case 'PASSED':
-        return 'check-circle';
+        return 'fa-check';
       case 'FAILED':
-        return 'times-circle';
+        return 'fa-times';
       case 'IN_PROGRESS':
-        return 'spinner fa-pulse';
-      case 'SCHEDULED':
-        return 'clock';
+        return 'fa-spinner fa-spin';
       case 'ABORTED':
-        return 'hand-paper';
+        return 'fa-hand-paper';
+      case 'SCHEDULED':
+        return 'fa-clock';
       case 'PENDING':
-        return 'hourglass-half';
+        return 'fa-hourglass-half';
       default:
-        return 'question-circle';
+        return 'fa-question';
     }
   }
-  
-  formatJson(json: string): string {
-    if (!json) return '';
+
+  formatJson(jsonString: string): string {
     try {
-      const obj = JSON.parse(json);
+      const obj = JSON.parse(jsonString);
       return JSON.stringify(obj, null, 2);
     } catch (e) {
-      return json;
+      return jsonString;
     }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/testcases', this.testCaseId]);
   }
 }
