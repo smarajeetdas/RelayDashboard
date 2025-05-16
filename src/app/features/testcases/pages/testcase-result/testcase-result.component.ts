@@ -16,8 +16,8 @@ export class TestCaseResultComponent implements OnInit {
   activeTab: string = 'overview';
   
   // Filtering
-  statusFilter: 'All' | 'PASSED' | 'FAILED' | 'IN_PROGRESS' | 'ABORTED' | 'SCHEDULED' | 'PENDING' = 'All';
-  endpointStatusFilter: 'All' | 'PASSED' | 'FAILED' = 'All';
+  statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' | 'Scheduled' | 'Pending' = 'All';
+  endpointStatusFilter: 'All' | 'Passed' | 'Failed' = 'All';
   filteredTestSteps: any[] = [];
 
   constructor(
@@ -38,7 +38,7 @@ export class TestCaseResultComponent implements OnInit {
         id: this.resultId,
         testCaseId: this.testCaseId,
         testCaseName: 'User Authentication Test',
-        status: 'PASSED',
+        status: 'Passed',
         executedAt: new Date(),
         executedBy: 'automation@example.com',
         duration: 2500,
@@ -65,7 +65,7 @@ export class TestCaseResultComponent implements OnInit {
           'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
         },
         executionSuccess: true,
-        validationStatus: 'PASSED',
+        validationStatus: 'Passed',
         runReport: 'Daily Regression - May 15, 2025',
         startTime: new Date(Date.now() - 2500),
         endTime: new Date(),
@@ -74,7 +74,7 @@ export class TestCaseResultComponent implements OnInit {
             id: '1',
             name: 'Initialize Test Environment',
             category: 'Setup',
-            status: 'PASSED',
+            status: 'Passed',
             startTime: new Date(Date.now() - 2500),
             endTime: new Date(Date.now() - 2300),
             requestType: 'N/A',
@@ -85,7 +85,7 @@ export class TestCaseResultComponent implements OnInit {
             id: '2',
             name: 'Login API Request',
             category: 'API',
-            status: 'PASSED',
+            status: 'Passed',
             startTime: new Date(Date.now() - 2300),
             endTime: new Date(Date.now() - 1800),
             requestType: 'POST',
@@ -96,7 +96,7 @@ export class TestCaseResultComponent implements OnInit {
             id: '3',
             name: 'Token Validation',
             category: 'Validation',
-            status: 'PASSED',
+            status: 'Passed',
             startTime: new Date(Date.now() - 1800),
             endTime: new Date(Date.now() - 1500),
             requestType: 'N/A',
@@ -107,7 +107,7 @@ export class TestCaseResultComponent implements OnInit {
             id: '4',
             name: 'Profile Data Retrieval',
             category: 'API',
-            status: 'PASSED',
+            status: 'Passed',
             startTime: new Date(Date.now() - 1500),
             endTime: new Date(Date.now() - 900),
             requestType: 'GET',
@@ -118,7 +118,7 @@ export class TestCaseResultComponent implements OnInit {
             id: '5',
             name: 'User Permissions Check',
             category: 'Validation',
-            status: 'PASSED',
+            status: 'Passed',
             startTime: new Date(Date.now() - 900),
             endTime: new Date(Date.now() - 0),
             requestType: 'N/A',
@@ -155,16 +155,22 @@ export class TestCaseResultComponent implements OnInit {
 
   getStatusClass(status: string): string {
     switch (status) {
+      case 'Passed':
       case 'PASSED':
         return 'passed';
+      case 'Failed':
       case 'FAILED':
         return 'failed';
+      case 'In Progress':
       case 'IN_PROGRESS':
         return 'in-progress';
+      case 'Aborted':
       case 'ABORTED':
         return 'aborted';
+      case 'Scheduled':
       case 'SCHEDULED':
         return 'scheduled';
+      case 'Pending':
       case 'PENDING':
         return 'pending';
       default:
@@ -174,20 +180,26 @@ export class TestCaseResultComponent implements OnInit {
 
   getStatusIcon(status: string): string {
     switch (status) {
+      case 'Passed':
       case 'PASSED':
-        return 'fa-check';
+        return 'check';
+      case 'Failed':
       case 'FAILED':
-        return 'fa-times';
+        return 'times';
+      case 'In Progress':
       case 'IN_PROGRESS':
-        return 'fa-spinner fa-spin';
+        return 'spinner fa-spin';
+      case 'Aborted':
       case 'ABORTED':
-        return 'fa-hand-paper';
+        return 'hand-paper';
+      case 'Scheduled':
       case 'SCHEDULED':
-        return 'fa-clock';
+        return 'clock';
+      case 'Pending':
       case 'PENDING':
-        return 'fa-hourglass-half';
+        return 'hourglass-half';
       default:
-        return 'fa-question';
+        return 'question';
     }
   }
 

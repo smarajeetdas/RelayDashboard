@@ -72,22 +72,22 @@
       <div class="filter-form">
         <div class="filter-group">
           <label class="filter-label">TestCase Status</label>
-          <select class="form-select" [(ngModel)]="statusFilter">
+          <select class="form-control" [(ngModel)]="statusFilter">
             <option value="All">All</option>
-            <option value="PASSED">Passed</option>
-            <option value="FAILED">Failed</option>
-            <option value="IN_PROGRESS">In Progress</option>
-            <option value="SCHEDULED">Scheduled</option>
-            <option value="ABORTED">Aborted</option>
-            <option value="PENDING">Pending</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Scheduled">Scheduled</option>
+            <option value="Aborted">Aborted</option>
+            <option value="Pending">Pending</option>
           </select>
         </div>
         <div class="filter-group">
           <label class="filter-label">Endpoint Status</label>
-          <select class="form-select" [(ngModel)]="endpointStatusFilter">
+          <select class="form-control" [(ngModel)]="endpointStatusFilter">
             <option value="All">All</option>
-            <option value="PASSED">Passed</option>
-            <option value="FAILED">Failed</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
           </select>
         </div>
       </div>
@@ -164,7 +164,7 @@
                   <div class="info-row">
                     <div class="info-label">Response Code</div>
                     <div class="info-value">
-                      <span class="badge" [ngClass]="{'bg-success': testResult.responseCode < 400, 'bg-danger': testResult.responseCode >= 400}">
+                      <span class="badge" [ngClass]="{'bg-passed': testResult.responseCode < 400, 'bg-failed': testResult.responseCode >= 400}">
                         {{ testResult.responseCode }}
                       </span>
                     </div>
@@ -223,12 +223,12 @@
                     <td>{{ step.requestType }}</td>
                     <td>{{ step.responseTime }} ms</td>
                     <td>
-                      <span class="badge" [ngClass]="{'bg-success': step.responseCode < 400, 'bg-danger': step.responseCode >= 400}">
+                      <span class="badge" [ngClass]="{'bg-passed': step.responseCode < 400, 'bg-failed': step.responseCode >= 400}">
                         {{ step.responseCode }}
                       </span>
                     </td>
                     <td>
-                      <span class="badge" [ngClass]="{'bg-success': step.status === 'PASSED', 'bg-danger': step.status === 'FAILED'}">
+                      <span class="badge" [ngClass]="{'bg-passed': step.status === 'Passed', 'bg-failed': step.status === 'Failed'}">
                         {{ step.status }}
                       </span>
                     </td>
@@ -310,7 +310,7 @@
               <i class="fas fa-check-double me-2 text-success"></i> Validation Results
             </h3>
             <div class="validation-status mb-4">
-              <span class="badge" [ngClass]="{'bg-success': testResult.validationStatus === 'PASSED', 'bg-danger': testResult.validationStatus === 'FAILED'}">
+              <span class="badge" [ngClass]="{'bg-passed': testResult.validationStatus === 'Passed', 'bg-failed': testResult.validationStatus === 'Failed'}">
                 {{ testResult.validationStatus || 'Not Validated' }}
               </span>
             </div>
