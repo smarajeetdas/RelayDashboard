@@ -564,7 +564,16 @@
 }
 
 .filter-content {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-top: 0px solid #e1e1e1;
+}
+
+.filter-content.show {
   padding: 16px;
+  max-height: 500px;
   border-top: 1px solid #e1e1e1;
 }
 

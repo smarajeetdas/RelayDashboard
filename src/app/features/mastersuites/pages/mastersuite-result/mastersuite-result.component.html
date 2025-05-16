@@ -104,11 +104,65 @@
       </div>
     </div>
 
+    <!-- Filters panel (now positioned above the test suites) -->
+    <div class="filters-panel">
+      <div class="panel-header" (click)="toggleFiltersPanel()">
+        <h4 class="panel-title">Filters <i class="fas" [ngClass]="filtersExpanded ? 'fa-chevron-up' : 'fa-chevron-down'"></i></h4>
+      </div>
+      
+      <div class="filter-content" [ngClass]="{'show': filtersExpanded}">
+        <div class="filter-row">
+          <div class="filter-group">
+            <label>Master Suite Status</label>
+            <select class="form-control" [(ngModel)]="statusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+              <option value="In Progress">In Progress</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Test Suite Status</label>
+            <select class="form-control" [(ngModel)]="testSuiteStatusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Test Case Status</label>
+            <select class="form-control" [(ngModel)]="testCaseStatusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+              <option value="Skipped">Skipped</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Endpoint Status</label>
+            <select class="form-control" [(ngModel)]="endpointStatusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="filter-actions">
+          <button class="btn btn-reset" (click)="resetFilters()">Reset</button>
+          <button class="btn btn-apply" (click)="applyFilters()">Apply</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Test Suites Section -->
     <div class="test-suites-section">
       <div class="section-header">
         <h2 class="section-title">TestSuites</h2>
-        <div class="total-count">Total: {{ masterSuiteResult.testSuites.length }}</div>
+        <div class="total-count">Total: {{ filteredTestSuites.length }} of {{ masterSuiteResult.testSuites.length }}</div>
       </div>
       
       <!-- Test Suite List -->
@@ -230,59 +284,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Filters panel (collapsible) -->
-    <div class="filters-panel">
-      <div class="panel-header" (click)="toggleFiltersPanel()">
-        <h4 class="panel-title">Filters <i class="fas" [ngClass]="filtersExpanded ? 'fa-chevron-up' : 'fa-chevron-down'"></i></h4>
-      </div>
-      
-      <div class="filter-content" *ngIf="filtersExpanded">
-        <div class="filter-row">
-          <div class="filter-group">
-            <label>Master Suite Status</label>
-            <select class="form-control" [(ngModel)]="statusFilter" (change)="applyFilters()">
-              <option value="All">All</option>
-              <option value="Passed">Passed</option>
-              <option value="Failed">Failed</option>
-              <option value="In Progress">In Progress</option>
-            </select>
-          </div>
-          
-          <div class="filter-group">
-            <label>Test Suite Status</label>
-            <select class="form-control" [(ngModel)]="testSuiteStatusFilter" (change)="applyFilters()">
-              <option value="All">All</option>
-              <option value="Passed">Passed</option>
-              <option value="Failed">Failed</option>
-            </select>
-          </div>
-          
-          <div class="filter-group">
-            <label>Test Case Status</label>
-            <select class="form-control" [(ngModel)]="testCaseStatusFilter" (change)="applyFilters()">
-              <option value="All">All</option>
-              <option value="Passed">Passed</option>
-              <option value="Failed">Failed</option>
-              <option value="Skipped">Skipped</option>
-            </select>
-          </div>
-          
-          <div class="filter-group">
-            <label>Endpoint Status</label>
-            <select class="form-control" [(ngModel)]="endpointStatusFilter" (change)="applyFilters()">
-              <option value="All">All</option>
-              <option value="Passed">Passed</option>
-              <option value="Failed">Failed</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="filter-actions">
-          <button class="btn btn-reset" (click)="resetFilters()">Reset</button>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ export class MasterSuiteResultComponent implements OnInit {
   resultId: string = '';
   isLoading: boolean = true;
   masterSuiteResult: MasterSuiteResult;
-  filtersExpanded: boolean = false;
+  filtersExpanded: boolean = true;
   
   // Filters
   statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
