@@ -82,14 +82,29 @@ export class MasterSuiteDetailComponent implements OnInit {
   onSidebarItemSelect(itemId: string): void {
     this.activeSidebarItemId = itemId;
     
-    // Map sidebar items to corresponding tabs if needed
+    // Map sidebar items to corresponding tabs or navigate if needed
     if (itemId === 'execution') {
       this.setActiveTab('execution');
     } else if (itemId === 'basic') {
       this.setActiveTab('info');
     } else if (itemId === 'results') {
-      this.setActiveTab('execution');
+      // Navigate to the master suite results page with a specific result ID
+      // For demonstration purposes, we're using a hardcoded ID
+      this.viewLatestResult();
     }
+  }
+  
+  // Navigate to the latest result page
+  viewLatestResult(): void {
+    // In a real application, you would fetch the latest result ID from an API
+    // For now, we're using a mock ID
+    const latestResultId = 'e8726e04e623456fcaa';
+    this.router.navigate(['/mastersuites', this.masterSuiteId, 'results', latestResultId]);
+  }
+  
+  // Navigate to a specific execution result
+  viewExecutionResult(resultId: string): void {
+    this.router.navigate(['/mastersuites', this.masterSuiteId, 'results', resultId]);
   }
   
   toggleEnvironmentDropdown(event: Event): void {
