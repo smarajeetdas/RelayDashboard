@@ -70,23 +70,78 @@
       </div>
     </div>
     
-    <!-- Test Stats -->
-    <div class="test-stats">
-      <div class="stat-item">
-        <span class="stat-label">Steps:</span>
-        <span class="stat-value">{{ filteredTestSteps.length }}</span>
+    <!-- Test Stats with Visualization -->
+    <div class="visualization-section">
+      <div class="test-stats">
+        <div class="stat-item">
+          <span class="stat-label">Steps:</span>
+          <span class="stat-value">{{ filteredTestSteps.length }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Passed:</span>
+          <span class="stat-value">{{ getPassedStepsCount() }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Failed:</span>
+          <span class="stat-value">{{ getFailedStepsCount() }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Wait Avg:</span>
+          <span class="stat-value">{{ getAverageWaitTime() }}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Time taken:</span>
+          <span class="stat-value">{{ testResult.duration || '16 seconds' }}</span>
+        </div>
       </div>
-      <div class="stat-item">
-        <span class="stat-label">Passed:</span>
-        <span class="stat-value">{{ getPassedStepsCount() }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">Wait Avg:</span>
-        <span class="stat-value">{{ getAverageWaitTime() }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">Time taken:</span>
-        <span class="stat-value">{{ testResult.duration || '16 seconds' }}</span>
+      
+      <!-- Visualization Report Section -->
+      <div class="report-visualization">
+        <div class="report-title">Test Execution Report</div>
+        
+        <div class="visualization-container">
+          <!-- Status Distribution Chart -->
+          <div class="chart-section">
+            <div class="chart-title">Status Distribution</div>
+            <div class="pie-chart">
+              <div class="pie-chart-container">
+                <div class="chart-segment passed" [style.transform]="'rotate(' + getPassPercentage() + 'deg)'"></div>
+                <div class="chart-segment failed" [style.transform]="'rotate(' + (getPassPercentage() + 180) + 'deg)'"></div>
+                <div class="chart-center">
+                  <div class="chart-percentage">{{ (getPassedStepsCount() / filteredTestSteps.length * 100) | number:'1.0-0' }}%</div>
+                  <div class="chart-label">Pass Rate</div>
+                </div>
+              </div>
+            </div>
+            <div class="legend">
+              <div class="legend-item">
+                <div class="legend-color passed"></div>
+                <div class="legend-label">Passed ({{ getPassedStepsCount() }})</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color failed"></div>
+                <div class="legend-label">Failed ({{ getFailedStepsCount() }})</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Response Time Distribution -->
+          <div class="chart-section">
+            <div class="chart-title">Response Time Distribution</div>
+            <div class="bar-chart">
+              <div class="bar-container">
+                <div *ngFor="let step of filteredTestSteps; let i = index" 
+                     class="bar" 
+                     [ngClass]="{'passed': step.status === 'Passed', 'failed': step.status === 'Failed'}"
+                     [style.height.%]="getBarHeight(step.responseTime)">
+                </div>
+              </div>
+            </div>
+            <div class="bar-axis">
+              <div class="axis-label" *ngFor="let step of filteredTestSteps; let i = index">{{ i + 1 }}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     

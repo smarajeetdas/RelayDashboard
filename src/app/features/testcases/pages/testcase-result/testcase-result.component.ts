@@ -244,6 +244,10 @@ export class TestCaseResultComponent implements OnInit {
     return this.filteredTestSteps.filter(step => step.status === 'Passed').length;
   }
   
+  getFailedStepsCount(): number {
+    return this.filteredTestSteps.filter(step => step.status === 'Failed').length;
+  }
+  
   getAverageWaitTime(): string {
     if (this.filteredTestSteps.length === 0) return '0';
     
@@ -252,5 +256,25 @@ export class TestCaseResultComponent implements OnInit {
     
     // Format with 0 decimals if integer, otherwise 1 decimal place
     return avgTime % 1 === 0 ? avgTime.toString() : avgTime.toFixed(1);
+  }
+  
+  getPassPercentage(): number {
+    if (this.filteredTestSteps.length === 0) return 0;
+    
+    const passCount = this.getPassedStepsCount();
+    const passPercentage = (passCount / this.filteredTestSteps.length) * 100;
+    
+    // Convert percentage to angle for pie chart (180 degrees = 50%)
+    return (passPercentage / 100) * 360;
+  }
+  
+  getBarHeight(responseTime: number): number {
+    // Find the maximum response time to scale the bars
+    const maxResponseTime = Math.max(...this.filteredTestSteps.map(step => step.responseTime));
+    
+    if (maxResponseTime === 0) return 0;
+    
+    // Scale the height as a percentage of the maximum (maxing out at 95% for visual purposes)
+    return Math.min(95, (responseTime / maxResponseTime) * 95);
   }
 }
