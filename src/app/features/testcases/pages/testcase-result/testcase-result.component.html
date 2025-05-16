@@ -25,36 +25,38 @@
 
   <div *ngIf="!loading && !error && testResult">
     <!-- Result header section based on reference design -->
-    <div class="result-header">
-      <div class="header-content">
-        <div class="header-left">
-          <h1 class="test-name">{{ testResult.name || 'Global Suite' }}</h1>
-          
-          <div class="test-metadata">
-            <div class="status-badge bg-{{ getStatusClass(testResult.status) }}">Status: {{ testResult.status }}</div>
-            <div class="env-badge">Env: {{ testResult.environment || 'Windows' }}</div>
-            <div class="test-id">Run Manager: FT Stage</div>
-          </div>
-          
-          <div class="execution-details">
-            <div class="execution-item">
-              <span class="label">Executed on:</span> 
-              <span class="value">{{ testResult.startTime | date:'dd-MM-yyyy, HH:mm:ss' }}</span>
+    <div class="header-container">
+      <div class="result-header">
+        <div class="header-content">
+          <div class="header-left">
+            <h1 class="test-name">{{ testResult.name || 'Global Suite' }}</h1>
+            
+            <div class="test-metadata">
+              <div class="status-badge bg-{{ getStatusClass(testResult.status) }}">Status: {{ testResult.status }}</div>
+              <div class="env-badge">Env: {{ testResult.environment || 'Windows' }}</div>
+              <div class="test-id">Run Manager: FT Stage</div>
             </div>
-            <div class="execution-item">
-              <span class="label">Executed by:</span> 
-              <span class="value">{{ testResult.executedBy || 'test@example.com' }}</span>
+            
+            <div class="execution-details">
+              <div class="execution-item">
+                <span class="label">Executed on:</span> 
+                <span class="value">{{ testResult.startTime | date:'dd-MM-yyyy, HH:mm:ss' }}</span>
+              </div>
+              <div class="execution-item">
+                <span class="label">Executed by:</span> 
+                <span class="value">{{ testResult.executedBy || 'test@example.com' }}</span>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="header-right">
-          <div class="browser-info">
-            <span class="label">Browser:</span> 
-            <span class="value">{{ testResult.browser || 'Chrome' }}</span>
-          </div>
-          <div class="user-info">
-            <i class="fas fa-user-circle user-icon"></i>
+          
+          <div class="header-right">
+            <div class="browser-info">
+              <span class="label">Browser:</span> 
+              <span class="value">{{ testResult.browser || 'Chrome' }}</span>
+            </div>
+            <div class="user-info">
+              <i class="fas fa-user-circle user-icon"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -70,34 +72,42 @@
       </div>
     </div>
     
-    <!-- Test Stats with Visualization -->
-    <div class="visualization-section">
-      <div class="test-stats">
-        <div class="stat-item">
-          <span class="stat-label">Steps:</span>
-          <span class="stat-value">{{ filteredTestSteps.length }}</span>
+    <!-- Test Stats and Visualization in container -->
+    <div class="stats-chart-container">
+      <!-- Test Stats Panel -->
+      <div class="stats-panel">
+        <div class="panel-header">
+          <h3 class="panel-title">Test Execution Summary</h3>
         </div>
-        <div class="stat-item">
-          <span class="stat-label">Passed:</span>
-          <span class="stat-value">{{ getPassedStepsCount() }}</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">Failed:</span>
-          <span class="stat-value">{{ getFailedStepsCount() }}</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">Wait Avg:</span>
-          <span class="stat-value">{{ getAverageWaitTime() }}</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">Time taken:</span>
-          <span class="stat-value">{{ testResult.duration || '16 seconds' }}</span>
+        <div class="test-stats">
+          <div class="stat-item">
+            <span class="stat-label">Steps:</span>
+            <span class="stat-value">{{ filteredTestSteps.length }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Passed:</span>
+            <span class="stat-value">{{ getPassedStepsCount() }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Failed:</span>
+            <span class="stat-value">{{ getFailedStepsCount() }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Wait Avg:</span>
+            <span class="stat-value">{{ getAverageWaitTime() }}</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Time taken:</span>
+            <span class="stat-value">{{ testResult.duration || '16 seconds' }}</span>
+          </div>
         </div>
       </div>
       
       <!-- Visualization Report Section -->
       <div class="report-visualization">
-        <div class="report-title">Test Execution Report</div>
+        <div class="panel-header">
+          <h3 class="panel-title">Test Execution Report</h3>
+        </div>
         
         <div class="visualization-container">
           <!-- Status Distribution Chart -->
@@ -124,8 +134,6 @@
               </div>
             </div>
           </div>
-          
-
         </div>
       </div>
     </div>
