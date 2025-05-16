@@ -1,205 +1,297 @@
-<div class="result-container">
-  <!-- Breadcrumb navigation -->
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
-      <li class="breadcrumb-item"><a [routerLink]="['/testsuites']">Test Suites</a></li>
-      <li class="breadcrumb-item"><a [routerLink]="['/testsuites', testSuiteId]">Details</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Results</li>
-    </ol>
-  </nav>
-
-  <h2 class="page-title">Test Suite Results</h2>
-
-  <!-- Loading spinner -->
-  <div *ngIf="isLoading" class="loading-spinner">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
+<div class="adobe-container">
+  <!-- Top Navigation Bar -->
+  <div class="top-nav-bar">
+    <div class="breadcrumb-container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/testsuites']">Test Suites</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/testsuites', testSuiteId]">Details</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Results</li>
+        </ol>
+      </nav>
     </div>
-    <p class="mt-3">Loading test suite results...</p>
+    <div class="top-actions">
+      <button class="btn btn-primary"><i class="fas fa-redo-alt"></i> Run Again</button>
+      <button class="btn btn-secondary"><i class="fas fa-download"></i> Export</button>
+    </div>
   </div>
 
-  <div *ngIf="!isLoading && testSuiteResult">
-    <!-- Result header / Summary section -->
-    <div class="result-header card">
-      <div class="card-body">
-        <div class="row align-items-center">
-          <div class="col-md-7">
-            <div class="d-flex align-items-center">
-              <div class="status-indicator me-3">
-                <span class="status-badge text-{{ getStatusClass(testSuiteResult.status) }}">
-                  <i class="fas" [ngClass]="{
-                    'fa-check': testSuiteResult.status === 'Passed',
-                    'fa-times': testSuiteResult.status === 'Failed',
-                    'fa-spinner fa-spin': testSuiteResult.status === 'In Progress',
-                    'fa-hand-paper': testSuiteResult.status === 'Aborted'
-                  }"></i>
-                </span>
+  <!-- Page Title with Status -->
+  <div class="page-header">
+    <div class="page-title-section">
+      <h1 class="page-title">
+        <span class="status-dot" [ngClass]="{
+          'status-passed': testSuiteResult?.status === 'Passed',
+          'status-failed': testSuiteResult?.status === 'Failed',
+          'status-in-progress': testSuiteResult?.status === 'In Progress',
+          'status-aborted': testSuiteResult?.status === 'Aborted'
+        }"></span>
+        Test Suite Results
+        <span class="status-badge" [ngClass]="{
+          'status-passed': testSuiteResult?.status === 'Passed',
+          'status-failed': testSuiteResult?.status === 'Failed', 
+          'status-in-progress': testSuiteResult?.status === 'In Progress',
+          'status-aborted': testSuiteResult?.status === 'Aborted'
+        }">
+          <i class="fas" [ngClass]="{
+            'fa-check': testSuiteResult?.status === 'Passed',
+            'fa-times': testSuiteResult?.status === 'Failed',
+            'fa-spinner fa-spin': testSuiteResult?.status === 'In Progress',
+            'fa-hand-paper': testSuiteResult?.status === 'Aborted'
+          }"></i>
+          {{ testSuiteResult?.status }}
+        </span>
+      </h1>
+      <p class="page-subtitle">{{ testSuiteResult?.testSuiteName }}</p>
+    </div>
+    <div class="meta-info">
+      <div class="meta-info-item">
+        <span class="meta-label"><i class="far fa-calendar"></i> Date:</span>
+        <span class="meta-value">{{ testSuiteResult?.lastRunTimestamp | date:'MMM dd, yyyy' }}</span>
+      </div>
+      <div class="meta-info-item">
+        <span class="meta-label"><i class="far fa-clock"></i> Time:</span>
+        <span class="meta-value">{{ testSuiteResult?.lastRunTimestamp | date:'h:mm a' }}</span>
+      </div>
+      <div class="meta-info-item">
+        <span class="meta-label"><i class="fas fa-user"></i> Executed by:</span>
+        <span class="meta-value">{{ testSuiteResult?.executedBy }}</span>
+      </div>
+      <div class="meta-info-item">
+        <span class="meta-label"><i class="fas fa-stopwatch"></i> Duration:</span>
+        <span class="meta-value">{{ formatDuration(testSuiteResult?.executionTime) }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="spinner-overlay">
+      <div class="spinner">
+        <i class="fas fa-spinner fa-spin"></i>
+      </div>
+      <p>Loading test suite results...</p>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && testSuiteResult" class="result-content">
+    <!-- Summary Stats Card -->
+    <div class="stats-card">
+      <div class="stats-header">
+        <h2 class="stats-title">Test Results Summary</h2>
+      </div>
+      <div class="stats-body">
+        <div class="stats-charts">
+          <div class="chart-container">
+            <div class="pie-chart-wrapper">
+              <div class="pie-chart">
+                <!-- Simulated pie chart using CSS for demo -->
+                <div class="chart-slice passed" [style.transform]="'rotate(' + (testSuiteResult.passedCount / testSuiteResult.totalCount * 360) + 'deg)'"></div>
+                <div class="chart-slice failed" [style.transform]="'rotate(' + (testSuiteResult.failedCount / testSuiteResult.totalCount * 360 + (testSuiteResult.passedCount / testSuiteResult.totalCount * 360)) + 'deg)'"></div>
+                <div class="chart-center">
+                  <span class="percentage">{{ (testSuiteResult.passedCount / testSuiteResult.totalCount * 100) | number:'1.0-0' }}%</span>
+                </div>
               </div>
-              <div>
-                <h1 class="result-title mb-0">
-                  {{ testSuiteResult.testSuiteName }}
-                  <span class="badge bg-{{ getStatusClass(testSuiteResult.status) }} ms-2">{{ testSuiteResult.status }}</span>
-                </h1>
-                <p class="text-muted mb-0">
-                  <span class="me-2"><i class="far fa-calendar me-1"></i> {{ testSuiteResult.lastRunTimestamp | date:'MMM dd, yyyy' }}</span>
-                  <span><i class="far fa-clock me-1"></i> {{ testSuiteResult.lastRunTimestamp | date:'h:mm a' }}</span>
-                </p>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <span class="legend-color passed"></span>
+                <span class="legend-label">Passed</span>
+                <span class="legend-value">{{ testSuiteResult.passedCount }}</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color failed"></span>
+                <span class="legend-label">Failed</span>
+                <span class="legend-value">{{ testSuiteResult.failedCount }}</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color skipped"></span>
+                <span class="legend-label">Skipped</span>
+                <span class="legend-value">{{ testSuiteResult.skippedCount }}</span>
+              </div>
+              <div class="legend-item total">
+                <span class="legend-label">Total</span>
+                <span class="legend-value">{{ testSuiteResult.totalCount }}</span>
               </div>
             </div>
           </div>
-          <div class="col-md-5">
-            <div class="result-meta text-md-end">
-              <p class="mb-1">
-                <span class="text-muted">Execution Time:</span> 
-                <span class="ms-2 fw-medium">{{ formatDuration(testSuiteResult.executionTime) }}</span>
-              </p>
-              <p class="mb-0">
-                <span class="text-muted">Executed by:</span> 
-                <span class="ms-2 fw-medium">{{ testSuiteResult.executedBy }}</span>
-              </p>
+          <div class="stats-metrics">
+            <div class="metric-item">
+              <div class="metric-value">{{ testSuiteResult.passRate | percent }}</div>
+              <div class="metric-label">Pass Rate</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{ formatDuration(testSuiteResult.avgExecutionTime) }}</div>
+              <div class="metric-label">Avg. Test Duration</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{ testSuiteResult.totalEndpoints }}</div>
+              <div class="metric-label">Total Endpoints</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Summary Stats -->
-    <div class="summary-card mb-4">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="progress-bar-container">
-              <div class="progress-bar" [style.width.%]="(testSuiteResult.passedCount / testSuiteResult.totalCount) * 100"></div>
-            </div>
-            <div class="progress-text">
-              <span class="count-passed">{{ testSuiteResult.passedCount }} passed</span>
-              <span class="count-failed">{{ testSuiteResult.failedCount }} failed</span>
-              <span class="count-skipped">{{ testSuiteResult.skippedCount }} skipped</span>
-              <span class="ms-2 text-muted">({{ testSuiteResult.totalCount }} total)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Filter panel -->
-    <div class="filter-panel">
-      <h4 class="filter-title">Filters</h4>
-      <div class="filter-form">
-        <div class="filter-group">
-          <div class="filter-label">TestSuite Status</div>
-          <select class="form-control" [(ngModel)]="statusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Aborted">Aborted</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">TestCase Status</div>
-          <select class="form-control" [(ngModel)]="testCaseStatusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Aborted">Aborted</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">Endpoint Status</div>
-          <select class="form-control" [(ngModel)]="endpointStatusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">Tag</div>
-          <input type="text" class="form-control" [(ngModel)]="tagFilter" placeholder="Filter by tag">
-        </div>
-      </div>
-      <div class="filter-actions">
-        <button class="btn btn-reset" (click)="resetFilters()">
-          <i class="fas fa-times me-1"></i> Reset
-        </button>
-        <button class="btn btn-apply" (click)="applyFilters()">
-          <i class="fas fa-filter me-1"></i> Apply Filters
-        </button>
-      </div>
-    </div>
-
-    <!-- Main content with tabs -->
-    <div class="result-content card">
-      <!-- Tab navigation -->
-      <div class="tab-navigation">
-        <div class="tab-item active">
-          <i class="fas fa-list me-2"></i> Test Cases
-        </div>
-        <div class="tab-item">
-          <i class="fas fa-chart-bar me-2"></i> Overview
-        </div>
-        <div class="tab-item">
-          <i class="fas fa-history me-2"></i> History
-        </div>
-        <div class="tab-item">
-          <i class="fas fa-file-alt me-2"></i> Reports
-        </div>
+    <!-- Filters Panel -->
+    <div class="filters-panel">
+      <div class="filters-header" (click)="filtersExpanded = !filtersExpanded">
+        <h3>Filters</h3>
+        <i class="fas" [ngClass]="filtersExpanded ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
       </div>
       
-      <!-- Tab content -->
-      <div class="tab-content">
-        <div class="tab-pane active">
-          <!-- Test Cases Table -->
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Status</th>
-                  <th>Duration</th>
-                  <th>Assertions</th>
-                  <th>Tags</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngIf="filteredTestCases.length === 0">
-                  <td colspan="5" class="no-results">No test cases match the current filters.</td>
-                </tr>
-                <tr *ngFor="let testCase of filteredTestCases" (click)="goToTestCaseResult(testCase.id)">
-                  <td>{{ testCase.name }}</td>
-                  <td>
-                    <span class="status-pill bg-{{ getStatusClass(testCase.status) }}">
-                      {{ testCase.status }}
-                    </span>
-                  </td>
-                  <td>{{ testCase.executionDuration }} ms</td>
-                  <td>
-                    <div class="assertions-summary">
-                      {{ testCase.assertionsSummary }}
-                      <div class="progress-bar-container mt-1" style="height: 4px;">
-                        <div class="progress-bar" [style.width.%]="(testCase.passedAssertions / testCase.totalAssertions) * 100"></div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="tags-container">
-                      <span *ngFor="let tag of testCase.tags" class="tag-badge">{{ tag }}</span>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+      <div class="filter-content" [ngClass]="{'show': filtersExpanded}">
+        <div class="filter-row">
+          <div class="filter-group">
+            <label>Test Case Status</label>
+            <select class="form-control" [(ngModel)]="testCaseStatusFilter">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+              <option value="Skipped">Skipped</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Endpoint Status</label>
+            <select class="form-control" [(ngModel)]="endpointStatusFilter">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Tag</label>
+            <input type="text" class="form-control" [(ngModel)]="tagFilter" placeholder="Filter by tag">
           </div>
         </div>
+        
+        <div class="filter-actions">
+          <button class="btn btn-reset" (click)="resetFilters()">Reset</button>
+          <button class="btn btn-apply" (click)="applyFilters()">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Test Cases Section -->
+    <div class="results-section">
+      <div class="section-header">
+        <h2 class="section-title">Test Cases ({{ filteredTestCases.length }})</h2>
+      </div>
+      
+      <div class="table-container" *ngIf="filteredTestCases.length > 0">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="expandable-col"></th>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Duration</th>
+              <th>Assertions</th>
+              <th>Tags</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let testCase of filteredTestCases; let i = index">
+              <tr class="data-row" [ngClass]="{'expanded': testCase.isExpanded}">
+                <td class="expand-cell" (click)="toggleTestCase(testCase)">
+                  <i class="fas" [ngClass]="testCase.isExpanded ? 'fa-chevron-down' : 'fa-chevron-right'"></i>
+                </td>
+                <td class="name-cell" (click)="goToTestCaseResult(testCase.id)">
+                  <div class="testcase-name">{{ testCase.name }}</div>
+                </td>
+                <td>
+                  <div class="status-badge" [ngClass]="{
+                    'status-passed': testCase.status === 'Passed',
+                    'status-failed': testCase.status === 'Failed', 
+                    'status-in-progress': testCase.status === 'In Progress',
+                    'status-skipped': testCase.status === 'Skipped'
+                  }">
+                    <i class="fas" [ngClass]="{
+                      'fa-check': testCase.status === 'Passed',
+                      'fa-times': testCase.status === 'Failed',
+                      'fa-spinner fa-spin': testCase.status === 'In Progress',
+                      'fa-forward': testCase.status === 'Skipped'
+                    }"></i>
+                    {{ testCase.status }}
+                  </div>
+                </td>
+                <td>{{ formatDuration(testCase.executionDuration) }}</td>
+                <td>
+                  <div class="assertions-bar">
+                    <div class="assertions-summary">
+                      {{ testCase.passedAssertions }} / {{ testCase.totalAssertions }}
+                    </div>
+                    <div class="progress-container">
+                      <div class="progress-bar passed" 
+                           [style.width.%]="(testCase.passedAssertions / testCase.totalAssertions) * 100"></div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="tags-container">
+                    <span *ngFor="let tag of testCase.tags" class="tag">{{ tag }}</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="detail-row" *ngIf="testCase.isExpanded">
+                <td colspan="6">
+                  <div class="detail-content">
+                    <div class="endpoints-table">
+                      <h4 class="detail-title">Endpoints</h4>
+                      <table class="nested-table">
+                        <thead>
+                          <tr>
+                            <th>URL</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Response Time</th>
+                            <th>Response Code</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let endpoint of testCase.endpoints">
+                            <td>{{ endpoint.url }}</td>
+                            <td>{{ endpoint.method }}</td>
+                            <td>
+                              <div class="status-badge small" [ngClass]="{
+                                'status-passed': endpoint.status === 'Passed',
+                                'status-failed': endpoint.status === 'Failed'
+                              }">
+                                <i class="fas" [ngClass]="{
+                                  'fa-check': endpoint.status === 'Passed',
+                                  'fa-times': endpoint.status === 'Failed'
+                                }"></i>
+                                {{ endpoint.status }}
+                              </div>
+                            </td>
+                            <td>{{ endpoint.responseTime }} ms</td>
+                            <td>{{ endpoint.responseCode }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="no-results" *ngIf="filteredTestCases.length === 0">
+        <i class="fas fa-search"></i>
+        <p>No test cases match the current filters.</p>
+        <button class="btn btn-reset" (click)="resetFilters()">Reset Filters</button>
       </div>
     </div>
 
     <!-- Back button -->
-    <div class="text-start my-4">
-      <button class="btn btn-outline-secondary" (click)="goBack()">
-        <i class="fas fa-arrow-left me-2"></i> Back to Test Suite
+    <div class="actions-footer">
+      <button class="btn btn-secondary" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Back to Test Suite
       </button>
     </div>
   </div>
