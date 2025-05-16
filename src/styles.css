@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+/* Import shared result pages CSS */
+@import './app/shared/styles/result-pages.css';
+
 /* Global styles inspired by Adobe's design language */
 :root {
   --primary-color: #fa0f00; /* Adobe red */
