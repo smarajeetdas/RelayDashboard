@@ -192,40 +192,6 @@
         </div>
       </div>
       
-      <!-- Endpoint Details Card (shown when an endpoint is selected) -->
-      <div class="endpoint-details-card" *ngIf="selectedEndpoint">
-        <div class="endpoint-card-header">
-          <h4 class="endpoint-card-title">{{ selectedEndpoint.name }}</h4>
-          <button class="close-button" (click)="closeEndpointDetails()">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <div class="endpoint-card-content">
-          <div class="endpoint-detail-row">
-            <div class="detail-label">Status:</div>
-            <div class="detail-value">
-              <span class="status-pill bg-{{ getStatusClass(selectedEndpoint.status) }}">{{ selectedEndpoint.status }}</span>
-            </div>
-          </div>
-          <div class="endpoint-detail-row">
-            <div class="detail-label">Domain:</div>
-            <div class="detail-value">{{ selectedEndpoint.domain || 'https://relay-app.replit.app' }}</div>
-          </div>
-          <div class="endpoint-detail-row">
-            <div class="detail-label">URL:</div>
-            <div class="detail-value">{{ selectedEndpoint.url || '/api/v1/endpoints' }}</div>
-          </div>
-          <div class="endpoint-detail-row">
-            <div class="detail-label">Response Type:</div>
-            <div class="detail-value">{{ selectedEndpoint.responseType || 'JSON' }}</div>
-          </div>
-          <div class="endpoint-detail-row">
-            <div class="detail-label">Execution Success:</div>
-            <div class="detail-value">{{ selectedEndpoint.executionSuccess ? 'True' : 'False' }}</div>
-          </div>
-        </div>
-      </div>
-      
       <div class="table-container">
         <table class="result-table">
           <thead>
@@ -270,35 +236,40 @@
         </table>
       </div>
     </div>
-    <!-- Initialize Test Environment Section -->
-    <div class="environment-section">
-      <div class="panel-header">
-        <h3 class="panel-title">Initialize Test Environment</h3>
+
+    <!-- Endpoint Details Card (shown when an endpoint is selected) -->
+    <div class="endpoint-details-card" *ngIf="selectedEndpoint">
+      <div class="endpoint-card-header">
+        <h4 class="endpoint-card-title">{{ selectedEndpoint.name }}</h4>
+        <button class="close-button" (click)="closeEndpointDetails()">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-      <div class="environment-details">
-        <div class="env-config-row">
-          <div class="config-label">Configuration:</div>
-          <div class="config-value">Windows 10, Chrome 120.0.6099.130</div>
+      <div class="endpoint-card-content">
+        <div class="endpoint-detail-row">
+          <div class="detail-label">Status:</div>
+          <div class="detail-value">
+            <span class="status-pill bg-{{ getStatusClass(selectedEndpoint.status) }}">{{ selectedEndpoint.status }}</span>
+          </div>
         </div>
-        <div class="env-config-row">
-          <div class="config-label">Test Runner:</div>
-          <div class="config-value">TestNG</div>
+        <div class="endpoint-detail-row">
+          <div class="detail-label">Domain:</div>
+          <div class="detail-value">{{ selectedEndpoint.domain || 'https://relay-app.replit.app' }}</div>
         </div>
-        <div class="env-config-row">
-          <div class="config-label">Framework:</div>
-          <div class="config-value">Selenium WebDriver with JavaScript Executor</div>
+        <div class="endpoint-detail-row">
+          <div class="detail-label">URL:</div>
+          <div class="detail-value">{{ selectedEndpoint.url || '/api/v1/endpoints' }}</div>
         </div>
-        <div class="env-config-row">
-          <div class="config-label">Browser Options:</div>
-          <div class="config-value">--headless, --no-sandbox, --disable-dev-shm-usage</div>
+        <div class="endpoint-detail-row">
+          <div class="detail-label">Response Type:</div>
+          <div class="detail-value">{{ selectedEndpoint.responseType || 'JSON' }}</div>
         </div>
-        <div class="env-config-row">
-          <div class="config-label">Execution Mode:</div>
-          <div class="config-value">Sequential</div>
+        <div class="endpoint-detail-row">
+          <div class="detail-label">Execution Success:</div>
+          <div class="detail-value">{{ selectedEndpoint.executionSuccess ? 'True' : 'False' }}</div>
         </div>
       </div>
     </div>
-
     
     <!-- Tab Navigation -->
     <div class="tab-container">
