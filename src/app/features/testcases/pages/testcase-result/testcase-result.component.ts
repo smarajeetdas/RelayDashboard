@@ -14,6 +14,7 @@ export class TestCaseResultComponent implements OnInit {
   error: string = '';
   testResult: TestResult;
   activeTab: string = 'steps';
+  selectedEndpoint: any = null;
   
   // Filtering
   statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' | 'Scheduled' | 'Pending' = 'All';
@@ -276,5 +277,29 @@ export class TestCaseResultComponent implements OnInit {
     
     // Scale the height as a percentage of the maximum (maxing out at 95% for visual purposes)
     return Math.min(95, (responseTime / maxResponseTime) * 95);
+  }
+  
+  // Endpoint details related methods
+  viewEndpointDetails(endpoint: any): void {
+    this.selectedEndpoint = endpoint;
+    // Auto-switch to steps tab when an endpoint is selected
+    this.activeTab = 'steps';
+    
+    // Filter the steps to focus on steps related to this endpoint if needed
+    // This is optional and depends on your application's needs
+    // this.filteredTestSteps = this.testResult.testSteps.filter(step => 
+    //   step.id === endpoint.id || step.relatedEndpointId === endpoint.id
+    // );
+  }
+  
+  closeEndpointDetails(): void {
+    this.selectedEndpoint = null;
+    
+    // Reset to the original filtered steps
+    this.applyFilters();
+  }
+  
+  isSelectedEndpoint(endpoint: any): boolean {
+    return this.selectedEndpoint && this.selectedEndpoint.id === endpoint.id;
   }
 }

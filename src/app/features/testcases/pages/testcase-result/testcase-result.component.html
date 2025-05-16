@@ -152,6 +152,40 @@
         </div>
       </div>
       
+      <!-- Endpoint Details Card (shown when an endpoint is selected) -->
+      <div class="endpoint-details-card" *ngIf="selectedEndpoint">
+        <div class="endpoint-card-header">
+          <h4 class="endpoint-card-title">{{ selectedEndpoint.name }}</h4>
+          <button class="close-button" (click)="closeEndpointDetails()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="endpoint-card-content">
+          <div class="endpoint-detail-row">
+            <div class="detail-label">Status:</div>
+            <div class="detail-value">
+              <span class="status-pill bg-{{ getStatusClass(selectedEndpoint.status) }}">{{ selectedEndpoint.status }}</span>
+            </div>
+          </div>
+          <div class="endpoint-detail-row">
+            <div class="detail-label">Domain:</div>
+            <div class="detail-value">{{ selectedEndpoint.domain || 'https://relay-app.replit.app' }}</div>
+          </div>
+          <div class="endpoint-detail-row">
+            <div class="detail-label">URL:</div>
+            <div class="detail-value">{{ selectedEndpoint.url || '/api/v1/endpoints' }}</div>
+          </div>
+          <div class="endpoint-detail-row">
+            <div class="detail-label">Response Type:</div>
+            <div class="detail-value">{{ selectedEndpoint.responseType || 'JSON' }}</div>
+          </div>
+          <div class="endpoint-detail-row">
+            <div class="detail-label">Execution Success:</div>
+            <div class="detail-value">{{ selectedEndpoint.executionSuccess ? 'True' : 'False' }}</div>
+          </div>
+        </div>
+      </div>
+      
       <div class="table-container">
         <table class="result-table">
           <thead>
@@ -168,7 +202,10 @@
             <tr *ngIf="filteredTestSteps.length === 0">
               <td colspan="6" class="no-results">No test steps match the current filters.</td>
             </tr>
-            <tr *ngFor="let step of filteredTestSteps" class="table-row">
+            <tr *ngFor="let step of filteredTestSteps" 
+                class="table-row" 
+                [ngClass]="{'selected-row': isSelectedEndpoint(step)}"
+                (click)="viewEndpointDetails(step)">
               <td>
                 <div class="step-name">
                   <i *ngIf="step.category === 'API'" class="fas fa-globe step-icon"></i>
