@@ -65,40 +65,79 @@
     <!-- Test Data Sequence -->
     <div class="test-data-sequence">
       <div class="sequence-header">
-        <span class="sequence-title">Test Data Sequence:</span>
-        <span class="sequence-number">1</span>
-        <span class="sequence-separator">|</span>
-        <span class="sequence-type">Primary - {{ testResult.status }}</span>
+        <span class="sequence-title">Test Data Sequence</span>
+        <i class="fas fa-info-circle sequence-icon" title="Select test data set to view execution results"></i>
+        <span class="sequence-separator">:</span>
+        
+        <div class="sequence-selector">
+          <button class="sequence-button primary">
+            Primary
+          </button>
+          
+          <div class="sequence-dropdown">
+            <select class="sequence-select">
+              <option value="secondary-2">Secondary-2 - PASSED</option>
+              <option value="secondary-1">Secondary-1 - PASSED</option>
+              <option value="secondary-3">Secondary-3 - FAILED</option>
+            </select>
+            <i class="fas fa-times sequence-clear"></i>
+            <i class="fas fa-chevron-down sequence-dropdown-icon"></i>
+          </div>
+          
+          <button class="sequence-button next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
     </div>
     
     <!-- Test Stats and Visualization in container -->
     <div class="stats-chart-container">
-      <!-- Test Stats Panel -->
+      <!-- Global Suite & Test Execution Summary -->
       <div class="stats-panel">
         <div class="panel-header">
-          <h3 class="panel-title">Test Execution Summary</h3>
+          <h3 class="panel-title">Global Suite: {{ testResult.name || 'Test Execution Summary' }}</h3>
         </div>
-        <div class="test-stats">
-          <div class="stat-item">
-            <span class="stat-label">Steps:</span>
-            <span class="stat-value">{{ filteredTestSteps.length }}</span>
+        
+        <div class="global-suite-content">
+          <!-- Environment Info -->
+          <div class="environment-info">
+            <div class="env-item">
+              <span class="env-label">Environment:</span>
+              <span class="env-value">{{ testResult.environment || 'Windows' }}</span>
+            </div>
+            <div class="env-item">
+              <span class="env-label">Browser:</span>
+              <span class="env-value">{{ testResult.browser || 'Chrome' }}</span>
+            </div>
+            <div class="env-item">
+              <span class="env-label">Run Manager:</span>
+              <span class="env-value">FT Stage</span>
+            </div>
           </div>
-          <div class="stat-item">
-            <span class="stat-label">Passed:</span>
-            <span class="stat-value">{{ getPassedStepsCount() }}</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Failed:</span>
-            <span class="stat-value">{{ getFailedStepsCount() }}</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Wait Avg:</span>
-            <span class="stat-value">{{ getAverageWaitTime() }}</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-label">Time taken:</span>
-            <span class="stat-value">{{ testResult.duration || '16 seconds' }}</span>
+          
+          <!-- Test Stats -->
+          <div class="test-stats">
+            <div class="stat-item">
+              <span class="stat-label">Steps:</span>
+              <span class="stat-value">{{ filteredTestSteps.length }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Passed:</span>
+              <span class="stat-value">{{ getPassedStepsCount() }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Failed:</span>
+              <span class="stat-value">{{ getFailedStepsCount() }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Wait Avg:</span>
+              <span class="stat-value">{{ getAverageWaitTime() }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Time taken:</span>
+              <span class="stat-value">{{ testResult.duration || '16 seconds' }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -228,6 +267,35 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+    
+    <!-- Initialize Test Environment Section -->
+    <div class="environment-section">
+      <div class="panel-header">
+        <h3 class="panel-title">Initialize Test Environment</h3>
+      </div>
+      <div class="environment-details">
+        <div class="env-config-row">
+          <div class="config-label">Configuration:</div>
+          <div class="config-value">Windows 10, Chrome 120.0.6099.130</div>
+        </div>
+        <div class="env-config-row">
+          <div class="config-label">Test Runner:</div>
+          <div class="config-value">TestNG</div>
+        </div>
+        <div class="env-config-row">
+          <div class="config-label">Framework:</div>
+          <div class="config-value">Selenium WebDriver with JavaScript Executor</div>
+        </div>
+        <div class="env-config-row">
+          <div class="config-label">Browser Options:</div>
+          <div class="config-value">--headless, --no-sandbox, --disable-dev-shm-usage</div>
+        </div>
+        <div class="env-config-row">
+          <div class="config-label">Execution Mode:</div>
+          <div class="config-value">Sequential</div>
+        </div>
       </div>
     </div>
     
