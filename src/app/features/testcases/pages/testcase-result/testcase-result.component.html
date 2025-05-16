@@ -339,61 +339,37 @@
       <div class="tab-content">
         <!-- Step Execution Tab -->
         <div class="tab-pane" [ngClass]="{'active': activeTab === 'steps'}">
-          <div class="row">
-            <!-- Left side: Compact table -->
-            <div class="col-md-8">
-              <div class="table-container compact-table">
-                <table class="result-table">
-                  <thead>
-                    <tr>
-                      <th>Index</th>
-                      <th>Locator</th>
-                      <th>Action</th>
-                      <th>Response(ms)</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let i of [0, 1, 2, 3]" class="table-row">
-                      <td>{{ i + 1 }}</td>
-                      <td>{{ ['IT_Editor.field.title.input', 'Edit_Editor', 'Update_Values', 'IT_EditorMode.new'][i] }}</td>
-                      <td>CLICK</td>
-                      <td>{{ [124, 2146, 2566, 98][i] }}</td>
-                      <td>
-                        <span class="status-pill bg-passed">Passed</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            
-            <!-- Right side: Step details -->
-            <div class="col-md-4">
-              <div class="step-details-panel">
-                <div class="panel-header">
-                  <h4>Step Details</h4>
-                </div>
-                <div class="panel-content">
-                  <div class="detail-item">
-                    <div class="detail-label">Selected Step:</div>
-                    <div class="detail-value">IT_Editor.field.title.input</div>
-                  </div>
-                  <div class="detail-item">
-                    <div class="detail-label">Wait Time:</div>
-                    <div class="detail-value">0.658 sec</div>
-                  </div>
-                  <div class="detail-item">
-                    <div class="detail-label">Screenshot:</div>
-                    <div class="detail-value">
-                      <button class="btn btn-sm btn-outline-primary">
-                        <i class="fas fa-image"></i> View Screenshot
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="table-container compact-table">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Index</th>
+                  <th>Locator</th>
+                  <th>Action</th>
+                  <th>Response(ms)</th>
+                  <th>Wait Time</th>
+                  <th>Screenshot</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let i of [0, 1, 2, 3]" class="table-row">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ ['IT_Editor.field.title.input', 'Edit_Editor', 'Update_Values', 'IT_EditorMode.new'][i] }}</td>
+                  <td>CLICK</td>
+                  <td>{{ [124, 2146, 2566, 98][i] }}</td>
+                  <td>{{ ['0.658 sec', '0.782 sec', '0.512 sec', '0.326 sec'][i] }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary screenshot-link">
+                      <i class="fas fa-image"></i> View
+                    </button>
+                  </td>
+                  <td>
+                    <span class="status-pill bg-passed">Passed</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         
