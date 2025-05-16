@@ -269,6 +269,93 @@ export class TestCaseResultComponent implements OnInit {
     return (passPercentage / 100) * 360;
   }
   
+  getPassedSegmentClipPath(): string {
+    if (this.filteredTestSteps.length === 0) return 'polygon(50% 50%, 50% 0%, 50% 0%)';
+    
+    const passCount = this.getPassedStepsCount();
+    const passPercentage = (passCount / this.filteredTestSteps.length) * 100;
+    
+    // For 100% passed
+    if (passPercentage >= 100) {
+      return 'circle(50%)';
+    }
+    
+    // For 0% passed
+    if (passPercentage <= 0) {
+      return 'polygon(50% 50%, 50% 0%, 50% 0%)';
+    }
+    
+    // Calculate the angle in radians
+    const angle = (passPercentage / 100) * Math.PI * 2;
+    
+    // Start from top center (0 degrees) and go clockwise
+    let clipPath = 'polygon(50% 50%, 50% 0%';
+    
+    // Add points around the perimeter based on the percentage
+    const steps = 36; // Number of points to generate (more for smoother curve)
+    const stepAngle = Math.PI * 2 / steps;
+    
+    for (let i = 1; i <= steps; i++) {
+      const currentAngle = i * stepAngle;
+      if (currentAngle <= angle) {
+        const x = 50 + 50 * Math.sin(currentAngle);
+        const y = 50 - 50 * Math.cos(currentAngle);
+        clipPath += `, ${x}% ${y}%`;
+      } else {
+        break;
+      }
+    }
+    
+    // Close the polygon
+    clipPath += ')';
+    
+    return clipPath;
+  }
+  
+  getFailedSegmentClipPath(): string {
+    if (this.filteredTestSteps.length === 0) return 'polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%)';
+    
+    const passCount = this.getPassedStepsCount();
+    const passPercentage = (passCount / this.filteredTestSteps.length) * 100;
+    
+    // For 0% failures
+    if (passPercentage >= 100) {
+      return 'polygon(50% 50%, 50% 0%, 50% 0%)';
+    }
+    
+    // For 100% failures
+    if (passPercentage <= 0) {
+      return 'circle(50%)';
+    }
+    
+    // Calculate the angle in radians
+    const angle = (passPercentage / 100) * Math.PI * 2;
+    
+    // Start from the end of the passed segment and go clockwise to complete the circle
+    let clipPath = 'polygon(50% 50%';
+    
+    // Add the last point of the passed segment
+    const startX = 50 + 50 * Math.sin(angle);
+    const startY = 50 - 50 * Math.cos(angle);
+    clipPath += `, ${startX}% ${startY}%`;
+    
+    // Add points around the perimeter for the remaining percentage
+    const steps = 36; // Number of points to generate
+    const stepAngle = Math.PI * 2 / steps;
+    
+    for (let i = Math.ceil(angle / stepAngle); i <= steps; i++) {
+      const currentAngle = i * stepAngle;
+      const x = 50 + 50 * Math.sin(currentAngle);
+      const y = 50 - 50 * Math.cos(currentAngle);
+      clipPath += `, ${x}% ${y}%`;
+    }
+    
+    // Close the polygon by adding the first point (top center)
+    clipPath += ', 50% 0%)';
+    
+    return clipPath;
+  }
+  
   getBarHeight(responseTime: number): number {
     // Find the maximum response time to scale the bars
     const maxResponseTime = Math.max(...this.filteredTestSteps.map(step => step.responseTime));
