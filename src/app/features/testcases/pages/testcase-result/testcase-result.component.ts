@@ -13,7 +13,7 @@ export class TestCaseResultComponent implements OnInit {
   loading: boolean = true;
   error: string = '';
   testResult: TestResult;
-  activeTab: string = 'overview';
+  activeTab: string = 'steps';
   
   // Filtering
   statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' | 'Scheduled' | 'Pending' = 'All';
@@ -214,5 +214,19 @@ export class TestCaseResultComponent implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/testcases', this.testCaseId]);
+  }
+  
+  getPassedStepsCount(): number {
+    return this.filteredTestSteps.filter(step => step.status === 'Passed').length;
+  }
+  
+  getAverageWaitTime(): string {
+    if (this.filteredTestSteps.length === 0) return '0';
+    
+    const totalResponseTime = this.filteredTestSteps.reduce((sum, step) => sum + step.responseTime, 0);
+    const avgTime = totalResponseTime / this.filteredTestSteps.length;
+    
+    // Format with 0 decimals if integer, otherwise 1 decimal place
+    return avgTime % 1 === 0 ? avgTime.toString() : avgTime.toFixed(1);
   }
 }

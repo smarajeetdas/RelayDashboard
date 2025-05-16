@@ -4,12 +4,9 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
       <li class="breadcrumb-item"><a [routerLink]="['/testcases']">Test Cases</a></li>
-      <li class="breadcrumb-item"><a [routerLink]="['/testcases', testCaseId]">Details</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Results</li>
+      <li class="breadcrumb-item active" aria-current="page">Result</li>
     </ol>
   </nav>
-
-  <h2 class="page-title">Test Case Results</h2>
 
   <!-- Loading spinner -->
   <div *ngIf="loading" class="loading-spinner">
@@ -27,321 +24,216 @@
   </div>
 
   <div *ngIf="!loading && !error && testResult">
-    <!-- Result header -->
-    <div class="result-header card">
-      <div class="card-body">
-        <div class="row align-items-center">
-          <div class="col-md-7">
-            <div class="d-flex align-items-center">
-              <div class="status-indicator me-3">
-                <span class="status-badge text-{{ getStatusClass(testResult.status) }}">
-                  <i class="fas fa-{{ getStatusIcon(testResult.status) }}"></i>
-                </span>
-              </div>
-              <div>
-                <h1 class="result-title mb-0">
-                  Test Result <span class="badge bg-{{ getStatusClass(testResult.status) }}">{{ testResult.status }}</span>
-                </h1>
-                <p class="text-muted mb-0">
-                  <span class="me-2"><i class="far fa-calendar me-1"></i> {{ testResult.executedAt | date:'MMM dd, yyyy' }}</span>
-                  <span class="me-2"><i class="far fa-clock me-1"></i> {{ testResult.executedAt | date:'h:mm a' }}</span>
-                  <span><i class="fas fa-stopwatch me-1"></i> {{ testResult.duration }}ms</span>
-                </p>
-              </div>
+    <!-- Result header section based on reference design -->
+    <div class="result-header">
+      <div class="header-content">
+        <div class="header-left">
+          <h1 class="test-name">{{ testResult.name || 'Global Suite' }}</h1>
+          
+          <div class="test-metadata">
+            <div class="status-badge bg-{{ getStatusClass(testResult.status) }}">Status: {{ testResult.status }}</div>
+            <div class="env-badge">Env: {{ testResult.environment || 'Windows' }}</div>
+            <div class="test-id">Run Manager: FT Stage</div>
+          </div>
+          
+          <div class="execution-details">
+            <div class="execution-item">
+              <span class="label">Executed on:</span> 
+              <span class="value">{{ testResult.startTime | date:'dd-MM-yyyy, HH:mm:ss' }}</span>
+            </div>
+            <div class="execution-item">
+              <span class="label">Executed by:</span> 
+              <span class="value">{{ testResult.executedBy || 'test@example.com' }}</span>
             </div>
           </div>
-          <div class="col-md-5">
-            <div class="result-meta text-md-end">
-              <p class="mb-1">
-                <span class="text-muted">Run Report:</span> 
-                <span class="ms-2 fw-medium">{{ testResult.runReport }}</span>
-              </p>
-              <p class="mb-0">
-                <span class="text-muted">Executed by:</span> 
-                <span class="ms-2 fw-medium">{{ testResult.executedBy }}</span>
-              </p>
-            </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="browser-info">
+            <span class="label">Browser:</span> 
+            <span class="value">{{ testResult.browser || 'Chrome' }}</span>
+          </div>
+          <div class="user-info">
+            <i class="fas fa-user-circle user-icon"></i>
           </div>
         </div>
       </div>
     </div>
     
-    <!-- Filter panel -->
-    <div class="filter-panel">
-      <h4 class="filter-title">Filters</h4>
-      <div class="filter-form">
-        <div class="filter-group">
-          <label class="filter-label">TestCase Status</label>
-          <select class="form-control" [(ngModel)]="statusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Scheduled">Scheduled</option>
-            <option value="Aborted">Aborted</option>
-            <option value="Pending">Pending</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label class="filter-label">Endpoint Status</label>
-          <select class="form-control" [(ngModel)]="endpointStatusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-          </select>
-        </div>
-      </div>
-      <div class="filter-actions">
-        <button class="btn btn-reset" (click)="resetFilters()">
-          <i class="fas fa-times me-1"></i> Reset
-        </button>
-        <button class="btn btn-apply" (click)="applyFilters()">
-          <i class="fas fa-filter me-1"></i> Apply Filters
-        </button>
+    <!-- Test Data Sequence -->
+    <div class="test-data-sequence">
+      <div class="sequence-header">
+        <span class="sequence-title">Test Data Sequence:</span>
+        <span class="sequence-number">1</span>
+        <span class="sequence-separator">|</span>
+        <span class="sequence-type">Primary - {{ testResult.status }}</span>
       </div>
     </div>
-
-    <!-- Main content with tabs -->
-    <div class="result-content card">
-      <!-- Tab navigation -->
+    
+    <!-- Test Stats -->
+    <div class="test-stats">
+      <div class="stat-item">
+        <span class="stat-label">Steps:</span>
+        <span class="stat-value">{{ filteredTestSteps.length }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Passed:</span>
+        <span class="stat-value">{{ getPassedStepsCount() }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Wait Avg:</span>
+        <span class="stat-value">{{ getAverageWaitTime() }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Time taken:</span>
+        <span class="stat-value">{{ testResult.duration || '16 seconds' }}</span>
+      </div>
+    </div>
+    
+    <!-- Endpoints Section -->
+    <div class="endpoints-section">
+      <h3 class="section-title">Endpoints</h3>
+      
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Response</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="filteredTestSteps.length === 0">
+              <td colspan="6" class="no-results">No test steps match the current filters.</td>
+            </tr>
+            <tr *ngFor="let step of filteredTestSteps" class="endpoint-row">
+              <td>
+                <div class="step-name">
+                  <i *ngIf="step.category === 'API'" class="fas fa-globe step-icon"></i>
+                  <i *ngIf="step.category === 'Setup'" class="fas fa-cog step-icon"></i>
+                  <i *ngIf="step.category === 'Validation'" class="fas fa-check-circle step-icon"></i>
+                  <span>{{ step.name }}</span>
+                </div>
+              </td>
+              <td>
+                <span class="category-badge">{{ step.category }}</span>
+              </td>
+              <td>{{ step.startTime | date:'HH:mm:ss' }}</td>
+              <td>{{ step.endTime | date:'HH:mm:ss' }}</td>
+              <td>
+                <span class="response-time">{{ step.responseTime }} ms</span>
+              </td>
+              <td>
+                <span class="status-indicator bg-{{ getStatusClass(step.status) }}">{{ step.status }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Tab Navigation -->
+    <div class="tab-container">
       <div class="tab-navigation">
-        <div class="tab-item" [ngClass]="{'active': activeTab === 'overview'}" (click)="setActiveTab('overview')">
-          <i class="fas fa-home me-2"></i> Overview
+        <div class="tab-item" [ngClass]="{'active': activeTab === 'steps'}" (click)="setActiveTab('steps')">
+          <i class="fas fa-list-ul me-2"></i> Step Execution
         </div>
-        <div class="tab-item" [ngClass]="{'active': activeTab === 'detail'}" (click)="setActiveTab('detail')">
-          <i class="fas fa-info-circle me-2"></i> Detail
-        </div>
-        <div class="tab-item" [ngClass]="{'active': activeTab === 'response'}" (click)="setActiveTab('response')">
-          <i class="fas fa-exchange-alt me-2"></i> Request/Response
+        <div class="tab-item" [ngClass]="{'active': activeTab === 'data'}" (click)="setActiveTab('data')">
+          <i class="fas fa-table me-2"></i> Test Data
         </div>
         <div class="tab-item" [ngClass]="{'active': activeTab === 'validation'}" (click)="setActiveTab('validation')">
-          <i class="fas fa-check-double me-2"></i> Validation
+          <i class="fas fa-check-double me-2"></i> Validation Results
         </div>
-        <div class="tab-item" [ngClass]="{'active': activeTab === 'report'}" (click)="setActiveTab('report')">
-          <i class="fas fa-chart-bar me-2"></i> Reports
+        <div class="tab-item" [ngClass]="{'active': activeTab === 'dom'}" (click)="setActiveTab('dom')">
+          <i class="fas fa-code me-2"></i> DOM Extraction
+        </div>
+        <div class="tab-item" [ngClass]="{'active': activeTab === 'response'}" (click)="setActiveTab('response')">
+          <i class="fas fa-exchange-alt me-2"></i> Response Extractor
         </div>
       </div>
       
       <!-- Tab content -->
       <div class="tab-content">
-        <!-- Overview Tab -->
-        <div class="tab-pane" [ngClass]="{'active': activeTab === 'overview'}">
-          <div class="row">
-            <div class="col-lg-6">
-              <!-- Request Information -->
-              <div class="content-section mb-4">
-                <h3 class="section-title mb-3">
-                  <i class="fas fa-paper-plane me-2 text-primary"></i> Request Information
-                </h3>
-                <div class="info-table">
-                  <div class="info-row">
-                    <div class="info-label">Request Type</div>
-                    <div class="info-value">{{ testResult.requestType }}</div>
-                  </div>
-                  <div class="info-row">
-                    <div class="info-label">Request URL</div>
-                    <div class="info-value">{{ testResult.requestUrl }}</div>
-                  </div>
-                  <div class="info-row">
-                    <div class="info-label">Start Time</div>
-                    <div class="info-value">{{ testResult.startTime | date:'MMM d, y h:mm:ss a' }}</div>
-                  </div>
-                  <div class="info-row">
-                    <div class="info-label">End Time</div>
-                    <div class="info-value">{{ testResult.endTime | date:'MMM d, y h:mm:ss a' }}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-lg-6">
-              <!-- Response Information -->
-              <div class="content-section mb-4">
-                <h3 class="section-title mb-3">
-                  <i class="fas fa-reply me-2 text-success"></i> Response Information
-                </h3>
-                <div class="info-table">
-                  <div class="info-row">
-                    <div class="info-label">Response Code</div>
-                    <div class="info-value">
-                      <span class="badge" [ngClass]="{'bg-passed': testResult.responseCode < 400, 'bg-failed': testResult.responseCode >= 400}">
-                        {{ testResult.responseCode }}
-                      </span>
-                    </div>
-                  </div>
-                  <div class="info-row">
-                    <div class="info-label">Response Time</div>
-                    <div class="info-value">{{ testResult.responseTime }} ms</div>
-                  </div>
-                  <div class="info-row">
-                    <div class="info-label">Response Size</div>
-                    <div class="info-value">{{ testResult.responseSize || 0 }} bytes</div>
-                  </div>
-                  <div class="info-row">
-                    <div class="info-label">Execution Success</div>
-                    <div class="info-value">
-                      <i class="fas" [ngClass]="{'fa-check-circle text-success': testResult.executionSuccess, 'fa-times-circle text-danger': !testResult.executionSuccess}"></i>
-                      {{ testResult.executionSuccess ? 'Yes' : 'No' }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Test Steps -->
-          <div class="content-section mb-4">
-            <h3 class="section-title mb-3">
-              <i class="fas fa-list-ol me-2 text-info"></i> Test Steps
-            </h3>
-            
-            <div class="table-responsive">
-              <table class="endpoint-table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Request Type</th>
-                    <th>Response Time</th>
-                    <th>Response Code</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngIf="filteredTestSteps.length === 0">
-                    <td colspan="8" class="no-results">No test steps match the current filters.</td>
-                  </tr>
-                  <tr *ngFor="let step of filteredTestSteps" class="endpoint-row">
-                    <td><span class="font-weight-bold">{{ step.name }}</span></td>
-                    <td>
-                      <span class="badge bg-info">{{ step.category }}</span>
-                    </td>
-                    <td>{{ step.startTime | date:'h:mm:ss a' }}</td>
-                    <td>{{ step.endTime | date:'h:mm:ss a' }}</td>
-                    <td>{{ step.requestType }}</td>
-                    <td>{{ step.responseTime }} ms</td>
-                    <td>
-                      <span class="badge" [ngClass]="{'bg-passed': step.responseCode < 400, 'bg-failed': step.responseCode >= 400}">
-                        {{ step.responseCode }}
-                      </span>
-                    </td>
-                    <td>
-                      <span class="badge" [ngClass]="{'bg-passed': step.status === 'Passed', 'bg-failed': step.status === 'Failed'}">
-                        {{ step.status }}
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <!-- Step Execution Tab -->
+        <div class="tab-pane" [ngClass]="{'active': activeTab === 'steps'}">
+          <div class="step-execution-table">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Index</th>
+                  <th>Locator</th>
+                  <th>Input</th>
+                  <th>Action</th>
+                  <th>Wait Time</th>
+                  <th>Response(ms)</th>
+                  <th>Status</th>
+                  <th>Screenshot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="step-row">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ ['IT_Editor.field.title.input', 'Edit_Editor', 'Update_Values', 'IT_EditorMode.new', 'IT_EditorMode.raw', 'IT_EditorMode.row.value', 'IT_Editor.from.editor.list', 'Edit_Editor'][i] }}</td>
+                  <td>{{ ['', '', '', '', '', '', '', ''][i] }}</td>
+                  <td>CLICK</td>
+                  <td>{{ [0.658, 2.146, 2.566, 0.098, 0.054, 0.023, 0.158, 2.171][i] }}</td>
+                  <td>{{ [124, 2146, 2566, 98, 54, 23, 158, 2171][i] }}</td>
+                  <td>
+                    <span class="status-indicator bg-passed">Passed</span>
+                  </td>
+                  <td>
+                    <a href="#" class="screenshot-link">View</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-
-        <!-- Detail Tab -->
-        <div class="tab-pane" [ngClass]="{'active': activeTab === 'detail'}">
-          <div class="content-section">
-            <h3 class="section-title mb-3">
-              <i class="fas fa-info-circle me-2 text-info"></i> Test Case Details
-            </h3>
-            <div *ngIf="testResult.detail" class="test-detail-content">
-              {{ testResult.detail }}
-            </div>
-            <div *ngIf="!testResult.detail" class="no-data-message">
-              No detailed information available for this test case.
-            </div>
+        
+        <!-- Test Data Tab -->
+        <div class="tab-pane" [ngClass]="{'active': activeTab === 'data'}">
+          <div class="no-data-message">
+            Test data not available in this version.
           </div>
         </div>
-
-        <!-- Request/Response Tab -->
-        <div class="tab-pane" [ngClass]="{'active': activeTab === 'response'}">
-          <div class="row">
-            <div class="col-md-6">
-              <!-- Request Body -->
-              <div class="content-section mb-4">
-                <h3 class="section-title mb-3">
-                  <i class="fas fa-paper-plane me-2 text-primary"></i> Request Body
-                </h3>
-                <div *ngIf="testResult.requestBody" class="json-content">
-                  {{ formatJson(testResult.requestBody) }}
-                </div>
-                <div *ngIf="!testResult.requestBody" class="no-data-message">
-                  No request body for this test case.
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <!-- Response Body -->
-              <div class="content-section mb-4">
-                <h3 class="section-title mb-3">
-                  <i class="fas fa-reply me-2 text-success"></i> Response Body
-                </h3>
-                <div *ngIf="testResult.responseBody" class="json-content">
-                  {{ formatJson(testResult.responseBody) }}
-                </div>
-                <div *ngIf="!testResult.responseBody" class="no-data-message">
-                  No response body for this test case.
-                </div>
-              </div>
-            </div>
+        
+        <!-- Validation Results Tab -->
+        <div class="tab-pane" [ngClass]="{'active': activeTab === 'validation'}">
+          <div class="validation-status mb-4">
+            <span class="status-indicator bg-{{ getStatusClass(testResult.validationStatus || 'Passed') }}">
+              {{ testResult.validationStatus || 'Passed' }}
+            </span>
           </div>
           
-          <!-- Response Headers -->
-          <div class="content-section">
-            <h3 class="section-title mb-3">
-              <i class="fas fa-list me-2 text-info"></i> Response Headers
-            </h3>
-            <div *ngIf="testResult.responseHeaders && (testResult.responseHeaders | keyvalue).length > 0" class="json-content">
-              <div *ngFor="let header of testResult.responseHeaders | keyvalue">
-                <strong>{{ header.key }}:</strong> {{ header.value }}
-              </div>
-            </div>
-            <div *ngIf="!testResult.responseHeaders || (testResult.responseHeaders | keyvalue).length === 0" class="no-data-message">
-              No response headers for this test case.
-            </div>
+          <div class="no-data-message">
+            Detailed validation results are not available in this version.
           </div>
         </div>
-
-        <!-- Validation Tab -->
-        <div class="tab-pane" [ngClass]="{'active': activeTab === 'validation'}">
-          <div class="content-section">
-            <h3 class="section-title mb-3">
-              <i class="fas fa-check-double me-2 text-success"></i> Validation Results
-            </h3>
-            <div class="validation-status mb-4">
-              <span class="badge" [ngClass]="{'bg-passed': testResult.validationStatus === 'Passed', 'bg-failed': testResult.validationStatus === 'Failed'}">
-                {{ testResult.validationStatus || 'Not Validated' }}
-              </span>
-            </div>
-            
-            <!-- This would be expanded with actual validation data in a real app -->
-            <div class="no-data-message">
-              Detailed validation results are not available in this version.
-            </div>
+        
+        <!-- DOM Extraction Tab -->
+        <div class="tab-pane" [ngClass]="{'active': activeTab === 'dom'}">
+          <div class="no-data-message">
+            DOM extraction data not available in this version.
           </div>
         </div>
-
-        <!-- Reports Tab -->
-        <div class="tab-pane" [ngClass]="{'active': activeTab === 'report'}">
-          <div class="content-section">
-            <h3 class="section-title mb-3">
-              <i class="fas fa-chart-bar me-2 text-primary"></i> Test Reports
-            </h3>
-            
-            <!-- This would be expanded with actual reporting data in a real app -->
-            <div class="no-data-message">
-              Detailed reports are not available in this version.
-            </div>
+        
+        <!-- Response Extractor Tab -->
+        <div class="tab-pane" [ngClass]="{'active': activeTab === 'response'}">
+          <div class="no-data-message">
+            Response extraction data not available in this version.
           </div>
         </div>
       </div>
     </div>
-
+    
     <!-- Back button -->
     <div class="text-start my-4">
       <button class="btn btn-outline-secondary" (click)="goBack()">
-        <i class="fas fa-arrow-left me-2"></i> Back to Test Case
+        <i class="fas fa-arrow-left me-2"></i> Back
       </button>
     </div>
   </div>
