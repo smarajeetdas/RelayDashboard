@@ -210,8 +210,8 @@
       <div class="tab-content">
         <!-- Step Execution Tab -->
         <div class="tab-pane" [ngClass]="{'active': activeTab === 'steps'}">
-          <div class="step-execution-table">
-            <table class="data-table">
+          <div class="table-container">
+            <table class="result-table">
               <thead>
                 <tr>
                   <th>Index</th>
@@ -225,7 +225,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="step-row">
+                <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="table-row">
                   <td>{{ i + 1 }}</td>
                   <td>{{ ['IT_Editor.field.title.input', 'Edit_Editor', 'Update_Values', 'IT_EditorMode.new', 'IT_EditorMode.raw', 'IT_EditorMode.row.value', 'IT_Editor.from.editor.list', 'Edit_Editor'][i] }}</td>
                   <td>{{ ['', '', '', '', '', '', '', ''][i] }}</td>
@@ -233,7 +233,7 @@
                   <td>{{ [0.658, 2.146, 2.566, 0.098, 0.054, 0.023, 0.158, 2.171][i] }}</td>
                   <td>{{ [124, 2146, 2566, 98, 54, 23, 158, 2171][i] }}</td>
                   <td>
-                    <span class="status-indicator bg-passed">Passed</span>
+                    <span class="status-pill bg-passed">Passed</span>
                   </td>
                   <td>
                     <a href="#" class="screenshot-link">View</a>
