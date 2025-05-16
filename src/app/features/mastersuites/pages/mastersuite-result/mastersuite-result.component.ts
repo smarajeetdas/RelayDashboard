@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MasterSuiteResult, TestSuiteOverview } from '../../models/mastersuite-result.model';
 
+interface TestSuiteWithExpand extends TestSuiteOverview {
+  expanded: boolean;
+  testCases?: any[];
+  activeTestCase?: number | null;
+}
+
 @Component({
   selector: 'app-mastersuite-result',
   templateUrl: './mastersuite-result.component.html',
@@ -12,6 +18,7 @@ export class MasterSuiteResultComponent implements OnInit {
   resultId: string = '';
   isLoading: boolean = true;
   masterSuiteResult: MasterSuiteResult;
+  filtersExpanded: boolean = false;
   
   // Filters
   statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
@@ -20,7 +27,7 @@ export class MasterSuiteResultComponent implements OnInit {
   endpointStatusFilter: 'All' | 'Passed' | 'Failed' = 'All';
   dateRangeFilter: { from: Date | null, to: Date | null } = { from: null, to: null };
   executedByFilter: string = '';
-  filteredTestSuites: TestSuiteOverview[] = [];
+  filteredTestSuites: TestSuiteWithExpand[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -42,28 +49,28 @@ export class MasterSuiteResultComponent implements OnInit {
     this.isLoading = true;
     setTimeout(() => {
       this.masterSuiteResult = {
-        id: this.resultId,
+        id: this.resultId || 'e8726e04e623456fcaa',
         masterSuiteId: this.masterSuiteId,
-        masterSuiteName: 'Core API Test Suite',
+        masterSuiteName: 'TS - UI Validation',
         status: 'Failed',
         executionTime: 356000, // 5 minutes and 56 seconds
         lastRunTimestamp: new Date().toISOString(),
-        executedBy: 'john.doe@example.com',
+        executedBy: 'tester@example.com',
         testSuites: [
           {
             id: 'ts-001',
-            name: 'Authentication Tests',
+            name: 'TS - UI Validation',
             status: 'Passed',
             executionDuration: 45000,
             lastRunTimestamp: new Date().toISOString(),
-            passedCount: 12,
+            passedCount: 23,
             failedCount: 0,
-            skippedCount: 1,
-            totalCount: 13
+            skippedCount: 0,
+            totalCount: 23
           },
           {
             id: 'ts-002',
-            name: 'User Management Tests',
+            name: 'User Authentication Tests',
             status: 'Failed',
             executionDuration: 78000,
             lastRunTimestamp: new Date().toISOString(),
@@ -74,7 +81,7 @@ export class MasterSuiteResultComponent implements OnInit {
           },
           {
             id: 'ts-003',
-            name: 'Payment Processing Tests',
+            name: 'API Integration Tests',
             status: 'Passed',
             executionDuration: 120000,
             lastRunTimestamp: new Date().toISOString(),
@@ -113,40 +120,66 @@ export class MasterSuiteResultComponent implements OnInit {
         totalCount: 58
       };
       
-      this.filteredTestSuites = [...this.masterSuiteResult.testSuites];
+      // Add expanded property to each test suite
+      this.filteredTestSuites = this.masterSuiteResult.testSuites.map(suite => ({
+        ...suite,
+        expanded: false,
+        testCases: [],
+        activeTestCase: null
+      }));
+      
+      // Expand the first test suite by default
+      if (this.filteredTestSuites.length > 0) {
+        this.filteredTestSuites[0].expanded = true;
+      }
+      
       this.isLoading = false;
     }, 500);
   }
 
+  toggleFiltersPanel(): void {
+    this.filtersExpanded = !this.filtersExpanded;
+  }
+
+  toggleTestSuiteExpand(testSuite: TestSuiteWithExpand): void {
+    testSuite.expanded = !testSuite.expanded;
+  }
+
+  toggleTestCaseExpand(testSuite: TestSuiteWithExpand, testCaseIndex: number): void {
+    // Toggle the active test case
+    testSuite.activeTestCase = testSuite.activeTestCase === testCaseIndex ? null : testCaseIndex;
+  }
+
   applyFilters(): void {
-    this.filteredTestSuites = this.masterSuiteResult.testSuites.filter(testSuite => {
-      // Apply master suite status filter
-      if (this.statusFilter !== 'All' && this.masterSuiteResult.status !== this.statusFilter) {
-        return false;
-      }
-      
-      // Apply test suite status filter
-      if (this.testSuiteStatusFilter !== 'All' && testSuite.status !== this.testSuiteStatusFilter) {
-        return false;
-      }
-      
-      // Apply test case status filter (simplified in this implementation)
-      // In a real app, you would check individual test cases within each test suite
-      
-      // Apply endpoint status filter (simplified in this implementation)
-      // In a real app, you would check individual endpoints within test cases
-      
-      // Apply executed by filter (if implemented)
-      if (this.executedByFilter && this.executedByFilter.trim() !== '') {
-        const lowerCaseExecutedBy = this.masterSuiteResult.executedBy.toLowerCase();
-        const filterValue = this.executedByFilter.toLowerCase().trim();
-        if (!lowerCaseExecutedBy.includes(filterValue)) {
+    this.filteredTestSuites = this.masterSuiteResult.testSuites
+      .map(suite => ({
+        ...suite,
+        expanded: false,
+        testCases: [],
+        activeTestCase: null
+      }))
+      .filter(testSuite => {
+        // Apply master suite status filter
+        if (this.statusFilter !== 'All' && this.masterSuiteResult.status !== this.statusFilter) {
           return false;
         }
-      }
-      
-      return true;
-    });
+        
+        // Apply test suite status filter
+        if (this.testSuiteStatusFilter !== 'All' && testSuite.status !== this.testSuiteStatusFilter) {
+          return false;
+        }
+        
+        // Apply executed by filter (if implemented)
+        if (this.executedByFilter && this.executedByFilter.trim() !== '') {
+          const lowerCaseExecutedBy = this.masterSuiteResult.executedBy.toLowerCase();
+          const filterValue = this.executedByFilter.toLowerCase().trim();
+          if (!lowerCaseExecutedBy.includes(filterValue)) {
+            return false;
+          }
+        }
+        
+        return true;
+      });
   }
 
   resetFilters(): void {
@@ -156,7 +189,7 @@ export class MasterSuiteResultComponent implements OnInit {
     this.endpointStatusFilter = 'All';
     this.dateRangeFilter = { from: null, to: null };
     this.executedByFilter = '';
-    this.filteredTestSuites = [...this.masterSuiteResult.testSuites];
+    this.applyFilters();
   }
 
   goToTestSuiteResult(testSuiteId: string): void {
@@ -170,16 +203,34 @@ export class MasterSuiteResultComponent implements OnInit {
     return `${minutes}m ${remainingSeconds}s`;
   }
 
+  formatEndTime(startTimeIso: string, durationMs: number): string {
+    const startTime = new Date(startTimeIso);
+    const endTime = new Date(startTime.getTime() + durationMs);
+    return endTime.toLocaleTimeString('en-US', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
+  }
+
   getStatusClass(status: string): string {
     switch (status) {
       case 'Passed':
+      case 'PASSED':
         return 'passed';
       case 'Failed':
+      case 'FAILED':
         return 'failed';
       case 'In Progress':
+      case 'IN_PROGRESS':
         return 'in-progress';
       case 'Aborted':
+      case 'ABORTED':
         return 'aborted';
+      case 'Skipped':
+      case 'SKIPPED':
+        return 'skipped';
       default:
         return '';
     }
@@ -187,5 +238,9 @@ export class MasterSuiteResultComponent implements OnInit {
   
   navigateBack(): void {
     this.router.navigate(['/mastersuites', this.masterSuiteId]);
+  }
+  
+  generateRandomId(): string {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   }
 }

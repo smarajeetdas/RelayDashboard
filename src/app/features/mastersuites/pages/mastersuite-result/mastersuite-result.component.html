@@ -1,217 +1,290 @@
-<div class="result-container">
-  <!-- Breadcrumb navigation -->
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
-      <li class="breadcrumb-item"><a [routerLink]="['/mastersuites']">Master Suites</a></li>
-      <li class="breadcrumb-item"><a [routerLink]="['/mastersuites', masterSuiteId]">Details</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Results</li>
-    </ol>
-  </nav>
-
-  <h2 class="page-title">Master Suite Results</h2>
+<div class="mastersuite-result-container">
+  <!-- Top navigation bar with environment controls -->
+  <div class="top-nav-bar">
+    <div class="breadcrumb-container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/mastersuites']">Master Suites</a></li>
+          <li class="breadcrumb-item"><a [routerLink]="['/mastersuites', masterSuiteId]">MS Validation</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Result</li>
+        </ol>
+      </nav>
+    </div>
+    
+    <div class="environment-selector">
+      <div class="env-item">
+        <label>WINDOWS</label>
+        <i class="fas fa-caret-down"></i>
+      </div>
+      <div class="env-item">
+        <label>CHROME</label>
+        <i class="fas fa-caret-down"></i>
+      </div>
+      <div class="env-select">
+        <select class="form-control">
+          <option>Select env...</option>
+        </select>
+      </div>
+      <div class="controls">
+        <button class="btn btn-icon"><i class="fas fa-sync-alt"></i></button>
+        <button class="btn btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+      </div>
+    </div>
+  </div>
 
   <!-- Loading spinner -->
   <div *ngIf="isLoading" class="loading-spinner">
-    <div class="spinner-border text-primary" role="status">
+    <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
-    <p class="mt-3">Loading master suite results...</p>
+    <p>Loading test results...</p>
   </div>
 
-  <div *ngIf="!isLoading && masterSuiteResult">
-    <!-- Result header -->
-    <div class="result-header card">
-      <div class="card-body">
-        <div class="row align-items-center">
-          <div class="col-md-7">
-            <div class="d-flex align-items-center">
-              <div class="status-indicator me-3">
-                <span class="status-badge text-{{ getStatusClass(masterSuiteResult.status) }}">
-                  <i class="fas" [ngClass]="{
-                    'fa-check': masterSuiteResult.status === 'Passed',
-                    'fa-times': masterSuiteResult.status === 'Failed',
-                    'fa-spinner fa-spin': masterSuiteResult.status === 'In Progress',
-                    'fa-hand-paper': masterSuiteResult.status === 'Aborted'
-                  }"></i>
-                </span>
-              </div>
-              <div>
-                <h1 class="result-title mb-0">
-                  {{ masterSuiteResult.masterSuiteName }}
-                  <span class="badge bg-{{ getStatusClass(masterSuiteResult.status) }} ms-2">{{ masterSuiteResult.status }}</span>
-                </h1>
-                <p class="text-muted mb-0">
-                  <span class="me-2"><i class="far fa-calendar me-1"></i> {{ masterSuiteResult.lastRunTimestamp | date:'MMM dd, yyyy' }}</span>
-                  <span><i class="far fa-clock me-1"></i> {{ masterSuiteResult.lastRunTimestamp | date:'h:mm a' }}</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="result-meta text-md-end">
-              <p class="mb-1">
-                <span class="text-muted">Execution Time:</span> 
-                <span class="ms-2 fw-medium">{{ formatDuration(masterSuiteResult.executionTime) }}</span>
-              </p>
-              <p class="mb-0">
-                <span class="text-muted">Executed by:</span> 
-                <span class="ms-2 fw-medium">{{ masterSuiteResult.executedBy }}</span>
-              </p>
-            </div>
+  <div *ngIf="!isLoading && masterSuiteResult" class="result-content-wrapper">
+    <!-- Global Status Panel -->
+    <div class="global-status-panel">
+      <div class="panel-header">
+        <h2>Global Status</h2>
+        <div class="execution-id">Execution ID: {{ masterSuiteResult.id }}</div>
+      </div>
+      
+      <!-- Suite metadata -->
+      <div class="suite-metadata">
+        <div class="status-row">
+          <div class="label">Status:</div>
+          <div class="value">
+            <span class="status-badge status-{{ getStatusClass(masterSuiteResult.status) }}">{{ masterSuiteResult.status }}</span>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Summary Stats -->
-    <div class="summary-card mb-4">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="progress-bar-container">
-              <div class="progress-bar" [style.width.%]="(masterSuiteResult.passedCount / masterSuiteResult.totalCount) * 100"></div>
-            </div>
-            <div class="progress-text">
-              <span class="count-passed">{{ masterSuiteResult.passedCount }} passed</span>
-              <span class="count-failed">{{ masterSuiteResult.failedCount }} failed</span>
-              <span class="count-skipped">{{ masterSuiteResult.skippedCount }} skipped</span>
-              <span class="ms-2 text-muted">({{ masterSuiteResult.totalCount }} total)</span>
-            </div>
-          </div>
+        <div class="status-row">
+          <div class="label">OS:</div>
+          <div class="value">WINDOWS</div>
         </div>
-      </div>
-    </div>
-
-    <!-- Filter panel -->
-    <div class="filter-panel">
-      <h4 class="filter-title">Filters</h4>
-      <div class="filter-form">
-        <div class="filter-group">
-          <div class="filter-label">MasterSuite Status</div>
-          <select class="form-control" [(ngModel)]="statusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Aborted">Aborted</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">TestSuite Status</div>
-          <select class="form-control" [(ngModel)]="testSuiteStatusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Aborted">Aborted</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">TestCase Status</div>
-          <select class="form-control" [(ngModel)]="testCaseStatusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Aborted">Aborted</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">Endpoint Status</div>
-          <select class="form-control" [(ngModel)]="endpointStatusFilter">
-            <option value="All">All</option>
-            <option value="Passed">Passed</option>
-            <option value="Failed">Failed</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">Executed By</div>
-          <input type="text" class="form-control" [(ngModel)]="executedByFilter" placeholder="Email address">
-        </div>
-      </div>
-      <div class="filter-actions">
-        <button class="btn btn-reset" (click)="resetFilters()">
-          <i class="fas fa-times me-1"></i> Reset
-        </button>
-        <button class="btn btn-apply" (click)="applyFilters()">
-          <i class="fas fa-filter me-1"></i> Apply Filters
-        </button>
-      </div>
-    </div>
-
-    <!-- Main content with tabs -->
-    <div class="result-content card">
-      <!-- Tab navigation -->
-      <div class="tab-navigation">
-        <div class="tab-item active">
-          <i class="fas fa-list me-2"></i> Test Suites
-        </div>
-        <div class="tab-item">
-          <i class="fas fa-chart-bar me-2"></i> Overview
-        </div>
-        <div class="tab-item">
-          <i class="fas fa-history me-2"></i> History
-        </div>
-        <div class="tab-item">
-          <i class="fas fa-file-alt me-2"></i> Reports
+        <div class="status-row">
+          <div class="label">Browser:</div>
+          <div class="value">CHROME</div>
         </div>
       </div>
       
-      <!-- Tab content -->
-      <div class="tab-content">
-        <div class="tab-pane active">
-          <!-- Test Suites Table -->
-          <div class="table-responsive">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Status</th>
-                  <th>Duration</th>
-                  <th>Last Run</th>
-                  <th>Test Cases</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngIf="filteredTestSuites.length === 0">
-                  <td colspan="5" class="no-results">No test suites match the current filters.</td>
-                </tr>
-                <tr *ngFor="let testSuite of filteredTestSuites" (click)="goToTestSuiteResult(testSuite.id)">
-                  <td>{{ testSuite.name }}</td>
-                  <td>
-                    <span class="status-pill bg-{{ getStatusClass(testSuite.status) }}">
-                      {{ testSuite.status }}
-                    </span>
-                  </td>
-                  <td>{{ formatDuration(testSuite.executionDuration) }}</td>
-                  <td>{{ testSuite.lastRunTimestamp | date:'MMM d, y h:mm a' }}</td>
-                  <td>
-                    <div class="test-count">
-                      <div class="progress-bar-container mb-1" style="height: 4px;">
-                        <div class="progress-bar" [style.width.%]="(testSuite.passedCount / testSuite.totalCount) * 100"></div>
-                      </div>
-                      <div class="progress-text">
-                        <span class="count-passed">{{ testSuite.passedCount }}</span> /
-                        <span class="count-failed">{{ testSuite.failedCount }}</span> /
-                        <span class="count-skipped">{{ testSuite.skippedCount }}</span>
-                        <span class="ms-1 text-muted">({{ testSuite.totalCount }} total)</span>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+      <!-- Execution details -->
+      <div class="execution-details">
+        <div class="detail-column">
+          <div class="detail-item">
+            <div class="detail-label">Start time:</div>
+            <div class="detail-value">{{ masterSuiteResult.lastRunTimestamp | date:'dd-MM-yyyy, HH:mm:ss' }}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Browser:</div>
+            <div class="detail-value">CHROME</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">OS version:</div>
+            <div class="detail-value">Windows 10</div>
+          </div>
+        </div>
+        
+        <div class="detail-column">
+          <div class="detail-item">
+            <div class="detail-label">End time:</div>
+            <div class="detail-value">{{ (masterSuiteResult.lastRunTimestamp | date:'dd-MM-yyyy') }}, {{ formatEndTime(masterSuiteResult.lastRunTimestamp, masterSuiteResult.executionTime) }}</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Run manager:</div>
+            <div class="detail-value">FT Stage</div>
+          </div>
+        </div>
+        
+        <div class="detail-column">
+          <div class="detail-item">
+            <div class="detail-label">Executed by:</div>
+            <div class="detail-value">{{ masterSuiteResult.executedBy }}</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Back button -->
-    <div class="text-start my-4">
-      <button class="btn btn-outline-secondary" (click)="navigateBack()">
-        <i class="fas fa-arrow-left me-2"></i> Back to Master Suite
-      </button>
+    <!-- Test Suites Section -->
+    <div class="test-suites-section">
+      <div class="section-header">
+        <h2 class="section-title">TestSuites</h2>
+        <div class="total-count">Total: {{ masterSuiteResult.testSuites.length }}</div>
+      </div>
+      
+      <!-- Test Suite List -->
+      <div class="test-suite-list">
+        <div *ngFor="let testSuite of filteredTestSuites" class="test-suite-item" [ngClass]="{'expanded': testSuite.expanded}" (click)="toggleTestSuiteExpand(testSuite)">
+          <div class="suite-header">
+            <div class="suite-left">
+              <div class="expand-icon">
+                <i class="fas" [ngClass]="testSuite.expanded ? 'fa-angle-down' : 'fa-angle-right'"></i>
+              </div>
+              <div class="suite-name">{{ testSuite.name }}</div>
+            </div>
+            <div class="suite-status">
+              <div class="status-badge status-{{ getStatusClass(testSuite.status) }}">{{ testSuite.status }}</div>
+            </div>
+          </div>
+          
+          <!-- Suite Details (Expandable) -->
+          <div class="suite-details" *ngIf="testSuite.expanded">
+            <div class="details-header">
+              <div class="header-row">
+                <div class="stats-container">
+                  <div class="stat-item stat-passed">Pass: {{ testSuite.passedCount }}</div>
+                  <div class="stat-item stat-failed">Fail: {{ testSuite.failedCount }}</div>
+                  <div class="stat-item stat-skipped">Skip: {{ testSuite.skippedCount }}</div>
+                </div>
+                <div class="execution-info">
+                  <div class="start-time">Start Time: {{ testSuite.lastRunTimestamp | date:'dd-MM-yyyy, HH:mm:ss' }}</div>
+                  <div class="end-time">End Time: {{ formatEndTime(testSuite.lastRunTimestamp, testSuite.executionDuration) }}</div>
+                  <div class="execution-id">Execution ID: {{ testSuite.id }}</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Test Cases List -->
+            <div class="test-cases-container">
+              <h3 class="container-title">Testcases</h3>
+              
+              <div class="test-cases-list">
+                <!-- Mock test cases for each test suite -->
+                <div *ngFor="let i of [1, 2, 3, 4, 5]" class="test-case-item" [ngClass]="{'expanded': i === 1}" (click)="$event.stopPropagation()">
+                  <div class="case-header" (click)="toggleTestCaseExpand(testSuite, i)">
+                    <div class="case-left">
+                      <div class="expand-icon">
+                        <i class="fas" [ngClass]="i === 1 ? 'fa-angle-down' : 'fa-angle-right'"></i>
+                      </div>
+                      <div class="case-id">{{ i }}. </div>
+                      <div class="case-name">FT-UI Validation-condition Compare Action on Fail_SKIP/EXIT</div>
+                    </div>
+                    <div class="case-status">
+                      <div class="status-badge status-{{ i === 4 ? 'failed' : 'passed' }}">{{ i === 4 ? 'Failed' : 'Passed' }}</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Test Case Details (Expandable) -->
+                  <div class="case-details" *ngIf="i === 1">
+                    <div class="case-metadata">
+                      <div class="metadata-row">
+                        <div class="metadata-label">Status:</div>
+                        <div class="metadata-value status-passed">PASSED</div>
+                      </div>
+                      <div class="metadata-row">
+                        <div class="metadata-label">Retry attempt:</div>
+                        <div class="metadata-value">0</div>
+                      </div>
+                    </div>
+                    
+                    <div class="start-time">Start Time: {{ testSuite.lastRunTimestamp | date:'dd-MM-yyyy, HH:mm:ss' }}</div>
+                    <div class="end-time">End Time: {{ formatEndTime(testSuite.lastRunTimestamp, 120000) }}</div>
+                    <div class="execution-id">Execution ID: {{ generateRandomId() }}</div>
+                    
+                    <!-- Test Data Sequence -->
+                    <div class="test-data-sequence">
+                      <div class="sequence-label">Test Data Sequence</div>
+                      <div class="sequence-item primary-sequence status-passed">
+                        Primary <i class="fas fa-check"></i>
+                      </div>
+                    </div>
+                    
+                    <!-- Endpoints Panel -->
+                    <div class="endpoints-panel">
+                      <div class="panel-header">
+                        <h4 class="panel-title">Endpoints</h4>
+                      </div>
+                      
+                      <div class="endpoints-table">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Category</th>
+                              <th>Start time</th>
+                              <th>End time</th>
+                              <th>Response</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let j of [1, 2, 3, 4]" [ngClass]="{'selected-row': j === 1}">
+                              <td>
+                                <div class="endpoint-name">{{ ['FT.Preferences', 'FT.STDOUT', 'FT.References|Check Nav|Javary', 'FT.CUSTOM'][j-1] }} - Validation</div>
+                              </td>
+                              <td>{{ ['DOM', 'DOM', 'DOM', 'DOM'][j-1] }}</td>
+                              <td>{{ testSuite.lastRunTimestamp | date:'HH:MM:ss' }}</td>
+                              <td>{{ formatEndTime(testSuite.lastRunTimestamp, [15000, 12000, 9000, 18000][j-1]) }}</td>
+                              <td>{{ ['0.099', 'N/A', '7.658', '3.741'][j-1] }}</td>
+                              <td>
+                                <div class="status-badge status-{{ j === 2 ? 'failed' : 'passed' }}">
+                                  {{ j === 2 ? 'FAILED' : 'PASSED' }}
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Filters panel (collapsible) -->
+    <div class="filters-panel">
+      <div class="panel-header" (click)="toggleFiltersPanel()">
+        <h4 class="panel-title">Filters <i class="fas" [ngClass]="filtersExpanded ? 'fa-chevron-up' : 'fa-chevron-down'"></i></h4>
+      </div>
+      
+      <div class="filter-content" *ngIf="filtersExpanded">
+        <div class="filter-row">
+          <div class="filter-group">
+            <label>Master Suite Status</label>
+            <select class="form-control" [(ngModel)]="statusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+              <option value="In Progress">In Progress</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Test Suite Status</label>
+            <select class="form-control" [(ngModel)]="testSuiteStatusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Test Case Status</label>
+            <select class="form-control" [(ngModel)]="testCaseStatusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+              <option value="Skipped">Skipped</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Endpoint Status</label>
+            <select class="form-control" [(ngModel)]="endpointStatusFilter" (change)="applyFilters()">
+              <option value="All">All</option>
+              <option value="Passed">Passed</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="filter-actions">
+          <button class="btn btn-reset" (click)="resetFilters()">Reset</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
