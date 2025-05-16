@@ -20,6 +20,9 @@ export interface TestResult {
   runReport: string;
   startTime: Date;
   endTime: Date;
+  environment?: string;
+  browser?: string;
+  name?: string; // Added for display in the results page header
   testSteps: TestStep[];
 }
 

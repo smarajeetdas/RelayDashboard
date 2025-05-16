@@ -66,6 +66,8 @@ export class TestCaseResultComponent implements OnInit {
         },
         executionSuccess: true,
         validationStatus: 'Passed',
+        environment: 'Windows',
+        browser: 'Chrome',
         runReport: 'Daily Regression - May 15, 2025',
         startTime: new Date(Date.now() - 2500),
         endTime: new Date(),
@@ -107,23 +109,45 @@ export class TestCaseResultComponent implements OnInit {
             id: '4',
             name: 'Profile Data Retrieval',
             category: 'API',
-            status: 'Passed',
+            status: 'Failed',
             startTime: new Date(Date.now() - 1500),
             endTime: new Date(Date.now() - 900),
             requestType: 'GET',
-            responseCode: 200,
+            responseCode: 404,
             responseTime: 600
           },
           {
             id: '5',
             name: 'User Permissions Check',
             category: 'Validation',
-            status: 'Passed',
+            status: 'Failed',
             startTime: new Date(Date.now() - 900),
             endTime: new Date(Date.now() - 0),
             requestType: 'N/A',
             responseCode: 0,
             responseTime: 900
+          },
+          {
+            id: '6',
+            name: 'Session Token Verification',
+            category: 'API',
+            status: 'Passed',
+            startTime: new Date(Date.now() - 900),
+            endTime: new Date(Date.now() - 600),
+            requestType: 'POST',
+            responseCode: 200,
+            responseTime: 450
+          },
+          {
+            id: '7',
+            name: 'Role-based Access Check',
+            category: 'Validation',
+            status: 'Passed',
+            startTime: new Date(Date.now() - 600),
+            endTime: new Date(Date.now() - 300),
+            requestType: 'N/A',
+            responseCode: 0,
+            responseTime: 320
           }
         ]
       };

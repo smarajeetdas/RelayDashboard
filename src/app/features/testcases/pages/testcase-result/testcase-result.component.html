@@ -90,9 +90,19 @@
       </div>
     </div>
     
-    <!-- Endpoints Section -->
+    <!-- Endpoints Section with Filter -->
     <div class="endpoints-section">
-      <h3 class="section-title">Endpoints</h3>
+      <div class="endpoints-header">
+        <h3 class="section-title">Endpoints</h3>
+        <div class="endpoints-filter">
+          <span class="filter-label">Filter:</span>
+          <select class="filter-dropdown" [(ngModel)]="statusFilter" (change)="applyFilters()">
+            <option value="All">All</option>
+            <option value="Passed">Passed</option>
+            <option value="Failed">Failed</option>
+          </select>
+        </div>
+      </div>
       
       <div class="table-responsive">
         <table class="data-table">

@@ -6,6 +6,7 @@
   background-color: #f8f8f8;
   padding: 0;
   max-width: 100%;
+  margin-top: 60px; /* Add margin to prevent header overlap */
 }
 
 /* Header section */
@@ -169,11 +170,37 @@
   margin-top: 20px;
 }
 
+.endpoints-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 .section-title {
   font-size: 16px;
   font-weight: 500;
-  margin-bottom: 15px;
+  margin-bottom: 0;
   color: #333;
+}
+
+.endpoints-filter {
+  display: flex;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 13px;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.filter-dropdown {
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  background-color: white;
 }
 
 /* Data table */
