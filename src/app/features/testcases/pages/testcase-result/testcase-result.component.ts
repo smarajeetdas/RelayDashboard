@@ -249,6 +249,10 @@ export class TestCaseResultComponent implements OnInit {
     return this.filteredTestSteps.filter(step => step.status === 'Failed').length;
   }
   
+  getSkippedStepsCount(): number {
+    return this.filteredTestSteps.filter(step => step.status === 'Skipped').length;
+  }
+  
   getAverageWaitTime(): string {
     if (this.filteredTestSteps.length === 0) return '0';
     
