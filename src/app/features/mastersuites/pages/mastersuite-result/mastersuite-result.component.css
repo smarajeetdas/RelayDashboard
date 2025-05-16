@@ -610,17 +610,31 @@
   justify-content: flex-end;
 }
 
-.btn-reset {
+.btn-reset, .btn-apply {
   padding: 6px 12px;
   font-size: 13px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
+  margin-left: 8px;
+}
+
+.btn-reset {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+.btn-apply {
+  background-color: #1473e6;
+  border: 1px solid #1473e6;
+  color: #fff;
 }
 
 .btn-reset:hover {
   background-color: #e8e8e8;
+}
+
+.btn-apply:hover {
+  background-color: #0d66d0;
 }
 
 /* Responsive Adjustments */

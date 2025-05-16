@@ -23,7 +23,7 @@ export class MasterSuiteResultComponent implements OnInit {
   // Filters
   statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
   testSuiteStatusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
-  testCaseStatusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
+  testCaseStatusFilter: 'All' | 'Passed' | 'Failed' | 'Skipped' = 'All';
   endpointStatusFilter: 'All' | 'Passed' | 'Failed' = 'All';
   dateRangeFilter: { from: Date | null, to: Date | null } = { from: null, to: null };
   executedByFilter: string = '';
@@ -151,35 +151,51 @@ export class MasterSuiteResultComponent implements OnInit {
   }
 
   applyFilters(): void {
+    console.log('Applying filters:', {
+      statusFilter: this.statusFilter,
+      testSuiteStatusFilter: this.testSuiteStatusFilter,
+      testCaseStatusFilter: this.testCaseStatusFilter,
+      endpointStatusFilter: this.endpointStatusFilter
+    });
+
+    // Filter test suites based on selected criteria
     this.filteredTestSuites = this.masterSuiteResult.testSuites
-      .map(suite => ({
-        ...suite,
-        expanded: false,
-        testCases: [],
-        activeTestCase: null
-      }))
       .filter(testSuite => {
-        // Apply master suite status filter
-        if (this.statusFilter !== 'All' && this.masterSuiteResult.status !== this.statusFilter) {
-          return false;
-        }
+        // Skip master suite filter for now (it would filter all test suites out if master suite doesn't match)
+        // if (this.statusFilter !== 'All' && this.masterSuiteResult.status !== this.statusFilter) {
+        //   return false;
+        // }
         
         // Apply test suite status filter
         if (this.testSuiteStatusFilter !== 'All' && testSuite.status !== this.testSuiteStatusFilter) {
           return false;
         }
         
-        // Apply executed by filter (if implemented)
-        if (this.executedByFilter && this.executedByFilter.trim() !== '') {
-          const lowerCaseExecutedBy = this.masterSuiteResult.executedBy.toLowerCase();
-          const filterValue = this.executedByFilter.toLowerCase().trim();
-          if (!lowerCaseExecutedBy.includes(filterValue)) {
-            return false;
+        // Check if test suite has test cases that match test case status filter
+        if (this.testCaseStatusFilter !== 'All') {
+          switch(this.testCaseStatusFilter) {
+            case 'Passed':
+              if (testSuite.passedCount === 0) return false;
+              break;
+            case 'Failed':
+              if (testSuite.failedCount === 0) return false;
+              break;
+            case 'Skipped':
+              if (testSuite.skippedCount === 0) return false;
+              break;
           }
         }
         
         return true;
-      });
+      })
+      .map(suite => ({
+        ...suite,
+        expanded: false,
+        testCases: [],
+        activeTestCase: null
+      }));
+    
+    console.log('Filtered test suites:', this.filteredTestSuites.length);
   }
 
   resetFilters(): void {
