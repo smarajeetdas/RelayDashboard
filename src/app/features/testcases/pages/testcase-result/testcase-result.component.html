@@ -125,22 +125,7 @@
             </div>
           </div>
           
-          <!-- Response Time Distribution -->
-          <div class="chart-section">
-            <div class="chart-title">Response Time Distribution</div>
-            <div class="bar-chart">
-              <div class="bar-container">
-                <div *ngFor="let step of filteredTestSteps; let i = index" 
-                     class="bar" 
-                     [ngClass]="{'passed': step.status === 'Passed', 'failed': step.status === 'Failed'}"
-                     [style.height.%]="getBarHeight(step.responseTime)">
-                </div>
-              </div>
-            </div>
-            <div class="bar-axis">
-              <div class="axis-label" *ngFor="let step of filteredTestSteps; let i = index">{{ i + 1 }}</div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -159,8 +144,8 @@
         </div>
       </div>
       
-      <div class="table-responsive">
-        <table class="data-table">
+      <div class="table-container">
+        <table class="result-table">
           <thead>
             <tr>
               <th>Name</th>
@@ -175,7 +160,7 @@
             <tr *ngIf="filteredTestSteps.length === 0">
               <td colspan="6" class="no-results">No test steps match the current filters.</td>
             </tr>
-            <tr *ngFor="let step of filteredTestSteps" class="endpoint-row">
+            <tr *ngFor="let step of filteredTestSteps" class="table-row">
               <td>
                 <div class="step-name">
                   <i *ngIf="step.category === 'API'" class="fas fa-globe step-icon"></i>
@@ -193,7 +178,7 @@
                 <span class="response-time">{{ step.responseTime }} ms</span>
               </td>
               <td>
-                <span class="status-indicator bg-{{ getStatusClass(step.status) }}">{{ step.status }}</span>
+                <span class="status-pill bg-{{ getStatusClass(step.status) }}">{{ step.status }}</span>
               </td>
             </tr>
           </tbody>
