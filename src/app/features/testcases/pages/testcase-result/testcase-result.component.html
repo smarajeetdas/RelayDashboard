@@ -237,36 +237,57 @@
       </div>
     </div>
 
-    <!-- Endpoint Details Card (shown when an endpoint is selected) -->
-    <div class="endpoint-details-card" *ngIf="selectedEndpoint">
-      <div class="endpoint-card-header">
-        <h4 class="endpoint-card-title">{{ selectedEndpoint.name }}</h4>
-        <button class="close-button" (click)="closeEndpointDetails()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="endpoint-card-content">
-        <div class="endpoint-detail-row">
-          <div class="detail-label">Status:</div>
-          <div class="detail-value">
-            <span class="status-pill bg-{{ getStatusClass(selectedEndpoint.status) }}">{{ selectedEndpoint.status }}</span>
+    <!-- Two Column Layout for Endpoint Details -->
+    <div class="endpoint-details-section" *ngIf="selectedEndpoint">
+      <div class="row">
+        <!-- Left Column: Endpoint Details Card -->
+        <div class="col-md-6">
+          <div class="endpoint-details-card">
+            <div class="endpoint-card-header">
+              <h4 class="endpoint-card-title">{{ selectedEndpoint.name }}</h4>
+              <button class="close-button" (click)="closeEndpointDetails()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="endpoint-card-content">
+              <div class="endpoint-detail-row">
+                <div class="detail-label">Status:</div>
+                <div class="detail-value">
+                  <span class="status-pill bg-{{ getStatusClass(selectedEndpoint.status) }}">{{ selectedEndpoint.status }}</span>
+                </div>
+              </div>
+              <div class="endpoint-detail-row">
+                <div class="detail-label">Domain:</div>
+                <div class="detail-value">{{ selectedEndpoint.domain || 'https://relay-app.replit.app' }}</div>
+              </div>
+              <div class="endpoint-detail-row">
+                <div class="detail-label">URL:</div>
+                <div class="detail-value">{{ selectedEndpoint.url || '/api/v1/endpoints' }}</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="endpoint-detail-row">
-          <div class="detail-label">Domain:</div>
-          <div class="detail-value">{{ selectedEndpoint.domain || 'https://relay-app.replit.app' }}</div>
-        </div>
-        <div class="endpoint-detail-row">
-          <div class="detail-label">URL:</div>
-          <div class="detail-value">{{ selectedEndpoint.url || '/api/v1/endpoints' }}</div>
-        </div>
-        <div class="endpoint-detail-row">
-          <div class="detail-label">Response Type:</div>
-          <div class="detail-value">{{ selectedEndpoint.responseType || 'JSON' }}</div>
-        </div>
-        <div class="endpoint-detail-row">
-          <div class="detail-label">Execution Success:</div>
-          <div class="detail-value">{{ selectedEndpoint.executionSuccess ? 'True' : 'False' }}</div>
+        <!-- Right Column: Additional Information -->
+        <div class="col-md-6">
+          <div class="endpoint-additional-info">
+            <div class="card">
+              <div class="card-header">Additional Information</div>
+              <div class="card-body">
+                <div class="info-row">
+                  <div class="info-label">Response Type:</div>
+                  <div class="info-value">{{ selectedEndpoint.responseType || 'JSON' }}</div>
+                </div>
+                <div class="info-row">
+                  <div class="info-label">Execution Success:</div>
+                  <div class="info-value">{{ selectedEndpoint.executionSuccess ? 'True' : 'False' }}</div>
+                </div>
+                <div class="info-row">
+                  <div class="info-label">Response Time:</div>
+                  <div class="info-value">{{ selectedEndpoint.responseTime || '124' }} ms</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -291,41 +312,65 @@
         </div>
       </div>
       
-      <!-- Tab content -->
+      <!-- Tab content with two-column layout -->
       <div class="tab-content">
         <!-- Step Execution Tab -->
         <div class="tab-pane" [ngClass]="{'active': activeTab === 'steps'}">
-          <div class="table-container">
-            <table class="result-table">
-              <thead>
-                <tr>
-                  <th>Index</th>
-                  <th>Locator</th>
-                  <th>Input</th>
-                  <th>Action</th>
-                  <th>Wait Time</th>
-                  <th>Response(ms)</th>
-                  <th>Status</th>
-                  <th>Screenshot</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]" class="table-row">
-                  <td>{{ i + 1 }}</td>
-                  <td>{{ ['IT_Editor.field.title.input', 'Edit_Editor', 'Update_Values', 'IT_EditorMode.new', 'IT_EditorMode.raw', 'IT_EditorMode.row.value', 'IT_Editor.from.editor.list', 'Edit_Editor'][i] }}</td>
-                  <td>{{ ['', '', '', '', '', '', '', ''][i] }}</td>
-                  <td>CLICK</td>
-                  <td>{{ [0.658, 2.146, 2.566, 0.098, 0.054, 0.023, 0.158, 2.171][i] }}</td>
-                  <td>{{ [124, 2146, 2566, 98, 54, 23, 158, 2171][i] }}</td>
-                  <td>
-                    <span class="status-pill bg-passed">Passed</span>
-                  </td>
-                  <td>
-                    <a href="#" class="screenshot-link">View</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="row">
+            <!-- Left side: Compact table -->
+            <div class="col-md-8">
+              <div class="table-container compact-table">
+                <table class="result-table">
+                  <thead>
+                    <tr>
+                      <th>Index</th>
+                      <th>Locator</th>
+                      <th>Action</th>
+                      <th>Response(ms)</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let i of [0, 1, 2, 3]" class="table-row">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ ['IT_Editor.field.title.input', 'Edit_Editor', 'Update_Values', 'IT_EditorMode.new'][i] }}</td>
+                      <td>CLICK</td>
+                      <td>{{ [124, 2146, 2566, 98][i] }}</td>
+                      <td>
+                        <span class="status-pill bg-passed">Passed</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <!-- Right side: Step details -->
+            <div class="col-md-4">
+              <div class="step-details-panel">
+                <div class="panel-header">
+                  <h4>Step Details</h4>
+                </div>
+                <div class="panel-content">
+                  <div class="detail-item">
+                    <div class="detail-label">Selected Step:</div>
+                    <div class="detail-value">IT_Editor.field.title.input</div>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Wait Time:</div>
+                    <div class="detail-value">0.658 sec</div>
+                  </div>
+                  <div class="detail-item">
+                    <div class="detail-label">Screenshot:</div>
+                    <div class="detail-value">
+                      <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-image"></i> View Screenshot
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         
