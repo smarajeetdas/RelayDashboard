@@ -23,6 +23,7 @@ import { CtaComponent } from './components/cta/cta.component';
 import { FeatureCardComponent } from './shared/feature-card/feature-card.component';
 import { HomeComponent } from './components/home/home.component';
 import { DemoVideosComponent } from './components/demo-videos/demo-videos.component';
+import { DesktopAutomationOverviewComponent } from './components/desktop-automation-overview/desktop-automation-overview.component';
 
 // Feature modules
 import { PerformanceLabModule } from './features/performance-lab/performance-lab.module';
@@ -46,7 +47,8 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     CtaComponent,
     FeatureCardComponent,
     HomeComponent,
-    DemoVideosComponent
+    DemoVideosComponent,
+    DesktopAutomationOverviewComponent
   ],
   imports: [
     BrowserModule,
