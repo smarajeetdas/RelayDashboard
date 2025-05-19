@@ -514,14 +514,16 @@
 }
 
 .product-logo-container {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 1rem;
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  overflow: hidden;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .product-logo {
