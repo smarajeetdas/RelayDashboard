@@ -315,35 +315,9 @@
   }
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for automation types */
 @media (max-width: 992px) {
   .automation-type-card {
-    flex: 100%;
-  }
-  
-  .capability-row {
-    flex-direction: column;
-  }
-  
-  .capability-item {
-    flex: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .config-features-container {
-    flex-direction: column;
-  }
-  
-  .config-feature-card {
-    flex: 100%;
-  }
-  
-  .coming-soon-container {
-    flex-direction: column;
-  }
-  
-  .coming-soon-card {
     flex: 100%;
   }
 }

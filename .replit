@@ -23,15 +23,12 @@ author = "agent"
 agentRequireRestartOnSave = false
 
 [[workflows.workflow.tasks]]
-task = "packager.installForAll"
-
-[[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "NODE_OPTIONS=--openssl-legacy-provider npx ng serve --host 0.0.0.0 --port 5000 --disable-host-check --configuration production"
+args = "NODE_OPTIONS=--openssl-legacy-provider npx ng serve --host 0.0.0.0 --port 5000 --disable-host-check"
 waitForPort = 5000
 
 [deployment]
-run = ["sh", "-c", "NODE_OPTIONS=--openssl-legacy-provider npx ng serve --host 0.0.0.0 --port 5000 --disable-host-check --configuration production"]
+run = ["sh", "-c", "NODE_OPTIONS=--openssl-legacy-provider npx ng serve --host 0.0.0.0 --port 5000 --disable-host-check"]
 
 [[ports]]
 localPort = 5000
