@@ -27,7 +27,8 @@ export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit 
     { name: 'Adobe Express', logoPath: './assets/images/adobe_express.png', platforms: ['android', 'ios'], color: '#FF1F4D', subheading: 'InPipeline' },
     { name: 'Ad-Cloud', logoPath: './assets/images/ad_cloud.png', platforms: ['android'], color: '#E649B3', subheading: 'Advertisement verification' },
     { name: 'Globalization-AdobeScan', logoPath: './assets/images/adobe_scan.png', platforms: ['android', 'ios'], color: '#000000' },
-    { name: 'Globalization-Lightroom', logoPath: './assets/images/globalization_lightroom.png', platforms: ['android'], color: '#31A8FF' }
+    { name: 'Globalization-Lightroom', logoPath: './assets/images/globalization_lightroom.png', platforms: ['android'], color: '#31A8FF' },
+    { name: 'Globalization-AdobeConnect', logoPath: './assets/images/globalization_adobe_connect.png', platforms: ['android', 'ios'], color: '#25C39B' }
   ];
 
   constructor() { }
