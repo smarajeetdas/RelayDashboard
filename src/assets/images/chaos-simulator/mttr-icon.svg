@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>MTTR/MTTI Icon</title>
+    <g id="MTTR-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Circle" fill="#E9F1FF" cx="30" cy="30" r="29"></circle>
+        <circle id="Clock-Face" stroke="#1473E6" stroke-width="2" fill-opacity="0.1" fill="#1473E6" cx="30" cy="30" r="20"></circle>
+        <line x1="30" y1="30" x2="30" y2="16" id="Hour-Hand" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="30" y1="30" x2="40" y2="30" id="Minute-Hand" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <circle id="Center-Point" fill="#1473E6" cx="30" cy="30" r="2"></circle>
+        <path d="M46,14 L50,10 L46,6" id="Arrow-1" stroke="#1473E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M14,46 L10,50 L14,54" id="Arrow-2" stroke="#1473E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M50,10 C42,2 18,2 10,10" id="Curve-1" stroke="#1473E6" stroke-width="2" stroke-linecap="round" stroke-dasharray="2,2"></path>
+        <path d="M10,50 C18,58 42,58 50,50" id="Curve-2" stroke="#1473E6" stroke-width="2" stroke-linecap="round" stroke-dasharray="2,2"></path>
+    </g>
+</svg>

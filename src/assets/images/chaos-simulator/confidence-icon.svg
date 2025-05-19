@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Confidence Icon</title>
+    <g id="Confidence-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Circle" fill="#E9F1FF" cx="30" cy="30" r="29"></circle>
+        <path d="M17,43 L17,27 C17,19.820 22.820,14 30,14 C37.180,14 43,19.820 43,27 L43,43" id="Arc" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></path>
+        <rect id="Shield" stroke="#1473E6" stroke-width="2" fill-opacity="0.1" fill="#1473E6" x="23" y="26" width="14" height="22" rx="3"></rect>
+        <path d="M27,36 L28.5,37.5 L33,33" id="Checkmark" stroke="#1473E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M30,26 L30,22" id="Connection-Line" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M30,14 L30,10" id="Top-Line-1" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M19,16 L16,13" id="Top-Line-2" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M41,16 L44,13" id="Top-Line-3" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M14,27 L10,27" id="Side-Line-1" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M50,27 L46,27" id="Side-Line-2" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></path>
+    </g>
+</svg>

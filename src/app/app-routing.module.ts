@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DesktopAutomationOverviewComponent } from './components/desktop-automation-overview/desktop-automation-overview.component';
 import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
 import { PerformanceLabOverviewComponent } from './components/performance-lab-overview/performance-lab-overview.component';
+import { ChaosSimulatorOverviewComponent } from './components/chaos-simulator-overview/chaos-simulator-overview.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,20 @@ const routes: Routes = [
       {
         path: 'details',
         loadChildren: () => import('./features/performance-lab/performance-lab.module').then(m => m.PerformanceLabModule)
+      }
+    ]
+  },
+  {
+    path: 'chaos-simulator',
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
+        component: ChaosSimulatorOverviewComponent
       }
     ]
   },

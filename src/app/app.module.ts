@@ -27,6 +27,7 @@ import { DemoVideosComponent } from './components/demo-videos/demo-videos.compon
 import { DesktopAutomationOverviewComponent } from './components/desktop-automation-overview/desktop-automation-overview.component';
 import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
 import { PerformanceLabOverviewComponent } from './components/performance-lab-overview/performance-lab-overview.component';
+import { ChaosSimulatorOverviewComponent } from './components/chaos-simulator-overview/chaos-simulator-overview.component';
 
 // Feature modules
 import { PerformanceLabModule } from './features/performance-lab/performance-lab.module';
@@ -53,7 +54,8 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     DemoVideosComponent,
     DesktopAutomationOverviewComponent,
     MobileAutomationOverviewComponent,
-    PerformanceLabOverviewComponent
+    PerformanceLabOverviewComponent,
+    ChaosSimulatorOverviewComponent
   ],
   imports: [
     BrowserModule,

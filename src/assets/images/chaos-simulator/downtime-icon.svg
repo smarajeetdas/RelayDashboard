@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Downtime Icon</title>
+    <g id="Downtime-Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Circle" fill="#E9F1FF" cx="30" cy="30" r="29"></circle>
+        <rect id="Server" stroke="#1473E6" stroke-width="2" fill-opacity="0.1" fill="#1473E6" x="15" y="10" width="30" height="40" rx="3"></rect>
+        <line x1="15" y1="17" x2="45" y2="17" id="Line-1" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="15" y1="24" x2="45" y2="24" id="Line-2" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="15" y1="31" x2="45" y2="31" id="Line-3" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <rect id="Status-Light-1" fill="#39B54A" x="20" y="13" width="4" height="2" rx="1"></rect>
+        <rect id="Status-Light-2" fill="#D3322A" x="26" y="13" width="4" height="2" rx="1"></rect>
+        <rect id="Status-Light-3" fill="#F7A800" x="32" y="13" width="4" height="2" rx="1"></rect>
+        <line x1="20" y1="38" x2="40" y2="38" id="Status-Line-1" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="20" y1="43" x2="35" y2="43" id="Status-Line-2" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <line x1="20" y1="48" x2="30" y2="48" id="Status-Line-3" stroke="#1473E6" stroke-width="2" stroke-linecap="round"></line>
+        <path d="M40,28 L40,40 L20,40 L20,28" id="Pulse-Path" stroke="#1473E6" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M20,34 L25,34 L28,28 L32,38 L35,34 L40,34" id="Pulse-Line" stroke="#1473E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+</svg>

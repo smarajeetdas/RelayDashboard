@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   
   // Chaos Simulator dropdown options
   chaosSimulatorOptions = [
-    { id: 'overview', name: 'Overview', icon: 'fa-circle' },
+    { id: 'overview', name: 'Overview', icon: 'fa-circle', route: '/chaos-simulator/overview' },
     { id: 'getting-started', name: 'Getting started', icon: 'fa-circle' }
   ];
   
