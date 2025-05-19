@@ -17,8 +17,11 @@ export class DesktopAutomationOverviewComponent implements OnInit {
       'one-click': false,
       'ui-automation': false,
       'cross-platform': false,
-      'reports': false,
-      'cicd': false
+      'key-offerings': false,
+      'easy-config': false,
+      'platform-support': false,
+      'ai-integrations': false,
+      'whats-next': false
     };
   }
 
