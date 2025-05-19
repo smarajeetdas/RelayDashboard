@@ -418,8 +418,8 @@
 }
 
 .step-circle {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background-color: white;
   display: flex;
@@ -434,10 +434,10 @@
 .step-circle::before {
   content: '';
   position: absolute;
-  top: -15px;
-  left: -15px;
-  right: -15px;
-  bottom: -15px;
+  top: -18px;
+  left: -18px;
+  right: -18px;
+  bottom: -18px;
   border-radius: 50%;
   border: 2px solid rgba(73, 150, 255, 0.3);
   z-index: -1;
@@ -446,24 +446,24 @@
 .step-circle::after {
   content: '';
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
+  top: -7px;
+  left: -7px;
+  right: -7px;
+  bottom: -7px;
   border-radius: 50%;
   border: 2px solid rgba(73, 150, 255, 0.6);
   z-index: -1;
 }
 
 .step-number {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #1c2b54;
   line-height: 1;
 }
 
 .step-icon {
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #4996ff;
   margin-top: 0.25rem;
 }
