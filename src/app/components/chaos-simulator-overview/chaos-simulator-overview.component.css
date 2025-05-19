@@ -497,6 +497,307 @@
   color: #ccdaff;
 }
 
+/* Capabilities Section Styles */
+.capabilities-container {
+  position: relative;
+  padding: 4rem 1rem;
+  margin: 2rem 0;
+  overflow: hidden;
+  background-color: #1c2b54;
+  border-radius: 12px;
+  color: white;
+  min-height: 800px;
+}
+
+.capabilities-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/images/network-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.capabilities-diagram {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 700px;
+}
+
+/* Capability Nodes */
+.capability-node {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 1rem;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-align: center;
+  z-index: 2;
+}
+
+.capability-node:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.capability-icon {
+  font-size: 1.8rem;
+  color: #1473e6;
+  margin-bottom: 0.5rem;
+}
+
+.capability-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.capability-description {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.3;
+}
+
+/* Node Positioning */
+.center-node {
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background-color: rgba(20, 115, 230, 0.85);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.center-node .capability-title {
+  color: white;
+}
+
+.center-node:hover {
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.center-node .capability-logo {
+  margin-bottom: 0.5rem;
+}
+
+.center-node .small-logo {
+  height: 30px;
+}
+
+.category-node {
+  width: 180px;
+  background-color: rgba(40, 40, 40, 0.7);
+  border: 2px solid #ffd700;
+  color: #ffd700;
+}
+
+.category-node .capability-title {
+  color: #ffd700;
+}
+
+.infrastructure-node {
+  top: 150px;
+  left: 25%;
+  transform: translateX(-50%);
+}
+
+.network-node {
+  top: 150px;
+  left: 75%;
+  transform: translateX(-50%);
+}
+
+.feature-node {
+  width: 200px;
+  min-height: 110px;
+}
+
+/* Infrastructure Nodes */
+.cpu-node {
+  top: 240px;
+  left: 15%;
+  transform: translateX(-50%);
+}
+
+.memory-node {
+  top: 240px;
+  left: 35%;
+  transform: translateX(-50%);
+}
+
+.io-node {
+  top: 240px;
+  left: 55%;
+  transform: translateX(-50%);
+}
+
+.disk-node {
+  top: 365px;
+  left: 15%;
+  transform: translateX(-50%);
+}
+
+.shutdown-node {
+  top: 365px;
+  left: 35%;
+  transform: translateX(-50%);
+}
+
+/* Network Nodes */
+.latency-node {
+  top: 240px;
+  left: 65%;
+  transform: translateX(-50%);
+}
+
+.blackhole-node {
+  top: 240px;
+  left: 85%;
+  transform: translateX(-50%);
+}
+
+.packetloss-node {
+  top: 365px;
+  left: 65%;
+  transform: translateX(-50%);
+}
+
+.dns-node {
+  top: 365px;
+  left: 85%;
+  transform: translateX(-50%);
+}
+
+.bottom-node {
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  background-color: rgba(40, 40, 40, 0.7);
+  border: 2px solid #ffd700;
+  color: #ffd700;
+}
+
+.bottom-node .capability-title {
+  font-size: 1.5rem;
+  color: #ffd700;
+}
+
+.bottom-node .capability-description {
+  color: #ccc;
+}
+
+/* Connector Lines */
+.connector-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.connector-lines::before,
+.connector-lines::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Center to Categories */
+.capabilities-diagram::before {
+  content: '';
+  position: absolute;
+  top: 95px;
+  left: 50%;
+  width: 2px;
+  height: 55px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+/* Center to ALFI */
+.capabilities-diagram::after {
+  content: '';
+  position: absolute;
+  bottom: 155px;
+  left: 50%;
+  width: 2px;
+  height: 75px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+/* Category Horizontal Line */
+.capabilities-container::before {
+  content: '';
+  position: absolute;
+  top: 235px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+/* Vertical Lines from Categories */
+.infrastructure-node::before {
+  content: '';
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 2px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.network-node::before {
+  content: '';
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 2px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+/* Infrastructure Grid */
+.infrastructure-node::after {
+  content: '';
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  width: 60%;
+  height: 155px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: none;
+  z-index: 1;
+}
+
+/* Network Grid */
+.network-node::after {
+  content: '';
+  position: absolute;
+  top: 90px;
+  left: -10%;
+  width: 60%;
+  height: 155px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: none;
+  z-index: 1;
+}
+
 /* Media Queries for Responsive Layout */
 @media (max-width: 1199.98px) {
   .lifecycle-steps-wrapper {
