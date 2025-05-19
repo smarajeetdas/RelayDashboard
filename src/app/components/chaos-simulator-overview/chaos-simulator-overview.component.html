@@ -13,6 +13,88 @@
       </p>
     </div>
 
+    <h2 class="section-title">Chaos Testing Lifecycle</h2>
+    
+    <div class="lifecycle-container">
+      <div class="lifecycle-background"></div>
+      
+      <div class="lifecycle-step step-1">
+        <div class="step-circle">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fas fa-sitemap"></i></div>
+        </div>
+        <div class="step-content">
+          <h3>Architecture Assessment</h3>
+          <p>Objective of chaos testing</p>
+          <ul>
+            <li>Identify environment & tools to perform chaos</li>
+            <li>Evaluate System Architecture and identify target systems</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lifecycle-step step-2">
+        <div class="step-circle">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fas fa-lightbulb"></i></div>
+        </div>
+        <div class="step-content">
+          <h3>Build a Hypothesis around Steady State</h3>
+          <p>Perform load test strategy to evaluate the steady state metrics</p>
+          <ul>
+            <li>Identify failure to inject, and hypothesize what might go wrong</li>
+            <li>Create chaos test cases & define what to test next</li>
+            <li>Perform a dry run to validate agent installation</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lifecycle-step step-3">
+        <div class="step-circle">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fas fa-vial"></i></div>
+        </div>
+        <div class="step-content">
+          <h3>Run Chaos Experiment</h3>
+          <p>Ensure proper alerting is in place in case of critical business/system metrics dip</p>
+          <ul>
+            <li>Notify teams on chaos testing schedule and impact. Start chaos run with minimized blast radius</li>
+            <li>Gradually plan blast radius expansion. Observe system & application monitoring</li>
+            <li>Prepare a roll-back plan</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lifecycle-step step-4">
+        <div class="step-circle">
+          <div class="step-number">04</div>
+          <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
+        </div>
+        <div class="step-content">
+          <h3>Validate Hypothesis</h3>
+          <p>Analyze the results to conclude if the hypothesis is proved or disproved</p>
+          <ul>
+            <li>Identify if system is resilient to the real-world events injected</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="lifecycle-step step-5">
+        <div class="step-circle">
+          <div class="step-number">05</div>
+          <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+        </div>
+        <div class="step-content">
+          <h3>Results & Proposition</h3>
+          <p>Create tickets on resiliency improvement items</p>
+          <ul>
+            <li>Publish the gamedays results</li>
+            <li>Provide recommendations on improvement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <h2 class="section-title">Why is it Important?</h2>
 
     <div class="journey-steps">
