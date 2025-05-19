@@ -735,19 +735,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.section-header h2 {
-  background-color: #e94435;
-  color: white;
-  display: inline-block;
-  padding: 0.75rem 2rem 0.75rem 1rem;
-  margin: 0;
-  position: relative;
-  font-size: 1.5rem;
-  font-weight: 600;
-  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+/* Removed section-header style */
 
 .products-container {
   display: flex;
