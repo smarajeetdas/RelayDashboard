@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { DesktopAutomationOverviewComponent } from './components/desktop-automation-overview/desktop-automation-overview.component';
+import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'desktop-automation',
     component: DesktopAutomationOverviewComponent
+  },
+  {
+    path: 'mobile-automation',
+    component: MobileAutomationOverviewComponent
   },
   {
     path: 'endpoints',

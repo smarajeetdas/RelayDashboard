@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { FeatureCardComponent } from './shared/feature-card/feature-card.compone
 import { HomeComponent } from './components/home/home.component';
 import { DemoVideosComponent } from './components/demo-videos/demo-videos.component';
 import { DesktopAutomationOverviewComponent } from './components/desktop-automation-overview/desktop-automation-overview.component';
+import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
 
 // Feature modules
 import { PerformanceLabModule } from './features/performance-lab/performance-lab.module';
@@ -48,10 +50,12 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     FeatureCardComponent,
     HomeComponent,
     DemoVideosComponent,
-    DesktopAutomationOverviewComponent
+    DesktopAutomationOverviewComponent,
+    MobileAutomationOverviewComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
