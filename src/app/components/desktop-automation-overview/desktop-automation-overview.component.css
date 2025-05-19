@@ -610,7 +610,7 @@
 }
 
 .instruction {
-  background-color: #4bb4e6;
+  background-color: #55b9f8;
   border-radius: 5px;
   padding: 0.75rem 1rem;
   color: white;
@@ -642,18 +642,26 @@
 }
 
 .action-box, .locator-box {
-  background-color: #2c5aa0;
-  border-radius: 10px;
+  background-color: #2b579a;
+  border-radius: 12px;
   padding: 1rem;
   color: white;
   width: 150px;
   min-height: 200px;
+  border: 2px solid #19427a;
 }
 
 .plus-sign {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #2c5aa0;
+  color: white;
+  background-color: #55b9f8;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
 }
 
 .action-box h3, .locator-box h3 {
@@ -690,8 +698,8 @@
 
 .endpoint-connector {
   height: 2px;
-  width: 100px;
-  background-color: #555;
+  width: 180px;
+  background-color: #333;
   margin-right: 1rem;
   position: relative;
 }
@@ -700,25 +708,30 @@
   content: "";
   position: absolute;
   width: 2px;
-  background-color: #555;
+  background-color: #333;
 }
 
 .endpoint-connector:before {
-  height: 350px;
-  top: -175px;
-  left: 0;
+  top: -60px;
+  right: 0;
+  height: 60px;
 }
 
 .endpoint-connector:after {
-  height: 350px;
-  top: -175px;
+  bottom: -60px;
   right: 0;
+  height: 60px;
+}
+
+.endpoint-text {
+  text-align: center;
 }
 
 .endpoint-text h3 {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 600;
+  color: #333;
 }
 
 .endpoint-text p {
