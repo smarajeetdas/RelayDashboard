@@ -83,45 +83,47 @@
         </div>
       </div>
 
-      <!-- AI Integrations -->
-      <div class="feature-card" (click)="toggleCard('ai-integrations')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="feature-ai-integrations-icon"></i>
+      <div class="centered-cards-row">
+        <!-- AI Integrations -->
+        <div class="feature-card" (click)="toggleCard('ai-integrations')">
+          <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
+            <div class="feature-card-front">
+              <div class="feature-icon">
+                <i class="feature-ai-integrations-icon"></i>
+              </div>
+              <h3 class="feature-title">AI Integrations</h3>
+              <p class="feature-card-hint">Click to see details</p>
             </div>
-            <h3 class="feature-title">AI Integrations</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">AI Integrations</h3>
-            <ul class="feature-list">
-              <li>Easy OCR: Text recognition</li>
-              <li>OpenCV: Image recognition</li>
-            </ul>
+            <div class="feature-card-back">
+              <h3 class="feature-title">AI Integrations</h3>
+              <ul class="feature-list">
+                <li>Easy OCR: Text recognition</li>
+                <li>OpenCV: Image recognition</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- What's Next? -->
-      <div class="feature-card" (click)="toggleCard('whats-next')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['whats-next']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="feature-whats-next-icon"></i>
+        <!-- What's Next? -->
+        <div class="feature-card" (click)="toggleCard('whats-next')">
+          <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['whats-next']}">
+            <div class="feature-card-front">
+              <div class="feature-icon">
+                <i class="feature-whats-next-icon"></i>
+              </div>
+              <h3 class="feature-title">What's Next?</h3>
+              <p class="feature-card-hint">Click to see details</p>
             </div>
-            <h3 class="feature-title">What's Next?</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">What's Next?</h3>
-            <ul class="feature-list">
-              <li>Video of execution</li>
-              <li>Record & Generate Test Cases</li>
-              <li>Performance & Crash Reporting</li>
-              <li>Code Coverage</li>
-              <li>Enabling Localization</li>
-            </ul>
+            <div class="feature-card-back">
+              <h3 class="feature-title">What's Next?</h3>
+              <ul class="feature-list">
+                <li>Video of execution</li>
+                <li>Record & Generate Test Cases</li>
+                <li>Performance & Crash Reporting</li>
+                <li>Code Coverage</li>
+                <li>Enabling Localization</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

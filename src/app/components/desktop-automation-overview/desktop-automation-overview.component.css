@@ -244,6 +244,14 @@
   margin-bottom: 3rem;
 }
 
+.centered-cards-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  grid-column: 1 / span 3;
+}
+
 /* Card Flip Animation */
 .feature-card {
   position: relative;
