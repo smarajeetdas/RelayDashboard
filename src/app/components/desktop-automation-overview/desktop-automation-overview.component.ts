@@ -19,7 +19,7 @@ export class DesktopAutomationOverviewComponent implements OnInit, AfterViewInit
   products: Product[] = [
     { name: 'Lightroom', logoPath: './assets/images/lightroom_new.png', platforms: ['windows', 'mac'], color: '#31A8FF' },
     { name: 'Photoshop', logoPath: './assets/images/photoshop_new.png', platforms: ['windows', 'mac'], color: '#00C8FF' },
-    { name: 'Illustrator', logoPath: './assets/images/illustrator.png', platforms: ['windows', 'mac'], color: '#FF9A00' }
+    { name: 'Illustrator', logoPath: './assets/images/illustrator_new.png', platforms: ['windows', 'mac'], color: '#FF9A00' }
   ];
 
   constructor() { }
@@ -48,5 +48,25 @@ export class DesktopAutomationOverviewComponent implements OnInit, AfterViewInit
 
   toggleCard(cardId: string): void {
     this.flippedCards[cardId] = !this.flippedCards[cardId];
+  }
+  
+  /**
+   * Gets products by platform support type
+   * @param platforms Array of platform strings to filter by
+   * @returns Products that match the criteria
+   */
+  getProductsByPlatform(platforms: string[]): Product[] {
+    if (platforms.includes('windows') && platforms.includes('mac')) {
+      // Products with both Windows and Mac support
+      return this.products.filter(product => 
+        product.platforms.includes('windows') && product.platforms.includes('mac')
+      );
+    } else if (platforms.includes('windows')) {
+      // Products with Windows only support
+      return this.products.filter(product => 
+        product.platforms.includes('windows') && !product.platforms.includes('mac')
+      );
+    }
+    return [];
   }
 }

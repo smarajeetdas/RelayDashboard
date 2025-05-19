@@ -189,47 +189,34 @@
     <div class="products-section">
       <h2 class="section-title">Products using Desktop Automation</h2>
       
-      <div class="products-slider">
-        <div class="slider-container">
-          <div class="slider-track" #productSliderTrack>
-            <!-- Original items -->
-            <div class="product-slide" *ngFor="let product of products">
-              <div class="product-card" [style.border-color]="product.color">
-                <div class="product-logo-container" [style.background-color]="product.color">
-                  <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
-                </div>
-                <div class="product-name">{{product.name}}</div>
-                <div class="platforms">
-                  <img src="./assets/images/windows.png" class="platform-icon" *ngIf="product.platforms.includes('windows')" title="Windows Support">
-                  <img src="./assets/images/mac.png" class="platform-icon" *ngIf="product.platforms.includes('mac')" title="Mac Support">
-                </div>
-                <div class="product-hover-overlay" [style.background-color]="product.color">
-                  <div class="product-hover-content">
-                    <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo-hover mb-2">
-                    <div>{{product.name}}</div>
-                  </div>
-                </div>
-              </div>
+      <!-- Windows and Mac Products -->
+      <div class="platform-section">
+        <h3 class="platform-title">Windows & Mac Products</h3>
+        <div class="products-grid">
+          <div class="product-card" *ngFor="let product of getProductsByPlatform(['windows', 'mac'])" [style.border-color]="product.color">
+            <div class="product-logo-container" [style.background-color]="product.color">
+              <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
             </div>
-            
-            <!-- Duplicate items for infinite scrolling effect -->
-            <div class="product-slide duplicate-card" *ngFor="let product of products">
-              <div class="product-card" [style.border-color]="product.color">
-                <div class="product-logo-container" [style.background-color]="product.color">
-                  <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
-                </div>
-                <div class="product-name">{{product.name}}</div>
-                <div class="platforms">
-                  <img src="./assets/images/windows.png" class="platform-icon" *ngIf="product.platforms.includes('windows')" title="Windows Support">
-                  <img src="./assets/images/mac.png" class="platform-icon" *ngIf="product.platforms.includes('mac')" title="Mac Support">
-                </div>
-                <div class="product-hover-overlay" [style.background-color]="product.color">
-                  <div class="product-hover-content">
-                    <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo-hover mb-2">
-                    <div>{{product.name}}</div>
-                  </div>
-                </div>
-              </div>
+            <div class="product-name">{{product.name}}</div>
+            <div class="platforms">
+              <img src="./assets/images/windows.png" class="platform-icon" title="Windows Support">
+              <img src="./assets/images/mac.png" class="platform-icon" title="Mac Support">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Windows Only Products -->
+      <div class="platform-section" *ngIf="getProductsByPlatform(['windows']).length > 0">
+        <h3 class="platform-title">Windows Only Products</h3>
+        <div class="products-grid">
+          <div class="product-card" *ngFor="let product of getProductsByPlatform(['windows'])" [style.border-color]="product.color">
+            <div class="product-logo-container" [style.background-color]="product.color">
+              <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
+            </div>
+            <div class="product-name">{{product.name}}</div>
+            <div class="platforms">
+              <img src="./assets/images/windows.png" class="platform-icon" title="Windows Support">
             </div>
           </div>
         </div>
