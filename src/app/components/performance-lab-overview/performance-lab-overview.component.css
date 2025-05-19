@@ -1,0 +1,299 @@
+/* Performance Lab Overview Styles */
+.performance-lab-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #1c2536;
+  background-image: linear-gradient(to bottom, #1c2536, #2a3749);
+  padding: 8rem 0 2rem 0; /* Increased top padding to account for fixed header */
+  min-height: 100vh;
+  color: #fff;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header Styles */
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.overview-header h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #4f77db;
+  border-radius: 20px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: rgba(79, 119, 219, 0.2);
+  border-color: #4f77db;
+  color: #fff;
+}
+
+/* Main description */
+.overview-description {
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.overview-description p {
+  font-size: 1rem;
+  color: #e6e6e6;
+  margin-bottom: 0;
+}
+
+.link {
+  color: #4f77db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Section title */
+.section-title {
+  color: #4f77db;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+/* Section label */
+.section-label {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.section-label.live {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.section-label.coming-soon {
+  background-color: #673AB7;
+  color: white;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Card Flip Animation */
+.feature-card {
+  position: relative;
+  height: 300px;
+  perspective: 1500px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.feature-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.feature-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.feature-card-front, .feature-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card-front {
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-card-back {
+  transform: rotateY(180deg);
+  text-align: left;
+  overflow-y: auto;
+}
+
+.feature-card:hover .feature-card-front {
+  border-color: #4f77db;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.feature-card-hint {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 1rem;
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(79, 119, 219, 0.2);
+  padding: 10px;
+}
+
+.feature-icon-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.feature-title {
+  color: #4f77db;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feature-list {
+  padding-left: 1.2rem;
+  margin: 0;
+  color: #e6e6e6;
+}
+
+.feature-list li {
+  margin-bottom: 0.8rem;
+  color: #e6e6e6;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.status-badge.in-progress {
+  background-color: #FF9800;
+  color: white;
+}
+
+.status-badge.coming-soon {
+  background-color: #673AB7;
+  color: white;
+}
+
+/* Quick Links Section */
+.quick-links-section {
+  margin: 2rem 0;
+  text-align: right;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.quick-links-label {
+  margin-right: 0.5rem;
+}
+
+.quick-link {
+  color: #4f77db;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: all 0.2s ease;
+}
+
+.quick-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsive Layout */
+@media (max-width: 991.98px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .header-buttons {
+    flex-direction: column;
+  }
+  
+  .overview-header {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .overview-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .performance-lab-container {
+    padding: 8rem 1rem 2rem 1rem;
+  }
+  
+  .quick-links-section {
+    text-align: center;
+  }
+}

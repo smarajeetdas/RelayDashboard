@@ -1,0 +1,166 @@
+<div class="performance-lab-container">
+  <div class="content-wrapper">
+    <div class="overview-header">
+      <h1>Overview</h1>
+      <div class="header-buttons">
+        <button class="btn-outline">Performance Tests</button>
+        <button class="btn-outline">Performance Metrics</button>
+      </div>
+    </div>
+
+    <div class="overview-description">
+      <p>
+        A central place fueled with executable platform to test your application/service/platform against variety of performance tests in the controlled environment along with guided demos.
+      </p>
+    </div>
+
+    <h2 class="section-title">Explore Performance Lab Capabilities</h2>
+
+    <!-- Live Features Section -->
+    <div class="section-label live">LIVE!</div>
+    
+    <div class="features-grid">
+      <!-- Automated Load Testing -->
+      <div class="feature-card" (click)="toggleCard('automated-load-testing')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['automated-load-testing']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <img src="./assets/images/load-testing-icon.svg" alt="Automated Load Testing Icon" class="feature-icon-img">
+            </div>
+            <h3 class="feature-title">Automated Load Testing</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Automated Load Testing</h3>
+            <ul class="feature-list">
+              <li>Self-Service - API load testing Platform</li>
+              <li>Automated UI Load testing for Regression Scenarios</li>
+              <li>Easy interface for Volume / Batch Job Testing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profiling -->
+      <div class="feature-card" (click)="toggleCard('profiling')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['profiling']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <img src="./assets/images/profiling-icon.svg" alt="Profiling Icon" class="feature-icon-img">
+            </div>
+            <h3 class="feature-title">Profiling</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Profiling</h3>
+            <ul class="feature-list">
+              <li>Static Code Profiling for Quality Checks</li>
+              <li>Dynamic Code profiling for App Profile Mgmt</li>
+              <li>CPU & Memory profiling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulation -->
+      <div class="feature-card" (click)="toggleCard('simulation')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['simulation']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <img src="./assets/images/simulation-icon.svg" alt="Simulation Icon" class="feature-icon-img">
+            </div>
+            <h3 class="feature-title">Simulation</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Simulation</h3>
+            <ul class="feature-list">
+              <li>Load simulation from Multi Geo locations</li>
+              <li>Service Virtualization for Mock - Test environments</li>
+              <li>Test data Simulation for E2E Performance Testing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Coming Soon Section -->
+    <div class="section-label coming-soon">Coming Soon</div>
+    
+    <div class="features-grid">
+      <!-- Dashboard -->
+      <div class="feature-card" (click)="toggleCard('dashboard')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['dashboard']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <img src="./assets/images/dashboard-icon.svg" alt="Dashboard Icon" class="feature-icon-img">
+            </div>
+            <h3 class="feature-title">Dashboard</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Dashboard</h3>
+            <ul class="feature-list">
+              <li>Performance trend for Pre Prod & Production</li>
+              <li>API Performance metrics across environments</li>
+              <li>Forecasted release confidence/quality level</li>
+            </ul>
+            <div class="status-badge in-progress">In-Progress</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tuning/Optimization -->
+      <div class="feature-card" (click)="toggleCard('tuning-optimization')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['tuning-optimization']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <img src="./assets/images/tuning-icon.svg" alt="Tuning/Optimization Icon" class="feature-icon-img">
+            </div>
+            <h3 class="feature-title">Tuning/Optimization</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Tuning/Optimization</h3>
+            <ul class="feature-list">
+              <li>Client Side (Browser) Optimization for UEM</li>
+              <li>App Server Tuning (JVM, thread & Heap dump analysis)</li>
+              <li>Database Performance Improvement techniques</li>
+            </ul>
+            <div class="status-badge coming-soon">Coming Soon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Server Performance Monitoring -->
+      <div class="feature-card" (click)="toggleCard('server-performance')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['server-performance']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <img src="./assets/images/server-monitoring-icon.svg" alt="Server Performance Monitoring Icon" class="feature-icon-img">
+            </div>
+            <h3 class="feature-title">Server Performance Monitoring</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Server Performance Monitoring</h3>
+            <ul class="feature-list">
+              <li>CPU & Memory utilization metrics</li>
+              <li>End user Experience monitoring</li>
+              <li>Cloud Infrastructure metrics Reporting</li>
+            </ul>
+            <div class="status-badge coming-soon">Coming Soon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick Links Section -->
+    <div class="quick-links-section">
+      <span class="quick-links-label">Quick links : </span>
+      <a href="#" class="quick-link">Create Endpoint</a> | 
+      <a href="#" class="quick-link">Testcase</a> | 
+      <a href="#" class="quick-link">Environment</a>
+    </div>
+  </div>
+</div>

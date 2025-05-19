@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { DesktopAutomationOverviewComponent } from './components/desktop-automation-overview/desktop-automation-overview.component';
 import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
+import { PerformanceLabOverviewComponent } from './components/performance-lab-overview/performance-lab-overview.component';
 
 const routes: Routes = [
   {
@@ -59,7 +60,21 @@ const routes: Routes = [
   },
   {
     path: 'performance-lab',
-    loadChildren: () => import('./features/performance-lab/performance-lab.module').then(m => m.PerformanceLabModule)
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
+        component: PerformanceLabOverviewComponent
+      },
+      {
+        path: 'details',
+        loadChildren: () => import('./features/performance-lab/performance-lab.module').then(m => m.PerformanceLabModule)
+      }
+    ]
   },
   {
     path: '**',

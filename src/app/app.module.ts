@@ -26,6 +26,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DemoVideosComponent } from './components/demo-videos/demo-videos.component';
 import { DesktopAutomationOverviewComponent } from './components/desktop-automation-overview/desktop-automation-overview.component';
 import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
+import { PerformanceLabOverviewComponent } from './components/performance-lab-overview/performance-lab-overview.component';
 
 // Feature modules
 import { PerformanceLabModule } from './features/performance-lab/performance-lab.module';
@@ -51,7 +52,8 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     HomeComponent,
     DemoVideosComponent,
     DesktopAutomationOverviewComponent,
-    MobileAutomationOverviewComponent
+    MobileAutomationOverviewComponent,
+    PerformanceLabOverviewComponent
   ],
   imports: [
     BrowserModule,
