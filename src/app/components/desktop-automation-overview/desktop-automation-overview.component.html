@@ -16,166 +16,112 @@
 
     <h2 class="section-title">Explore the Transformative Features of Relay Desktop Automation</h2>
 
-    <div class="feature-panels">
-      <div class="feature-row">
-        <!-- Key Offerings -->
-        <div class="feature-card" (click)="toggleCard('key-offerings')">
-          <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['key-offerings']}">
-            <div class="feature-card-front">
-              <div class="panel-header key-offerings">Enterprise-Ready Capabilities</div>
-              <div class="panel-content">
-                <ul class="feature-bullet-list">
-                  <li>Codeless Automation</li>
-                  <li>Scheduled Test Executions</li>
-                  <li>Notifications (Slack & Mail)</li>
-                  <li>CI/CD Integration</li>
-                  <li>JIRA Integration</li>
-                </ul>
-              </div>
-              <div class="icon-container">
-                <div class="feature-icon key-offerings-icon"></div>
-              </div>
+    <div class="features-grid">
+      <!-- Key Offerings -->
+      <div class="feature-card" (click)="toggleCard('key-offerings')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['key-offerings']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-key-offerings-icon"></i>
             </div>
-            <div class="feature-card-back">
-              <h3 class="back-title">Enterprise-Ready Capabilities</h3>
-              <p>Industry-leading automation features designed for enterprise-scale deployment:</p>
-              <ul class="feature-list">
-                <li>Zero-code automation creation with intuitive visual designer</li>
-                <li>Flexible test scheduling with calendar and cron-style options</li>
-                <li>Instant notifications via Slack channels and email distribution lists</li>
-                <li>Seamless integration with Jenkins, GitHub Actions, and Azure DevOps</li>
-                <li>Bi-directional JIRA synchronization with detailed test result mapping</li>
-              </ul>
-              <p class="back-hint">Click to return to summary</p>
-            </div>
+            <h3 class="feature-title">Key Offerings</h3>
+            <p class="feature-card-hint">Click to see details</p>
           </div>
-        </div>
-
-        <!-- Easy Configuration -->
-        <div class="feature-card" (click)="toggleCard('easy-config')">
-          <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['easy-config']}">
-            <div class="feature-card-front">
-              <div class="panel-header easy-config">Advanced Data Management</div>
-              <div class="panel-content">
-                <ul class="feature-bullet-list">
-                  <li>Test Data Driven: Extraction, Chaining, and Validation</li>
-                  <li>Post Operations</li>
-                  <li>Validation (Text and Image)</li>
-                  <li>Execution & Audit History</li>
-                </ul>
-              </div>
-              <div class="icon-container">
-                <div class="feature-icon easy-config-icon"></div>
-              </div>
-            </div>
-            <div class="feature-card-back">
-              <h3 class="back-title">Advanced Data Management</h3>
-              <p>Sophisticated data handling capabilities for complex test scenarios:</p>
-              <ul class="feature-list">
-                <li>Dynamic data extraction and parameterized validation across test stages</li>
-                <li>Customizable post-execution operations with success/failure branching</li>
-                <li>Multi-layered validation with OCR-enhanced text and pixel-perfect image comparison</li>
-                <li>Complete change history with granular audit tracking and test execution lineage</li>
-              </ul>
-              <p class="back-hint">Click to return to summary</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Platform Support -->
-        <div class="feature-card" (click)="toggleCard('platform-support')">
-          <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['platform-support']}">
-            <div class="feature-card-front">
-              <div class="panel-header platform-support">Multi-Platform Compatibility</div>
-              <div class="panel-content">
-                <ul class="feature-bullet-list">
-                  <li>MacOS, Windows</li>
-                  <li>Relay Lab & BYOD</li>
-                  <li>Define once – Execute in Mac & Win</li>
-                </ul>
-              </div>
-              <div class="icon-container">
-                <div class="feature-icon platform-support-icon"></div>
-              </div>
-            </div>
-            <div class="feature-card-back">
-              <h3 class="back-title">Multi-Platform Compatibility</h3>
-              <p>Comprehensive cross-platform support for maximum flexibility:</p>
-              <ul class="feature-list">
-                <li>Native support for MacOS and Windows with OS-specific optimizations</li>
-                <li>Test execution in managed Relay Lab environment or Bring Your Own Device</li>
-                <li>Write once, run anywhere with cross-platform test definitions</li>
-                <li>Resolution-independent UI recognition with dynamic scaling</li>
-                <li>Consistent test behavior across diverse operating environments</li>
-              </ul>
-              <p class="back-hint">Click to return to summary</p>
-            </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Key Offerings</h3>
+            <ul class="feature-list">
+              <li>Codeless Automation</li>
+              <li>Scheduled Test Executions</li>
+              <li>Notifications (Slack & Mail)</li>
+              <li>CI/CD Integration</li>
+              <li>JIRA Integration</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div class="feature-row centered">
-        <!-- AI Integrations -->
-        <div class="feature-card" (click)="toggleCard('ai-integrations')">
-          <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
-            <div class="feature-card-front">
-              <div class="panel-header ai-integrations">Intelligent Recognition</div>
-              <div class="panel-content">
-                <ul class="feature-bullet-list">
-                  <li>Easy OCR: Text recognition</li>
-                  <li>OpenCV: Image recognition</li>
-                </ul>
-              </div>
-              <div class="icon-container">
-                <div class="feature-icon ai-integrations-icon"></div>
-              </div>
+      <!-- Easy Configuration -->
+      <div class="feature-card" (click)="toggleCard('easy-config')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['easy-config']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-easy-config-icon"></i>
             </div>
-            <div class="feature-card-back">
-              <h3 class="back-title">Intelligent Recognition</h3>
-              <p>State-of-the-art computer vision and OCR technologies:</p>
-              <ul class="feature-list">
-                <li>Advanced OCR with multi-language support for text extraction from any UI</li>
-                <li>Computer vision-powered element identification with pixel-level accuracy</li>
-                <li>Self-healing test scripts with dynamic element relocation</li>
-                <li>Intelligent wait conditions based on predictive state modeling</li>
-                <li>Pattern recognition algorithms for handling dynamic content</li>
-              </ul>
-              <p class="back-hint">Click to return to summary</p>
-            </div>
+            <h3 class="feature-title">Easy Configuration</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Easy Configuration</h3>
+            <ul class="feature-list">
+              <li>Test Data Driven: Extraction, Chaining, and Validation</li>
+              <li>Post Operations</li>
+              <li>Validation (Text and Image)</li>
+              <li>Execution & Audit History</li>
+            </ul>
           </div>
         </div>
+      </div>
 
-        <!-- What's Next? -->
-        <div class="feature-card" (click)="toggleCard('whats-next')">
-          <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['whats-next']}">
-            <div class="feature-card-front">
-              <div class="panel-header whats-next">Future Innovations</div>
-              <div class="panel-content">
-                <ul class="feature-bullet-list">
-                  <li>Video of execution</li>
-                  <li>Record & Generate Test Cases</li>
-                  <li>Performance & Crash Reporting</li>
-                  <li>Code Coverage</li>
-                  <li>Enabling Localization</li>
-                </ul>
-              </div>
-              <div class="icon-container">
-                <div class="feature-icon whats-next-icon"></div>
-              </div>
+      <!-- Platform Support -->
+      <div class="feature-card" (click)="toggleCard('platform-support')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['platform-support']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-platform-support-icon"></i>
             </div>
-            <div class="feature-card-back">
-              <h3 class="back-title">Future Innovations</h3>
-              <p>Strategic roadmap of advanced capabilities coming soon:</p>
-              <ul class="feature-list">
-                <li>High-definition video capture of test execution with annotated interactions</li>
-                <li>AI-powered test case generation from recorded manual operations</li>
-                <li>Advanced performance analytics with automated crash root cause analysis</li>
-                <li>Comprehensive code coverage reporting with untested code identification</li>
-                <li>Integrated localization testing framework with 50+ language support</li>
-                <li>Predictive test failure analysis based on historical execution patterns</li>
-              </ul>
-              <p class="back-hint">Click to return to summary</p>
+            <h3 class="feature-title">Platform Support</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Platform Support</h3>
+            <ul class="feature-list">
+              <li>MacOS, Windows</li>
+              <li>Relay Lab & BYOD</li>
+              <li>Define once – Execute in Mac & Win</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Integrations -->
+      <div class="feature-card" (click)="toggleCard('ai-integrations')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-ai-integrations-icon"></i>
             </div>
+            <h3 class="feature-title">AI Integrations</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">AI Integrations</h3>
+            <ul class="feature-list">
+              <li>Easy OCR: Text recognition</li>
+              <li>OpenCV: Image recognition</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- What's Next? -->
+      <div class="feature-card" (click)="toggleCard('whats-next')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['whats-next']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-whats-next-icon"></i>
+            </div>
+            <h3 class="feature-title">What's Next?</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">What's Next?</h3>
+            <ul class="feature-list">
+              <li>Video of execution</li>
+              <li>Record & Generate Test Cases</li>
+              <li>Performance & Crash Reporting</li>
+              <li>Code Coverage</li>
+              <li>Enabling Localization</li>
+            </ul>
           </div>
         </div>
       </div>

@@ -236,153 +236,21 @@
   display: block;
 }
 
-/* Feature Panels */
-.feature-panels {
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   margin-bottom: 3rem;
 }
 
-.feature-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.feature-row.centered {
-  justify-content: center;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* Card Flip Animation */
 .feature-card {
   position: relative;
-  height: 280px;
+  height: 300px;
   perspective: 1500px;
   cursor: pointer;
-  flex: 1;
-  min-width: 300px;
-  margin-bottom: 1.5rem;
-}
-
-.feature-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.feature-card-inner.flipped {
-  transform: rotateY(180deg);
-}
-
-.feature-card-front, .feature-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.feature-card-front {
-  display: flex;
-  flex-direction: column;
-}
-
-.feature-card-back {
-  transform: rotateY(180deg);
-  padding: 1.5rem;
-  overflow-y: auto;
-}
-
-.back-title {
-  color: #1473e6;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.back-hint {
-  font-size: 0.8rem;
-  color: #777;
-  margin-top: 1rem;
-  text-align: center;
-  font-style: italic;
-}
-
-.panel-header {
-  padding: 1rem;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-.key-offerings {
-  background-color: #55b9f3;
-}
-
-.easy-config {
-  background-color: #f9c74f;
-}
-
-.platform-support {
-  background-color: #add681;
-}
-
-.ai-integrations {
-  background-color: #d58fdb;
-}
-
-.whats-next {
-  background-color: #cccccc;
-}
-
-.panel-content {
-  padding: 0.5rem 1.5rem 3rem 1.5rem;
-  flex: 1;
-}
-
-.feature-bullet-list {
-  padding-left: 1.2rem;
-  margin: 0;
-}
-
-.feature-bullet-list li {
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-  color: #444;
-  text-align: left;
-}
-
-.icon-container {
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.feature-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .feature-card-inner {
