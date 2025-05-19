@@ -21,7 +21,8 @@ export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit 
     { name: 'Photoshop', logoPath: './assets/images/photoshop_new.png', platforms: ['android', 'ios'], color: '#00C8FF' },
     { name: 'Illustrator', logoPath: './assets/images/illustrator.png', platforms: ['android', 'ios'], color: '#FF9A00' },
     { name: 'LMS', logoPath: './assets/images/lms.png', platforms: ['android', 'ios'], color: '#F88F64' },
-    { name: 'Elements Mobile', logoPath: './assets/images/elements_mobile.png', platforms: ['android'], color: '#00C8E1' }
+    { name: 'Elements Mobile', logoPath: './assets/images/elements_mobile.png', platforms: ['android'], color: '#00C8E1' },
+    { name: 'Adobe Connect', logoPath: './assets/images/adobe_connect.png', platforms: ['android', 'ios'], color: '#25C39B' }
   ];
 
   constructor() { }
