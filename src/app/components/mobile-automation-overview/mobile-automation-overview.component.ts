@@ -18,8 +18,8 @@ export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit 
   @ViewChild('productSliderTrack') productSliderTrack: ElementRef;
   
   products: Product[] = [
-    { name: 'Lightroom', logoPath: './assets/images/lightroom_new.png', platforms: ['android', 'ios'], color: '#31A8FF' },
-    { name: 'Photoshop', logoPath: './assets/images/photoshop_new.png', platforms: ['android', 'ios'], color: '#00C8FF' },
+    { name: 'Lightroom', logoPath: './assets/images/lightroom_new.png', platforms: ['android'], color: '#31A8FF' },
+    { name: 'Photoshop', logoPath: './assets/images/photoshop_new.png', platforms: ['android'], color: '#00C8FF' },
     { name: 'LMS', logoPath: './assets/images/lms.png', platforms: ['android', 'ios'], color: '#F88F64' },
     { name: 'Elements Mobile', logoPath: './assets/images/elements_mobile.png', platforms: ['android'], color: '#00C8E1' },
     { name: 'Adobe Connect', logoPath: './assets/images/adobe_connect.png', platforms: ['android', 'ios'], color: '#25C39B' },
@@ -27,7 +27,7 @@ export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit 
     { name: 'Adobe Express', logoPath: './assets/images/adobe_express.png', platforms: ['android', 'ios'], color: '#FF1F4D', subheading: 'InPipeline' },
     { name: 'Ad-Cloud', logoPath: './assets/images/ad_cloud.png', platforms: ['android'], color: '#E649B3', subheading: 'Advertisement verification' },
     { name: 'Globalization-AdobeScan', logoPath: './assets/images/adobe_scan.png', platforms: ['android', 'ios'], color: '#000000' },
-    { name: 'Globalization-Lightroom', logoPath: './assets/images/globalization_lightroom.png', platforms: ['android', 'ios'], color: '#31A8FF' }
+    { name: 'Globalization-Lightroom', logoPath: './assets/images/globalization_lightroom.png', platforms: ['android'], color: '#31A8FF' }
   ];
 
   constructor() { }
