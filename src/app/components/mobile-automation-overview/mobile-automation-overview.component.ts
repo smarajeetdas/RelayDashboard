@@ -55,6 +55,26 @@ export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit 
     }
   }
 
+  /**
+   * Gets products by platform support type
+   * @param platforms Array of platform strings to filter by
+   * @returns Products that match the criteria
+   */
+  getProductsByPlatform(platforms: string[]): Product[] {
+    if (platforms.includes('android') && platforms.includes('ios')) {
+      // Products with both Android and iOS support
+      return this.products.filter(product => 
+        product.platforms.includes('android') && product.platforms.includes('ios')
+      );
+    } else if (platforms.includes('android')) {
+      // Products with Android only support
+      return this.products.filter(product => 
+        product.platforms.includes('android') && !product.platforms.includes('ios')
+      );
+    }
+    return [];
+  }
+
   toggleCard(cardId: string): void {
     this.flippedCards[cardId] = !this.flippedCards[cardId];
   }
