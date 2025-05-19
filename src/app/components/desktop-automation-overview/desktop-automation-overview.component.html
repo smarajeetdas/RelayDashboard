@@ -19,7 +19,7 @@
     <div class="features-grid">
       <!-- Script-Free Automation -->
       <div class="feature-card" (click)="toggleCard('script-free')">
-        <div class="feature-card-inner" [class.flipped]="flippedCards['script-free']">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['script-free']}">
           <div class="feature-card-front">
             <div class="feature-icon">
               <i class="feature-code-icon"></i>
@@ -38,9 +38,9 @@
         </div>
       </div>
 
-    <!-- Robust One Click Automation -->
+      <!-- Robust One Click Automation -->
       <div class="feature-card" (click)="toggleCard('one-click')">
-        <div class="feature-card-inner" [class.flipped]="flippedCards['one-click']">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['one-click']}">
           <div class="feature-card-front">
             <div class="feature-icon">
               <i class="feature-click-icon"></i>
@@ -62,7 +62,7 @@
 
       <!-- UI Automation -->
       <div class="feature-card" (click)="toggleCard('ui-automation')">
-        <div class="feature-card-inner" [class.flipped]="flippedCards['ui-automation']">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ui-automation']}">
           <div class="feature-card-front">
             <div class="feature-icon">
               <i class="feature-ui-icon"></i>
@@ -84,7 +84,7 @@
 
       <!-- Cross-Platform Compatibility -->
       <div class="feature-card" (click)="toggleCard('cross-platform')">
-        <div class="feature-card-inner" [class.flipped]="flippedCards['cross-platform']">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['cross-platform']}">
           <div class="feature-card-front">
             <div class="feature-icon">
               <i class="feature-platform-icon"></i>
@@ -106,7 +106,7 @@
 
       <!-- Automated Test Reports and Analysis -->
       <div class="feature-card" (click)="toggleCard('reports')">
-        <div class="feature-card-inner" [class.flipped]="flippedCards['reports']">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['reports']}">
           <div class="feature-card-front">
             <div class="feature-icon">
               <i class="feature-reports-icon"></i>
@@ -129,7 +129,7 @@
 
       <!-- Integrate CI/CD Processes -->
       <div class="feature-card" (click)="toggleCard('cicd')">
-        <div class="feature-card-inner" [class.flipped]="flippedCards['cicd']">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['cicd']}">
           <div class="feature-card-front">
             <div class="feature-icon">
               <i class="feature-cicd-icon"></i>
@@ -145,56 +145,53 @@
           </div>
         </div>
       </div>
-  </div>
-
-  <div class="info-panels">
-    <!-- Pioneering Features Panel -->
-    <div class="info-panel light-panel">
-      <div class="panel-icon">
-        <i class="panel-features-icon"></i>
-      </div>
-      <h3 class="panel-title">Pioneering Features for Redefining Desktop Automation</h3>
-      <ul class="panel-list">
-        <li>Intuitive UI for anyone to create and execute tests</li>
-        <li>Advanced Debugging capability to help you identify, isolate, and resolve any issues you encounter during your desktop application testing</li>
-        <li>Confidential Testing to protect your data and ensure compliance</li>
-        <li>Implementing early automation drives more efficient development processes and yields higher quality products</li>
-        <li>Simple and quick maintenance to slash expenses associated with software upkeep</li>
-        <li>Superior dedicated customer support who is ready to answer questions and solve problems</li>
-      </ul>
-    </div>
-
-    <!-- Why Use Relay Panel -->
-    <div class="info-panel dark-panel">
-      <div class="panel-icon">
-        <i class="panel-why-icon"></i>
-      </div>
-      <h3 class="panel-title">Why should you use Relay for Desktop Automation</h3>
-      <p class="panel-text">
-        Relay's in-house desktop automation testing feature offers an ideal solution for developers managing busy schedules.
-      </p>
-      <p class="panel-text">
-        It boasts durability, user-friendliness, and remarkable flexibility, enabling you to meet the rigorous testing demands of modern desktop applications.
-      </p>
-      <div class="panel-cta">
-        <button class="btn-primary">GET STARTED to revolutionize your desktop application testing process</button>
-      </div>
-    </div>
-
-    <!-- Coming Soon Panel -->
-    <div class="info-panel light-panel coming-soon-panel">
-      <div class="panel-icon">
-        <i class="panel-coming-soon-icon"></i>
-      </div>
-      <h3 class="panel-title">Coming Soon</h3>
-      <ul class="panel-list">
-        <li>Independent of resolutions and object repositories</li>
-        <li>Relay uses Deep Learning technologies to identify UI elements based solely on visual features, so there are no more selectors</li>
-      </ul>
     </div>
     
     <div class="info-panels">
-      <!-- Similar info panels as shown in the design -->
+      <!-- Pioneering Features Panel -->
+      <div class="info-panel light-panel">
+        <div class="panel-icon">
+          <i class="panel-features-icon"></i>
+        </div>
+        <h3 class="panel-title">Pioneering Features for Redefining Desktop Automation</h3>
+        <ul class="panel-list">
+          <li>Intuitive UI for anyone to create and execute tests</li>
+          <li>Advanced Debugging capability to help you identify, isolate, and resolve any issues you encounter during your desktop application testing</li>
+          <li>Confidential Testing to protect your data and ensure compliance</li>
+          <li>Implementing early automation drives more efficient development processes and yields higher quality products</li>
+          <li>Simple and quick maintenance to slash expenses associated with software upkeep</li>
+          <li>Superior dedicated customer support who is ready to answer questions and solve problems</li>
+        </ul>
+      </div>
+
+      <!-- Why Use Relay Panel -->
+      <div class="info-panel dark-panel">
+        <div class="panel-icon">
+          <i class="panel-why-icon"></i>
+        </div>
+        <h3 class="panel-title">Why should you use Relay for Desktop Automation</h3>
+        <p class="panel-text">
+          Relay's in-house desktop automation testing feature offers an ideal solution for developers managing busy schedules.
+        </p>
+        <p class="panel-text">
+          It boasts durability, user-friendliness, and remarkable flexibility, enabling you to meet the rigorous testing demands of modern desktop applications.
+        </p>
+        <div class="panel-cta">
+          <button class="btn-primary">GET STARTED to revolutionize your desktop application testing process</button>
+        </div>
+      </div>
+
+      <!-- Coming Soon Panel -->
+      <div class="info-panel light-panel coming-soon-panel">
+        <div class="panel-icon">
+          <i class="panel-coming-soon-icon"></i>
+        </div>
+        <h3 class="panel-title">Coming Soon</h3>
+        <ul class="panel-list">
+          <li>Independent of resolutions and object repositories</li>
+          <li>Relay uses Deep Learning technologies to identify UI elements based solely on visual features, so there are no more selectors</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
