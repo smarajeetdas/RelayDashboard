@@ -18,7 +18,7 @@ export class DesktopAutomationOverviewComponent implements OnInit, AfterViewInit
   
   products: Product[] = [
     { name: 'Lightroom', logoPath: './assets/images/lightroom_new.png', platforms: ['windows', 'mac'], color: '#31A8FF' },
-    { name: 'Photoshop', logoPath: './assets/images/photoshop.png', platforms: ['windows', 'mac'], color: '#00C8FF' },
+    { name: 'Photoshop', logoPath: './assets/images/photoshop_new.png', platforms: ['windows', 'mac'], color: '#00C8FF' },
     { name: 'Illustrator', logoPath: './assets/images/illustrator.png', platforms: ['windows', 'mac'], color: '#FF9A00' }
   ];
 
