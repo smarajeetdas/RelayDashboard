@@ -198,7 +198,10 @@
                 <div class="product-logo-container" [style.background-color]="product.color">
                   <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
                 </div>
-                <div class="product-name">{{product.name}}</div>
+                <div class="product-name">
+                  {{product.name}}
+                  <span class="product-subheading" *ngIf="product.subheading">{{product.subheading}}</span>
+                </div>
                 <div class="platforms">
                   <img src="./assets/images/android.png" class="platform-icon" *ngIf="product.platforms.includes('android')" title="Android Support">
                   <img src="./assets/images/mac.png" class="platform-icon" *ngIf="product.platforms.includes('ios')" title="iOS Support">
@@ -218,7 +221,10 @@
                 <div class="product-logo-container" [style.background-color]="product.color">
                   <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
                 </div>
-                <div class="product-name">{{product.name}}</div>
+                <div class="product-name">
+                  {{product.name}}
+                  <span class="product-subheading" *ngIf="product.subheading">{{product.subheading}}</span>
+                </div>
                 <div class="platforms">
                   <img src="./assets/images/android.png" class="platform-icon" *ngIf="product.platforms.includes('android')" title="Android Support">
                   <img src="./assets/images/mac.png" class="platform-icon" *ngIf="product.platforms.includes('ios')" title="iOS Support">
