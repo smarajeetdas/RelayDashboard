@@ -17,7 +17,7 @@ export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit 
   @ViewChild('productSliderTrack') productSliderTrack: ElementRef;
   
   products: Product[] = [
-    { name: 'Lightroom', logoPath: './assets/images/lightroom.png', platforms: ['android', 'ios'], color: '#31A8FF' },
+    { name: 'Lightroom', logoPath: './assets/images/lightroom_new.png', platforms: ['android', 'ios'], color: '#31A8FF' },
     { name: 'Photoshop', logoPath: './assets/images/photoshop.png', platforms: ['android', 'ios'], color: '#00C8FF' },
     { name: 'Illustrator', logoPath: './assets/images/illustrator.png', platforms: ['android', 'ios'], color: '#FF9A00' },
     { name: 'LMS', logoPath: './assets/images/lms.png', platforms: ['android', 'ios'], color: '#F88F64' }
