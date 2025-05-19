@@ -45,6 +45,7 @@ export class HeaderComponent implements OnInit {
   // Desktop Automation dropdown options
   desktopAutomationOptions = [
     { id: 'overview', name: 'Overview', icon: 'fa-circle', route: '/desktop-automation' },
+    { id: 'mobile-overview', name: 'Mobile Overview', icon: 'fa-mobile-alt', route: '/desktop-automation/overview' },
     { id: 'locator', name: 'Locator', icon: 'fa-circle' },
     { id: 'instruction', name: 'Instruction', icon: 'fa-circle' },
     { id: 'executions', name: 'Executions', icon: 'fa-circle' }

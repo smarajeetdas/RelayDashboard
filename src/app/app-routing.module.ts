@@ -11,11 +11,16 @@ const routes: Routes = [
   },
   {
     path: 'desktop-automation',
-    component: DesktopAutomationOverviewComponent
-  },
-  {
-    path: 'mobile-automation',
-    component: MobileAutomationOverviewComponent
+    children: [
+      {
+        path: '',
+        component: DesktopAutomationOverviewComponent
+      },
+      {
+        path: 'overview',
+        component: MobileAutomationOverviewComponent
+      }
+    ]
   },
   {
     path: 'endpoints',
