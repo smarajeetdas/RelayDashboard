@@ -376,12 +376,16 @@ Accept: application/json</pre>
         <div class="detail-section">
           <h4 class="section-subtitle">Test Context</h4>
           <div class="detail-row">
-            <div class="detail-label">Parent Test Case:</div>
+            <div class="detail-label">Test Case:</div>
             <div class="detail-value">{{ selectedTestCase?.name || 'N/A' }}</div>
           </div>
           <div class="detail-row">
             <div class="detail-label">Executed At:</div>
             <div class="detail-value">{{ formatDate(selectedEndpoint.executedAt) }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Environment:</div>
+            <div class="detail-value">Production</div>
           </div>
         </div>
       </div>

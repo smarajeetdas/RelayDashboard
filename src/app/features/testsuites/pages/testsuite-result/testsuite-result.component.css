@@ -692,7 +692,6 @@
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   transition: right 0.3s ease;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -705,6 +704,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 .panel-header {
@@ -717,6 +718,9 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  flex-shrink: 0;
+  height: 60px;
+  box-sizing: border-box;
 }
 
 .panel-title {
@@ -749,10 +753,13 @@
   padding: 1.5rem;
   flex: 1;
   overflow-y: auto;
+  max-height: calc(100vh - 60px); /* Adjust based on header height */
+  scrollbar-width: thin;
 }
 
 .detail-section {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .section-subtitle {
@@ -763,20 +770,21 @@
   color: #333;
   border-bottom: 1px solid #eee;
   padding-bottom: 0.5rem;
+  width: 100%;
 }
 
 .detail-row {
   display: flex;
   margin-bottom: 0.75rem;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .detail-label {
-  min-width: 140px;
+  width: 120px;
   font-weight: 500;
   color: #666;
   font-size: 13px;
-  margin-right: 10px;
+  flex-shrink: 0;
 }
 
 .detail-value {
@@ -784,7 +792,6 @@
   color: #333;
   font-size: 13px;
   word-break: break-word;
-  min-width: 250px;
 }
 
 .code-block {
@@ -798,12 +805,15 @@
   overflow-x: auto;
   width: 100%;
   margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
 }
 
 .code-block pre {
   margin: 0;
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 /* Selected row styling */
