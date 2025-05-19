@@ -321,24 +321,25 @@
 /* Animated Flow Element */
 .lifecycle-flow-animation {
   position: absolute;
-  height: 20px;
-  width: 60px;
-  top: -8px;
-  left: -60px;
+  height: 30px;
+  width: 80px;
+  top: -14px;
+  left: -80px;
   animation: flowAnimation 6s linear infinite;
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 5;
 }
 
 .lifecycle-flow-animation::before {
   content: '';
   position: absolute;
-  width: 40px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5);
+  width: 50px;
+  height: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
   border-radius: 4px;
   left: 0;
 }
@@ -349,15 +350,15 @@
   width: 0;
   height: 0;
   right: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 20px solid rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 30px solid #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
 }
 
 @keyframes flowAnimation {
   0% {
-    left: -60px;
+    left: -80px;
     opacity: 0;
   }
   5% {
