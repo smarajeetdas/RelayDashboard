@@ -1,343 +1,584 @@
-/* Chaos Simulator Overview Component Styles */
-
-/* Container */
-.simulator-container {
-  padding: 2rem 0;
-  background-color: #f9f9f9;
+/* Chaos Simulator Overview Styles */
+.chaos-simulator-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f5f5f5;
+  padding: 6rem 0 2rem 0;
+  min-height: 100vh;
 }
 
-/* Section Titles */
-.section-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 3rem 0 1.5rem;
-  color: #1c2b54;
+.hero-section {
+  background-color: #2a1a4a;
+  background-image: linear-gradient(to right, #2a1a4a, #3b275f);
+  color: white;
+  padding: 8rem 3rem 4rem;
   position: relative;
-  display: inline-block;
-  padding-bottom: 0.5rem;
+  overflow: hidden;
 }
 
-.section-title:after {
+.hero-section::before {
   content: '';
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  width: 60px;
-  height: 4px;
-  background-color: #1473e6;
-  border-radius: 2px;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/images/network-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Header Styles */
+.overview-header {
+  margin-bottom: 1.5rem;
+}
+
+.overview-header h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #1473e6;
+  margin: 0;
+}
+
+/* Main description */
+.overview-description {
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e8e8e8;
+}
+
+.overview-description p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.overview-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Section title */
+.section-title {
+  color: #1473e6;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 /* Journey Steps */
 .journey-steps {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 2rem 0 3rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e8e8e8;
 }
 
-.journey-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 220px;
-  transition: all 0.3s ease;
+.journey-steps-indicators {
+  margin-bottom: 2rem;
 }
 
-.journey-step:hover {
-  transform: translateY(-5px);
-}
-
-.journey-step .step-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  background-color: #1c2b54;
-  color: #ffffff;
-  position: relative;
-  z-index: 2;
-}
-
-.journey-step .step-icon img {
-  width: 50px;
-  height: 50px;
-}
-
-.journey-step .step-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: #1c2b54;
-}
-
-.journey-step .step-description {
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.5;
-}
-
-/* Lifecycle Animation */
-.lifecycle-container {
-  position: relative;
-  padding: 4rem 1rem;
-  margin: 2rem 0;
-  overflow: hidden;
-  background-color: #f5f5f5;
-  border-radius: 12px;
-}
-
-.lifecycle-title {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 3rem;
-  color: #1c2b54;
-}
-
-.lifecycle-steps {
+.step-indicators {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  position: relative;
-  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto 1rem;
 }
 
-.lifecycle-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 160px;
-  z-index: 2;
-}
-
-.lifecycle-step .step-icon {
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.lifecycle-step .step-icon img {
-  width: 60px;
-  height: 60px;
-}
-
-.lifecycle-step .step-number {
-  position: absolute;
-  top: -15px;
-  left: -15px;
+.step-indicator {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #1473e6;
-  color: #ffffff;
+  background-color: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  z-index: 3;
+  font-weight: 600;
+  color: #555;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.lifecycle-step .step-title {
+.step-indicator.active {
+  background-color: #1473e6;
+  color: white;
+  border-color: #1473e6;
+  box-shadow: 0 0 10px rgba(20, 115, 230, 0.3);
+}
+
+.step-indicator.completed {
+  background-color: #39b54a;
+  color: white;
+  border-color: #39b54a;
+}
+
+.step-progress {
+  height: 6px;
+  background-color: #eee;
+  border-radius: 3px;
+  margin: 0 20px;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #39b54a;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.journey-step-content {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.step-content {
+  width: 100%;
+}
+
+.step-card {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.step-card h3 {
+  color: #1473e6;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.step-card p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.journey-step-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.step-control-btn {
+  background-color: #1473e6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-control-btn:hover:not(:disabled) {
+  background-color: #0d5bbd;
+}
+
+.step-control-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.step-indicator-text {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Quick Links Section */
+.quick-links-section {
+  margin: 2rem 0;
+  text-align: right;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.quick-links-label {
+  margin-right: 0.5rem;
+}
+
+.quick-link {
+  color: #1473e6;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: all 0.2s ease;
+}
+
+.quick-link:hover {
+  color: #0d5bbd;
+  text-decoration: underline;
+}
+
+/* Lifecycle Section Styles */
+.lifecycle-container {
+  position: relative;
+  padding: 3rem 1rem;
+  margin: 2rem 0;
+  overflow: hidden;
+  background-color: #1c2b54;
+  border-radius: 12px;
+  color: white;
+}
+
+.lifecycle-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/images/network-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+/* Horizontal Lifecycle Styles */
+.lifecycle-steps-horizontal {
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+  margin-top: 2rem;
+}
+
+.lifecycle-progress-bar {
+  position: relative;
+  height: 4px;
+  margin: 0 auto;
+  width: 88%;
+  margin-left: 6%;
+  overflow: hidden;
+}
+
+.lifecycle-line {
+  position: absolute;
+  height: 4px;
+  background-color: #4996ff;
+  width: 100%;
+  top: 0;
+}
+
+/* Animated Flow Element */
+.lifecycle-flow-animation {
+  position: absolute;
+  height: 30px;
+  width: 80px;
+  top: -14px;
+  left: -80px;
+  animation: flowAnimation 6s linear infinite;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.lifecycle-flow-animation::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  left: 0;
+}
+
+.lifecycle-flow-animation::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 30px solid #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+}
+
+@keyframes flowAnimation {
+  0% {
+    left: -80px;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% + 10px);
+    opacity: 0;
+  }
+}
+
+.lifecycle-arrow {
+  position: absolute;
+  top: -8px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #4996ff;
+}
+
+.arrow-1 {
+  left: 22%;
+}
+
+.arrow-2 {
+  left: 47%;
+}
+
+.arrow-3 {
+  left: 72%;
+}
+
+.arrow-4 {
+  left: 97%;
+}
+
+.lifecycle-steps-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.lifecycle-step-horizontal {
+  flex: 1;
+  min-width: 180px;
+  max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 0.5%;
+}
+
+.step-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 15px rgba(73, 150, 255, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.step-circle::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border-radius: 50%;
+  border: 2px solid rgba(73, 150, 255, 0.3);
+  z-index: -1;
+}
+
+.step-circle::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 2px solid rgba(73, 150, 255, 0.6);
+  z-index: -1;
+}
+
+.step-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1c2b54;
+  line-height: 1;
+}
+
+.step-icon {
+  font-size: 1rem;
+  color: #4996ff;
+  margin-top: 0.25rem;
+}
+
+.step-content-horizontal {
+  flex: 1;
+}
+
+.step-content-horizontal h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.4rem;
-  color: #1c2b54;
+  color: #fff;
+  margin-bottom: 0.5rem;
 }
 
-.lifecycle-step .step-description {
+.step-content-horizontal p {
   font-size: 0.85rem;
-  color: #666;
-  line-height: 1.4;
-  max-width: 160px;
+  color: #a9c2ff;
+  margin-bottom: 0.75rem;
+}
+
+.step-content-horizontal ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  text-align: left;
+}
+
+.step-content-horizontal li {
+  font-size: 0.8rem;
   margin-bottom: 0.4rem;
   color: #ccdaff;
 }
 
-/* Capabilities Section Styles */
-.capabilities-container {
-  position: relative;
-  padding: 2rem 0;
-  margin: 2rem 0;
-  overflow: hidden;
-  background-color: #f5f5f5;
-  border-radius: 12px;
-}
-
-.capabilities-title {
-  color: #1c2b54;
-  font-size: 1.5rem;
-  margin: 0 0 1.5rem 2rem;
-  position: relative;
-  font-weight: 600;
-}
-
-.network-title {
-  margin-top: 2rem;
-}
-
-.capabilities-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin: 0 2rem 1.5rem;
-  justify-content: flex-start;
-}
-
-/* Capability Cards */
-.capability-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 1.5rem;
-  color: #333;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  flex: 0 0 calc(25% - 1.5rem);
-  min-width: 200px;
-  border-left: 4px solid #1473e6;
-}
-
-.capability-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.capability-card .capability-icon {
-  font-size: 2rem;
-  color: #1473e6;
-  margin-bottom: 1rem;
-}
-
-.capability-card h4 {
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-  color: #1c2b54;
-}
-
-.capability-card p {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-.alfi-container {
-  background-color: #1c2b54;
-  border-radius: 10px;
-  color: white;
-  padding: 1.5rem;
-  text-align: center;
-  margin: 2rem 2rem 0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.alfi-title {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #ffd700;
-  font-weight: 600;
-}
-
-.alfi-description {
-  color: #f0f0f0;
-  font-size: 1rem;
-}
-
-/* Benefits Section */
-.benefits-container {
-  margin: 3rem 0;
-}
-
-.benefits-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.benefit-card {
-  flex: 1 0 300px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.benefit-icon {
-  font-size: 2.5rem;
-  color: #1473e6;
-  margin-bottom: 1rem;
-}
-
-.benefit-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #1c2b54;
-}
-
-.benefit-description {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.6;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .lifecycle-steps {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 1rem;
+/* Media Queries for Responsive Layout */
+@media (max-width: 1199.98px) {
+  .lifecycle-steps-wrapper {
+    flex-wrap: wrap;
   }
   
-  .lifecycle-step {
-    width: 100%;
-    flex-direction: row;
-    text-align: left;
+  .lifecycle-step-horizontal {
+    min-width: 45%;
+    max-width: 45%;
     margin-bottom: 2rem;
   }
   
-  .lifecycle-step .step-icon {
-    margin-right: 1.5rem;
-    margin-bottom: 0;
-  }
-  
-  .capability-card {
-    flex: 0 0 calc(33.33% - 1.5rem);
+  .lifecycle-progress-bar {
+    display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .capability-card {
-    flex: 0 0 calc(50% - 1.5rem);
+@media (max-width: 991.98px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .step-indicators {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .lifecycle-step {
+    padding-left: 0;
+    margin-left: 0 !important;
+  }
+  
+  .lifecycle-step-horizontal {
+    min-width: 45%;
+    max-width: 45%;
   }
 }
 
-@media (max-width: 576px) {
-  .journey-step {
-    width: 100%;
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding: 6rem 1.5rem 3rem;
   }
   
-  .capability-card {
-    flex: 0 0 100%;
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .overview-header h1 {
+    font-size: 2rem;
+  }
+  
+  .journey-steps {
+    padding: 1.5rem;
+  }
+  
+  .journey-step-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .quick-links-section {
+    text-align: center;
+  }
+  
+  .step-circle {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .step-number {
+    font-size: 1.4rem;
+  }
+  
+  .step-content h3, .step-content-horizontal h3 {
+    font-size: 1.2rem;
+  }
+  
+  .lifecycle-step-horizontal {
+    min-width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
   }
 }
