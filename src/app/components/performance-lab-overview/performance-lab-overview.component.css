@@ -2,11 +2,9 @@
 .performance-lab-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
-  background-color: #1c2536;
-  background-image: linear-gradient(to bottom, #1c2536, #2a3749);
+  background-color: #ffffff;
   padding: 8rem 0 2rem 0; /* Increased top padding to account for fixed header */
   min-height: 100vh;
-  color: #fff;
 }
 
 .content-wrapper {
@@ -26,7 +24,7 @@
 .overview-header h1 {
   font-size: 2.5rem;
   font-weight: 500;
-  color: #fff;
+  color: #333;
   margin: 0;
 }
 
@@ -37,8 +35,8 @@
 
 .btn-outline {
   background-color: transparent;
-  color: #fff;
-  border: 1px solid #4f77db;
+  color: #1473e6;
+  border: 1px solid #1473e6;
   border-radius: 20px;
   padding: 0.5rem 1.25rem;
   font-size: 0.9rem;
@@ -47,9 +45,9 @@
 }
 
 .btn-outline:hover {
-  background-color: rgba(79, 119, 219, 0.2);
-  border-color: #4f77db;
-  color: #fff;
+  background-color: rgba(20, 115, 230, 0.1);
+  border-color: #1473e6;
+  color: #1473e6;
 }
 
 /* Main description */
@@ -57,16 +55,16 @@
   max-width: 1200px;
   margin: 0 auto 2.5rem;
   line-height: 1.6;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(20, 115, 230, 0.05);
   border-radius: 10px;
   padding: 1.5rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(20, 115, 230, 0.2);
 }
 
 .overview-description p {
   font-size: 1rem;
-  color: #e6e6e6;
+  color: #333;
   margin-bottom: 0;
 }
 
@@ -82,11 +80,11 @@
 
 /* Section title */
 .section-title {
-  color: #4f77db;
+  color: #1473e6;
   font-size: 1.5rem;
   font-weight: 500;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   width: 100%;
 }
 
@@ -147,10 +145,10 @@
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  background-color: white;
+  border: 1px solid rgba(20, 115, 230, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -207,12 +205,12 @@
 .feature-list {
   padding-left: 1.2rem;
   margin: 0;
-  color: #e6e6e6;
+  color: #333;
 }
 
 .feature-list li {
   margin-bottom: 0.8rem;
-  color: #e6e6e6;
+  color: #333;
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -243,7 +241,7 @@
 .quick-links-section {
   margin: 2rem 0;
   text-align: right;
-  color: #ccc;
+  color: #555;
   font-size: 0.9rem;
 }
 
@@ -252,14 +250,14 @@
 }
 
 .quick-link {
-  color: #4f77db;
+  color: #1473e6;
   text-decoration: none;
   margin: 0 5px;
   transition: all 0.2s ease;
 }
 
 .quick-link:hover {
-  color: #fff;
+  color: #0d5bbd;
   text-decoration: underline;
 }
 
