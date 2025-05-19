@@ -348,17 +348,18 @@
           <h4 class="section-subtitle">Request Details</h4>
           <div class="detail-row">
             <div class="detail-label">Headers:</div>
-            <div class="detail-value code-block">
-              <pre>Content-Type: application/json
+          </div>
+          <div class="detail-value code-block">
+            <pre>Content-Type: application/json
 Authorization: Bearer [token]
 Accept: application/json</pre>
-            </div>
           </div>
+          
           <div class="detail-row">
             <div class="detail-label">Request Body:</div>
-            <div class="detail-value code-block">
-              <pre>{{ selectedEndpoint.requestBody || '{\n  "key": "value"\n}' }}</pre>
-            </div>
+          </div>
+          <div class="detail-value code-block">
+            <pre>{{ selectedEndpoint.requestBody || '{\n  "key": "value"\n}' }}</pre>
           </div>
         </div>
 
@@ -366,9 +367,9 @@ Accept: application/json</pre>
           <h4 class="section-subtitle">Response</h4>
           <div class="detail-row">
             <div class="detail-label">Response Body:</div>
-            <div class="detail-value code-block">
-              <pre>{{ selectedEndpoint.responseBody || '{\n  "success": true,\n  "data": {\n    "id": 123,\n    "name": "Test Item"\n  }\n}' }}</pre>
-            </div>
+          </div>
+          <div class="detail-value code-block">
+            <pre>{{ selectedEndpoint.responseBody || '{\n  "success": true,\n  "data": {\n    "id": 123,\n    "name": "Test Item"\n  }\n}' }}</pre>
           </div>
         </div>
 
