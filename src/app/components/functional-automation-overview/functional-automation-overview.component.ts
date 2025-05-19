@@ -32,8 +32,6 @@ export class FunctionalAutomationOverviewComponent implements OnInit {
    * @param cardId The unique identifier for the card to toggle
    */
   toggleCard(cardId: string): void {
-    console.log('Toggling card:', cardId);
     this.flippedCards[cardId] = !this.flippedCards[cardId];
-    console.log('Card state after toggle:', this.flippedCards[cardId]);
   }
 }
