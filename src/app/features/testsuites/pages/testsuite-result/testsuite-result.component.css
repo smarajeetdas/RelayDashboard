@@ -598,6 +598,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  table-layout: fixed;
 }
 
 .nested-table th {
@@ -613,6 +614,28 @@
   padding: 0.5rem 0.75rem;
   border-bottom: 1px solid #eee;
   font-size: 13px;
+}
+
+/* Endpoint table column widths */
+.url-cell {
+  width: 40%;
+  word-break: break-all;
+}
+
+.method-cell {
+  width: 15%;
+}
+
+.status-cell {
+  width: 15%;
+}
+
+.time-cell {
+  width: 15%;
+}
+
+.code-cell {
+  width: 15%;
 }
 
 /* Assertions Bar */
@@ -694,6 +717,7 @@
   transition: right 0.3s ease;
   display: flex;
   flex-direction: column;
+  border-left: 1px solid #ddd;
 }
 
 .endpoint-details-overlay.show {
@@ -755,11 +779,16 @@
   overflow-y: auto;
   max-height: calc(100vh - 60px); /* Adjust based on header height */
   scrollbar-width: thin;
+  background-color: #f9f9f9;
 }
 
 .detail-section {
   margin-bottom: 1.5rem;
   width: 100%;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  padding: 1rem;
 }
 
 .section-subtitle {
@@ -771,6 +800,10 @@
   border-bottom: 1px solid #eee;
   padding-bottom: 0.5rem;
   width: 100%;
+}
+
+.detail-block {
+  margin-bottom: 1.25rem;
 }
 
 .detail-row {
@@ -807,6 +840,7 @@
   margin-top: 5px;
   margin-bottom: 15px;
   box-sizing: border-box;
+  display: block;
 }
 
 .code-block pre {
@@ -814,6 +848,7 @@
   white-space: pre-wrap;
   word-break: break-word;
   max-width: 100%;
+  overflow: auto;
 }
 
 /* Selected row styling */

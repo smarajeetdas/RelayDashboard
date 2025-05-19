@@ -244,11 +244,11 @@
                       <table class="nested-table">
                         <thead>
                           <tr>
-                            <th>URL</th>
-                            <th>Method</th>
-                            <th>Status</th>
-                            <th>Response Time</th>
-                            <th>Response Code</th>
+                            <th class="url-th">URL</th>
+                            <th class="method-th">Method</th>
+                            <th class="status-th">Status</th>
+                            <th class="time-th">Response Time</th>
+                            <th class="code-th">Response Code</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -256,9 +256,9 @@
                               class="endpoint-row" 
                               [ngClass]="{'selected-row': isSelectedEndpoint(endpoint)}"
                               (click)="viewEndpointDetails(endpoint, testCase)">
-                            <td>{{ endpoint.url }}</td>
-                            <td>{{ endpoint.method }}</td>
-                            <td>
+                            <td class="url-cell">{{ endpoint.url }}</td>
+                            <td class="method-cell">{{ endpoint.method }}</td>
+                            <td class="status-cell">
                               <div class="status-badge small" [ngClass]="{
                                 'status-passed': endpoint.status === 'Passed',
                                 'status-failed': endpoint.status === 'Failed'
@@ -270,8 +270,8 @@
                                 {{ endpoint.status }}
                               </div>
                             </td>
-                            <td>{{ endpoint.responseTime }} ms</td>
-                            <td>{{ endpoint.responseCode }}</td>
+                            <td class="time-cell">{{ endpoint.responseTime }} ms</td>
+                            <td class="code-cell">{{ endpoint.responseCode }}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -346,30 +346,30 @@
 
         <div class="detail-section">
           <h4 class="section-subtitle">Request Details</h4>
-          <div class="detail-row">
+          <div class="detail-block">
             <div class="detail-label">Headers:</div>
-          </div>
-          <div class="detail-value code-block">
-            <pre>Content-Type: application/json
+            <div class="code-block">
+              <pre>Content-Type: application/json
 Authorization: Bearer [token]
 Accept: application/json</pre>
+            </div>
           </div>
           
-          <div class="detail-row">
+          <div class="detail-block">
             <div class="detail-label">Request Body:</div>
-          </div>
-          <div class="detail-value code-block">
-            <pre>{{ selectedEndpoint.requestBody || '{\n  "key": "value"\n}' }}</pre>
+            <div class="code-block">
+              <pre>{{ selectedEndpoint.requestBody || '{\n  "key": "value"\n}' }}</pre>
+            </div>
           </div>
         </div>
 
         <div class="detail-section">
           <h4 class="section-subtitle">Response</h4>
-          <div class="detail-row">
+          <div class="detail-block">
             <div class="detail-label">Response Body:</div>
-          </div>
-          <div class="detail-value code-block">
-            <pre>{{ selectedEndpoint.responseBody || '{\n  "success": true,\n  "data": {\n    "id": 123,\n    "name": "Test Item"\n  }\n}' }}</pre>
+            <div class="code-block">
+              <pre>{{ selectedEndpoint.responseBody || '{\n  "success": true,\n  "data": {\n    "id": 123,\n    "name": "Test Item"\n  }\n}' }}</pre>
+            </div>
           </div>
         </div>
 
