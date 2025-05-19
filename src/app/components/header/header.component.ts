@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
   
   // Mobile Automation dropdown options
   mobileAutomationOptions = [
-    { id: 'overview', name: 'Overview', icon: 'fa-circle' },
+    { id: 'overview', name: 'Overview', icon: 'fa-circle', route: '/mobile-automation/overview' },
     { id: 'mobile-locator', name: 'Mobile Locator', icon: 'fa-circle' },
     { id: 'instructions', name: 'Instructions', icon: 'fa-circle' },
     { id: 'executions', name: 'Executions', icon: 'fa-circle' }
@@ -44,8 +44,7 @@ export class HeaderComponent implements OnInit {
   
   // Desktop Automation dropdown options
   desktopAutomationOptions = [
-    { id: 'overview', name: 'Overview', icon: 'fa-circle', route: '/desktop-automation' },
-    { id: 'mobile-overview', name: 'Mobile Overview', icon: 'fa-mobile-alt', route: '/desktop-automation/overview' },
+    { id: 'overview', name: 'Overview', icon: 'fa-circle', route: '/desktop-automation/overview' },
     { id: 'locator', name: 'Locator', icon: 'fa-circle' },
     { id: 'instruction', name: 'Instruction', icon: 'fa-circle' },
     { id: 'executions', name: 'Executions', icon: 'fa-circle' }

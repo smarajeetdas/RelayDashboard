@@ -14,7 +14,22 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
         component: DesktopAutomationOverviewComponent
+      }
+    ]
+  },
+  {
+    path: 'mobile-automation',
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
       },
       {
         path: 'overview',

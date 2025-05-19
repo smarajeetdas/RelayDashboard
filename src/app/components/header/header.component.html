@@ -69,7 +69,10 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('mobile')}">
               <div class="dropdown-menu-inner">
-                <a href="#" *ngFor="let option of mobileAutomationOptions" class="dropdown-item-custom">
+                <a *ngFor="let option of mobileAutomationOptions" 
+                   [routerLink]="option.route ? option.route : '#'" 
+                   (click)="option.route ? closeAllDropdowns() : $event.preventDefault()"
+                   class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
                 </a>
               </div>
