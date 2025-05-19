@@ -321,10 +321,10 @@
 /* Animated Flow Element */
 .lifecycle-flow-animation {
   position: absolute;
-  height: 40px;
-  width: 90px;
-  top: -20px;
-  left: -90px;
+  height: 30px;
+  width: 80px;
+  top: -14px;
+  left: -80px;
   animation: flowAnimation 6s linear infinite;
   background: transparent;
   display: flex;
@@ -349,16 +349,16 @@
   position: absolute;
   width: 0;
   height: 0;
-  right: -5px;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 40px solid #ffffff;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  right: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 30px solid #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
 }
 
 @keyframes flowAnimation {
   0% {
-    left: -90px;
+    left: -80px;
     opacity: 0;
   }
   5% {
