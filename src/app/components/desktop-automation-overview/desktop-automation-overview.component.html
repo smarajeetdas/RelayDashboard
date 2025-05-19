@@ -18,85 +18,133 @@
 
     <div class="features-grid">
       <!-- Script-Free Automation -->
-      <div class="feature-card">
-      <div class="feature-icon">
-        <i class="feature-code-icon"></i>
+      <div class="feature-card" (click)="toggleCard('script-free')">
+        <div class="feature-card-inner" [class.flipped]="flippedCards['script-free']">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-code-icon"></i>
+            </div>
+            <h3 class="feature-title">Script-Free Automation</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Script-Free Automation</h3>
+            <ul class="feature-list">
+              <li>No coding expertise required</li>
+              <li>Our script-less desktop feature ensures testing accessibility to everyone, irrespective of their coding skills</li>
+              <li>Convert these code-free scripts into meaningful tests with single click</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <h3 class="feature-title">Script-Free Automation</h3>
-      <ul class="feature-list">
-        <li>No coding expertise required</li>
-        <li>Our script-less desktop feature ensures testing accessibility to everyone, irrespective of their coding skills</li>
-        <li>Convert these code-free scripts into meaningful tests with single click</li>
-      </ul>
-    </div>
 
     <!-- Robust One Click Automation -->
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="feature-click-icon"></i>
+      <div class="feature-card" (click)="toggleCard('one-click')">
+        <div class="feature-card-inner" [class.flipped]="flippedCards['one-click']">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-click-icon"></i>
+            </div>
+            <h3 class="feature-title">Robust One Click Automation</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Robust One Click Automation</h3>
+            <ul class="feature-list">
+              <li>Relay Desktop automation excels at GUI Automation</li>
+              <li>Evaluate your desktop application's front-end User Interface</li>
+              <li>Simulate Human Actions to perform real mouse movements and element clicks</li>
+              <li>Decrease test creation cycles and maintenance</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <h3 class="feature-title">Robust One Click Automation</h3>
-      <ul class="feature-list">
-        <li>Relay Desktop automation excels at GUI Automation</li>
-        <li>Evaluate your desktop application's front-end User Interface</li>
-        <li>Simulate Human Actions to perform real mouse movements and element clicks</li>
-        <li>Decrease test creation cycles and maintenance</li>
-      </ul>
-    </div>
 
-    <!-- UI Automation -->
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="feature-ui-icon"></i>
+      <!-- UI Automation -->
+      <div class="feature-card" (click)="toggleCard('ui-automation')">
+        <div class="feature-card-inner" [class.flipped]="flippedCards['ui-automation']">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-ui-icon"></i>
+            </div>
+            <h3 class="feature-title">UI Automation</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">UI Automation</h3>
+            <ul class="feature-list">
+              <li>Relay Desktop automation excels at GUI Automation</li>
+              <li>Evaluate your desktop applications' front-end User Interface</li>
+              <li>Simulate Human Actions to perform real mouse movements and element clicks</li>
+              <li>Decrease test creation cycles and maintenance</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <h3 class="feature-title">UI Automation</h3>
-      <ul class="feature-list">
-        <li>Relay Desktop automation excels at GUI Automation</li>
-        <li>Evaluate your desktop applications' front-end User Interface</li>
-        <li>Simulate Human Actions to perform real mouse movements and element clicks</li>
-        <li>Decrease test creation cycles and maintenance</li>
-      </ul>
-    </div>
 
-    <!-- Cross-Platform Compatibility -->
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="feature-platform-icon"></i>
+      <!-- Cross-Platform Compatibility -->
+      <div class="feature-card" (click)="toggleCard('cross-platform')">
+        <div class="feature-card-inner" [class.flipped]="flippedCards['cross-platform']">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-platform-icon"></i>
+            </div>
+            <h3 class="feature-title">Cross-Platform Compatibility</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Cross-Platform Compatibility</h3>
+            <ul class="feature-list">
+              <li>Comprehensively access workflows across a broad software spectrum, overcoming compatibility challenges</li>
+              <li>Supports major Operating system such as Windows, MAC</li>
+              <li>Supports multiple versions of the same application</li>
+              <li>A single test case applies to every platform, promoting faster builds</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <h3 class="feature-title">Cross-Platform Compatibility</h3>
-      <ul class="feature-list">
-        <li>Comprehensively access workflows across a broad software spectrum, overcoming compatibility challenges</li>
-        <li>Supports major Operating system such as Windows, MAC</li>
-        <li>Supports multiple versions of the same application</li>
-        <li>A single test case applies to every platform, promoting faster builds</li>
-      </ul>
-    </div>
 
-    <!-- Automated Test Reports and Analysis -->
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="feature-reports-icon"></i>
+      <!-- Automated Test Reports and Analysis -->
+      <div class="feature-card" (click)="toggleCard('reports')">
+        <div class="feature-card-inner" [class.flipped]="flippedCards['reports']">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-reports-icon"></i>
+            </div>
+            <h3 class="feature-title">Automated Test Reports and Analysis</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Automated Test Reports and Analysis</h3>
+            <ul class="feature-list">
+              <li>Obtain real-time information on progress and status</li>
+              <li>Allows breakdown of test results</li>
+              <li>Determine test coverage, priorities and focus areas</li>
+              <li>Comprehensive information on execution time to identify and remedy slow running tests</li>
+              <li>Get detailed results through email and Slack notification</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <h3 class="feature-title">Automated Test Reports and Analysis</h3>
-      <ul class="feature-list">
-        <li>Obtain real-time information on progress and status</li>
-        <li>Allows breakdown of test results</li>
-        <li>Determine test coverage, priorities and focus areas</li>
-        <li>Comprehensive information on execution time to identify and remedy slow running tests</li>
-        <li>Get detailed results through email and Slack notification</li>
-      </ul>
-    </div>
 
-    <!-- Integrate CI/CD Processes -->
-    <div class="feature-card">
-      <div class="feature-icon">
-        <i class="feature-cicd-icon"></i>
+      <!-- Integrate CI/CD Processes -->
+      <div class="feature-card" (click)="toggleCard('cicd')">
+        <div class="feature-card-inner" [class.flipped]="flippedCards['cicd']">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="feature-cicd-icon"></i>
+            </div>
+            <h3 class="feature-title">Integrate CI/CD Processes</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Integrate CI/CD Processes</h3>
+            <ul class="feature-list">
+              <li>Seamlessly integrates with Continuous Integration (CI) tools like Jenkins and installs the latest builds on target machine for test automation</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <h3 class="feature-title">Integrate CI/CD Processes</h3>
-      <ul class="feature-list">
-        <li>Seamlessly integrates with Continuous Integration (CI) tools like Jenkins and installs the latest builds on target machine for test automation</li>
-      </ul>
-    </div>
   </div>
 
   <div class="info-panels">

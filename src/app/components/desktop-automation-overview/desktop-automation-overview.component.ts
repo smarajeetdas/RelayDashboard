@@ -6,10 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./desktop-automation-overview.component.css']
 })
 export class DesktopAutomationOverviewComponent implements OnInit {
+  flippedCards: { [key: string]: boolean } = {};
 
   constructor() { }
 
   ngOnInit(): void {
+    // Initialize all cards to non-flipped state
+    this.flippedCards = {
+      'script-free': false,
+      'one-click': false,
+      'ui-automation': false,
+      'cross-platform': false,
+      'reports': false,
+      'cicd': false
+    };
   }
 
+  toggleCard(cardId: string): void {
+    this.flippedCards[cardId] = !this.flippedCards[cardId];
+  }
 }
