@@ -1,12 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+
+interface Product {
+  name: string;
+  logoPath: string;
+  platforms: string[];
+}
 
 @Component({
   selector: 'app-desktop-automation-overview',
   templateUrl: './desktop-automation-overview.component.html',
   styleUrls: ['./desktop-automation-overview.component.css']
 })
-export class DesktopAutomationOverviewComponent implements OnInit {
+export class DesktopAutomationOverviewComponent implements OnInit, AfterViewInit {
   flippedCards: { [key: string]: boolean } = {};
+  @ViewChild('productSliderTrack') productSliderTrack: ElementRef;
+  
+  products: Product[] = [
+    { name: 'Lightroom', logoPath: './assets/images/lightroom.png', platforms: ['windows', 'mac'] },
+    { name: 'Photoshop', logoPath: './assets/images/photoshop.png', platforms: ['windows', 'mac'] },
+    { name: 'Illustrator', logoPath: './assets/images/illustrator.png', platforms: ['windows', 'mac'] }
+  ];
 
   constructor() { }
 
@@ -23,6 +36,13 @@ export class DesktopAutomationOverviewComponent implements OnInit {
       'ai-integrations': false,
       'whats-next': false
     };
+  }
+  
+  ngAfterViewInit(): void {
+    // Setup animation after view is initialized
+    if (this.productSliderTrack) {
+      // Any additional animation setup if needed
+    }
   }
 
   toggleCard(cardId: string): void {

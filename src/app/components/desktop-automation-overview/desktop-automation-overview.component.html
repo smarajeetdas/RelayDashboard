@@ -189,40 +189,48 @@
     <div class="products-section">
       <h2 class="section-title">Products using Desktop Automation</h2>
       
-      <div class="products-container">
-        <!-- Lightroom Card -->
-        <div class="product-card">
-          <div class="product-name">Lightroom</div>
-          <div class="product-logo-container">
-            <img src="./assets/images/lightroom.png" alt="Lightroom logo" class="product-logo">
-          </div>
-          <div class="platforms">
-            <span class="platform windows" title="Windows Support"></span>
-            <span class="platform mac" title="Mac Support"></span>
-          </div>
-        </div>
-        
-        <!-- Photoshop Card -->
-        <div class="product-card">
-          <div class="product-name">Photoshop</div>
-          <div class="product-logo-container">
-            <img src="./assets/images/photoshop.png" alt="Photoshop logo" class="product-logo">
-          </div>
-          <div class="platforms">
-            <span class="platform windows" title="Windows Support"></span>
-            <span class="platform mac" title="Mac Support"></span>
-          </div>
-        </div>
-        
-        <!-- Illustrator Card -->
-        <div class="product-card">
-          <div class="product-name">Illustrator</div>
-          <div class="product-logo-container">
-            <img src="./assets/images/illustrator.png" alt="Illustrator logo" class="product-logo">
-          </div>
-          <div class="platforms">
-            <span class="platform windows" title="Windows Support"></span>
-            <span class="platform mac" title="Mac Support"></span>
+      <div class="products-slider">
+        <div class="slider-container">
+          <div class="slider-track" #productSliderTrack>
+            <!-- Original items -->
+            <div class="product-slide" *ngFor="let product of products">
+              <div class="product-card">
+                <div class="product-logo-container">
+                  <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
+                </div>
+                <div class="product-name">{{product.name}}</div>
+                <div class="platforms">
+                  <span class="platform windows" *ngIf="product.platforms.includes('windows')" title="Windows Support"></span>
+                  <span class="platform mac" *ngIf="product.platforms.includes('mac')" title="Mac Support"></span>
+                </div>
+                <div class="product-hover-overlay">
+                  <div class="product-hover-content">
+                    <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo-hover mb-2">
+                    <div>{{product.name}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Duplicate items for infinite scrolling effect -->
+            <div class="product-slide duplicate-card" *ngFor="let product of products">
+              <div class="product-card">
+                <div class="product-logo-container">
+                  <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
+                </div>
+                <div class="product-name">{{product.name}}</div>
+                <div class="platforms">
+                  <span class="platform windows" *ngIf="product.platforms.includes('windows')" title="Windows Support"></span>
+                  <span class="platform mac" *ngIf="product.platforms.includes('mac')" title="Mac Support"></span>
+                </div>
+                <div class="product-hover-overlay">
+                  <div class="product-hover-content">
+                    <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo-hover mb-2">
+                    <div>{{product.name}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
