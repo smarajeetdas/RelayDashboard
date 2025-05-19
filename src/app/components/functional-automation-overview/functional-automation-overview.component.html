@@ -93,128 +93,20 @@
         <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['what-you-can-do']}">
           <div class="feature-card-front">
             <div class="feature-icon">
-              <i class="fas fa-calendar-alt"></i>
+              <i class="fas fa-tasks"></i>
             </div>
-            <h3 class="feature-title">Schedule Test Executions</h3>
+            <h3 class="feature-title">What You Can Do</h3>
             <p class="feature-card-hint">Click to see details</p>
           </div>
           <div class="feature-card-back">
-            <h3 class="feature-title">Schedule Test Executions</h3>
+            <h3 class="feature-title">What You Can Do</h3>
             <ul class="feature-list">
-              <li>Daily, weekly, or monthly scheduling</li>
-              <li>Specify time windows for execution</li>
-              <li>Priority-based execution queue</li>
-              <li>Email notifications upon completion</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Unified Framework -->
-      <div class="feature-card" (click)="toggleCard('unified-framework')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['unified-framework']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-project-diagram"></i>
-            </div>
-            <h3 class="feature-title">Unified Framework</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Unified Framework</h3>
-            <ul class="feature-list">
-              <li>Single codebase for UI and API testing</li>
-              <li>Shared test data across test types</li>
-              <li>Consistent reporting format</li>
-              <li>Combined test execution and analysis</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- CI/CD Ready -->
-      <div class="feature-card" (click)="toggleCard('cicd-ready')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['cicd-ready']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-cogs"></i>
-            </div>
-            <h3 class="feature-title">CI/CD Ready</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">CI/CD Ready</h3>
-            <ul class="feature-list">
-              <li>Jenkins integration with plugins</li>
-              <li>Ethos Flex compatibility</li>
-              <li>GitHub Actions workflow templates</li>
-              <li>Automated deploy-and-test pipelines</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reusable Components -->
-      <div class="feature-card" (click)="toggleCard('reusable-components')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['reusable-components']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-cubes"></i>
-            </div>
-            <h3 class="feature-title">Reusable Components</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Reusable Components</h3>
-            <ul class="feature-list">
-              <li>Page Object Model implementation</li>
-              <li>Shared utilities and helpers</li>
-              <li>Modular test case structure</li>
-              <li>Reusable test step libraries</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Rich Reporting -->
-      <div class="feature-card" (click)="toggleCard('rich-reporting')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['rich-reporting']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-chart-bar"></i>
-            </div>
-            <h3 class="feature-title">Rich Reporting</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Rich Reporting</h3>
-            <ul class="feature-list">
-              <li>Detailed test execution logs</li>
-              <li>Automatic screenshot capture on failure</li>
-              <li>Trend analysis dashboards</li>
-              <li>Export in multiple formats (HTML, PDF, Excel)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Integration -->
-      <div class="feature-card" (click)="toggleCard('integration')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['integration']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-plug"></i>
-            </div>
-            <h3 class="feature-title">Integration</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Integration</h3>
-            <ul class="feature-list">
-              <li>JIRA defect creation and tracking</li>
-              <li>Vault secret management</li>
-              <li>Slack notifications and commands</li>
-              <li>Email reporting and alerts</li>
+              <li>Schedule Test Executions: Run tests automatically on a defined schedule</li>
+              <li>Unified Framework: Combines UI and API testing under a single umbrella</li>
+              <li>CI/CD Ready: Easily integrated with Jenkins, Ethos Flex etc</li>
+              <li>Reusable Components: Modular design for scalable test development</li>
+              <li>Rich Reporting: Detailed logs, screenshots, and analytics dashboards</li>
+              <li>Integration: JIRA/Vault/Slack...</li>
             </ul>
           </div>
         </div>
@@ -223,93 +115,23 @@
 
     <h2 class="section-title">Configuration Simplicity</h2>
     <div class="features-grid">
-      <!-- Test Data Driven -->
-      <div class="feature-card" (click)="toggleCard('test-data')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['test-data']}">
+      <!-- Configuration Simplicity -->
+      <div class="feature-card" (click)="toggleCard('configuration-simplicity')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['configuration-simplicity']}">
           <div class="feature-card-front">
             <div class="feature-icon">
-              <i class="fas fa-database"></i>
+              <i class="fas fa-cogs"></i>
             </div>
-            <h3 class="feature-title">Test Data Driven</h3>
+            <h3 class="feature-title">Configuration Simplicity</h3>
             <p class="feature-card-hint">Click to see details</p>
           </div>
           <div class="feature-card-back">
-            <h3 class="feature-title">Test Data Driven</h3>
+            <h3 class="feature-title">Configuration Simplicity</h3>
             <ul class="feature-list">
-              <li>Data extraction from response</li>
-              <li>Request chaining with extracted data</li>
-              <li>JSON and XML data parsing</li>
-              <li>Dynamic test data generation</li>
-              <li>Data-driven test execution</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Post Operations -->
-      <div class="feature-card" (click)="toggleCard('post-operations')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['post-operations']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-tasks"></i>
-            </div>
-            <h3 class="feature-title">Post Operations</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Post Operations</h3>
-            <ul class="feature-list">
-              <li>Cleanup of test data after execution</li>
-              <li>Environment restoration</li>
-              <li>Result publishing to dashboards</li>
-              <li>Notification delivery on completion</li>
-              <li>Automatic report generation</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Validation -->
-      <div class="feature-card" (click)="toggleCard('validation')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['validation']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-check-double"></i>
-            </div>
-            <h3 class="feature-title">Validation</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Validation</h3>
-            <ul class="feature-list">
-              <li>Text assertion with pattern matching</li>
-              <li>Image comparison with tolerance</li>
-              <li>JSON schema validation</li>
-              <li>Response time validation</li>
-              <li>Custom validation rules</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Execution & Audit History -->
-      <div class="feature-card" (click)="toggleCard('execution-history')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['execution-history']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-history"></i>
-            </div>
-            <h3 class="feature-title">Execution & Audit History</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Execution & Audit History</h3>
-            <ul class="feature-list">
-              <li>Complete test execution logs</li>
-              <li>User activity tracking</li>
-              <li>Change history for test scripts</li>
-              <li>Result comparison across runs</li>
-              <li>Trend analysis over time</li>
+              <li>Test Data Driven: Extraction, Chaining, and Validation</li>
+              <li>Post Operations</li>
+              <li>Validation (Text and Image)</li>
+              <li>Execution & Audit History</li>
             </ul>
           </div>
         </div>
@@ -318,47 +140,21 @@
 
     <h2 class="section-title">Coming Soon</h2>
     <div class="features-grid">
-      <!-- Live Video -->
-      <div class="feature-card" (click)="toggleCard('video-execution')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['video-execution']}">
+      <!-- Coming Soon -->
+      <div class="feature-card" (click)="toggleCard('coming-soon')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['coming-soon']}">
           <div class="feature-card-front">
             <div class="feature-icon">
-              <i class="fas fa-video"></i>
+              <i class="fas fa-clock"></i>
             </div>
-            <h3 class="feature-title">Live Video of Web Execution</h3>
+            <h3 class="feature-title">Coming Soon</h3>
             <p class="feature-card-hint">Click to see details</p>
           </div>
           <div class="feature-card-back">
-            <h3 class="feature-title">Live Video of Web Execution</h3>
+            <h3 class="feature-title">Coming Soon</h3>
             <ul class="feature-list">
-              <li>Real-time video streaming of test execution</li>
-              <li>DVR capabilities with rewind and replay</li>
-              <li>Automatic recording of failed test steps</li>
-              <li>Cloud storage of execution videos</li>
-              <li>Video sharing with team members</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Code Coverage -->
-      <div class="feature-card" (click)="toggleCard('code-coverage')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['code-coverage']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-file-code"></i>
-            </div>
-            <h3 class="feature-title">Code Coverage</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Code Coverage</h3>
-            <ul class="feature-list">
-              <li>Integration with code coverage tools</li>
-              <li>Line, branch and method coverage reporting</li>
-              <li>Visual coverage maps in reports</li>
-              <li>Trends and change analysis</li>
-              <li>Coverage threshold enforcement</li>
+              <li>Live Video of web execution</li>
+              <li>Code Coverage</li>
             </ul>
           </div>
         </div>
