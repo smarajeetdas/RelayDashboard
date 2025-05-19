@@ -28,6 +28,7 @@ import { DesktopAutomationOverviewComponent } from './components/desktop-automat
 import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
 import { PerformanceLabOverviewComponent } from './components/performance-lab-overview/performance-lab-overview.component';
 import { ChaosSimulatorOverviewComponent } from './components/chaos-simulator-overview/chaos-simulator-overview.component';
+import { FunctionalAutomationOverviewComponent } from './components/functional-automation-overview/functional-automation-overview.component';
 
 // Feature modules
 import { PerformanceLabModule } from './features/performance-lab/performance-lab.module';
@@ -55,7 +56,8 @@ import { PerformanceLabModule } from './features/performance-lab/performance-lab
     DesktopAutomationOverviewComponent,
     MobileAutomationOverviewComponent,
     PerformanceLabOverviewComponent,
-    ChaosSimulatorOverviewComponent
+    ChaosSimulatorOverviewComponent,
+    FunctionalAutomationOverviewComponent
   ],
   imports: [
     BrowserModule,

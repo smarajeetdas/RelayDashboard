@@ -5,6 +5,7 @@ import { DesktopAutomationOverviewComponent } from './components/desktop-automat
 import { MobileAutomationOverviewComponent } from './components/mobile-automation-overview/mobile-automation-overview.component';
 import { PerformanceLabOverviewComponent } from './components/performance-lab-overview/performance-lab-overview.component';
 import { ChaosSimulatorOverviewComponent } from './components/chaos-simulator-overview/chaos-simulator-overview.component';
+import { FunctionalAutomationOverviewComponent } from './components/functional-automation-overview/functional-automation-overview.component';
 
 const routes: Routes = [
   {
@@ -88,6 +89,20 @@ const routes: Routes = [
       {
         path: 'overview',
         component: ChaosSimulatorOverviewComponent
+      }
+    ]
+  },
+  {
+    path: 'functional-automation',
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
+        component: FunctionalAutomationOverviewComponent
       }
     ]
   },
