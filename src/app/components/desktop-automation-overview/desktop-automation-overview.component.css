@@ -236,33 +236,105 @@
   display: block;
 }
 
-/* Features Grid */
-.features-container {
+/* Feature Panels */
+.feature-panels {
   margin-bottom: 3rem;
 }
 
-.features-row {
+.feature-row {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 2rem;
   margin-bottom: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.features-row.centered {
+.feature-row.centered {
   justify-content: center;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Card Flip Animation */
-.feature-card {
+.feature-panel {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   position: relative;
-  height: 300px;
-  perspective: 1500px;
-  cursor: pointer;
-  margin-bottom: 10px;
+  flex: 1;
+  min-width: 300px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.panel-header {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.key-offerings {
+  background-color: #55b9f3;
+}
+
+.easy-config {
+  background-color: #f9c74f;
+}
+
+.platform-support {
+  background-color: #add681;
+}
+
+.ai-integrations {
+  background-color: #d58fdb;
+}
+
+.whats-next {
+  background-color: #cccccc;
+}
+
+.panel-content {
+  padding: 0 1.5rem 3rem 1.5rem;
+}
+
+.feature-bullet-list {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.feature-bullet-list li {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.icon-container {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .feature-card-inner {
