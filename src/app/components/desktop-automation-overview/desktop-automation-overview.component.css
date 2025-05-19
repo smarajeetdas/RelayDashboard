@@ -346,7 +346,8 @@
 }
 
 .panel-content {
-  padding: 0 1.5rem 3rem 1.5rem;
+  padding: 0.5rem 1.5rem 3rem 1.5rem;
+  flex: 1;
 }
 
 .feature-bullet-list {
@@ -358,6 +359,7 @@
   margin-bottom: 0.8rem;
   font-size: 0.95rem;
   color: #444;
+  text-align: left;
 }
 
 .icon-container {
