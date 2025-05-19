@@ -83,7 +83,10 @@
             </a>
             <div class="dropdown-menu" [ngClass]="{'show': isDropdownActive('desktop')}">
               <div class="dropdown-menu-inner">
-                <a href="#" *ngFor="let option of desktopAutomationOptions" class="dropdown-item-custom">
+                <a *ngFor="let option of desktopAutomationOptions" 
+                   [routerLink]="option.route ? option.route : '#'" 
+                   (click)="option.route ? closeAllDropdowns() : $event.preventDefault()"
+                   class="dropdown-item-custom">
                   <span>{{ option.name }}</span>
                 </a>
               </div>
