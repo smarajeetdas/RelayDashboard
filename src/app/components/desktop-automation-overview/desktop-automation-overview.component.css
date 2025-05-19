@@ -171,12 +171,18 @@
   justify-content: center;
 }
 
+.feature-icon-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 /* Feature icons */
 .feature-key-offerings-icon {
   display: block;
   width: 40px;
   height: 40px;
-  background-image: url('./assets/images/key-offerings-icon.png');
+  background-image: url('/assets/images/key-offerings-icon.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
