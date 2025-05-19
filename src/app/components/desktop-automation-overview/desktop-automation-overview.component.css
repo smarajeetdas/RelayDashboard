@@ -53,18 +53,25 @@
 /* Main description */
 .overview-description {
   max-width: 1200px;
-  margin-bottom: 2rem;
+  margin: 0 auto 2.5rem;
   line-height: 1.6;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e8e8e8;
 }
 
 .overview-description p {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  margin-bottom: 0;
 }
 
 .link {
-  color: #4e9aff;
+  color: #1473e6;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .link:hover {
