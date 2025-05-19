@@ -307,6 +307,7 @@
   margin: 0 auto;
   width: 88%;
   margin-left: 6%;
+  overflow: hidden;
 }
 
 .lifecycle-line {
@@ -315,6 +316,36 @@
   background-color: #4996ff;
   width: 100%;
   top: 0;
+}
+
+/* Animated Flow Element */
+.lifecycle-flow-animation {
+  position: absolute;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 80px;
+  top: 0;
+  left: -80px;
+  animation: flowAnimation 4s linear infinite;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+@keyframes flowAnimation {
+  0% {
+    left: -80px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }
 
 .lifecycle-arrow {
