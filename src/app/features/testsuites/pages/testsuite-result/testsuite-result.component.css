@@ -715,8 +715,6 @@
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   transition: right 0.3s ease;
-  display: flex;
-  flex-direction: column;
   border-left: 1px solid #ddd;
 }
 
@@ -724,131 +722,141 @@
   right: 0;
 }
 
-.endpoint-details-panel {
+.endpoint-details-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-  max-height: 100vh;
-  overflow: hidden;
 }
 
-.panel-header {
+.endpoint-details-header {
+  background: linear-gradient(to right, #1c2536, #2a3749);
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(to right, #1c2536, #2a3749);
-  color: white;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  flex-shrink: 0;
+  padding: 0 1.25rem;
   height: 60px;
-  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-.panel-title {
-  margin: 0;
-  font-size: 1.2rem;
+.endpoint-details-header h3 {
+  font-size: 1.1rem;
   font-weight: 400;
+  margin: 0;
 }
 
-.close-button {
+.close-btn {
   background: none;
   border: none;
   color: white;
-  font-size: 1.2rem;
   cursor: pointer;
-  padding: 0.25rem;
+  font-size: 1rem;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 4px;
+  border-radius: 50%;
   transition: background-color 0.2s;
 }
 
-.close-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
-.panel-content {
-  padding: 1.5rem;
+.endpoint-details-content {
+  padding: 1.25rem;
   flex: 1;
   overflow-y: auto;
-  max-height: calc(100vh - 60px); /* Adjust based on header height */
-  scrollbar-width: thin;
   background-color: #f9f9f9;
 }
 
-.detail-section {
-  margin-bottom: 1.5rem;
-  width: 100%;
+.endpoint-details-section {
   background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  padding: 1rem;
-}
-
-.section-subtitle {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #333;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.5rem;
-  width: 100%;
-}
-
-.detail-block {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   margin-bottom: 1.25rem;
+  padding: 1.25rem;
 }
 
-.detail-row {
-  display: flex;
-  margin-bottom: 0.75rem;
-  width: 100%;
-}
-
-.detail-label {
-  width: 120px;
-  font-weight: 500;
-  color: #666;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-
-.detail-value {
-  flex: 1;
+.section-title {
   color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.subsection-title {
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 13px;
+}
+
+.details-table tr {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.details-table tr:last-child {
+  border-bottom: none;
+}
+
+.label-cell {
+  color: #666;
+  font-weight: 500;
+  padding: 0.6rem 1rem 0.6rem 0;
+  width: 140px;
+  vertical-align: top;
+}
+
+.value-cell {
+  color: #333;
+  padding: 0.6rem 0;
   word-break: break-word;
 }
 
-.code-block {
+.status-pill {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-passed {
+  background-color: rgba(40, 167, 69, 0.15);
+  color: #28a745;
+}
+
+.status-failed {
+  background-color: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+}
+
+.code-box {
   background-color: #f8f8f8;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 0.75rem;
+  margin-bottom: 1rem;
+  overflow: auto;
+}
+
+.code-box pre {
+  margin: 0;
   font-family: 'Courier New', monospace;
   font-size: 12px;
   line-height: 1.4;
   color: #333;
-  overflow-x: auto;
-  width: 100%;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-  display: block;
-}
-
-.code-block pre {
-  margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
-  max-width: 100%;
-  overflow: auto;
 }
 
 /* Selected row styling */
