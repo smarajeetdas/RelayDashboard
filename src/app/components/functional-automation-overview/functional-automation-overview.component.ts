@@ -6,10 +6,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./functional-automation-overview.component.css']
 })
 export class FunctionalAutomationOverviewComponent implements OnInit {
+  // Track the state of flipped cards
+  flippedCards: { [key: string]: boolean } = {
+    'what-you-can-do': false,
+    'unified-framework': false,
+    'cicd-ready': false,
+    'reusable-components': false,
+    'rich-reporting': false,
+    'integration': false,
+    'test-data': false,
+    'post-operations': false,
+    'validation': false, 
+    'execution-history': false,
+    'video-execution': false,
+    'code-coverage': false
+  };
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Toggle the flipped state of a card
+   * @param cardId The unique identifier for the card to toggle
+   */
+  toggleCard(cardId: string): void {
+    this.flippedCards[cardId] = !this.flippedCards[cardId];
+  }
 }
