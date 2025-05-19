@@ -19,6 +19,8 @@ export class MasterSuiteResultComponent implements OnInit {
   isLoading: boolean = true;
   masterSuiteResult: MasterSuiteResult;
   filtersExpanded: boolean = true;
+  selectedEndpoint: any = null;
+  selectedTestSuite: any = null;
   
   // Filters
   statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
@@ -258,5 +260,44 @@ export class MasterSuiteResultComponent implements OnInit {
   
   generateRandomId(): string {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
+  
+  // Endpoint details methods
+  viewEndpointDetails(endpoint: any, testSuite: any): void {
+    this.selectedEndpoint = endpoint;
+    this.selectedTestSuite = testSuite;
+  }
+  
+  closeEndpointDetails(): void {
+    this.selectedEndpoint = null;
+    this.selectedTestSuite = null;
+  }
+  
+  isSelectedEndpoint(endpointId: number): boolean {
+    return this.selectedEndpoint && this.selectedEndpoint.id === endpointId;
+  }
+  
+  createMockEndpoint(id: number): any {
+    const endpointNames = ['FT.Preferences', 'FT.STDOUT', 'FT.References|Check Nav|Javary', 'FT.CUSTOM'];
+    const status = id === 2 ? 'FAILED' : 'PASSED';
+    const responseTimes = ['99', 'N/A', '7658', '3741'];
+    
+    return {
+      id: id,
+      name: endpointNames[id-1] + ' - Validation',
+      url: '/api/test/' + endpointNames[id-1].toLowerCase().replace(/[|]/g, '/'),
+      method: 'GET',
+      status: status,
+      responseTime: responseTimes[id-1],
+      category: 'DOM',
+      startTime: new Date().toISOString(),
+      responseCode: id === 2 ? 500 : 200,
+      requestBody: id === 2 ? 
+        '{\n  "test": "data",\n  "validate": true\n}' : 
+        '{\n  "id": ' + id + ',\n  "action": "validate"\n}',
+      responseBody: id === 2 ? 
+        '{\n  "error": "Failed to process request",\n  "code": 500\n}' : 
+        '{\n  "success": true,\n  "data": {\n    "id": ' + id + ',\n    "result": "validated"\n  }\n}'
+    };
   }
 }

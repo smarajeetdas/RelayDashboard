@@ -319,7 +319,10 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let j of [1, 2, 3, 4]" [ngClass]="{'selected-row': j === 1}">
+                            <tr *ngFor="let j of [1, 2, 3, 4]" 
+                                class="endpoint-row"
+                                [ngClass]="{'selected-row': isSelectedEndpoint(j)}"
+                                (click)="viewEndpointDetails(createMockEndpoint(j), testSuite)">
                               <td>
                                 <div class="endpoint-name">{{ ['FT.Preferences', 'FT.STDOUT', 'FT.References|Check Nav|Javary', 'FT.CUSTOM'][j-1] }} - Validation</div>
                               </td>
@@ -342,6 +345,99 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Endpoint Details Right Pane Overlay -->
+  <div class="endpoint-details-overlay" [ngClass]="{'show': selectedEndpoint}">
+    <div class="endpoint-details-container">
+      <!-- Header -->
+      <div class="endpoint-details-header">
+        <h3>Endpoint Details</h3>
+        <button class="close-btn" (click)="closeEndpointDetails()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <!-- Content -->
+      <div class="endpoint-details-content" *ngIf="selectedEndpoint">
+        <!-- Basic Info Section -->
+        <div class="endpoint-details-section">
+          <h4 class="section-title">Basic Information</h4>
+          <table class="details-table">
+            <tr>
+              <td class="label-cell">URL</td>
+              <td class="value-cell">{{ selectedEndpoint.url }}</td>
+            </tr>
+            <tr>
+              <td class="label-cell">Method</td>
+              <td class="value-cell">{{ selectedEndpoint.method }}</td>
+            </tr>
+            <tr>
+              <td class="label-cell">Status</td>
+              <td class="value-cell">
+                <span class="status-pill" [ngClass]="{'status-passed': selectedEndpoint.status === 'PASSED', 'status-failed': selectedEndpoint.status === 'FAILED'}">
+                  {{ selectedEndpoint.status }}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="label-cell">Response Time</td>
+              <td class="value-cell">{{ selectedEndpoint.responseTime }} ms</td>
+            </tr>
+            <tr>
+              <td class="label-cell">Category</td>
+              <td class="value-cell">{{ selectedEndpoint.category }}</td>
+            </tr>
+          </table>
+        </div>
+        
+        <!-- Request Section -->
+        <div class="endpoint-details-section">
+          <h4 class="section-title">Request</h4>
+          
+          <h5 class="subsection-title">Headers</h5>
+          <div class="code-box">
+            <pre>Content-Type: application/json
+Authorization: Bearer [token]
+Accept: application/json</pre>
+          </div>
+          
+          <h5 class="subsection-title">Body</h5>
+          <div class="code-box">
+            <pre>{{ selectedEndpoint.requestBody || '{\n  "key": "value"\n}' }}</pre>
+          </div>
+        </div>
+        
+        <!-- Response Section -->
+        <div class="endpoint-details-section">
+          <h4 class="section-title">Response</h4>
+          
+          <h5 class="subsection-title">Body</h5>
+          <div class="code-box">
+            <pre>{{ selectedEndpoint.responseBody || '{\n  "success": true,\n  "data": {\n    "id": 123,\n    "name": "Test Item"\n  }\n}' }}</pre>
+          </div>
+        </div>
+        
+        <!-- Context Section -->
+        <div class="endpoint-details-section">
+          <h4 class="section-title">Test Context</h4>
+          <table class="details-table">
+            <tr>
+              <td class="label-cell">Test Suite</td>
+              <td class="value-cell">{{ selectedTestSuite?.name || 'N/A' }}</td>
+            </tr>
+            <tr>
+              <td class="label-cell">Executed At</td>
+              <td class="value-cell">{{ selectedEndpoint.startTime }}</td>
+            </tr>
+            <tr>
+              <td class="label-cell">Environment</td>
+              <td class="value-cell">Production</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
