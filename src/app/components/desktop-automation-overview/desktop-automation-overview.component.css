@@ -435,6 +435,14 @@
   margin-bottom: 2rem;
 }
 
+.products-grid-centered {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
 .product-card {
   background-color: white;
   border-radius: 12px;

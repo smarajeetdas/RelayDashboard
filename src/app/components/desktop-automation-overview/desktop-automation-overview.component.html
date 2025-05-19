@@ -189,10 +189,10 @@
     <div class="products-section">
       <h2 class="section-title">Products using Desktop Automation</h2>
       
-      <!-- Windows and Mac Products -->
+      <!-- All Products -->
       <div class="platform-section">
-        <h3 class="platform-title">Windows & Mac Products</h3>
-        <div class="products-grid">
+        <div class="products-grid-centered">
+          <!-- Windows and Mac Products -->
           <div class="product-card" *ngFor="let product of getProductsByPlatform(['windows', 'mac'])" [style.border-color]="product.color">
             <div class="product-logo-container" [style.background-color]="product.color">
               <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
@@ -203,13 +203,8 @@
               <img src="./assets/images/mac.png" class="platform-icon" title="Mac Support">
             </div>
           </div>
-        </div>
-      </div>
-      
-      <!-- Windows Only Products -->
-      <div class="platform-section" *ngIf="getProductsByPlatform(['windows']).length > 0">
-        <h3 class="platform-title">Windows Only Products</h3>
-        <div class="products-grid">
+          
+          <!-- Windows Only Products -->
           <div class="product-card" *ngFor="let product of getProductsByPlatform(['windows'])" [style.border-color]="product.color">
             <div class="product-logo-container" [style.background-color]="product.color">
               <img [src]="product.logoPath" [alt]="product.name + ' logo'" class="product-logo">
