@@ -536,10 +536,15 @@
 }
 
 .platform-icon {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   margin: 0 5px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.platform-icon:hover {
+  transform: scale(1.2);
 }
 
 /* Media Queries for Responsive Layout */
