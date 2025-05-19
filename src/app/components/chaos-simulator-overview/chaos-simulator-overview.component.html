@@ -115,90 +115,71 @@
     <h2 class="section-title">Capabilities</h2>
     
     <div class="capabilities-container">
-      <div class="capabilities-background"></div>
-      
-      <div class="capabilities-diagram">
-        <!-- Center Node -->
-        <div class="capability-node center-node">
-          <div class="capability-logo">
-            <img src="assets/images/relay-logo.png" alt="Relay Logo" class="small-logo">
-          </div>
-          <div class="capability-title">Chaos Engineering</div>
-        </div>
-        
-        <!-- Main Categories -->
-        <div class="capability-node category-node infrastructure-node">
-          <div class="capability-title">Infrastructure</div>
-        </div>
-        
-        <div class="capability-node category-node network-node">
-          <div class="capability-title">Network</div>
-        </div>
-        
-        <!-- Infrastructure Capabilities -->
-        <div class="capability-node feature-node cpu-node">
+      <h3 class="capabilities-title">Infrastructure Capabilities</h3>
+      <div class="capabilities-grid">
+        <!-- Infrastructure Row -->
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-microchip"></i></div>
-          <div class="capability-title">CPU</div>
-          <div class="capability-description">Generates high load for one or more CPU cores.</div>
+          <h4>CPU</h4>
+          <p>Generates high load for one or more CPU cores.</p>
         </div>
         
-        <div class="capability-node feature-node memory-node">
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-memory"></i></div>
-          <div class="capability-title">Memory</div>
-          <div class="capability-description">Allocates a specific amount of RAM.</div>
+          <h4>Memory</h4>
+          <p>Allocates a specific amount of RAM.</p>
         </div>
         
-        <div class="capability-node feature-node io-node">
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-hdd"></i></div>
-          <div class="capability-title">I/O</div>
-          <div class="capability-description">Puts read/write pressure on I/O devices such as hard disks.</div>
+          <h4>I/O</h4>
+          <p>Puts read/write pressure on I/O devices such as hard disks.</p>
         </div>
         
-        <div class="capability-node feature-node disk-node">
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-database"></i></div>
-          <div class="capability-title">Disk</div>
-          <div class="capability-description">Writes files to disk to fill it to a specific percentage.</div>
+          <h4>Disk</h4>
+          <p>Writes files to disk to fill it to a specific percentage.</p>
         </div>
         
-        <div class="capability-node feature-node shutdown-node">
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-power-off"></i></div>
-          <div class="capability-title">Shutdown</div>
-          <div class="capability-description">Performs a graceful shutdown (and an optional reboot) on the host operating system.</div>
+          <h4>Shutdown</h4>
+          <p>Performs a graceful shutdown (and an optional reboot) on the host operating system.</p>
         </div>
-        
-        <!-- Network Capabilities -->
-        <div class="capability-node feature-node latency-node">
+      </div>
+      
+      <h3 class="capabilities-title network-title">Network Capabilities</h3>
+      <div class="capabilities-grid">
+        <!-- Network Row -->
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-clock"></i></div>
-          <div class="capability-title">Latency</div>
-          <div class="capability-description">Injects latency into all matching egress network traffic.</div>
+          <h4>Latency</h4>
+          <p>Injects latency into all matching egress network traffic.</p>
         </div>
         
-        <div class="capability-node feature-node blackhole-node">
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-meteor"></i></div>
-          <div class="capability-title">Black hole</div>
-          <div class="capability-description">Drops all matching network traffic.</div>
+          <h4>Black hole</h4>
+          <p>Drops all matching network traffic.</p>
         </div>
         
-        <div class="capability-node feature-node packetloss-node">
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-envelope-open"></i></div>
-          <div class="capability-title">Packet Loss</div>
-          <div class="capability-description">Induces packet loss into all matching egress network traffic.</div>
+          <h4>Packet Loss</h4>
+          <p>Induces packet loss into all matching egress network traffic.</p>
         </div>
         
-        <div class="capability-node feature-node dns-node">
+        <div class="capability-card">
           <div class="capability-icon"><i class="fas fa-server"></i></div>
-          <div class="capability-title">DNS</div>
-          <div class="capability-description">Blocks access to DNS servers.</div>
+          <h4>DNS</h4>
+          <p>Blocks access to DNS servers.</p>
         </div>
-        
-        <!-- Bottom Node -->
-        <div class="capability-node bottom-node">
-          <div class="capability-title">ALFI</div>
-          <div class="capability-description">(Application-Level Fault Injection)</div>
-        </div>
-        
-        <!-- Connector Lines -->
-        <div class="connector-lines"></div>
+      </div>
+      
+      <div class="alfi-container">
+        <h3 class="alfi-title">ALFI (Application-Level Fault Injection)</h3>
+        <p class="alfi-description">Enables application-specific fault injection to test application resilience</p>
       </div>
     </div>
 
