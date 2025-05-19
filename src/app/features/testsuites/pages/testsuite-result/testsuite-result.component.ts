@@ -28,6 +28,8 @@ export class TestSuiteResultComponent implements OnInit {
     totalEndpoints: number;
   };
   filtersExpanded: boolean = true;
+  selectedEndpoint: any = null;
+  selectedTestCase: any = null;
   
   // Filters
   statusFilter: 'All' | 'Passed' | 'Failed' | 'In Progress' | 'Aborted' = 'All';
@@ -279,5 +281,26 @@ export class TestSuiteResultComponent implements OnInit {
       case 'Aborted': return 'aborted';
       default: return '';
     }
+  }
+  
+  viewEndpointDetails(endpoint: any, testCase: any): void {
+    this.selectedEndpoint = endpoint;
+    this.selectedTestCase = testCase;
+  }
+  
+  closeEndpointDetails(): void {
+    this.selectedEndpoint = null;
+    this.selectedTestCase = null;
+  }
+  
+  isSelectedEndpoint(endpoint: any): boolean {
+    return this.selectedEndpoint === endpoint;
+  }
+  
+  formatDate(dateString: string): string {
+    if (!dateString) {
+      return new Date().toLocaleString();
+    }
+    return new Date(dateString).toLocaleString();
   }
 }

@@ -252,7 +252,10 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let endpoint of testCase.endpoints">
+                          <tr *ngFor="let endpoint of testCase.endpoints" 
+                              class="endpoint-row" 
+                              [ngClass]="{'selected-row': isSelectedEndpoint(endpoint)}"
+                              (click)="viewEndpointDetails(endpoint, testCase)">
                             <td>{{ endpoint.url }}</td>
                             <td>{{ endpoint.method }}</td>
                             <td>
@@ -293,6 +296,94 @@
       <button class="btn btn-secondary" (click)="goBack()">
         <i class="fas fa-arrow-left"></i> Back to Test Suite
       </button>
+    </div>
+  </div>
+
+  <!-- Endpoint Details Right Pane Overlay -->
+  <div class="endpoint-details-overlay" [ngClass]="{'show': selectedEndpoint}">
+    <div class="endpoint-details-panel">
+      <div class="panel-header">
+        <h3 class="panel-title">Endpoint Details</h3>
+        <button class="close-button" (click)="closeEndpointDetails()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="panel-content" *ngIf="selectedEndpoint">
+        <div class="detail-section">
+          <h4 class="section-subtitle">Basic Information</h4>
+          <div class="detail-row">
+            <div class="detail-label">URL:</div>
+            <div class="detail-value">{{ selectedEndpoint.url }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Method:</div>
+            <div class="detail-value">{{ selectedEndpoint.method }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Status:</div>
+            <div class="detail-value">
+              <div class="status-badge small" [ngClass]="{
+                'status-passed': selectedEndpoint.status === 'Passed',
+                'status-failed': selectedEndpoint.status === 'Failed'
+              }">
+                {{ selectedEndpoint.status }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="section-subtitle">Performance</h4>
+          <div class="detail-row">
+            <div class="detail-label">Response Time:</div>
+            <div class="detail-value">{{ selectedEndpoint.responseTime }} ms</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Response Code:</div>
+            <div class="detail-value">{{ selectedEndpoint.responseCode }}</div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="section-subtitle">Request Details</h4>
+          <div class="detail-row">
+            <div class="detail-label">Headers:</div>
+            <div class="detail-value code-block">
+              <pre>Content-Type: application/json
+Authorization: Bearer [token]
+Accept: application/json</pre>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Request Body:</div>
+            <div class="detail-value code-block">
+              <pre>{{ selectedEndpoint.requestBody || '{\n  "key": "value"\n}' }}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="section-subtitle">Response</h4>
+          <div class="detail-row">
+            <div class="detail-label">Response Body:</div>
+            <div class="detail-value code-block">
+              <pre>{{ selectedEndpoint.responseBody || '{\n  "success": true,\n  "data": {\n    "id": 123,\n    "name": "Test Item"\n  }\n}' }}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <h4 class="section-subtitle">Test Context</h4>
+          <div class="detail-row">
+            <div class="detail-label">Parent Test Case:</div>
+            <div class="detail-value">{{ selectedTestCase?.name || 'N/A' }}</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Executed At:</div>
+            <div class="detail-value">{{ formatDate(selectedEndpoint.executedAt) }}</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
