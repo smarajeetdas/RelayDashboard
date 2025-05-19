@@ -321,29 +321,53 @@
 /* Animated Flow Element */
 .lifecycle-flow-animation {
   position: absolute;
+  height: 20px;
+  width: 60px;
+  top: -8px;
+  left: -60px;
+  animation: flowAnimation 6s linear infinite;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lifecycle-flow-animation::before {
+  content: '';
+  position: absolute;
+  width: 40px;
   height: 4px;
-  background-color: rgba(255, 255, 255, 0.7);
-  width: 80px;
-  top: 0;
-  left: -80px;
-  animation: flowAnimation 4s linear infinite;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5);
   border-radius: 4px;
+  left: 0;
+}
+
+.lifecycle-flow-animation::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
 @keyframes flowAnimation {
   0% {
-    left: -80px;
+    left: -60px;
     opacity: 0;
   }
-  10% {
+  5% {
     opacity: 1;
   }
   90% {
     opacity: 1;
   }
   100% {
-    left: 100%;
+    left: calc(100% + 10px);
     opacity: 0;
   }
 }
