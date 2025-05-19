@@ -124,7 +124,7 @@
 }
 
 .card-content {
-  padding: 15px 20px;
+  padding: 12px 20px;
 }
 
 .feature-list {
@@ -136,7 +136,7 @@
 .feature-list li {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   position: relative;
   padding-left: 5px;
 }
@@ -146,24 +146,24 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 2px;
+  width: 1px;
   height: 100%;
   background-color: rgba(20, 115, 230, 0.1);
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .feature-icon {
   color: #1473e6;
-  margin-right: 10px;
+  margin-right: 8px;
   margin-top: 2px;
-  font-size: 16px;
+  font-size: 14px;
   flex-shrink: 0;
 }
 
 .feature-text {
-  font-size: 15px;
+  font-size: 14px;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 /* Capabilities Section */
