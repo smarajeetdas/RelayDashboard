@@ -515,10 +515,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../../assets/images/network-bg.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.2;
+  background-color: #121e36;
+  opacity: 1;
   z-index: 0;
 }
 
@@ -537,9 +535,82 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-shadow: 0 0 20px rgba(20, 115, 230, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 2;
+  position: relative;
+}
+
+/* Connection Arrows */
+.connection-arrows {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.arrow-left, .arrow-right, .arrow-bottom {
+  position: absolute;
+  background-color: #4996ff;
+  z-index: 1;
+}
+
+.arrow-left {
+  width: 35%;
+  height: 3px;
+  top: 25px;
+  left: 0;
+}
+
+.arrow-left:after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 12px solid #4996ff;
+}
+
+.arrow-right {
+  width: 35%;
+  height: 3px;
+  top: 25px;
+  right: 0;
+}
+
+.arrow-right:after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid #4996ff;
+}
+
+.arrow-bottom {
+  width: 3px;
+  height: 50px;
+  left: 50%;
+  top: 0;
+}
+
+.arrow-bottom:after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 12px solid #4996ff;
 }
 
 .main-node {
