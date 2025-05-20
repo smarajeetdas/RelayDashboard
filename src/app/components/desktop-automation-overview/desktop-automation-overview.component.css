@@ -339,9 +339,11 @@
 .action-locator-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .action-box, .locator-box {
@@ -349,7 +351,7 @@
   border: 2px solid #1473e6;
   border-radius: 8px;
   padding: 1.5rem;
-  width: 300px;
+  width: 350px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -384,9 +386,10 @@
 }
 
 .plus-sign {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #1473e6;
   font-weight: bold;
+  margin: 0 1.5rem;
 }
 
 .workflow-navigation {
