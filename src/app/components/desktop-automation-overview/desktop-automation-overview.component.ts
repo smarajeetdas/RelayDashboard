@@ -73,4 +73,23 @@ export class DesktopAutomationOverviewComponent implements OnInit, AfterViewInit
     }
     return [];
   }
+
+  // Testcase Workflow navigation functions
+  nextStep(): void {
+    if (this.currentStep < this.totalSteps) {
+      this.currentStep++;
+    }
+  }
+
+  prevStep(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
+  }
+
+  goToStep(stepNumber: number): void {
+    if (stepNumber >= 1 && stepNumber <= this.totalSteps) {
+      this.currentStep = stepNumber;
+    }
+  }
 }
