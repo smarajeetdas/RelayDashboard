@@ -130,62 +130,185 @@
       </div>
     </div>
     
-    <div class="test-case-structure-section">
-      <h2 class="section-title">Desktop Testcases Structure</h2>
+
+    <!-- Testcase Workflow Section -->
+    <div class="testcase-workflow-section">
+      <h2 class="section-title">Testcase Workflow</h2>
       
-      <div class="test-case-structure-content">
-        <div class="test-case-diagram">
-          <div class="instructions-container">
-            <div class="instruction instruction-1">
-              <div class="instruction-content">INSTRUCTION – 1 (Click on Library' button)</div>
-            </div>
-            <div class="instruction instruction-2">
-              <div class="instruction-content">INSTRUCTION – 2 (Click on 'Develop' button)</div>
-            </div>
-            <div class="instruction instruction-3">
-              <div class="instruction-content">INSTRUCTION – 3 (Type/Send Keys on input box)</div>
-              
-              <div class="action-locator-container">
-                <div class="action-box">
-                  <h3>ACTION</h3>
-                  <ul>
-                    <li>Launch App</li>
-                    <li>Click</li>
-                    <li>Send Keys</li>
-                    <li>Keyboard</li>
-                    <li>Swipe</li>
-                    <li>Is Displayed</li>
-                  </ul>
-                </div>
-                
-                <div class="plus-sign">+</div>
-                
-                <div class="locator-box">
-                  <h3>Locator</h3>
-                  <ul>
-                    <li>XPath</li>
-                    <li>ID</li>
-                    <li>Text</li>
-                    <li>Image</li>
-                    <li>Coordinates</li>
-                    <li>Class Name</li>
-                  </ul>
+      <div class="workflow-container">
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 1, 'completed': currentStep > 1}">
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 1: Endpoint Layout</h3>
+              <p class="workflow-description">The endpoint is the foundation of your test automation, combining multiple instructions to form a cohesive workflow.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <h4>Endpoint</h4>
+                  <div class="instruction-list">
+                    <div class="instruction-item">Instruction 1</div>
+                    <div class="instruction-item">Instruction 2</div>
+                    <div class="instruction-item">Instruction 3</div>
+                    <div class="instruction-item">Instruction 4</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div class="endpoint-label">
-            <div class="endpoint-connector"></div>
-            <div class="endpoint-text">
-              <h3>Endpoint</h3>
-              <p>(Sub flow)</p>
+        </div>
+
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 2, 'completed': currentStep > 2}">
+          <div class="workflow-content">
+            <div class="instruction-layout">
+              <h3 class="workflow-title">Step 2: Instruction 1</h3>
+              <p class="workflow-description">Click on Library Button</p>
+              <div class="instruction-diagram">
+                <div class="action-locator-container">
+                  <div class="action-box">
+                    <h4>ACTION</h4>
+                    <div class="action-highlight">Click</div>
+                    <ul class="action-list">
+                      <li>Launch App</li>
+                      <li>Send Keys</li>
+                      <li>Keyboard</li>
+                      <li>Swipe</li>
+                      <li>IsDisplayed</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="plus-sign">+</div>
+                  
+                  <div class="locator-box">
+                    <h4>LOCATOR</h4>
+                    <div class="locator-highlight">Text: "Library"</div>
+                    <ul class="locator-list">
+                      <li>XPATH</li>
+                      <li>ID</li>
+                      <li>Image</li>
+                      <li>Coordinates</li>
+                      <li>ClassName</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 3, 'completed': currentStep > 3}">
+          <div class="workflow-content">
+            <div class="instruction-layout">
+              <h3 class="workflow-title">Step 3: Instruction 2</h3>
+              <p class="workflow-description">Click on Develop Button</p>
+              <div class="instruction-diagram">
+                <div class="action-locator-container">
+                  <div class="action-box">
+                    <h4>ACTION</h4>
+                    <div class="action-highlight">Click</div>
+                    <ul class="action-list">
+                      <li>Launch App</li>
+                      <li>Send Keys</li>
+                      <li>Keyboard</li>
+                      <li>Swipe</li>
+                      <li>IsDisplayed</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="plus-sign">+</div>
+                  
+                  <div class="locator-box">
+                    <h4>LOCATOR</h4>
+                    <div class="locator-highlight">Text: "Develop"</div>
+                    <ul class="locator-list">
+                      <li>XPATH</li>
+                      <li>ID</li>
+                      <li>Image</li>
+                      <li>Coordinates</li>
+                      <li>ClassName</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 4, 'completed': currentStep > 4}">
+          <div class="workflow-content">
+            <div class="instruction-layout">
+              <h3 class="workflow-title">Step 4: Instruction 3</h3>
+              <p class="workflow-description">Type in Input Box</p>
+              <div class="instruction-diagram">
+                <div class="action-locator-container">
+                  <div class="action-box">
+                    <h4>ACTION</h4>
+                    <div class="action-highlight">Send Keys</div>
+                    <ul class="action-list">
+                      <li>Launch App</li>
+                      <li>Click</li>
+                      <li>Keyboard</li>
+                      <li>Swipe</li>
+                      <li>IsDisplayed</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="plus-sign">+</div>
+                  
+                  <div class="locator-box">
+                    <h4>LOCATOR</h4>
+                    <div class="locator-highlight">XPATH: //input[@id='search']</div>
+                    <ul class="locator-list">
+                      <li>ID</li>
+                      <li>Text</li>
+                      <li>Image</li>
+                      <li>Coordinates</li>
+                      <li>ClassName</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 5}">
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Desktop Endpoint Complete</h3>
+              <p class="workflow-description">All instructions combine to form a complete Desktop Endpoint.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box completed-endpoint">
+                  <h4>Desktop Endpoint</h4>
+                  <div class="instruction-list">
+                    <div class="instruction-item">Click on Library Button</div>
+                    <div class="instruction-item">Click on Develop Button</div>
+                    <div class="instruction-item">Type in Input Box</div>
+                    <div class="instruction-item">+ More Instructions...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="workflow-navigation">
+          <button [disabled]="currentStep === 1" class="nav-button prev-button" (click)="prevStep()">
+            <i class="fas fa-chevron-left"></i> Previous
+          </button>
+          <div class="step-indicator">
+            <span *ngFor="let step of [1,2,3,4,5]; let i = index" 
+                  class="step-dot" 
+                  [ngClass]="{'active': currentStep === i+1, 'completed': currentStep > i+1}"
+                  (click)="goToStep(i+1)">
+            </span>
+          </div>
+          <button [disabled]="currentStep === 5" class="nav-button next-button" (click)="nextStep()">
+            Next <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
     </div>
-    
+
     <div class="products-section">
       <h2 class="section-title">Products using Desktop Automation</h2>
       
@@ -217,13 +340,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Testcase Workflow Section -->
-    <div class="testcase-workflow-section">
-      <h2 class="section-title">Testcase Workflow</h2>
-      
-      <div class="workflow-container">
-        <div class="workflow-step" [ngClass]="{'active': currentStep === 1, 'completed': currentStep > 1}">
           <div class="workflow-content">
             <div class="endpoint-layout">
               <h3 class="workflow-title">Step 1: Endpoint Layout</h3>
