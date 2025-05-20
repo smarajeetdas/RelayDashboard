@@ -15,6 +15,7 @@ interface Product {
 })
 export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit {
   flippedCards: { [key: string]: boolean } = {};
+  currentStep: number = 1;
   @ViewChild('productSliderTrack') productSliderTrack: ElementRef;
   
   products: Product[] = [
@@ -77,5 +78,33 @@ export class MobileAutomationOverviewComponent implements OnInit, AfterViewInit 
 
   toggleCard(cardId: string): void {
     this.flippedCards[cardId] = !this.flippedCards[cardId];
+  }
+
+  /**
+   * Moves to the next step in the workflow
+   */
+  nextStep(): void {
+    if (this.currentStep < 5) {
+      this.currentStep++;
+    }
+  }
+
+  /**
+   * Moves to the previous step in the workflow
+   */
+  prevStep(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
+  }
+
+  /**
+   * Navigates to a specific step in the workflow
+   * @param step The step number to navigate to
+   */
+  goToStep(step: number): void {
+    if (step >= 1 && step <= 5) {
+      this.currentStep = step;
+    }
   }
 }
