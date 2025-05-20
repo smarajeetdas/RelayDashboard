@@ -16,6 +16,10 @@ export class DesktopAutomationOverviewComponent implements OnInit, AfterViewInit
   flippedCards: { [key: string]: boolean } = {};
   @ViewChild('productSliderTrack') productSliderTrack: ElementRef;
   
+  // Testcase Workflow state
+  currentStep: number = 1;
+  totalSteps: number = 5;
+  
   products: Product[] = [
     { name: 'Lightroom', logoPath: './assets/images/lightroom_new.png', platforms: ['windows', 'mac'], color: '#31A8FF' },
     { name: 'Photoshop', logoPath: './assets/images/photoshop_new.png', platforms: ['windows', 'mac'], color: '#00C8FF' },
