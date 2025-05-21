@@ -96,11 +96,11 @@
             <div class="feature-icon">
               <i class="fas fa-tasks"></i>
             </div>
-            <h3 class="feature-title">What You Can Do</h3>
+            <h3 class="feature-title">Core Features</h3>
             <p class="feature-card-hint">Click to see details</p>
           </div>
           <div class="feature-card-back">
-            <h3 class="feature-title">What You Can Do</h3>
+            <h3 class="feature-title">Core Features</h3>
             <ul class="feature-list">
               <li>Schedule Test Executions: Run tests automatically on a defined schedule</li>
               <li>Unified Framework: Combines UI and API testing under a single umbrella</li>
@@ -130,6 +130,25 @@
               <li>Post Operations</li>
               <li>Validation (Text and Image)</li>
               <li>Execution & Audit History</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI-Driven Enhancements -->
+      <div class="feature-card" (click)="toggleCard('ai-integrations')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="feature-title">AI-Driven Enhancements</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">AI-Driven Enhancements</h3>
+            <ul class="feature-list">
+              <li>OpenCV: Image recognition</li>
             </ul>
           </div>
         </div>
