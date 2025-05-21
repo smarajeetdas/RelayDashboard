@@ -221,44 +221,53 @@
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+  transform-style: flat;
 }
 
-.feature-card-inner.flipped {
-  transform: rotateY(180deg);
-}
-
+/* We'll use opacity instead of 3D transforms for more reliable display */
 .feature-card-front, .feature-card-back {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   border-radius: 10px;
   background-color: white;
   border: 1px solid #e8e8e8;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 0.75rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  transition: opacity 0.3s ease;
 }
 
 .feature-card-front {
+  opacity: 1;
   align-items: center;
   justify-content: center;
   border-left: 3px solid #1473e6;
   background: linear-gradient(135deg, #f8faff, #eef4ff);
+  z-index: 2;
 }
 
 .feature-card-back {
-  transform: rotateY(180deg);
+  opacity: 0;
   text-align: left;
-  overflow-y: visible;
   border-left: 3px solid #1473e6;
   background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
   justify-content: flex-start;
-  padding-top: 10px;
+  z-index: 1;
+}
+
+/* When flipped, we just toggle opacity */
+.feature-card-inner.flipped .feature-card-front {
+  opacity: 0;
+  z-index: 1;
+}
+
+.feature-card-inner.flipped .feature-card-back {
+  opacity: 1;
+  z-index: 2;
 }
 
 .feature-card-back .feature-title {
