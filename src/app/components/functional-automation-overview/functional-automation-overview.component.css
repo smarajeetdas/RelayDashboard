@@ -230,14 +230,16 @@
   background-color: white;
   border: 2px solid #1473e6;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .feature-card-front {
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .feature-card-back {
@@ -247,6 +249,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
 }
 
 .feature-card:hover .feature-card-front {
@@ -295,15 +298,15 @@
   margin-bottom: 0.75rem;
 }
 
-/* Special styling for Coming Soon cards */
-.feature-card:nth-last-child(-n+2) .feature-card-front {
+/* Unified styling for all feature cards */
+.feature-card .feature-card-front {
   background: linear-gradient(135deg, #f8faff, #eef4ff);
   position: relative;
   overflow: hidden;
   border: 1px dashed #1473e6;
 }
 
-.feature-card:nth-last-child(-n+2) .feature-card-front:before {
+.feature-card .feature-card-front:before {
   content: '';
   position: absolute;
   top: 0;
@@ -315,9 +318,16 @@
   z-index: 0;
 }
 
-.feature-card:nth-last-child(-n+2) .feature-icon {
+.feature-card .feature-icon {
   background: rgba(20, 115, 230, 0.1);
   border-radius: 50%;
+  padding: 12px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
   border: 2px dashed rgba(20, 115, 230, 0.3);
   position: relative;
   z-index: 1;
