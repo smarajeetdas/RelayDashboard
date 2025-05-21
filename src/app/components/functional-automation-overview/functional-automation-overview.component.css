@@ -309,7 +309,7 @@
   background: linear-gradient(135deg, #f8faff, #eef4ff);
   position: relative;
   overflow: hidden;
-  border-top: 3px solid #1473e6;
+  border-left: 3px solid #1473e6;
 }
 
 .feature-card .feature-card-front:before {
