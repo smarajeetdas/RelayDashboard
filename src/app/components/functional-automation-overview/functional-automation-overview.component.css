@@ -177,6 +177,7 @@
   transition: transform 0.8s;
   transform-style: preserve-3d;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .flip-card-inner.flipped {
@@ -191,17 +192,17 @@
   backface-visibility: hidden;
   border-radius: 10px;
   background-color: white;
-  border: 1px solid #1473e6;
-  box-shadow: 0 4px 14px rgba(20, 115, 230, 0.15);
-  padding: 2rem;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  border-left: 3px solid #1473e6;
 }
 
 .flip-card-front {
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .flip-card-back {
@@ -211,12 +212,13 @@
 }
 
 .flip-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
 }
 
 .flip-card:hover .flip-card-front {
   border-color: #1473e6;
-  box-shadow: 0 10px 20px rgba(20, 115, 230, 0.2);
+  border-left: 3px solid #1473e6;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   z-index: 1;
 }
 
@@ -228,16 +230,15 @@
 
 .card-title {
   color: #1473e6;
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 1.2rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .card-hint {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #777;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 /* Testcase Workflow Section - Matching Mobile Workflow Blue Theme */
