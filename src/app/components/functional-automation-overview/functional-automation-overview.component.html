@@ -102,12 +102,12 @@
           <div class="feature-card-back">
             <h3 class="feature-title">Core Features</h3>
             <ul class="feature-list">
-              <li>Schedule Test Executions: Run tests automatically on a defined schedule</li>
-              <li>Unified Framework: Combines UI and API testing under a single umbrella</li>
-              <li>CI/CD Ready: Easily integrated with Jenkins, Ethos Flex etc</li>
-              <li>Reusable Components: Modular design for scalable test development</li>
-              <li>Rich Reporting: Detailed logs, screenshots, and analytics dashboards</li>
-              <li>Integration: JIRA/Vault/Slack...</li>
+              <li>Record & Generate Web Test Cases</li>
+              <li>Schedule Test Executions</li>
+              <li>Unified framework for API & Web testing</li>
+              <li>CI/CD Integration</li>
+              <li>Integration with JIRA, Vault, Slack...</li>
+              <li>Notifications (Slack & Mail)</li>
             </ul>
           </div>
         </div>
@@ -149,6 +149,26 @@
             <h3 class="feature-title">AI-Driven Enhancements</h3>
             <ul class="feature-list">
               <li>OpenCV: Image recognition</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Compatibility -->
+      <div class="feature-card" (click)="toggleCard('platform-support')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['platform-support']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="fas fa-laptop"></i>
+            </div>
+            <h3 class="feature-title">Platform Compatibility</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">Platform Compatibility</h3>
+            <ul class="feature-list">
+              <li>Windows & MAC</li>
+              <li>BYOD (Bring Your Own Device)</li>
             </ul>
           </div>
         </div>

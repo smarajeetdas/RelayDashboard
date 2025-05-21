@@ -19,7 +19,11 @@ export class FunctionalAutomationOverviewComponent implements OnInit {
     'validation': false, 
     'execution-history': false,
     'video-execution': false,
-    'code-coverage': false
+    'code-coverage': false,
+    'configuration-simplicity': false,
+    'ai-integrations': false,
+    'platform-support': false,
+    'coming-soon': false
   };
 
   constructor() { }
