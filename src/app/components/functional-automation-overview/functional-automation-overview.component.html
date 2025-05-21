@@ -91,68 +91,62 @@
     <!-- Row 1: Core Features, Configuration Simplicity, Platform Compatibility -->
     <div class="features-grid">
       <!-- Core Features -->
-      <div class="feature-card" (click)="toggleCard('what-you-can-do')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['what-you-can-do']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-tasks"></i>
-            </div>
-            <h3 class="feature-title">Core Features</h3>
-            <p class="feature-card-hint">Click to see details</p>
+      <div class="feature-card">
+        <div *ngIf="!flippedCards['what-you-can-do']" class="feature-card-side feature-card-front" (click)="toggleCard('what-you-can-do')">
+          <div class="feature-icon">
+            <i class="fas fa-tasks"></i>
           </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Core Features</h3>
-            <ul class="feature-list">
-              <li>Record & Generate Web Test Cases</li>
-              <li>Schedule Test Executions</li>
-              <li>Unified framework for API & Web testing</li>
-              <li>CI/CD Integration</li>
-              <li>Integration with JIRA, Vault, Slack...</li>
-              <li>Notifications (Slack & Mail)</li>
-            </ul>
-          </div>
+          <h3 class="feature-title">Core Features</h3>
+          <p class="feature-card-hint">Click to see details</p>
+        </div>
+        <div *ngIf="flippedCards['what-you-can-do']" class="feature-card-side feature-card-back" (click)="toggleCard('what-you-can-do')">
+          <h3 class="feature-title">Core Features</h3>
+          <ul class="feature-list">
+            <li>Record & Generate Web Test Cases</li>
+            <li>Schedule Test Executions</li>
+            <li>Unified framework for API & Web testing</li>
+            <li>CI/CD Integration</li>
+            <li>Integration with JIRA, Vault, Slack...</li>
+            <li>Notifications (Slack & Mail)</li>
+          </ul>
         </div>
       </div>
 
       <!-- Configuration Simplicity -->
-      <div class="feature-card" (click)="toggleCard('configuration-simplicity')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['configuration-simplicity']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-cogs"></i>
-            </div>
-            <h3 class="feature-title">Configuration Simplicity</h3>
-            <p class="feature-card-hint">Click to see details</p>
+      <div class="feature-card">
+        <div *ngIf="!flippedCards['configuration-simplicity']" class="feature-card-side feature-card-front" (click)="toggleCard('configuration-simplicity')">
+          <div class="feature-icon">
+            <i class="fas fa-cogs"></i>
           </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Configuration Simplicity</h3>
-            <ul class="feature-list">
-              <li>Test Data Driven: Extraction, Chaining, and Validation</li>
-              <li>Post Operations</li>
-              <li>Validation (Text and Image)</li>
-              <li>Execution & Audit History</li>
-            </ul>
-          </div>
+          <h3 class="feature-title">Configuration Simplicity</h3>
+          <p class="feature-card-hint">Click to see details</p>
+        </div>
+        <div *ngIf="flippedCards['configuration-simplicity']" class="feature-card-side feature-card-back" (click)="toggleCard('configuration-simplicity')">
+          <h3 class="feature-title">Configuration Simplicity</h3>
+          <ul class="feature-list">
+            <li>Test Data Driven: Extraction, Chaining, and Validation</li>
+            <li>Post Operations</li>
+            <li>Validation (Text and Image)</li>
+            <li>Execution & Audit History</li>
+          </ul>
         </div>
       </div>
 
       <!-- Platform Compatibility -->
-      <div class="feature-card" (click)="toggleCard('platform-support')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['platform-support']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-laptop"></i>
-            </div>
-            <h3 class="feature-title">Platform Compatibility</h3>
-            <p class="feature-card-hint">Click to see details</p>
+      <div class="feature-card">
+        <div *ngIf="!flippedCards['platform-support']" class="feature-card-side feature-card-front" (click)="toggleCard('platform-support')">
+          <div class="feature-icon">
+            <i class="fas fa-laptop"></i>
           </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Platform Compatibility</h3>
-            <ul class="feature-list">
-              <li>Windows & MAC</li>
-              <li>BYOD (Bring Your Own Device)</li>
-            </ul>
-          </div>
+          <h3 class="feature-title">Platform Compatibility</h3>
+          <p class="feature-card-hint">Click to see details</p>
+        </div>
+        <div *ngIf="flippedCards['platform-support']" class="feature-card-side feature-card-back" (click)="toggleCard('platform-support')">
+          <h3 class="feature-title">Platform Compatibility</h3>
+          <ul class="feature-list">
+            <li>Windows & MAC</li>
+            <li>BYOD (Bring Your Own Device)</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -160,41 +154,37 @@
     <!-- Row 2: AI-Driven Enhancements, Coming Soon (center-aligned) -->
     <div class="features-grid-centered">
       <!-- AI-Driven Enhancements -->
-      <div class="feature-card" (click)="toggleCard('ai-integrations')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-robot"></i>
-            </div>
-            <h3 class="feature-title">AI-Driven Enhancements</h3>
-            <p class="feature-card-hint">Click to see details</p>
+      <div class="feature-card">
+        <div *ngIf="!flippedCards['ai-integrations']" class="feature-card-side feature-card-front" (click)="toggleCard('ai-integrations')">
+          <div class="feature-icon">
+            <i class="fas fa-robot"></i>
           </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">AI-Driven Enhancements</h3>
-            <ul class="feature-list">
-              <li>OpenCV: Image recognition</li>
-            </ul>
-          </div>
+          <h3 class="feature-title">AI-Driven Enhancements</h3>
+          <p class="feature-card-hint">Click to see details</p>
+        </div>
+        <div *ngIf="flippedCards['ai-integrations']" class="feature-card-side feature-card-back" (click)="toggleCard('ai-integrations')">
+          <h3 class="feature-title">AI-Driven Enhancements</h3>
+          <ul class="feature-list">
+            <li>OpenCV: Image recognition</li>
+          </ul>
         </div>
       </div>
 
       <!-- Coming Soon -->
-      <div class="feature-card" (click)="toggleCard('coming-soon')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['coming-soon']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <h3 class="feature-title">Coming Soon</h3>
-            <p class="feature-card-hint">Click to see details</p>
+      <div class="feature-card">
+        <div *ngIf="!flippedCards['coming-soon']" class="feature-card-side feature-card-front" (click)="toggleCard('coming-soon')">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
           </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Coming Soon</h3>
-            <ul class="feature-list">
-              <li>Easy OCR: Text recognition</li>
-              <li>Video for Selenium web execution</li>
-            </ul>
-          </div>
+          <h3 class="feature-title">Coming Soon</h3>
+          <p class="feature-card-hint">Click to see details</p>
+        </div>
+        <div *ngIf="flippedCards['coming-soon']" class="feature-card-side feature-card-back" (click)="toggleCard('coming-soon')">
+          <h3 class="feature-title">Coming Soon</h3>
+          <ul class="feature-list">
+            <li>Easy OCR: Text recognition</li>
+            <li>Video for Selenium web execution</li>
+          </ul>
         </div>
       </div>
     </div>
