@@ -228,7 +228,6 @@
   backface-visibility: hidden;
   border-radius: 10px;
   background-color: white;
-  border: 2px solid #1473e6;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   display: flex;
@@ -238,6 +237,8 @@
 .feature-card-front {
   align-items: center;
   justify-content: center;
+  background: linear-gradient(135deg, #1473e6, #0c57b5);
+  color: white;
 }
 
 .feature-card-back {
@@ -267,16 +268,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1473e6;
   font-size: 1.75rem;
 }
 
-.feature-title {
+.feature-card-front .feature-icon {
+  color: white;
+}
+
+.feature-card-back .feature-icon {
   color: #1473e6;
+}
+
+.feature-title {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
   text-align: center;
+}
+
+.feature-card-front .feature-title {
+  color: white;
+}
+
+.feature-card-back .feature-title {
+  color: #1473e6;
 }
 
 .feature-list {
