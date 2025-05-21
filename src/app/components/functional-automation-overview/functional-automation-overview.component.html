@@ -88,8 +88,9 @@
 
     <h2 class="section-title">Explore the Transformative Features of Relay Functional Automation</h2>
 
+    <!-- Row 1: Core Features, Configuration Simplicity, Platform Compatibility -->
     <div class="features-grid">
-      <!-- What You Can Do -->
+      <!-- Core Features -->
       <div class="feature-card" (click)="toggleCard('what-you-can-do')">
         <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['what-you-can-do']}">
           <div class="feature-card-front">
@@ -135,25 +136,6 @@
         </div>
       </div>
 
-      <!-- AI-Driven Enhancements -->
-      <div class="feature-card" (click)="toggleCard('ai-integrations')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-robot"></i>
-            </div>
-            <h3 class="feature-title">AI-Driven Enhancements</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">AI-Driven Enhancements</h3>
-            <ul class="feature-list">
-              <li>OpenCV: Image recognition</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
       <!-- Platform Compatibility -->
       <div class="feature-card" (click)="toggleCard('platform-support')">
         <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['platform-support']}">
@@ -169,6 +151,28 @@
             <ul class="feature-list">
               <li>Windows & MAC</li>
               <li>BYOD (Bring Your Own Device)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: AI-Driven Enhancements, Coming Soon (center-aligned) -->
+    <div class="features-grid-centered">
+      <!-- AI-Driven Enhancements -->
+      <div class="feature-card" (click)="toggleCard('ai-integrations')">
+        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
+          <div class="feature-card-front">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="feature-title">AI-Driven Enhancements</h3>
+            <p class="feature-card-hint">Click to see details</p>
+          </div>
+          <div class="feature-card-back">
+            <h3 class="feature-title">AI-Driven Enhancements</h3>
+            <ul class="feature-list">
+              <li>OpenCV: Image recognition</li>
             </ul>
           </div>
         </div>

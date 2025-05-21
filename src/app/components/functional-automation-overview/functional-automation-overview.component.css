@@ -189,8 +189,19 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Centered Features Grid for second row */
+.features-grid-centered {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 680px;
   margin-left: auto;
   margin-right: auto;
 }
