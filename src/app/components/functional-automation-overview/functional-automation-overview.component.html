@@ -91,76 +91,117 @@
       </div>
     </div>
 
-    <!-- Testcase Workflow Section -->
+    <!-- Functional Testcase Workflow Section -->
     <div class="testcase-workflow-section">
       <h2 class="section-title">Functional Testcase Workflow</h2>
       
       <div class="workflow-container">
         <div class="workflow-step" [ngClass]="{'active': currentStep === 1, 'completed': currentStep > 1}">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h3 class="step-title">API Endpoint Layout</h3>
-            <p class="step-description">
-              Organize endpoints by domains, applications, and features to standardize your test structure
-            </p>
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 1: API Endpoint Layout</h3>
+              <p class="workflow-description">Organize endpoints by domains, applications, and features to standardize your test structure.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <h4>Functional Endpoint</h4>
+                  <div class="instruction-list">
+                    <div class="instruction-item">API Configuration</div>
+                    <div class="instruction-item">Element Locators</div>
+                    <div class="instruction-item">Test Parameters</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="workflow-connector" [ngClass]="{'active': currentStep > 1}"></div>
         
         <div class="workflow-step" [ngClass]="{'active': currentStep === 2, 'completed': currentStep > 2}">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h3 class="step-title">Test Instructions</h3>
-            <p class="step-description">
-              Configure actions with specific locators to interact with web elements
-            </p>
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 2: Test Instructions</h3>
+              <p class="workflow-description">Configure actions with specific locators to interact with web elements and APIs.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <h4>Test Instructions</h4>
+                  <div class="instruction-list">
+                    <div class="instruction-item">Click Actions</div>
+                    <div class="instruction-item">Form Input</div>
+                    <div class="instruction-item">API Requests</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="workflow-connector" [ngClass]="{'active': currentStep > 2}"></div>
         
         <div class="workflow-step" [ngClass]="{'active': currentStep === 3, 'completed': currentStep > 3}">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <h3 class="step-title">Validation Logic</h3>
-            <p class="step-description">
-              Implement checks for expected text, element properties, and visual appearance
-            </p>
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 3: Validation Logic</h3>
+              <p class="workflow-description">Implement checks for expected text, element properties, and visual appearance.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <h4>Validation Rules</h4>
+                  <div class="instruction-list">
+                    <div class="instruction-item">Text Assertions</div>
+                    <div class="instruction-item">Element Properties</div>
+                    <div class="instruction-item">Response Validation</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="workflow-connector" [ngClass]="{'active': currentStep > 3}"></div>
         
         <div class="workflow-step" [ngClass]="{'active': currentStep === 4, 'completed': currentStep > 4}">
-          <div class="step-number">4</div>
-          <div class="step-content">
-            <h3 class="step-title">Test Case Assembly</h3>
-            <p class="step-description">
-              Group related instructions into coherent test cases that validate specific functionality
-            </p>
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 4: Test Case Assembly</h3>
+              <p class="workflow-description">Group related instructions into coherent test cases that validate specific functionality.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <h4>Test Case Structure</h4>
+                  <div class="instruction-list">
+                    <div class="instruction-item">Instruction Sequences</div>
+                    <div class="instruction-item">Data Parameters</div>
+                    <div class="instruction-item">Expected Results</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="workflow-connector" [ngClass]="{'active': currentStep > 4}"></div>
         
         <div class="workflow-step" [ngClass]="{'active': currentStep === 5}">
-          <div class="step-number">5</div>
-          <div class="step-content">
-            <h3 class="step-title">Execution & Analytics</h3>
-            <p class="step-description">
-              Run tests on demand or schedule them, then analyze comprehensive reports
-            </p>
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 5: Execution & Analytics</h3>
+              <p class="workflow-description">Run tests on demand or schedule them, then analyze comprehensive reports.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <h4>Execution & Reporting</h4>
+                  <div class="instruction-list">
+                    <div class="instruction-item">Schedule Execution</div>
+                    <div class="instruction-item">Real-time Monitoring</div>
+                    <div class="instruction-item">Performance Analytics</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="workflow-navigation">
-        <button class="btn-nav prev" [disabled]="currentStep === 1" (click)="prevStep()">
+        <button class="nav-button" [disabled]="currentStep === 1" (click)="prevStep()">
           <i class="fas fa-chevron-left"></i> Previous
         </button>
-        <div class="step-indicators">
+        <div class="step-indicator">
           <span class="step-dot" *ngFor="let step of [1,2,3,4,5]" 
                 [ngClass]="{'active': currentStep === step, 'completed': currentStep > step}"
                 (click)="goToStep(step)"></span>
         </div>
-        <button class="btn-nav next" [disabled]="currentStep === 5" (click)="nextStep()">
+        <button class="nav-button" [disabled]="currentStep === 5" (click)="nextStep()">
           Next <i class="fas fa-chevron-right"></i>
         </button>
       </div>
