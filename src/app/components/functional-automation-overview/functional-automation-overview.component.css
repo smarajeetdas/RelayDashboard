@@ -247,12 +247,14 @@
 .feature-card-front {
   align-items: center;
   justify-content: center;
+  border-left: 3px solid #1473e6;
 }
 
 .feature-card-back {
   transform: rotateY(180deg);
   text-align: left;
   overflow-y: auto;
+  border-left: 3px solid #1473e6;
 }
 
 .feature-card-back .feature-title {
