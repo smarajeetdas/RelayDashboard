@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Product {
+  name: string;
+  logoPath: string;
+  color: string;
+  subheading?: string;
+}
+
 @Component({
   selector: 'app-functional-automation-overview',
   templateUrl: './functional-automation-overview.component.html',
@@ -17,6 +24,21 @@ export class FunctionalAutomationOverviewComponent implements OnInit {
     'ai-integrations': false,
     'coming-soon': false
   };
+  
+  // Product data for Functional Automation
+  products: Product[] = [
+    { name: 'Adobe Express', logoPath: 'assets/images/adobe-logos-official/express.png', color: '#1473e6', subheading: 'Your-Stuff' },
+    { name: 'Project X', logoPath: 'assets/images/adobe_express.png', color: '#1473e6', subheading: 'Productivity' },
+    { name: 'CC Education', logoPath: 'assets/images/adobe_express.png', color: '#1473e6' },
+    { name: 'Adobe Sign', logoPath: 'assets/images/fill_sign_acrobat.png', color: '#1473e6' },
+    { name: 'Adobe Experience Platform', logoPath: 'assets/images/adobe-logos-official/experience.png', color: '#1473e6' },
+    { name: 'Adobe.com', logoPath: 'assets/images/adobe_express.png', color: '#1473e6' },
+    { name: 'Adobe Learning Manager', logoPath: 'assets/images/adobe-logos-official/learning-manager.webp', color: '#1473e6' },
+    { name: 'CPQ', logoPath: 'assets/images/adobe_express.png', color: '#1473e6' },
+    { name: 'AGX-DTP', logoPath: 'assets/images/adobe_express.png', color: '#1473e6' },
+    { name: 'CLM', logoPath: 'assets/images/adobe_express.png', color: '#1473e6' },
+    { name: 'Supernova', logoPath: 'assets/images/adobe_express.png', color: '#1473e6' }
+  ];
 
   constructor() { }
 
