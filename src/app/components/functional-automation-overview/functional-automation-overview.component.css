@@ -71,9 +71,9 @@
 }
 
 .card-icon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 1.25rem;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,13 +82,29 @@
 }
 
 .card-icon i {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1473e6;
+  border-radius: 50%;
+}
+
+.feature-icon i {
+  font-size: 1.8rem;
   color: white;
 }
 
 .feature-icon-img {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   object-fit: contain;
 }
 
@@ -219,7 +235,7 @@
 
 .feature-title {
   color: #1473e6;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }
