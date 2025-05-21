@@ -214,14 +214,15 @@
   height: 300px;
   perspective: 1500px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .feature-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s;
+  text-align: center;
+  transition: transform 0.6s;
   transform-style: preserve-3d;
 }
 
@@ -236,24 +237,28 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 10px;
-  background-color: white;
   border: 1px solid #e8e8e8;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .feature-card-front {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 
 .feature-card-back {
+  background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
+  color: #333;
   transform: rotateY(180deg);
   text-align: left;
   overflow-y: auto;
-  background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card:hover .feature-card-front {
@@ -310,6 +315,7 @@
   position: relative;
   overflow: hidden;
   border-left: 3px solid #1473e6;
+  z-index: 1;
 }
 
 .feature-card .feature-card-front:before {
