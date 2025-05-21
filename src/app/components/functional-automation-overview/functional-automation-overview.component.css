@@ -208,7 +208,7 @@
   margin-right: auto;
 }
 
-/* Card Flip Animation - directly copied from Mobile Overview */
+/* Card Flip Animation */
 .feature-card {
   position: relative;
   height: 300px;
@@ -247,14 +247,12 @@
 .feature-card-front {
   align-items: center;
   justify-content: center;
-  border-left: 3px solid #1473e6;
 }
 
 .feature-card-back {
   transform: rotateY(180deg);
   text-align: left;
   overflow-y: auto;
-  border-left: 3px solid #1473e6;
 }
 
 .feature-card-back .feature-title {
@@ -304,6 +302,12 @@
   margin-bottom: 1rem;
   font-weight: 600;
   text-align: center;
+}
+
+.feature-card-hint {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 1rem;
 }
 
 .feature-list {
