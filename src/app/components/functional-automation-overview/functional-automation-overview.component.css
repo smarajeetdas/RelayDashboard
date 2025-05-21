@@ -262,6 +262,7 @@
   padding: 2rem;
   border-left: 4px solid #1473e6;
   min-height: 350px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .workflow-title {
@@ -328,6 +329,7 @@
   margin-bottom: 1rem;
   position: relative;
   min-width: 350px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .instruction-2 {
