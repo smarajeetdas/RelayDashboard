@@ -208,7 +208,7 @@
   margin-right: auto;
 }
 
-/* Feature Cards - Flip Animation */
+/* Card Flip Animation */
 .feature-card {
   position: relative;
   height: 300px;
@@ -242,23 +242,19 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  border-left: 3px solid #1473e6;
 }
 
 .feature-card-front {
   align-items: center;
   justify-content: center;
+  border-left: 3px solid #1473e6;
 }
 
 .feature-card-back {
   transform: rotateY(180deg);
   text-align: left;
   overflow-y: auto;
-}
-
-.feature-card:hover .feature-card-front {
-  border-color: #1473e6;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-left: 3px solid #1473e6;
 }
 
 .feature-card-back .feature-title {
