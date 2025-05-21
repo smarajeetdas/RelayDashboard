@@ -36,11 +36,6 @@ export class FunctionalAutomationOverviewComponent implements OnInit {
    * @param cardId The unique identifier for the card to toggle
    */
   toggleCard(cardId: string): void {
-    // Reset all cards first
-    Object.keys(this.flippedCards).forEach(key => {
-      this.flippedCards[key] = false;
-    });
-    // Then toggle the clicked card
     this.flippedCards[cardId] = !this.flippedCards[cardId];
   }
 }
