@@ -6,23 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./functional-automation-overview.component.css']
 })
 export class FunctionalAutomationOverviewComponent implements OnInit {
+  // Current step for workflow
+  currentStep: number = 1;
+  
   // Track the state of flipped cards
   flippedCards: { [key: string]: boolean } = {
-    'what-you-can-do': false,
-    'unified-framework': false,
-    'cicd-ready': false,
-    'reusable-components': false,
-    'rich-reporting': false,
-    'integration': false,
-    'test-data': false,
-    'post-operations': false,
-    'validation': false, 
-    'execution-history': false,
-    'video-execution': false,
-    'code-coverage': false,
+    'core-features': false,
     'configuration-simplicity': false,
-    'ai-integrations': false,
     'platform-support': false,
+    'ai-integrations': false,
     'coming-soon': false
   };
 
@@ -37,5 +29,33 @@ export class FunctionalAutomationOverviewComponent implements OnInit {
    */
   toggleCard(cardId: string): void {
     this.flippedCards[cardId] = !this.flippedCards[cardId];
+  }
+  
+  /**
+   * Moves to the next step in the workflow
+   */
+  nextStep(): void {
+    if (this.currentStep < 5) {
+      this.currentStep++;
+    }
+  }
+
+  /**
+   * Moves to the previous step in the workflow
+   */
+  prevStep(): void {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
+  }
+
+  /**
+   * Navigates to a specific step in the workflow
+   * @param step The step number to navigate to
+   */
+  goToStep(step: number): void {
+    if (step >= 1 && step <= 5) {
+      this.currentStep = step;
+    }
   }
 }

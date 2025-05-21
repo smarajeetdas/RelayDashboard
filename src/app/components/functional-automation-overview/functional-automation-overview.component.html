@@ -1,16 +1,20 @@
 <div class="functional-automation-container">
   <div class="content-wrapper">
+    <!-- Header Section -->
     <div class="overview-header">
       <h1>Overview</h1>
     </div>
 
+    <!-- Description Section -->
     <div class="overview-description">
       <p>
         Delivering Scalable, Reliable, and Intelligent Test Automation, Functional Automation framework is a comprehensive solution designed to streamline and accelerate quality assurance across both web and API layers. It integrates robust test automation capabilities, enabling rapid and reliable validation of application functionality with minimal manual intervention.
       </p>
     </div>
 
+    <!-- Automation Types Section -->
     <div class="automation-types-container">
+      <!-- API Automation Card -->
       <div class="automation-type-card">
         <div class="card-header">
           <div class="card-icon">
@@ -44,6 +48,7 @@
         </div>
       </div>
 
+      <!-- Web Automation Card -->
       <div class="automation-type-card">
         <div class="card-header">
           <div class="card-icon">
@@ -86,114 +91,215 @@
       </div>
     </div>
 
+    <!-- Testcase Workflow Section -->
+    <div class="testcase-workflow-section">
+      <h2 class="section-title">Functional Testcase Workflow</h2>
+      
+      <div class="workflow-container">
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 1, 'completed': currentStep > 1}">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3 class="step-title">API Endpoint Layout</h3>
+            <p class="step-description">
+              Organize endpoints by domains, applications, and features to standardize your test structure
+            </p>
+          </div>
+        </div>
+        <div class="workflow-connector" [ngClass]="{'active': currentStep > 1}"></div>
+        
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 2, 'completed': currentStep > 2}">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3 class="step-title">Test Instructions</h3>
+            <p class="step-description">
+              Configure actions with specific locators to interact with web elements
+            </p>
+          </div>
+        </div>
+        <div class="workflow-connector" [ngClass]="{'active': currentStep > 2}"></div>
+        
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 3, 'completed': currentStep > 3}">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3 class="step-title">Validation Logic</h3>
+            <p class="step-description">
+              Implement checks for expected text, element properties, and visual appearance
+            </p>
+          </div>
+        </div>
+        <div class="workflow-connector" [ngClass]="{'active': currentStep > 3}"></div>
+        
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 4, 'completed': currentStep > 4}">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3 class="step-title">Test Case Assembly</h3>
+            <p class="step-description">
+              Group related instructions into coherent test cases that validate specific functionality
+            </p>
+          </div>
+        </div>
+        <div class="workflow-connector" [ngClass]="{'active': currentStep > 4}"></div>
+        
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 5}">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3 class="step-title">Execution & Analytics</h3>
+            <p class="step-description">
+              Run tests on demand or schedule them, then analyze comprehensive reports
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="workflow-navigation">
+        <button class="btn-nav prev" [disabled]="currentStep === 1" (click)="prevStep()">
+          <i class="fas fa-chevron-left"></i> Previous
+        </button>
+        <div class="step-indicators">
+          <span class="step-dot" *ngFor="let step of [1,2,3,4,5]" 
+                [ngClass]="{'active': currentStep === step, 'completed': currentStep > step}"
+                (click)="goToStep(step)"></span>
+        </div>
+        <button class="btn-nav next" [disabled]="currentStep === 5" (click)="nextStep()">
+          Next <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Features Section -->
     <h2 class="section-title">Explore the Transformative Features of Relay Functional Automation</h2>
     
-    <!-- Row 1: Core Features, Configuration Simplicity, Platform Compatibility -->
+    <!-- Feature Cards - First Row -->
     <div class="features-grid">
-      <!-- Core Features -->
-      <div class="feature-card" (click)="toggleCard('what-you-can-do')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['what-you-can-do']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-tasks"></i>
+      <!-- Core Features Card -->
+      <div class="flip-card">
+        <div class="flip-card-container" (click)="toggleCard('core-features')">
+          <div class="flip-card-inner" [class.flipped]="flippedCards['core-features']">
+            <!-- Front of card -->
+            <div class="flip-card-front">
+              <div class="card-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <h3 class="card-title">Core Features</h3>
+              <p class="card-hint">Click to see details</p>
             </div>
-            <h3 class="feature-title">Core Features</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Core Features</h3>
-            <ul class="feature-list">
-              <li>Record & Generate Web Test Cases</li>
-              <li>Schedule Test Executions</li>
-              <li>Unified framework for API & Web testing</li>
-              <li>CI/CD Integration</li>
-              <li>Integration with JIRA, Vault, Slack...</li>
-              <li>Notifications (Slack & Mail)</li>
-            </ul>
+            
+            <!-- Back of card -->
+            <div class="flip-card-back">
+              <h3 class="card-title">Core Features</h3>
+              <ul class="feature-list">
+                <li>Record & Generate Web Test Cases</li>
+                <li>Schedule Test Executions</li>
+                <li>Unified framework for API & Web testing</li>
+                <li>CI/CD Integration</li>
+                <li>Integration with JIRA, Vault, Slack...</li>
+                <li>Notifications (Slack & Mail)</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Configuration Simplicity -->
-      <div class="feature-card" (click)="toggleCard('configuration-simplicity')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['configuration-simplicity']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-cogs"></i>
+      
+      <!-- Configuration Simplicity Card -->
+      <div class="flip-card">
+        <div class="flip-card-container" (click)="toggleCard('configuration-simplicity')">
+          <div class="flip-card-inner" [class.flipped]="flippedCards['configuration-simplicity']">
+            <!-- Front of card -->
+            <div class="flip-card-front">
+              <div class="card-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <h3 class="card-title">Configuration Simplicity</h3>
+              <p class="card-hint">Click to see details</p>
             </div>
-            <h3 class="feature-title">Configuration Simplicity</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Configuration Simplicity</h3>
-            <ul class="feature-list">
-              <li>Test Data Driven: Extraction, Chaining, and Validation</li>
-              <li>Post Operations</li>
-              <li>Validation (Text and Image)</li>
-              <li>Execution & Audit History</li>
-            </ul>
+            
+            <!-- Back of card -->
+            <div class="flip-card-back">
+              <h3 class="card-title">Configuration Simplicity</h3>
+              <ul class="feature-list">
+                <li>Test Data Driven: Extraction, Chaining, and Validation</li>
+                <li>Post Operations</li>
+                <li>Validation (Text and Image)</li>
+                <li>Execution & Audit History</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Platform Compatibility -->
-      <div class="feature-card" (click)="toggleCard('platform-support')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['platform-support']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-laptop"></i>
+      
+      <!-- Platform Compatibility Card -->
+      <div class="flip-card">
+        <div class="flip-card-container" (click)="toggleCard('platform-support')">
+          <div class="flip-card-inner" [class.flipped]="flippedCards['platform-support']">
+            <!-- Front of card -->
+            <div class="flip-card-front">
+              <div class="card-icon">
+                <i class="fas fa-laptop"></i>
+              </div>
+              <h3 class="card-title">Platform Compatibility</h3>
+              <p class="card-hint">Click to see details</p>
             </div>
-            <h3 class="feature-title">Platform Compatibility</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Platform Compatibility</h3>
-            <ul class="feature-list">
-              <li>Windows & MAC</li>
-              <li>BYOD (Bring Your Own Device)</li>
-            </ul>
+            
+            <!-- Back of card -->
+            <div class="flip-card-back">
+              <h3 class="card-title">Platform Compatibility</h3>
+              <ul class="feature-list">
+                <li>Windows & MAC</li>
+                <li>BYOD (Bring Your Own Device)</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Row 2: AI-Driven Enhancements, Coming Soon (center-aligned) -->
+    
+    <!-- Feature Cards - Second Row (Centered) -->
     <div class="features-grid-centered">
-      <!-- AI-Driven Enhancements -->
-      <div class="feature-card" (click)="toggleCard('ai-integrations')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['ai-integrations']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-robot"></i>
+      <!-- AI-Driven Enhancements Card -->
+      <div class="flip-card">
+        <div class="flip-card-container" (click)="toggleCard('ai-integrations')">
+          <div class="flip-card-inner" [class.flipped]="flippedCards['ai-integrations']">
+            <!-- Front of card -->
+            <div class="flip-card-front">
+              <div class="card-icon">
+                <i class="fas fa-robot"></i>
+              </div>
+              <h3 class="card-title">AI-Driven Enhancements</h3>
+              <p class="card-hint">Click to see details</p>
             </div>
-            <h3 class="feature-title">AI-Driven Enhancements</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">AI-Driven Enhancements</h3>
-            <ul class="feature-list">
-              <li>OpenCV: Image recognition ↗</li>
-            </ul>
+            
+            <!-- Back of card -->
+            <div class="flip-card-back">
+              <h3 class="card-title">AI-Driven Enhancements</h3>
+              <ul class="feature-list">
+                <li>OpenCV: Image recognition ↗</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Coming Soon -->
-      <div class="feature-card" (click)="toggleCard('coming-soon')">
-        <div class="feature-card-inner" [ngClass]="{'flipped': flippedCards['coming-soon']}">
-          <div class="feature-card-front">
-            <div class="feature-icon">
-              <i class="fas fa-clock"></i>
+      
+      <!-- Coming Soon Card -->
+      <div class="flip-card">
+        <div class="flip-card-container" (click)="toggleCard('coming-soon')">
+          <div class="flip-card-inner" [class.flipped]="flippedCards['coming-soon']">
+            <!-- Front of card -->
+            <div class="flip-card-front">
+              <div class="card-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <h3 class="card-title">Coming Soon</h3>
+              <p class="card-hint">Click to see details</p>
             </div>
-            <h3 class="feature-title">Coming Soon</h3>
-            <p class="feature-card-hint">Click to see details</p>
-          </div>
-          <div class="feature-card-back">
-            <h3 class="feature-title">Coming Soon</h3>
-            <ul class="feature-list">
-              <li>Easy OCR: Text recognition</li>
-              <li>Video for Selenium web execution</li>
-            </ul>
+            
+            <!-- Back of card -->
+            <div class="flip-card-back">
+              <h3 class="card-title">Coming Soon</h3>
+              <ul class="feature-list">
+                <li>Easy OCR: Text recognition</li>
+                <li>Video for Selenium web execution</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
