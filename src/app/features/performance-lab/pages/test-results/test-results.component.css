@@ -512,6 +512,48 @@
   animation: pendingPulse 2s ease-in-out infinite;
 }
 
+/* VALID_SKIP status */
+.status-valid_skip {
+  color: #fff;
+  background: linear-gradient(135deg, #4a69bd, #3867d6);
+  box-shadow: 0 3px 6px rgba(74, 105, 189, 0.2);
+}
+
+/* VALID_FAILED status */
+.status-valid_failed {
+  color: #fff;
+  background: linear-gradient(135deg, #eb3b5a, #fc5c65);
+  box-shadow: 0 3px 6px rgba(235, 59, 90, 0.2);
+}
+
+/* VALID_JUMP status */
+.status-valid_jump {
+  color: #fff;
+  background: linear-gradient(135deg, #20bf6b, #26de81);
+  box-shadow: 0 3px 6px rgba(32, 191, 107, 0.2);
+}
+
+/* PAUSED status */
+.status-paused {
+  color: #fff;
+  background: linear-gradient(135deg, #fa8231, #fd9644);
+  box-shadow: 0 3px 6px rgba(250, 130, 49, 0.2);
+}
+
+/* RELAY_ERROR status */
+.status-relay_error {
+  color: #fff;
+  background: linear-gradient(135deg, #eb4d4b, #ff7979);
+  box-shadow: 0 3px 6px rgba(235, 77, 75, 0.2);
+}
+
+/* ACTION_SKIP status */
+.status-action_skip {
+  color: #fff;
+  background: linear-gradient(135deg, #a55eea, #8854d0);
+  box-shadow: 0 3px 6px rgba(165, 94, 234, 0.2);
+}
+
 /* Animations */
 @keyframes shine {
   0% {

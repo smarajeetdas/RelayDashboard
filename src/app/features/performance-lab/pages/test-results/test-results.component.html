@@ -156,7 +156,13 @@
                     'fa-sync-alt fa-spin': result.status === 'InProgress',
                     'fa-clock': result.status === 'Scheduled',
                     'fa-hand-paper': result.status === 'Aborted',
-                    'fa-hourglass-half': result.status === 'Pending'
+                    'fa-hourglass-half': result.status === 'Pending',
+                    'fa-step-forward': result.status === 'VALID_SKIP',
+                    'fa-exclamation-triangle': result.status === 'VALID_FAILED',
+                    'fa-arrows-alt': result.status === 'VALID_JUMP',
+                    'fa-pause-circle': result.status === 'PAUSED',
+                    'fa-bug': result.status === 'RELAY_ERROR',
+                    'fa-forward': result.status === 'ACTION_SKIP'
                   }"></i>
                   {{ result.status }}
                 </div>
