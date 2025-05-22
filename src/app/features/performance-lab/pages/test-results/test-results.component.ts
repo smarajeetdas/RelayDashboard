@@ -8,7 +8,7 @@ interface TestResult {
   startTime: string;
   duration: string;
   environment: string;
-  status: 'Scheduled' | 'InProgress' | 'Passed' | 'Failed' | 'Aborted' | 'Pending';
+  status: string; // Allow any status value
   project: string;
   executedBy: string;
   category?: string;
@@ -124,7 +124,7 @@ export class TestResultsComponent implements OnInit {
         startTime: '2025-04-24 15:10:33', 
         duration: '00:04:12', 
         environment: 'Staging',
-        status: 'Scheduled', 
+        status: 'VALID_SKIP', 
         project: 'E-commerce', 
         executedBy: 'William Brown',
         category: 'Mobile'
@@ -136,7 +136,7 @@ export class TestResultsComponent implements OnInit {
         startTime: '2025-04-24 16:45:22', 
         duration: '00:02:05', 
         environment: 'Production',
-        status: 'Passed', 
+        status: 'VALID_FAILED', 
         project: 'Banking App', 
         executedBy: 'Jane Smith',
         category: 'API'
@@ -148,7 +148,7 @@ export class TestResultsComponent implements OnInit {
         startTime: '2025-04-24 17:30:11', 
         duration: '00:03:56', 
         environment: 'Development',
-        status: 'Failed', 
+        status: 'VALID_JUMP', 
         project: 'Banking App', 
         executedBy: 'Alex Johnson',
         category: 'Integration'
@@ -160,7 +160,7 @@ export class TestResultsComponent implements OnInit {
         startTime: '2025-04-24 09:15:40', 
         duration: '00:02:41', 
         environment: 'Staging',
-        status: 'Passed', 
+        status: 'PAUSED', 
         project: 'Project C', 
         executedBy: 'John Doe',
         category: 'Web'
@@ -172,10 +172,46 @@ export class TestResultsComponent implements OnInit {
         startTime: '2025-04-24 13:45:37', 
         duration: '00:05:18', 
         environment: 'Staging',
-        status: 'Aborted', 
+        status: 'RELAY_ERROR', 
         project: 'Banking App', 
         executedBy: 'William Brown',
         category: 'Security'
+      },
+      { 
+        id: 10, 
+        testcaseName: 'Order Processing', 
+        testcaseId: 10010,
+        startTime: '2025-04-24 18:20:45', 
+        duration: '00:03:12', 
+        environment: 'Production',
+        status: 'ACTION_SKIP', 
+        project: 'E-commerce', 
+        executedBy: 'Olivia Wilson',
+        category: 'API'
+      },
+      { 
+        id: 11, 
+        testcaseName: 'Image Upload', 
+        testcaseId: 10011,
+        startTime: '2025-04-24 14:33:27', 
+        duration: '00:02:18', 
+        environment: 'Development',
+        status: 'Scheduled', 
+        project: 'Project A', 
+        executedBy: 'Jane Smith',
+        category: 'Web'
+      },
+      { 
+        id: 12, 
+        testcaseName: 'Customer Notification', 
+        testcaseId: 10012,
+        startTime: '2025-04-24 11:55:39', 
+        duration: '00:01:57', 
+        environment: 'Production',
+        status: 'Aborted', 
+        project: 'Project B', 
+        executedBy: 'William Brown',
+        category: 'Integration'
       }
     ];
   }
