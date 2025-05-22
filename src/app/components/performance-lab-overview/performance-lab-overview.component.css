@@ -118,6 +118,14 @@
   margin-bottom: 3rem;
 }
 
+/* Center-aligned grid for Coming Soon card */
+.features-grid-centered {
+  display: flex;
+  justify-content: center;
+  grid-template-columns: none;
+  margin-top: 2rem;
+}
+
 /* Card Flip Animation */
 .feature-card {
   position: relative;
