@@ -404,6 +404,55 @@
       </div>
     </div>
     
+    <!-- Service Teams conducted Chaos Testing Section -->
+    <div class="service-teams-section">
+      <h2 class="section-title">Service Teams conducted Chaos Testing</h2>
+      
+      <div class="team-rows">
+        <!-- Row 1: First 4 teams -->
+        <div class="team-row">
+          <div class="team-slide" *ngFor="let team of serviceTeams.slice(0, 4)">
+            <div class="team-card" [style.border-color]="team.color">
+              <div class="team-logo-container" [style.background-color]="team.color">
+                <img [src]="team.logoPath" [alt]="team.name + ' logo'" class="team-logo">
+              </div>
+              <div class="team-name">
+                {{team.name}}
+                <span class="team-subheading" *ngIf="team.subheading">{{team.subheading}}</span>
+              </div>
+              <div class="team-hover-overlay" [style.background-color]="team.color">
+                <div class="team-hover-content">
+                  <img [src]="team.logoPath" [alt]="team.name + ' logo'" class="team-logo-hover mb-2">
+                  <div>{{team.name}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 2: Remaining teams -->
+        <div class="team-row">
+          <div class="team-slide" *ngFor="let team of serviceTeams.slice(4)">
+            <div class="team-card" [style.border-color]="team.color">
+              <div class="team-logo-container" [style.background-color]="team.color">
+                <img [src]="team.logoPath" [alt]="team.name + ' logo'" class="team-logo">
+              </div>
+              <div class="team-name">
+                {{team.name}}
+                <span class="team-subheading" *ngIf="team.subheading">{{team.subheading}}</span>
+              </div>
+              <div class="team-hover-overlay" [style.background-color]="team.color">
+                <div class="team-hover-content">
+                  <img [src]="team.logoPath" [alt]="team.name + ' logo'" class="team-logo-hover mb-2">
+                  <div>{{team.name}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Quick Links Section -->
     <div class="quick-links-section">
       <span class="quick-links-label">Quick links : </span>
