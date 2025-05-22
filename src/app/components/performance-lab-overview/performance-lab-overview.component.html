@@ -106,6 +106,130 @@
       </div>
     </div>
     
+    <!-- Performance Lab Workflow Section -->
+    <div class="testcase-workflow-section">
+      <h2 class="section-title">Performance Lab Workflow</h2>
+      
+      <div class="workflow-container">
+        <!-- Step 1: Leaverage testcase to do Performance test -->
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 1, 'completed': currentStep > 1}">
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 1: Leverage testcase to do Performance test</h3>
+              <p class="workflow-description">Convert your functional test cases into performance tests with minimal configuration.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <div class="instructions-container">
+                    <div class="instruction">
+                      <div class="instruction-content">Use functional testcase to simulate Load</div>
+                    </div>
+                    <div class="instruction instruction-2">
+                      <div class="instruction-content">Enable testcase as Non-Functional</div>
+                    </div>
+                    <div class="instruction instruction-3">
+                      <div class="instruction-content">Add JavaScript's if needed</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 2: Create Load test config -->
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 2, 'completed': currentStep > 2}">
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 2: Create Load test config</h3>
+              <p class="workflow-description">Configure your load test parameters to replicate real-world user scenarios.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <div class="instructions-container">
+                    <div class="instruction">
+                      <div class="instruction-content">Define Load type, Users/RPM, duration and Location</div>
+                    </div>
+                    <div class="instruction instruction-2">
+                      <div class="instruction-content">Upload test data</div>
+                    </div>
+                    <div class="instruction instruction-3">
+                      <div class="instruction-content">Define Assertion</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 3: Test Execution -->
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 3, 'completed': currentStep > 3}">
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 3: Test Execution</h3>
+              <p class="workflow-description">Execute and monitor your performance tests across multiple environments.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <div class="instructions-container">
+                    <div class="instruction">
+                      <div class="instruction-content">Trigger Multiple Performance test at once across Geos</div>
+                    </div>
+                    <div class="instruction instruction-2">
+                      <div class="instruction-content">Trigger test using CI/CD</div>
+                    </div>
+                    <div class="instruction instruction-3">
+                      <div class="instruction-content">Live Test monitoring</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 4: Test Analysis and Reporting -->
+        <div class="workflow-step" [ngClass]="{'active': currentStep === 4}">
+          <div class="workflow-content">
+            <div class="endpoint-layout">
+              <h3 class="workflow-title">Step 4: Test Analysis and Reporting</h3>
+              <p class="workflow-description">Gain insights from comprehensive performance test results to optimize your application.</p>
+              <div class="endpoint-diagram">
+                <div class="endpoint-box">
+                  <div class="instructions-container">
+                    <div class="instruction">
+                      <div class="instruction-content">Analyze the test with multiple filters</div>
+                    </div>
+                    <div class="instruction instruction-2">
+                      <div class="instruction-content">Raw results extracted data and log files</div>
+                    </div>
+                    <div class="instruction instruction-3">
+                      <div class="instruction-content">Compare multiple test results</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="workflow-navigation">
+          <button [disabled]="currentStep === 1" class="nav-button prev-button" (click)="prevStep()">
+            <i class="fas fa-chevron-left"></i> Previous
+          </button>
+          <div class="step-indicator">
+            <span *ngFor="let step of [1,2,3,4]" 
+                  class="step-dot" 
+                  [ngClass]="{'active': currentStep === step, 'completed': currentStep > step}"
+                  (click)="goToStep(step)">
+            </span>
+          </div>
+          <button [disabled]="currentStep === 4" class="nav-button next-button" (click)="nextStep()">
+            Next <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <!-- Quick Links Section -->
     <div class="quick-links-section">
       <span class="quick-links-label">Quick links : </span>
