@@ -36,12 +36,10 @@ export class PerformanceLabOverviewComponent implements OnInit {
   ngOnInit(): void {
     // Initialize all cards to non-flipped state
     this.flippedCards = {
-      'automated-load-testing': false,
-      'profiling': false,
-      'simulation': false,
-      'dashboard': false,
-      'tuning-optimization': false,
-      'server-performance': false
+      'core-features': false,
+      'configuration-simplicity': false,
+      'platform-compatibility': false,
+      'coming-soon': false
     };
   }
 
