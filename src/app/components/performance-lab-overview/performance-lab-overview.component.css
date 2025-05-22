@@ -122,8 +122,13 @@
 .features-grid-centered {
   display: flex;
   justify-content: center;
-  grid-template-columns: none;
   margin-top: 2rem;
+  width: 100%;
+}
+
+.features-grid-centered .feature-card {
+  width: 350px;
+  margin: 0 auto;
 }
 
 /* Card Flip Animation */
