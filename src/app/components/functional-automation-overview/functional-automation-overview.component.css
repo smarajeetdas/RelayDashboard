@@ -390,15 +390,15 @@
 }
 
 .instruction {
-  background-color: #55b9f8;
-  border-radius: 5px;
-  padding: 0.75rem 1rem;
-  color: white;
-  font-weight: 500;
+  background-color: #f0f7ff;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 3px solid #1473e6;
+  font-size: 1rem;
   margin-bottom: 1rem;
   position: relative;
   min-width: 350px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .instruction-2 {
@@ -410,6 +410,9 @@
 }
 
 .instruction-content {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.5;
   margin-bottom: 0.5rem;
 }
 
